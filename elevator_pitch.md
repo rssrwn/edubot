@@ -16,7 +16,7 @@ With EduBot, we improve on these problems by gradually introducing concepts star
 
 The main focus of our web app is the digital education sector, predominantly targeting schools and key stage 3 teachers.
 
-We see two main groups using the app:
+We see two main groups of users for the app:
 - Teachers will use it to organise classes and track student progress.
 - And students will interact with it to learn the core concepts of programming.
 
