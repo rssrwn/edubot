@@ -1,6 +1,6 @@
 # Problem Statement
 
-Mad G 1:
+**Jordan**
 
 Are students in key stage 3 engaged with programming? The answer is no, with the UK government investing millions in computing education but teachers struggling to keep up with the new curriculum. There are a variety of tools that attempt to teach programming, but many of them fail to capture the attention of students and more fail to give them a meaningful appreciation for the discipline.
 
@@ -12,7 +12,7 @@ With EduBot, we improve on these problems by gradually introducing concepts star
 
 # Target Audience and User Groups
 
-Mad G 2:
+**Ross**
 
 The main focus of our web app is the digital education sector, predominantly targeting schools and key stage 3 teachers.
 
@@ -21,8 +21,6 @@ We see two main groups using the app:
 - And students will interact with it to learn the core concepts of programming.
 
 # Mock Ups
-
-Mad G 3:
 
 (mention how interfaces satisfy the needs of the user groups)
 
@@ -38,6 +36,8 @@ For teachers we have:
 - Student progress shows where individual students are
 - Class editor allows members to be added to a class
 
+Footnotes:
+
 Teacher:
 - Interface for teachers to track student progress and scores.
 - Teacher can set specific challenges for the class.
@@ -48,7 +48,7 @@ Students:
 
 # Conclusion
 
-To wrap up, EduBot provides a platform for teachers to engage their students with programming and the important ideas behind it. We are confident that it will overcome the issues we have observed in existing solutions.
+**Jordan**
 
-EduBot - the interactive programming puzzle game
+To wrap up, EduBot provides a platform for teachers to engage their students with programming and the important ideas behind it. We are confident that it will overcome the issues we have observed in existing solutions.
 
