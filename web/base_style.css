@@ -1,0 +1,17 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#banner {
+  width: 100%;
+  height: 60px;
+  background-color: #a2a7a5;
+}
+
+#game {
+  width: 100%;
+  height: 60px;
+  background-color: #e4dfda;
+}
