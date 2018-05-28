@@ -12,14 +12,14 @@ var query = pgClient.query("select * from users");
 
 query.on("row", function(row, result) {
   result.add(row);
-  document.write(result);
+  console.log(result);
 });
 
 query.on("end", function(result) {
   pgClient.end();
 });
 
-document.write(result);
+//console.log(result);
 
 
 
