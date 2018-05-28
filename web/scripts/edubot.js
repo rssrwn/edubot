@@ -21,6 +21,8 @@ function initLevel() {
 }
 
 function update() {
+  //canvas.width = canvas.style.width;
+  //canvas.height = canvas.style.height;
   draw();
 }
 
