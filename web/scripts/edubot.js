@@ -1,6 +1,6 @@
 var canvas = document.getElementById("game_canvas");
 var ctx = canvas.getContext("2d");
-var level = new GridLevel(30, 30, 30);
+var level = new GridLevel(20, 20, 30);
 var robot = new Entity((x, y) => drawImage("robot_image", 30, 30, x, y));
 
 console.log("Initialising!");
@@ -13,10 +13,10 @@ setInterval(update, 100);
 function initLevel() {
   level.addEntity(new Entity(drawRect), 0, 0);
   level.addEntity(robot, 15, 15);
-  level.addEntity(new Entity(drawRect), 29, 29);
+  //level.addEntity(new Entity(drawRect), 29, 29);
   
   for (i = 0; i < 5; i++) {
-    level.addEntity(new Entity(drawRect), randomInt(30), randomInt(30));
+    level.addEntity(new Entity(drawRect), randomInt(20), randomInt(20));
   }
 }
 

@@ -1,5 +1,9 @@
-* { padding: 0; margin: 0; }
-canvas { background: #eee; display: block; margin: 0 auto; }
+canvas { padding: 0; margin: 0; background: #eee; display: block; margin: 0 auto; }
+
+game_canvas {
+  width: 100%;
+  height: 100%;
+}
 
 .game_image {
   display: none;

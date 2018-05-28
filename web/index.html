@@ -5,10 +5,13 @@
   <meta charset="utf-8">
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="base_style.css">
+      <link rel="stylesheet" href="game_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
   <script src="../blockly/blockly_compressed.js"></script>
   <script src="../blockly/blocks_compressed.js"></script>
   <script src="../blockly/msg/js/en.js"></script>
+  <script src="scripts/utils.js"></script>
+
 </head>
 <body>
   <div id="bannerDiv">
@@ -19,7 +22,10 @@
       <div id="blocklyWorkspaceDiv"> </div>
     </div>
     <div id="visualDiv">
-      
+      <canvas id="game_canvas"></canvas>
+      <img class="game_image" src="images/rob.png" alt="Rob" id="robot_image"></img>
+
+      <script src="scripts/edubot.js"></script>
     </div>
   </div>
   
