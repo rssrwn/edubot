@@ -5,13 +5,56 @@
   <meta charset="utf-8">
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="base_style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+  <script src="../blockly/blockly_compressed.js"></script>
+  <script src="../blockly/blocks_compressed.js"></script>
+  <script src="../blockly/msg/js/en.js"></script>
 </head>
 <body>
-  <div id="banner">
-    
+  <div id="bannerDiv">
+    <h1>EduBot</h1>
   </div>
-  <div id="game">
-    
+  <div id="contentDiv">
+    <div id="blocklyDiv">
+      <div id="blocklyWorkspaceDiv"> </div>
+    </div>
+    <div id="visualDiv">
+      
+    </div>
   </div>
+  
+  <xml id="toolbox" style="display: none">
+    <block type="controls_if"></block>
+    <block type="controls_repeat_ext"></block>
+    <block type="logic_compare"></block>
+    <block type="math_number"></block>
+    <block type="math_arithmetic"></block>
+    <block type="text"></block>
+    <block type="text_print"></block>
+  </xml>
+  
+  <script>
+    var blocklyDiv = document.getElementById("blocklyDiv");
+    var blocklyWorkspaceDiv = document.getElementById("blocklyWorkspaceDiv");
+    var blocklyWorkspace = Blockly.inject("blocklyWorkspaceDiv",
+        {toolbox: document.getElementById("toolbox")});
+    var blocklyOnResize = function(e) {
+      let element = blocklyDiv;
+      let x = 0;
+      let y = 0;
+      do {
+        x += element.offsetLeft;
+        y += element.offsetTop;
+        element = element.offsetParent;
+      } while (element !== null);
+      blocklyWorkspaceDiv.style.left = x + "px";
+      blocklyWorkspaceDiv.style.top = y + "px";
+      blocklyWorkspaceDiv.style.width = blocklyDiv.offsetWidth + "px";
+      blocklyWorkspaceDiv.style.height = blocklyDiv.offsetHeight + "px";
+    };
+    window.addEventListener("resize", blocklyOnResize, false);
+    blocklyOnResize();
+    Blockly.svgResize(blocklyWorkspace);
+  </script>
 </body>
 </html>
