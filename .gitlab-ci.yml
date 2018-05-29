@@ -5,9 +5,9 @@ stages:
 build:
   stage: build
   script:
-    #- mvn compile
+    - echo building
 
 test:
   stage: test
   script:
-    #- mvn test
+    - echo testing
