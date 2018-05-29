@@ -11,15 +11,17 @@
   <script src="../blockly/msg/js/en.js"></script>
 </head>
 <body>
-  <div id="bannerDiv">
-    <h1>EduBot</h1>
-  </div>
-  <div id="contentDiv">
-    <div id="blocklyDiv">
-      <div id="blocklyWorkspaceDiv"> </div>
+  <div id="page">
+    <div id="bannerDiv">
+      <h1>EduBot</h1>
     </div>
-    <div id="visualDiv">
-      
+    <div id="contentDiv">
+      <div id="blocklyDiv">
+        <div id="blocklyWorkspaceDiv"> </div>
+      </div>
+      <div id="visualDiv">
+        
+      </div>
     </div>
   </div>
   
@@ -38,7 +40,7 @@
     var blocklyWorkspaceDiv = document.getElementById("blocklyWorkspaceDiv");
     var blocklyWorkspace = Blockly.inject("blocklyWorkspaceDiv",
         {toolbox: document.getElementById("toolbox")});
-    var blocklyOnResize = function(e) {
+    var blocklyResize = function(e) {
       let element = blocklyDiv;
       let x = 0;
       let y = 0;
@@ -51,10 +53,13 @@
       blocklyWorkspaceDiv.style.top = y + "px";
       blocklyWorkspaceDiv.style.width = blocklyDiv.offsetWidth + "px";
       blocklyWorkspaceDiv.style.height = blocklyDiv.offsetHeight + "px";
+      Blockly.svgResize(blocklyWorkspace);
+    };
+    var blocklyOnResize = function(e) {
+      blocklyResize(e);
     };
     window.addEventListener("resize", blocklyOnResize, false);
     blocklyOnResize();
-    Blockly.svgResize(blocklyWorkspace);
   </script>
 </body>
 </html>
