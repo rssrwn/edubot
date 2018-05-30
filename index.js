@@ -1,28 +1,53 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const pg  = require('pg')
-const conString = "postgres://g1727114_u:nNrnFYebmJ@db.doc.ic.ac.uk:5432/g1727114_u";
+const { Pool, Client } = require('pg');
 
-/*const pool = new Pool({
-  connectionString: connectionString,
+const pool = new Pool({
+  user: 'g1727114_u',
+  host: 'db.doc.ic.ac.uk',
+  database: 'g1727114_u',
+  password: 'nNrnFYebmJ',
+  port: 5432,
+  ssl: true
 })
 
-pool.query('SELECT * from users', (err, res) => {
-  console.log(err, res)
+/*pool.query("select * from users", [], (err, res) => {
+  if (err) {
+    console.log(err.stack)
+  } else {
+    console.log(res.rows[0])
+  }
   pool.end()
-})
-
-const client = new Client({
-  connectionString: connectionString,
-})
-client.connect()
-
-client.query('SELECT * from users', (err, res) => {
-  console.log(err, res)
-  client.end()
 })*/
 
+app.get('/', (req, res, next) => {
+  /*pool.query("select * from users", [], (err, res2) => {
+    if (err) {
+      console.log(err.stack)
+    } else {
+      res.send(res2.rows[0])
+      console.log('response sent')
+    }
+  })*/
+
+  pool.query("select * from users", [])
+  .then(res2 => {
+    res.send(res2.rows[0])
+    console.log(res2.rows[0])
+  })
+  .catch(e => next(e))
+})
+
+app.listen(port, (err) => {
+  if (err) {
+    return console.log('something bad happened', err)
+  }
+
+  console.log(`server is listening on ${port}`)
+})
+
+/*
 app.get('/', function (req, res, next) {
   pg.connect(conString, function (err, client, done) {
     if (err) {
@@ -50,8 +75,8 @@ app.listen(port, (err) => {
   console.log(`server is listening on ${port}`)
 })
 
-
 /*
+
 app.use((request, response, next) => {
   console.log(request.headers)
   next()
@@ -74,6 +99,8 @@ app.listen(port, (err) => {
   console.log(`server is listening on ${port}`)
 })
 
+
+
 const users = []
 
 app.post('/users', function (req, res) {
@@ -86,8 +113,6 @@ app.post('/users', function (req, res) {
     res.send('successfully registered')
 })
 
-
-
 app.get('/', (request, response) => {
   response.send('Hello from Express!')
 })
@@ -99,24 +124,4 @@ app.listen(port, (err) => {
 
   console.log(`server is listening on ${port}`)
 })
-
-
-const pg = require('pg');
-const conString = "postgres://g1727114_u:nNrnFYebmJ@db.doc.ic.ac.uk:5432/g1727114_u";
-
-pg.connect(conString, function (err, client, done) {
-  if (err) {
-    return console.error('error fetching client from pool', err)
-  }
-  client.query('select * from users', function (err, result) {
-    done()
-
-    if (err) {
-      return console.error('error happened during query', err)
-    }
-    console.log(result.rows[0])
-    process.exit(0)
-  })
-})
 */
-
