@@ -11,18 +11,19 @@ initLevel();
 setInterval(update, 100);
 
 function initLevel() {
-  level.addEntity(new Entity(new RedRectangle()), 0, 0);
-  level.addEntity(new Entity(edubot), 15, 15);
-  //level.addEntity(new Entity(drawRect), 29, 29);
+  level.addEntity(new RedRectangle(), 0, 0);
+  level.addEntity(edubot, 15, 15);
   
   for (i = 0; i < 5; i++) {
-    level.addEntity(new Entity(new RedRectangle()), randomInt(20), randomInt(20));
+    level.addEntity(new RedRectangle(), randomInt(20), randomInt(20));
   }
 }
 
 function update() {
   //canvas.width = canvas.style.width;
   //canvas.height = canvas.style.height;
+  
+  level.update();
   draw();
 }
 
@@ -80,6 +81,18 @@ function GridLevel(width, height, squareSize) {
   }
 }
 
+GridLevel.prototype.moveEntity = function(entity, point) {
+  point = clampToGrid(point);
+  this.grid[entity.loc.x][entity.loc.y].setEntity(null);
+  console.log("New point: " + JSON.stringify(point));
+  this.grid[point.x][point.y].setEntity(entity);
+  entity.loc = new Point(point.x, point.y);
+}
+
+function clampToGrid(point) {
+  return new Point(clamp(point.x, 0, level.width - 1), clamp(point.y, 0, level.height - 1));
+}
+
 function Point(x, y) {
   this.x = x;
   this.y = y;
@@ -97,46 +110,29 @@ function GridSquare(x, y) {
   
   this.draw = function () {
     if (this.entity !== null) {
-      this.entity.draw(level.getDrawingOrdinate(loc.x), level.getDrawingOrdinate(loc.y));
+      this.entity.draw(
+        level.getDrawingOrdinate(this.loc.x), level.getDrawingOrdinate(this.loc.y));
+    } else {
+      ctx.beginPath();
+      ctx.rect(this.loc.x * level.squareSize, this.loc.y * level.squareSize, level.squareSize, level.squareSize);
+      ctx.strokeStyle = "#000000"
+      ctx.stroke();
+      ctx.closePath();
     }
+  }
+  
+  this.setEntity = function(entity) {
+    this.entity = entity;
   }
 }
 
-function Entity(drawer) {
-  this.loc = null;
-  this.drawer = drawer;
-}
-
-Entity.prototype.update = function () {
-  
-}
-
-Entity.prototype.draw = function(x, y) {
-  this.drawer.draw(x, y);
-}
-
-function RedRectangle() {}
-
-RedRectangle.prototype.draw = function draw(x, y) {
-  ctx.beginPath();
-  ctx.rect(x, y, 30, 30);
-  ctx.fillStyle = "#FF0000";
-  ctx.fill();
-  ctx.closePath();
-}
-
-function Robot() {
-  this.
-}
-
-Robot.prototype.draw = function draw(x, y) {
-  drawImage("robot_image", 30, 30, x, y);
-}
-
-
 // Drawing
 
-function drawImage(imageId, width, height, x, y) {
+function drawImage(imageId, x, y, width, height) {
   var image = document.getElementById(imageId);
   ctx.drawImage(image, x, y, width, height);
+}
+
+function resetCanvasTransforms() {
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
