@@ -1,5 +1,3 @@
-var List = require("collections/list");
-
 var Dir = {
   RIGHT: 0,
   DOWN: 1,
@@ -20,19 +18,20 @@ var DirProperties = {
 
 // Commands
 
-var commands = new List();
+var commands = [];
 
 function addCommand(command) {
   commands.push(command);
 }
 
 async function executeCommands() {
-  while (commands.length > 0) {
+  for (let i = 0; i < commands.length; i++) {
     let command = commands.pop();
-    
-    command.execute();
     await sleep(command.delay);
+    command.execute();
   }
+  
+  commands = [];
 }
 
 function Command(delay) {
@@ -57,9 +56,9 @@ MoveCommand.prototype = Object.create(Command.prototype);
 RotateLeftCommand.prototype = Object.create(Command.prototype);
 RotateRightCommand.prototype = Object.create(Command.prototype);
 
-MoveCommmand.prototype.execute = function() {edubot.moveForward};
-RotateLeftCommand.prototype = function() {edubot.rotateLeft};
-RotateRightCommand.prototype = function () {edubot.rotateRight};
+MoveCommand.prototype.execute = function() {edubot.moveForward};
+RotateLeftCommand.prototype.execute = function() {edubot.rotateLeft};
+RotateRightCommand.prototype.execute = function() {edubot.rotateRight};
 
 // The robot
 
