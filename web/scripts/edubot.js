@@ -2,6 +2,7 @@ var canvas = document.getElementById("game_canvas");
 var ctx = canvas.getContext("2d");
 var level = new GridLevel(32, 32, 32);
 var edubot = new Robot();
+var robotStepTime = 400;
 
 console.log("Initialising!");
 
@@ -23,7 +24,7 @@ function update() {
   //canvas.width = canvas.style.width;
   //canvas.height = canvas.style.height;
   
-  level.update();
+  //level.update();
   draw();
 }
 

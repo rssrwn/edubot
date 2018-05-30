@@ -43,14 +43,17 @@ Robot.prototype.draw = function draw(x, y) {
   resetCanvasTransforms();
 }
 
-Robot.prototype.moveForward = function() {
+Robot.prototype.moveForward = async function() {
+  await sleep(robotStepTime);
   this.setLocation(DirProperties[this.dir].moveForward(this.loc));
 }
 
-Robot.prototype.rotateRight = function() {
+Robot.prototype.rotateRight = async function() {
+  await sleep(robotStepTime);
   this.dir = DirProperties[this.dir].rotateRight;
 }
 
-Robot.prototype.rotateLeft = function() {
+Robot.prototype.rotateLeft = async function() {
+  await sleep(robotStepTime);
   this.dir = DirProperties[this.dir].rotateLeft;
 }

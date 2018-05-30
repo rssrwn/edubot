@@ -23,3 +23,7 @@ function clamp(a, r1, r2) {
   a = Math.min(a, r2);
   return a;
 }
+
+function sleep(timeMillis) {
+  return new Promise(resolve => setTimeout(resolve, timeMillis));
+}
