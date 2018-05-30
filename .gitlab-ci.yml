@@ -21,6 +21,6 @@ deploy:
   stage: deploy_staging_server
   script:
     - scp -o StrictHostKeyChecking=no web/ \
-    g1727114_u@146.169.2.83:/vol/project/2017/271/g1727114
+    g1727114_u@tui:/vol/project/2017/271/g1727114
   only:
     - master
