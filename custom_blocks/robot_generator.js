@@ -1,16 +1,16 @@
 Blockly.JavaScript['move_forward'] = function(block) {
-  var code = 'Robot.MoveForward();\n';
+  var code = 'edubot.moveForward();\n';
   return code;
 };
 
 Blockly.JavaScript['rotate_right'] = function(block) {
   var dropdown_angle = block.getFieldValue('angle');
-  var code = 'Robot.RotateRight(' + dropdown_angle + ');\n';
+  var code = 'edubot.rotateRight(' + ');\n';
   return code;
 };
 
 Blockly.JavaScript['rotate_left'] = function(block) {
   var dropdown_angle = block.getFieldValue('angle');
-  var code = 'Robot.RotateLeft(' + dropdown_angle + ');\n';
+  var code = 'edubot.rotateLeft(' + ');\n';
   return code;
 };
