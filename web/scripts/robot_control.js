@@ -1,3 +1,5 @@
+var List = require("collections/list");
+
 var Dir = {
   RIGHT: 0,
   DOWN: 1,
@@ -15,6 +17,51 @@ var DirProperties = {
   3: {moveForward: function(point) {return new Point(point.x, point.y - 1)},
            rotateRight: Dir.RIGHT, rotateLeft: Dir.LEFT}
 };
+
+// Commands
+
+var commands = new List();
+
+function addCommand(command) {
+  commands.push(command);
+}
+
+async function executeCommands() {
+  while (commands.length > 0) {
+    let command = commands.pop();
+    
+    command.execute();
+    await sleep(command.delay);
+  }
+}
+
+function Command(delay) {
+  this.delay = delay;
+}
+
+Command.prototype.execute = function() {}
+
+function MoveCommand() {
+  Command.call(this, robotStepTime);
+}
+
+function RotateLeftCommand() {
+  Command.call(this, robotStepTime);
+}
+
+function RotateRightCommand() {
+  Command.call(this, robotStepTime);
+}
+
+MoveCommand.prototype = Object.create(Command.prototype);
+RotateLeftCommand.prototype = Object.create(Command.prototype);
+RotateRightCommand.prototype = Object.create(Command.prototype);
+
+MoveCommmand.prototype.execute = function() {edubot.moveForward};
+RotateLeftCommand.prototype = function() {edubot.rotateLeft};
+RotateRightCommand.prototype = function () {edubot.rotateRight};
+
+// The robot
 
 function Robot() {
   Entity.call(this);
@@ -43,8 +90,14 @@ Robot.prototype.draw = function draw(x, y) {
   resetCanvasTransforms();
 }
 
+var counter = 0;
+
 Robot.prototype.moveForward = async function() {
+  let x = counter;
+  counter++;
+  console.log("Starting sleep: " + x);
   await sleep(robotStepTime);
+  console.log("Ending sleep: " + x);
   this.setLocation(DirProperties[this.dir].moveForward(this.loc));
 }
 
