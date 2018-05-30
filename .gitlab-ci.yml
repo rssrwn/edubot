@@ -17,6 +17,6 @@ deploy:
   stage: deploy_staging_server
   script:
     - ls
-    - scp -o StrictHostKeyChecking=no web g1727114_u@shell3.doc.ic.ac.uk:/vol/project/2017/271/g1727114/web
+    - scp -o StrictHostKeyChecking=no web g1727114_u@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727114/web
   only:
     - master
