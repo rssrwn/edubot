@@ -35,7 +35,7 @@
         </div>
         
         <div id="codeDiv">
-          <textarea readonly cols="80" rows="20" id="code"></textarea>
+          <textarea readonly id="code"></textarea>
         </div>
         
         <div id="canvasDiv">
@@ -77,7 +77,7 @@
     runButton.addEventListener("click", runCode);
     
     var viewCode = function(e) {
-      let codeView = document.getElementById("codeDiv")
+      let codeView = document.getElementById("codeDiv");
       if (codeView.style.display === "none") {
         codeView.style.display = "block";
       } else {
@@ -106,25 +106,17 @@
     };
     
     var canvasResize = function(e) {
-      let canvasDiv = document.getElementById("canvasDiv");
       let canvasPaddingDiv = document.getElementById("canvasPaddingDiv");
       let gameCanvas = document.getElementById("game_canvas");
-      let element = canvasPaddingDiv;
-      let x = 0;
-      let y = 0;
-      do {
-        x += element.offsetLeft;
-        y += element.offsetTop;
-        element = element.offsetParent;
-      } while (element !== null);
+      
       let size = Math.min(canvasPaddingDiv.offsetWidth, canvasPaddingDiv.offsetHeight);
       gameCanvas.style.width = size + "px";
       gameCanvas.style.height = size + "px";
     };
     
     var onResize = function(e) {
-      blocklyResize(e);
       canvasResize(e);
+      blocklyResize(e);
     };
     window.addEventListener("resize", onResize, false);
     onResize();

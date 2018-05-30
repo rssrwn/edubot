@@ -61,6 +61,7 @@ html, body {
 
 #codeDiv {
   display: table-row;
+  height: 200px;
   width: 100%;
 }
 
@@ -78,6 +79,7 @@ html, body {
 }
 
 #code {
+  height: 100%;
   width: 100%;
   resize: none;
   -webkit-box-sizing: border-box;
