@@ -16,7 +16,7 @@ test:
 deploy:
   stage: deploy_staging_server
   script:
-    - scp -o StrictHostKeyChecking=no elevator_pitch.md g1727114_u@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727114
+    - scp -o StrictHostKeyChecking=no web/ g1727114_u@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727114/web
     - echo "$g1727114_u_PASSWORD"
   only:
     - master
