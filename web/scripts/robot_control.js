@@ -36,9 +36,10 @@ Robot.prototype.update = function() {
 }
 
 Robot.prototype.draw = function draw(x, y) {
-  ctx.translate(x + 15, y + 15);
+  size = level.squareSize;
+  ctx.translate(x + size / 2, y + size / 2);
   ctx.rotate(this.dir * 90 * Math.PI / 180)
-  drawImage("robot_image", -15, -15, 30, 30);
+  drawImage("robot_image", -size / 2, -size / 2, size, size);
   resetCanvasTransforms();
 }
 

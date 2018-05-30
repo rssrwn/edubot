@@ -1,6 +1,6 @@
 var canvas = document.getElementById("game_canvas");
 var ctx = canvas.getContext("2d");
-var level = new GridLevel(20, 20, 30);
+var level = new GridLevel(32, 32, 32);
 var edubot = new Robot();
 
 console.log("Initialising!");
@@ -14,8 +14,8 @@ function initLevel() {
   level.addEntity(new RedRectangle(), 0, 0);
   level.addEntity(edubot, 15, 15);
   
-  for (i = 0; i < 5; i++) {
-    level.addEntity(new RedRectangle(), randomInt(20), randomInt(20));
+  for (i = 0; i < 20; i++) {
+    level.addEntity(new RedRectangle(), randomInt(level.width), randomInt(level.height));
   }
 }
 
@@ -46,6 +46,7 @@ function GridLevel(width, height, squareSize) {
   this.height = height;
   this.squareSize = squareSize;
   this.grid = createArray(width, height);
+  this.updateState = true;
   
   for (i = 0; i < width; i++) {
     for (j = 0; j < height; j++) {
@@ -78,13 +79,14 @@ function GridLevel(width, height, squareSize) {
         this.grid[i][j].update();
       }
     }
+    
+    this.updateState = !this.updateState;
   }
 }
 
 GridLevel.prototype.moveEntity = function(entity, point) {
   point = clampToGrid(point);
   this.grid[entity.loc.x][entity.loc.y].setEntity(null);
-  console.log("New point: " + JSON.stringify(point));
   this.grid[point.x][point.y].setEntity(entity);
   entity.loc = new Point(point.x, point.y);
 }
@@ -103,8 +105,10 @@ function GridSquare(x, y) {
   this.entity = null;
   
   this.update = function () {
-    if (this.entity !== null) {
-      this.entity.update();
+    ent = this.entity;
+    if (ent !== null && ent.needsUpdating(level.updateState)) {
+      ent.update();
+      ent.updateState = level.updateState;
     }
   }
   
@@ -115,7 +119,7 @@ function GridSquare(x, y) {
     } else {
       ctx.beginPath();
       ctx.rect(this.loc.x * level.squareSize, this.loc.y * level.squareSize, level.squareSize, level.squareSize);
-      ctx.strokeStyle = "#000000"
+      ctx.strokeStyle = "#adadb2"
       ctx.stroke();
       ctx.closePath();
     }
