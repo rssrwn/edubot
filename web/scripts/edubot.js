@@ -1,7 +1,6 @@
 var canvas = document.getElementById("game_canvas");
 var ctx = canvas.getContext("2d");
 var level = new GridLevel(20, 20, 30);
-var robot = new Entity((x, y) => drawImage("robot_image", 30, 30, x, y));
 
 console.log("Initialising!");
 
@@ -11,12 +10,12 @@ initLevel();
 setInterval(update, 100);
 
 function initLevel() {
-  level.addEntity(new Entity(drawRect), 0, 0);
-  level.addEntity(robot, 15, 15);
+  level.addEntity(new Entity(new RedRectangle()), 0, 0);
+  level.addEntity(new Entity(new Robot()), 15, 15);
   //level.addEntity(new Entity(drawRect), 29, 29);
   
   for (i = 0; i < 5; i++) {
-    level.addEntity(new Entity(drawRect), randomInt(20), randomInt(20));
+    level.addEntity(new Entity(new RedRectangle()), randomInt(20), randomInt(20));
   }
 }
 
@@ -97,25 +96,38 @@ function GridSquare(x, y) {
   }
 }
 
-function Entity(draw) {
+function Entity(drawer) {
   this.x = null;
   this.y = null;
-  this.draw = draw;
-  
-  this.update = function () {
-    
-  };
+  this.drawer = drawer;
 }
 
-// Drawing
+Entity.prototype.update = function () {
+  
+}
 
-function drawRect(x, y) {
+Entity.prototype.draw = function(x, y) {
+  this.drawer.draw(x, y);
+}
+
+function RedRectangle() {}
+
+RedRectangle.prototype.draw = function draw(x, y) {
   ctx.beginPath();
   ctx.rect(x, y, 30, 30);
   ctx.fillStyle = "#FF0000";
   ctx.fill();
   ctx.closePath();
 }
+
+function Robot() {}
+
+Robot.prototype.draw = function draw(x, y) {
+  drawImage("robot_image", 30, 30, x, y);
+}
+
+
+// Drawing
 
 function drawImage(imageId, width, height, x, y) {
   var image = document.getElementById(imageId);
