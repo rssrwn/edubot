@@ -16,3 +16,10 @@ function createArray(length) {
 function randomInt(max) {
   return Math.floor(Math.random() * max);
 }
+
+// Restricts the value of a to lie in the range of r1 to r2 (inclusive) where r1 <= r2.
+function clamp(a, r1, r2) {
+  a = Math.max(a, r1);
+  a = Math.min(a, r2);
+  return a;
+}
