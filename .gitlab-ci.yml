@@ -16,8 +16,7 @@ test:
 deploy:
   stage: deploy_staging_server
   script:
-    - eval $(ssh-agent -s)
-    - scp -o StrictHostKeyChecking=no web/ g1727114_u@shell1.doc.ic.ac.uk:/vol/project/2017/271/g1727114
+    - scp -o StrictHostKeyChecking=no db_help g1727114_u@shell1.doc.ic.ac.uk:/vol/project/2017/271/g1727114
     - echo "$g1727114_u_PASSWORD"
   only:
     - master
