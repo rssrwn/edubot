@@ -1,6 +1,7 @@
 var canvas = document.getElementById("game_canvas");
 var ctx = canvas.getContext("2d");
 var level = new GridLevel(20, 20, 30);
+var edubot = new Robot();
 
 console.log("Initialising!");
 
@@ -11,7 +12,7 @@ setInterval(update, 100);
 
 function initLevel() {
   level.addEntity(new Entity(new RedRectangle()), 0, 0);
-  level.addEntity(new Entity(new Robot()), 15, 15);
+  level.addEntity(new Entity(edubot), 15, 15);
   //level.addEntity(new Entity(drawRect), 29, 29);
   
   for (i = 0; i < 5; i++) {
@@ -64,6 +65,7 @@ function GridLevel(width, height, squareSize) {
     
     if (square.entity === null) {
       square.entity = entity;
+      entity.loc = new Point(x, y);
       return true;
     }
     return false;
@@ -78,9 +80,13 @@ function GridLevel(width, height, squareSize) {
   }
 }
 
-function GridSquare(x, y) {
+function Point(x, y) {
   this.x = x;
   this.y = y;
+}
+
+function GridSquare(x, y) {
+  this.loc = new Point(x, y);
   this.entity = null;
   
   this.update = function () {
@@ -91,14 +97,13 @@ function GridSquare(x, y) {
   
   this.draw = function () {
     if (this.entity !== null) {
-      this.entity.draw(level.getDrawingOrdinate(x), level.getDrawingOrdinate(y));
+      this.entity.draw(level.getDrawingOrdinate(loc.x), level.getDrawingOrdinate(loc.y));
     }
   }
 }
 
 function Entity(drawer) {
-  this.x = null;
-  this.y = null;
+  this.loc = null;
   this.drawer = drawer;
 }
 
@@ -120,7 +125,9 @@ RedRectangle.prototype.draw = function draw(x, y) {
   ctx.closePath();
 }
 
-function Robot() {}
+function Robot() {
+  this.
+}
 
 Robot.prototype.draw = function draw(x, y) {
   drawImage("robot_image", 30, 30, x, y);
