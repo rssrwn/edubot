@@ -6,9 +6,15 @@
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="base_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+  
   <script src="../blockly/blockly_compressed.js"></script>
   <script src="../blockly/blocks_compressed.js"></script>
   <script src="../blockly/msg/js/en.js"></script>
+  
+  <script src="../blockly/javascript_compressed.js"></script>
+  <script src="../custom_blocks/robot_blocks.js"></script>
+  <script src="../custom_blocks/robot_generator.js"></script>
+  
   <script src="scripts/utils.js"></script>
 
 </head>
@@ -23,29 +29,66 @@
       </div>
       
       <div id="visualDiv">
-        <canvas id="game_canvas", width=1024, height=1024></canvas>
-        <img class="game_image" src="images/rob.png" alt="Rob" id="robot_image"></img>
-
-        <script src="scripts/edubot.js"></script>
+        <div id="controlsDiv">
+          <button id="runButton">Run</button>
+          <button id="viewButton">View Code</button>
+        </div>
+        
+        <div id="codeDiv">
+          <textarea readonly cols="80" rows="20" id="code"></textarea>
+        </div>
+        
+        <div id="canvasDiv">
+          <div id="canvasPaddingDiv">
+            <canvas id="game_canvas", width=1024, height=1024></canvas>
+            <img class="game_image" src="images/rob.png" alt="Rob" id="robot_image"></img>
+            <script src="scripts/edubot.js"></script>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   
   <xml id="toolbox" style="display: none">
-    <block type="controls_if"></block>
     <block type="controls_repeat_ext"></block>
-    <block type="logic_compare"></block>
     <block type="math_number"></block>
-    <block type="math_arithmetic"></block>
-    <block type="text"></block>
-    <block type="text_print"></block>
+    <block type="move_forward"></block>
+    <block type="rotate_right"></block>
+    <block type="rotate_left"></block>
   </xml>
   
   <script>
     var blocklyDiv = document.getElementById("blocklyDiv");
     var blocklyWorkspaceDiv = document.getElementById("blocklyWorkspaceDiv");
-    var blocklyWorkspace = Blockly.inject("blocklyWorkspaceDiv",
+    var workspace = Blockly.inject("blocklyWorkspaceDiv",
         {toolbox: document.getElementById("toolbox")});
+        
+    var generateCode = function(e) {
+      let code = Blockly.JavaScript.workspaceToCode(workspace);
+      document.getElementById("code").value = code;
+    }; 
+    workspace.addChangeListener(generateCode);
+    
+    var runCode = function(e) {
+      let code = document.getElementById("code").value;
+      eval(code);
+    };
+    let runButton = document.getElementById("runButton");
+    runButton.addEventListener("click", runCode);
+    
+    var viewCode = function(e) {
+      let codeView = document.getElementById("codeDiv")
+      if (codeView.style.display === "none") {
+        codeView.style.display = "block";
+      } else {
+        codeView.style.display = "none";
+      }
+      onResize();
+    };
+    document.getElementById("codeDiv").style.display = "none";
+    let viewButton = document.getElementById("viewButton");
+    viewButton.addEventListener("click", viewCode);
+    
     var blocklyResize = function(e) {
       let element = blocklyDiv;
       let x = 0;
@@ -59,13 +102,32 @@
       blocklyWorkspaceDiv.style.top = y + "px";
       blocklyWorkspaceDiv.style.width = blocklyDiv.offsetWidth + "px";
       blocklyWorkspaceDiv.style.height = blocklyDiv.offsetHeight + "px";
-      Blockly.svgResize(blocklyWorkspace);
+      Blockly.svgResize(workspace);
     };
-    var blocklyOnResize = function(e) {
+    
+    var canvasResize = function(e) {
+      let canvasDiv = document.getElementById("canvasDiv");
+      let canvasPaddingDiv = document.getElementById("canvasPaddingDiv");
+      let gameCanvas = document.getElementById("game_canvas");
+      let element = canvasPaddingDiv;
+      let x = 0;
+      let y = 0;
+      do {
+        x += element.offsetLeft;
+        y += element.offsetTop;
+        element = element.offsetParent;
+      } while (element !== null);
+      let size = Math.min(canvasPaddingDiv.offsetWidth, canvasPaddingDiv.offsetHeight);
+      gameCanvas.style.width = size + "px";
+      gameCanvas.style.height = size + "px";
+    };
+    
+    var onResize = function(e) {
       blocklyResize(e);
+      canvasResize(e);
     };
-    window.addEventListener("resize", blocklyOnResize, false);
-    blocklyOnResize();
+    window.addEventListener("resize", onResize, false);
+    onResize();
   </script>
 </body>
 </html>
