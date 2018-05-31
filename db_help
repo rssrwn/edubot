@@ -4,6 +4,4 @@
 source ~/.pgdb-g1727114_u-g1727114_u
 
 ...at a Linux prompt. This will allow you to connect to your
-database by typing:
-
-psql
+database by typing: psql
