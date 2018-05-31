@@ -23,6 +23,6 @@ deploy:
     - rm -rf web.tar.gz
     - tar -czvf web.tar.gz frontend
     - scp -o StrictHostKeyChecking=no web.tar.gz g1727114_u@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727114/
-    - ssh g1727114_u@shell2.doc.ic.ac.uk "cd /vol/project/2017/271/g1727114/ && chmod g+ws web && tar -xzvf web.tar.gz && rm -rf web.tar.gz"
+    - ssh g1727114_u@shell2.doc.ic.ac.uk "cd /vol/project/2017/271/g1727114/ && tar -xzvf web.tar.gz && rm -rf web.tar.gz"
   only:
     - master
