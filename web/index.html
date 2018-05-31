@@ -73,8 +73,11 @@
     workspace.addChangeListener(generateCode);
     
     var runCode = function(e) {
-      let code = document.getElementById("code").value;
-      eval(code);
+      if (!runningCommands) {
+        let code = document.getElementById("code").value;
+        eval(code);
+        executeCommands();
+      }
     };
     let runButton = document.getElementById("runButton");
     runButton.addEventListener("click", runCode);

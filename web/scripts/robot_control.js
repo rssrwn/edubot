@@ -19,19 +19,29 @@ var DirProperties = {
 // Commands
 
 var commands = [];
+var runningCommands = false;
 
 function addCommand(command) {
+  console.log("Adding " + JSON.stringify(command) + " command");
   commands.push(command);
 }
 
 async function executeCommands() {
-  for (let i = 0; i < commands.length; i++) {
-    let command = commands.pop();
+  //console.log("Executing commands");
+  
+  runningCommands = true;
+  
+  while (commands.length > 0) {
+    let command = commands.shift();
     await sleep(command.delay);
     command.execute();
+    //console.log("Executed a command");
   }
   
+  //console.log("Done executing");
+  
   commands = [];
+  runningCommands = false;
 }
 
 function Command(delay) {
@@ -56,9 +66,9 @@ MoveCommand.prototype = Object.create(Command.prototype);
 RotateLeftCommand.prototype = Object.create(Command.prototype);
 RotateRightCommand.prototype = Object.create(Command.prototype);
 
-MoveCommand.prototype.execute = function() {edubot.moveForward};
-RotateLeftCommand.prototype.execute = function() {edubot.rotateLeft};
-RotateRightCommand.prototype.execute = function() {edubot.rotateRight};
+MoveCommand.prototype.execute = function() {edubot.moveForward()};
+RotateLeftCommand.prototype.execute = function() {edubot.rotateLeft()};
+RotateRightCommand.prototype.execute = function() {edubot.rotateRight()};
 
 // The robot
 
