@@ -23,7 +23,7 @@ deploy:
     - pwd
     - rm -rf web.tar.gz
     - tar -czvf web.tar.gz web
-    - scp -o StrictHostKeyChecking=no web.tar.gz g1727114_u@shell3.doc.ic.ac.uk:/vol/project/2017/271/g1727114/
-    - ssh g1727114_u@shell3.doc.ic.ac.uk "cd /vol/project/2017/271/g1727114/ &&  rm -rf web && tar -xzvf web.tar.gz && rm -rf web.tar.gz"
+    - scp -o StrictHostKeyChecking=no web.tar.gz g1727114_u@shell4.doc.ic.ac.uk:/vol/project/2017/271/g1727114/
+    - ssh g1727114_u@shell4.doc.ic.ac.uk "cd /vol/project/2017/271/g1727114/ &&  rm -rf web && tar -xzvf web.tar.gz && rm -rf web.tar.gz"
   only:
     - master
