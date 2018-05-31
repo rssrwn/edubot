@@ -14,6 +14,7 @@ function GridLevel(width, height, squareSize) {
   this.squareSize = squareSize;
   this.grid = createArray(width, height);
   this.updateState = true;
+  this.food = 0;
   
   for (i = 0; i < width; i++) {
     for (j = 0; j < height; j++) {
@@ -43,6 +44,14 @@ GridLevel.prototype.addEntity = function (entity, x, y) {
     return true;
   }
   return false;
+}
+
+GridLevel.prototype.foodAdded = function() {
+  food++;
+}
+
+GridLevel.prototype.foodEaten = function() {
+  food--;
 }
 
 GridLevel.prototype.update = function () {
