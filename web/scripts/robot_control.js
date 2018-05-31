@@ -98,12 +98,12 @@ Robot.prototype.update = function() {
 }
 
 Robot.prototype.draw = function(x, y) {
-  size = level.squareSize * 1.2;
-  xTrans = x + level.squareSize / 2;
-  yTrans = y + level.squareSize / 2;
+  let size = level.squareSize * 1.2;
+  let xTrans = x + level.squareSize / 2;
+  let yTrans = y + level.squareSize / 2;
   ctx.translate(xTrans, yTrans);
   
-  rot = this.dir * 90 * Math.PI / 180;
+  let rot = this.dir * 90 * Math.PI / 180;
   
   ctx.rotate(rot);
   drawImage("robot_image", -size / 2, -size / 2, size, size);
@@ -130,7 +130,7 @@ Robot.prototype.rotateLeft = function() {
 // Conditionals
 
 Robot.prototype.blockedByWall = function() {
-  pointInFront = DirProperties[this.dir].moveForward(this.loc);
-  square = level.getSquare(pointInFront);
+  let pointInFront = DirProperties[this.dir].moveForward(this.loc);
+  let square = level.getSquare(pointInFront.x, pointInFront.y);
   return square !== null && square.isBlocking();
 }

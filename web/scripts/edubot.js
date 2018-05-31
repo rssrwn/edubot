@@ -27,6 +27,8 @@ GridLevel.prototype.getSquare = function (x, y) {
     return null;
   }
   
+  console.log("")
+  
   return this.grid[x][y];
 }
 
