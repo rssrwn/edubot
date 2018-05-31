@@ -21,7 +21,7 @@ const pool = new Pool({
   pool.end()
 })*/
 
-app.get('/', (req, res, next) => {
+app.get('/high_score', (req, res, next) => {
   /*pool.query("select * from users", [], (err, res2) => {
     if (err) {
       console.log(err.stack)
@@ -31,10 +31,10 @@ app.get('/', (req, res, next) => {
     }
   })*/
 
-  pool.query("select * from users", [])
+  pool.query("select * from high_score", [])
   .then(res2 => {
-    res.send(res2.rows[0])
-    console.log(res2.rows[0])
+    res.send(res2.rows)
+    console.log(res2.rows)
   })
   .catch(e => next(e))
 })
