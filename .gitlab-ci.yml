@@ -23,7 +23,7 @@ deploy:
     - pwd
     - whoami
     - hostname
-    - ls ~/.ssh -l
+    - ls ~/.ssh -la
 #    - rm -rf web.tar.gz
 #    - tar -czvf web.tar.gz web
 #    - scp -o StrictHostKeyChecking=no web.tar.gz g1727114_u@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727114/
