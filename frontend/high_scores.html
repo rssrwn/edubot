@@ -6,19 +6,8 @@
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="base_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-  <script src="../blockly/blockly_compressed.js"></script>
-  <script src="../blockly/blocks_compressed.js"></script>
-  <script src="../blockly/msg/js/en.js"></script>
-
-  <script src="../blockly/javascript_compressed.js"></script>
-  <script src="../custom_blocks/robot_blocks.js"></script>
-  <script src="../custom_blocks/robot_generator.js"></script>
-
-  <script src="scripts/utils.js"></script>
-
 </head>
-<body onLoad="buildTable()">
+<body onLoad="request()">
   <div id="page">
     <div id="bannerDiv">
       <h1>EduBot</h1>
@@ -30,7 +19,12 @@
     <div id="contentDiv">
       <h3>High Scores</h3>
       <script>
-      function buildTable() {
+      function request() {
+        httpGet("https://edubot-backend.herokuapp.com/high_score", buildTable);
+      }
+      
+      function buildTable(x) {
+        console.log(x);
         var table = document.createElement("TABLE");
         table.setAttribute("id", "high_scores");
         table.setAttribute("style", "width:30%");
@@ -58,7 +52,7 @@
             callback(xmlHttp.responseText);
         }
         xmlHttp.open("GET", url, true); // true for asynchronous
-        xmlHttp.send(null);
+        xmlHttp.send();
       }
       </script>
 
