@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const { Pool, Client } = require('pg');
 
 const pool = new Pool({
@@ -39,13 +39,17 @@ app.get('/high_score', (req, res, next) => {
   .catch(e => next(e))
 })
 
-app.listen(port, (err) => {
+/*app.listen(port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
   }
 
   console.log(`server is listening on ${port}`)
-})
+})*/
+
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
 
 /*
 app.get('/', function (req, res, next) {
