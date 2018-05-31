@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const { Pool, Client } = require('pg');
 
 const pool = new Pool({
@@ -10,7 +10,7 @@ const pool = new Pool({
   password: 'nNrnFYebmJ',
   port: 5432,
   ssl: true
-})
+});
 
 /*pool.query("select * from users", [], (err, res) => {
   if (err) {
@@ -20,6 +20,10 @@ const pool = new Pool({
   }
   pool.end()
 })*/
+
+app.get('/', (req, res, next) => {
+  res.send('You reached the home page');
+});
 
 app.get('/high_score', (req, res, next) => {
   /*pool.query("select * from users", [], (err, res2) => {
@@ -33,19 +37,23 @@ app.get('/high_score', (req, res, next) => {
 
   pool.query("select * from high_score", [])
   .then(res2 => {
-    res.send(res2.rows)
-    console.log(res2.rows)
+    res.send(res2.rows);
+    console.log(res2.rows);
   })
-  .catch(e => next(e))
-})
+  .catch(e => next(e));
+});
 
-app.listen(port, (err) => {
+/*app.listen(port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
   }
 
   console.log(`server is listening on ${port}`)
-})
+})*/
+
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
 
 /*
 app.get('/', function (req, res, next) {

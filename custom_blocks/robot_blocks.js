@@ -37,3 +37,14 @@ Blockly.Blocks['rotate_left'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['wall_in_front'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("wall in front");
+    this.setOutput(true, "Boolean");
+    this.setColour(230);
+ this.setTooltip("True if a wall is in front of EduBot");
+ this.setHelpUrl("");
+  }
+};
