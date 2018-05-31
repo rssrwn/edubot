@@ -62,13 +62,19 @@ function RotateRightCommand() {
   Command.call(this, robotStepTime);
 }
 
+function BlockedByWallCommand() {
+  Command.call(this, robotStepTime);
+}
+
 MoveCommand.prototype = Object.create(Command.prototype);
 RotateLeftCommand.prototype = Object.create(Command.prototype);
 RotateRightCommand.prototype = Object.create(Command.prototype);
+BlockedByWallCommand.prototype = Object.create(Command.prototype);
 
 MoveCommand.prototype.execute = function() {edubot.moveForward()};
 RotateLeftCommand.prototype.execute = function() {edubot.rotateLeft()};
 RotateRightCommand.prototype.execute = function() {edubot.rotateRight()};
+BlockedByWallCommand.prototype.execute = function () {return edubot.blockedByWall()}
 
 // The robot
 
@@ -91,31 +97,40 @@ Robot.prototype.update = function() {
   this.moveForward();
 }
 
-Robot.prototype.draw = function draw(x, y) {
-  size = level.squareSize;
-  ctx.translate(x + size / 2, y + size / 2);
-  ctx.rotate(this.dir * 90 * Math.PI / 180)
+Robot.prototype.draw = function(x, y) {
+  let size = level.squareSize * 1.2;
+  let xTrans = x + level.squareSize / 2;
+  let yTrans = y + level.squareSize / 2;
+  ctx.translate(xTrans, yTrans);
+  
+  let rot = this.dir * 90 * Math.PI / 180;
+  
+  ctx.rotate(rot);
   drawImage("robot_image", -size / 2, -size / 2, size, size);
-  resetCanvasTransforms();
+  ctx.rotate(-rot);
+  ctx.translate(-xTrans, -yTrans);
 }
 
 var counter = 0;
 
-Robot.prototype.moveForward = async function() {
+Robot.prototype.moveForward = function() {
   let x = counter;
   counter++;
-  console.log("Starting sleep: " + x);
-  await sleep(robotStepTime);
-  console.log("Ending sleep: " + x);
   this.setLocation(DirProperties[this.dir].moveForward(this.loc));
 }
 
-Robot.prototype.rotateRight = async function() {
-  await sleep(robotStepTime);
+Robot.prototype.rotateRight = function() {
   this.dir = DirProperties[this.dir].rotateRight;
 }
 
-Robot.prototype.rotateLeft = async function() {
-  await sleep(robotStepTime);
+Robot.prototype.rotateLeft = function() {
   this.dir = DirProperties[this.dir].rotateLeft;
+}
+
+// Conditionals
+
+Robot.prototype.blockedByWall = function() {
+  let pointInFront = DirProperties[this.dir].moveForward(this.loc);
+  let square = level.getSquare(pointInFront.x, pointInFront.y);
+  return square !== null && square.isBlocking();
 }
