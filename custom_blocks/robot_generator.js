@@ -14,3 +14,8 @@ Blockly.JavaScript['rotate_left'] = function(block) {
   var code = 'addCommand(new RotateLeftCommand());\n';
   return code;
 };
+
+Blockly.JavaScript['wall_in_front'] = function(block) {
+  var code = 'isWallInFront()\n';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
