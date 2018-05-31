@@ -35,5 +35,3 @@ deploy:
   only:
     - master
     
-    
-    
