@@ -20,8 +20,9 @@ test:
 deploy:
   stage: deploy_staging_server
   script:
+    - cd ..
     - rm -rf project.tar.gz
-    - tar -czvf project.tar.gz .
+    - tar -czvf project.tar.gz g1727114
     - scp -o StrictHostKeyChecking=no project.tar.gz g1727114_u@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727114/
     - ssh g1727114_u@shell2.doc.ic.ac.uk "cd /vol/project/2017/271/g1727114/ && tar -xzvf project.tar.gz && rm -rf project.tar.gz && mv project/* ."
   only:
