@@ -20,9 +20,9 @@ test:
 deploy:
   stage: deploy_staging_server
   script:
-    - rm -rf frontend.tar.gz
-    - tar -czvf frontend.tar.gz frontend
-    - scp -o StrictHostKeyChecking=no frontend.tar.gz g1727114_u@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727114/
-    - ssh g1727114_u@shell2.doc.ic.ac.uk "cd /vol/project/2017/271/g1727114/ && tar -xzvf frontend.tar.gz && rm -rf web/* && mv frontend/* web/ && rm -rf frontend.tar.gz"
+    - rm -rf project.tar.gz
+    - tar -czvf project.tar.gz .
+    - scp -o StrictHostKeyChecking=no project.tar.gz g1727114_u@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727114/
+    - ssh g1727114_u@shell2.doc.ic.ac.uk "cd /vol/project/2017/271/g1727114/ && tar -xzvf project.tar.gz && rm -rf project.tar.gz && mv project/* ."
   only:
     - master
