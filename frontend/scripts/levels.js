@@ -59,5 +59,10 @@ function initSampleLevel1() {
     l.addEntity(new Bolt(), x, y);
   }
   
-  level = sampleLevel1;
+  l.hints.push("You can program your robot to behave differently when it encounters a "
+  + "wall by adding a \"wall in front\" block to an if or repeat-while block");
+  l.hints.push("If you're stuck, you can start by manually guiding the robot around "
+    + "the level and seeing what patterns appear in the actions, and what can be placed "
+    + "in a loop");
+  l.hintCounter = randomInt(2);
 }
