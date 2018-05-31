@@ -99,10 +99,16 @@ Robot.prototype.update = function() {
 
 Robot.prototype.draw = function(x, y) {
   size = level.squareSize * 1.2;
-  ctx.translate(x + level.squareSize / 2, y + level.squareSize / 2);
-  ctx.rotate(this.dir * 90 * Math.PI / 180)
+  xTrans = x + level.squareSize / 2;
+  yTrans = y + level.squareSize / 2;
+  ctx.translate(xTrans, yTrans);
+  
+  rot = this.dir * 90 * Math.PI / 180;
+  
+  ctx.rotate(rot);
   drawImage("robot_image", -size / 2, -size / 2, size, size);
-  resetCanvasTransforms();
+  ctx.rotate(-rot);
+  ctx.translate(-xTrans, -yTrans);
 }
 
 var counter = 0;
