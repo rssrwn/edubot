@@ -14,7 +14,7 @@ function GridLevel(width, height, squareSize) {
   this.squareSize = squareSize;
   this.grid = createArray(width, height);
   this.updateState = true;
-  this.food = 0;
+  this.bolts = 0;
   
   for (i = 0; i < width; i++) {
     for (j = 0; j < height; j++) {
@@ -41,17 +41,23 @@ GridLevel.prototype.addEntity = function (entity, x, y) {
   if (square.entity === null) {
     square.entity = entity;
     entity.loc = new Point(x, y);
+    entity.added();
     return true;
   }
   return false;
 }
 
-GridLevel.prototype.foodAdded = function() {
-  food++;
+GridLevel.prototype.boltAdded = function() {
+  this.bolts++;
+  //console.log("Bolts: " + this.bolts);
 }
 
-GridLevel.prototype.foodEaten = function() {
-  food--;
+GridLevel.prototype.boltCollected = function() {
+  this.bolts--;
+  //console.log("Bolts: " + this.bolts);
+  if (this.bolts == 0) {
+    this.levelCompleted();
+  }
 }
 
 GridLevel.prototype.update = function () {
@@ -79,6 +85,11 @@ GridLevel.prototype.moveEntity = function(entity, point) {
   }
   
   return false;
+}
+
+GridLevel.prototype.levelCompleted = function() {
+  let score = Math.max(2000 - 40 * actionsTaken, 100);
+  alert("You won! \nYour score is: " + score);
 }
 
 function Point(x, y) {
@@ -117,6 +128,10 @@ GridSquare.prototype.draw = function () {
 }
 
 GridSquare.prototype.setEntity = function(entity) {
+  if (this.entity !== null) {
+    this.entity.removed();
+  }
+  
   this.entity = entity;
 }
 
@@ -128,11 +143,11 @@ initLevel();
 setInterval(update, 100);
 
 function initLevel() {
-  level.addEntity(new BasicFood(), 0, 0);
+  level.addEntity(new Bolt(), 0, 0);
   level.addEntity(edubot, 15, 15);
   
   for (i = 0; i < 20; i++) {
-    level.addEntity(new BasicFood(), randomInt(level.width), randomInt(level.height));
+    level.addEntity(new Bolt(), randomInt(level.width), randomInt(level.height));
   }
   for (i = 0; i < 40; i++) {
     level.addEntity(new BasicWall(), randomInt(level.width), randomInt(level.height));

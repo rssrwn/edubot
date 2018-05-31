@@ -4,7 +4,7 @@ function Entity(blocksEntities) {
   this.updateState = false;
 }
 
-function BasicFood() {
+function Bolt() {
   Entity.call(this, false);
 }
 
@@ -12,7 +12,7 @@ function BasicWall() {
   Entity.call(this, true);
 }
 
-BasicFood.prototype = Object.create(Entity.prototype);
+Bolt.prototype = Object.create(Entity.prototype);
 BasicWall.prototype = Object.create(Entity.prototype);
 
 Entity.prototype.update = function() {}
@@ -27,7 +27,10 @@ Entity.prototype.needsUpdating = function(updateTrueState) {
   return this.updateState != updateTrueState;
 }
 
-BasicFood.prototype.draw = function draw(x, y) {
+Entity.prototype.added = function() {}
+Entity.prototype.removed = function() {}
+
+Bolt.prototype.draw = function draw(x, y) {
   //ctx.beginPath();
   //radius = level.squareSize / 4;
   drawImage("nuts_and_bolts", x, y, level.squareSize, level.squareSize);
@@ -35,6 +38,14 @@ BasicFood.prototype.draw = function draw(x, y) {
   //ctx.fillStyle = "#008000";
   //ctx.fill();
   //ctx.closePath();
+}
+
+Bolt.prototype.added = function() {
+  level.boltAdded();
+}
+
+Bolt.prototype.removed = function() {
+  level.boltCollected();
 }
 
 BasicWall.prototype.draw = function draw(x, y) {

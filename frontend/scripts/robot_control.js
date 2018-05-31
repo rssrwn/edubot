@@ -20,6 +20,7 @@ var DirProperties = {
 
 var commands = [];
 var runningCommands = false;
+var actionsTaken = 0;
 
 function addCommand(command) {
   console.log("Adding " + JSON.stringify(command) + " command");
@@ -117,14 +118,17 @@ Robot.prototype.moveForward = function() {
   let x = counter;
   counter++;
   this.setLocation(DirProperties[this.dir].moveForward(this.loc));
+  actionsTaken++;
 }
 
 Robot.prototype.rotateRight = function() {
   this.dir = DirProperties[this.dir].rotateRight;
+  actionsTaken++;
 }
 
 Robot.prototype.rotateLeft = function() {
   this.dir = DirProperties[this.dir].rotateLeft;
+  actionsTaken++;
 }
 
 // Conditionals

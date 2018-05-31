@@ -3,6 +3,7 @@ var sampleLevel1 = new GridLevel(15, 15, 48);
 initSampleLevel1();
 
 function initSampleLevel1() {
+  level = sampleLevel1;
   let l = sampleLevel1;
   
   for (let i = 0; i < l.width; i++) {
@@ -25,7 +26,7 @@ function initSampleLevel1() {
   x++;
   
   for (let i = 0; i < 3; i++, x++) {
-    l.addEntity(new BasicFood(), x, y);
+    l.addEntity(new Bolt(), x, y);
   }
   
   l.addEntity(new BasicWall(), x, y);
@@ -35,7 +36,7 @@ function initSampleLevel1() {
   y -= 2;
   
   for (let i = 0; i < 3; i++, y--) {
-    l.addEntity(new BasicFood(), x, y);
+    l.addEntity(new Bolt(), x, y);
   }
   
   l.addEntity(new BasicWall(), x, y);
@@ -44,7 +45,7 @@ function initSampleLevel1() {
   x--;
   
   for (let i = 0; i < 5; i++, x--) {
-    l.addEntity(new BasicFood(), x, y);
+    l.addEntity(new Bolt(), x, y);
   }
   
   x -= 2;
@@ -55,7 +56,7 @@ function initSampleLevel1() {
   y++;
   
   for (let i = 0; i < 2; i++, y--) {
-    l.addEntity(new BasicFood(), x, y);
+    l.addEntity(new Bolt(), x, y);
   }
   
   level = sampleLevel1;
