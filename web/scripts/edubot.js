@@ -1,6 +1,6 @@
 var canvas = document.getElementById("game_canvas");
 var ctx = canvas.getContext("2d");
-var level = new GridLevel(32, 32, 32);
+var level = new GridLevel(16, 16, 32);
 var edubot = new Robot();
 var robotStepTime = 400;
 
@@ -30,6 +30,12 @@ function update() {
 
 // Repaints the game
 function draw() {
+  let scale = level.width / 32;
+  
+  let size = 1024 - level.width * level.squareSize;
+  
+  ctx.translate(size / 2 * scale, size / 2 * scale);
+  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   level.grid.forEach(function (column) {
