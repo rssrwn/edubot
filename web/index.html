@@ -77,6 +77,7 @@
     var runCode = function(e) {
       if (!runningCommands) {
         let code = document.getElementById("code").value;
+        code = "async function evalCode() {" + code + "}; evalCode();";
         eval(code);
         executeCommands();
       }
