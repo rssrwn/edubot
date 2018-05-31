@@ -1,6 +1,6 @@
 var canvas = document.getElementById("game_canvas");
 var ctx = canvas.getContext("2d");
-var level = new GridLevel(32, 32, 32);
+var level = new GridLevel(24, 24, 32);
 var edubot = new Robot();
 var robotStepTime = 400;
 
@@ -125,6 +125,9 @@ function initLevel() {
   for (i = 0; i < 20; i++) {
     level.addEntity(new BasicFood(), randomInt(level.width), randomInt(level.height));
   }
+  for (i = 0; i < 20; i++) {
+    level.addEntity(new BasicWall(), randomInt(level.width), randomInt(level.height));
+  }
 }
 
 function update() {
@@ -139,11 +142,16 @@ function update() {
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
+  let offset = (canvas.width - level.width * level.squareSize) / 2;
+  ctx.translate(offset, offset);
+  
   level.grid.forEach(function (column) {
     column.forEach(function (square) {
       square.draw();
     });
   });
+  
+  resetCanvasTransforms();
 }
 
 
