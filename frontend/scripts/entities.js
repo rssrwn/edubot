@@ -28,18 +28,19 @@ Entity.prototype.needsUpdating = function(updateTrueState) {
 }
 
 BasicFood.prototype.draw = function draw(x, y) {
-  ctx.beginPath();
-  radius = level.squareSize / 4;
-  ctx.arc(x + level.squareSize / 2, y + level.squareSize / 2, radius, 0, 2*Math.PI);
-  ctx.fillStyle = "#008000";
-  ctx.fill();
-  ctx.closePath();
+  //ctx.beginPath();
+  //radius = level.squareSize / 4;
+  drawImage("nuts_and_bolts", x, y, level.squareSize, level.squareSize);
+  //ctx.arc(x + level.squareSize / 2, y + level.squareSize / 2, radius, 0, 2*Math.PI);
+  //ctx.fillStyle = "#008000";
+  //ctx.fill();
+  //ctx.closePath();
 }
 
 BasicWall.prototype.draw = function draw(x, y) {
   ctx.beginPath();
   ctx.rect(x, y, level.squareSize, level.squareSize);
-  ctx.fillStyle = "#303030";
+  ctx.fillStyle = "#303080";
   ctx.fill();
   ctx.closePath();
 }
