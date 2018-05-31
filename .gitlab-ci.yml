@@ -25,10 +25,10 @@ deploy:
     #- scp -o StrictHostKeyChecking=no web.tar.gz g1727114_u@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727114/
     #- ssh g1727114_u@shell2.doc.ic.ac.uk "cd /vol/project/2017/271/g1727114/ && rm -f .htaccess && tar -xzvf web.tar.gz && rm -rf web.tar.gz"
     - heroku -v
-    - heroku login && rssrwn@gmail.com && 057fbe05-8db4-4d43-8720-38de369e15f2
-    - heroku git:remote -a edubot-backend
     - git remote -v
-    - git subtree push --prefix backend_js heroku master
+    - git pull heroku master
+    - git push heroku master
+    #- git subtree push --prefix backend_js heroku master
     #- curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
   only:
     - master
