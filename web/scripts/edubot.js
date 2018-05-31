@@ -23,7 +23,7 @@ function GridLevel(width, height, squareSize) {
 }
 
 GridLevel.prototype.getSquare = function (x, y) {
-  if (x >= this.width || y >= this.height) {
+  if (x >= this.width || y >= this.height || x < 0 || y < 0) {
     return null;
   }
   
@@ -125,7 +125,7 @@ function initLevel() {
   for (i = 0; i < 20; i++) {
     level.addEntity(new BasicFood(), randomInt(level.width), randomInt(level.height));
   }
-  for (i = 0; i < 20; i++) {
+  for (i = 0; i < 40; i++) {
     level.addEntity(new BasicWall(), randomInt(level.width), randomInt(level.height));
   }
 }
