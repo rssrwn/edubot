@@ -98,13 +98,13 @@ GridSquare.prototype.draw = function () {
   if (this.entity !== null) {
     this.entity.draw(
       level.getDrawingOrdinate(this.loc.x), level.getDrawingOrdinate(this.loc.y));
-  } else {
-    ctx.beginPath();
-    ctx.rect(this.loc.x * level.squareSize, this.loc.y * level.squareSize, level.squareSize, level.squareSize);
-    ctx.strokeStyle = "#adadb2"
-    ctx.stroke();
-    ctx.closePath();
   }
+  
+  ctx.beginPath();
+  ctx.rect(this.loc.x * level.squareSize, this.loc.y * level.squareSize, level.squareSize, level.squareSize);
+  ctx.strokeStyle = "#adadb2"
+  ctx.stroke();
+  ctx.closePath();
 }
 
 GridSquare.prototype.setEntity = function(entity) {
