@@ -4,8 +4,12 @@ stages:
   - deploy_staging_server
   
 before_script:
-- eval $(ssh-agent -s)
-- echo "$SSH_PRIVATE_KEY" | tr -d ’\r’ | ssh-add - > /dev/null
+  - cd
+  - cat .ssh/id_rsa
+  - cat .ssh/id_rsa.pub
+  - cat .ssh/known_hosts
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d ’\r’ | ssh-add - > /dev/null
 
 build:
   stage: build
