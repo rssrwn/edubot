@@ -125,6 +125,9 @@ function initLevel() {
   for (i = 0; i < 20; i++) {
     level.addEntity(new BasicFood(), randomInt(level.width), randomInt(level.height));
   }
+  for (i = 0; i < 20; i++) {
+    level.addEntity(new BasicWall(), randomInt(level.width), randomInt(level.height));
+  }
 }
 
 function update() {

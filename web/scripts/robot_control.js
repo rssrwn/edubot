@@ -132,5 +132,5 @@ Robot.prototype.rotateLeft = function() {
 Robot.prototype.blockedByWall = function() {
   pointInFront = DirProperties[this.dir].moveForward(this.loc);
   square = level.getSquare(pointInFront);
-  return square !== null && sqare.isBlocking();
+  return square !== null && square.isBlocking();
 }
