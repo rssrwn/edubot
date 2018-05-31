@@ -24,7 +24,7 @@ deploy:
     - rm -rf web.tar.gz
     - tar -czvf web.tar.gz web
 #    - scp -o StrictHostKeyChecking=no web.tar.gz g1727114_u@shell1.doc.ic.ac.uk:/vol/project/2017/271/g1727114/
-    - ssh -v g1727114_u@shell2.doc.ic.ac.uk
+    - ssh -v g1727114_u@shell1.doc.ic.ac.uk
 #    - cd /vol/project/2017/271/g1727114/
 #    - rm -rf web
 #    - tar -xzvf web.tar.gz
