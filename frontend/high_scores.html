@@ -12,8 +12,8 @@
     <div id="bannerDiv">
       <h1>EduBot</h1>
       <ul>
-        <li style="display: inline-block; padding: 0% 2%;"><a href="http://www.doc.ic.ac.uk/project/2017/271/g1727114/web">Home</a></li>
-        <li style="display: inline-block; padding: 0% 2%;"><a href=" http://www.doc.ic.ac.uk/project/2017/271/g1727114/web/high_scores.html">High Scores</a></li>
+        <li style="display: inline-block; padding: 0% 2%;"><a href="http://www.doc.ic.ac.uk/project/2017/271/g1727114/frontend">Home</a></li>
+        <li style="display: inline-block; padding: 0% 2%;"><a href=" http://www.doc.ic.ac.uk/project/2017/271/g1727114/frontend/high_scores.html">High Scores</a></li>
       </ul>
     </div>
     <div id="contentDiv">
@@ -22,7 +22,7 @@
       function request() {
         httpGet("https://edubot-backend.herokuapp.com/high_score", buildTable);
       }
-      
+
       function buildTable(x) {
         let data = JSON.parse(x);
         var table = document.createElement("TABLE");
