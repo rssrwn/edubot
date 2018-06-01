@@ -15,6 +15,8 @@ function GridLevel(width, height, squareSize) {
   this.grid = createArray(width, height);
   this.updateState = true;
   this.bolts = 0;
+  this.hints = [];
+  this.hintCounter = 0;
   
   for (i = 0; i < width; i++) {
     for (j = 0; j < height; j++) {
@@ -90,6 +92,13 @@ GridLevel.prototype.moveEntity = function(entity, point) {
 GridLevel.prototype.levelCompleted = function() {
   let score = Math.max(2000 - 40 * actionsTaken, 100);
   alert("You won! \nYour score is: " + score);
+}
+
+GridLevel.prototype.showHint = function() {
+  if (this.hints.length > 0) {
+    alert(this.hints[this.hintCounter]);
+    this.hintCounter = (this.hintCounter + 1) % this.hints.length;
+  }
 }
 
 function Point(x, y) {

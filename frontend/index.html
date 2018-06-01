@@ -33,6 +33,7 @@
         <div id="controlsDiv">
           <button id="runButton">Run</button>
           <button id="viewButton">View Code</button>
+          <button id="hintButton">Show Hint</button>
         </div>
         
         <div id="codeDiv">
@@ -76,7 +77,6 @@
         
     var generateCode = function(e) {
       let code = Blockly.JavaScript.workspaceToCode(workspace);
-      code = code + workspace.getAllBlocks().length;
       document.getElementById("code").value = code;
     }; 
     workspace.addChangeListener(generateCode);
@@ -104,6 +104,12 @@
     document.getElementById("codeDiv").style.display = "none";
     let viewButton = document.getElementById("viewButton");
     viewButton.addEventListener("click", viewCode);
+    
+    function showHint(e) {
+      level.showHint();
+    }
+    
+    document.getElementById("hintButton").addEventListener("click", showHint);
     
     var blocklyResize = function(e) {
       let element = blocklyDiv;
