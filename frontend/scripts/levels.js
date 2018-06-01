@@ -1,8 +1,9 @@
-var sampleLevel1 = new GridLevel(15, 15, 48);
+var sampleLevel1 = null;
 
 initSampleLevel1();
 
 function initSampleLevel1() {
+  sampleLevel1 = new GridLevel(15, 15, 48);
   level = sampleLevel1;
   let l = sampleLevel1;
   
@@ -65,4 +66,9 @@ function initSampleLevel1() {
     + "the level and seeing what patterns appear in the actions, and what can be placed "
     + "in a loop");
   l.hintCounter = randomInt(2);
+}
+
+function restartLevel() {
+  clearTimeout(executionTimeoutId);
+  initSampleLevel1();
 }

@@ -38,6 +38,7 @@
           <button id="runButton">Run</button>
           <button id="viewButton">View Code</button>
           <button id="hintButton">Show Hint</button>
+          <button id="restartButton">Restart</button>
         </div>
 
         <div id="codeDiv">
@@ -114,6 +115,12 @@
     }
 
     document.getElementById("hintButton").addEventListener("click", showHint);
+    
+    function restart(e) {
+      restartLevel();
+    }
+    
+    document.getElementById("restartButton").addEventListener("click", restart);
 
     var blocklyResize = function(e) {
       let element = blocklyDiv;
