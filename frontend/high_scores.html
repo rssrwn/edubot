@@ -24,12 +24,14 @@
       }
       
       function buildTable(x) {
-        console.log(x);
+        let data = JSON.parse(x);
         var table = document.createElement("TABLE");
         table.setAttribute("id", "high_scores");
         table.setAttribute("style", "width:30%");
-        for (var i=0; i<3; i++) {
-          addElem(table, i, "Tim", 1, 2);
+        for(let i = 0; i < data.length; i++) {
+          let e = data[i];
+          console.log(e);
+          addElem(table, i, e.uname, e.level, e.score);
         }
         document.getElementById("contentDiv").appendChild(table);
       }
