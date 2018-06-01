@@ -24,6 +24,12 @@ function clamp(a, r1, r2) {
   return a;
 }
 
-function sleep(timeMillis) {
-  return new Promise(resolve => setTimeout(resolve, timeMillis));
+function sleep(timeMillis, processTimeoutId) {
+  return new Promise(resolve => {
+    let id = setTimeout(resolve, timeMillis)
+    
+    if (arguments.length == 2) {
+      processTimeoutId(id);
+    }
+  });
 }

@@ -52,6 +52,7 @@ BasicWall.prototype.draw = function draw(x, y) {
   ctx.beginPath();
   ctx.rect(x, y, level.squareSize, level.squareSize);
   ctx.fillStyle = "#303080";
+  //ctx.fillStyle = "#FF00FF";
   ctx.fill();
   ctx.closePath();
 }

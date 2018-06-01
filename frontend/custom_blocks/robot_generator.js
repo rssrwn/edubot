@@ -1,15 +1,21 @@
+var executionTimeoutId = null;
+
+function setExecutionTimeoutId(id) {
+  executionTimeoutId = id;
+}
+
 Blockly.JavaScript['move_forward'] = function(block) {
-  var code = 'edubot.moveForward();\nawait sleep(robotStepTime);\n';
+  var code = 'edubot.moveForward();\nawait sleep(robotStepTime, setExecutionTimeoutId);\n';
   return code;
 };
 
 Blockly.JavaScript['rotate_right'] = function(block) {
-  var code = 'edubot.rotateRight();\nawait sleep(robotStepTime);\n';
+  var code = 'edubot.rotateRight();\nawait sleep(robotStepTime, setExecutionTimeoutId);\n';
   return code;
 };
 
 Blockly.JavaScript['rotate_left'] = function(block) {
-  var code = 'edubot.rotateLeft();\nawait sleep(robotStepTime);\n';
+  var code = 'edubot.rotateLeft();\nawait sleep(robotStepTime, setExecutionTimeoutId);\n';
   return code;
 };
 

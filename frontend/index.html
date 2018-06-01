@@ -22,10 +22,6 @@
   <div id="page">
     <div id="bannerDiv">
       <h1>EduBot</h1>
-      <ul>
-        <li style="display: inline-block; padding: 0% 2%;"><a href="http://www.doc.ic.ac.uk/project/2017/271/g1727114/frontend">Home</a></li>
-        <li style="display: inline-block; padding: 0% 2%;"><a href=" http://www.doc.ic.ac.uk/project/2017/271/g1727114/frontend/high_scores.html">High Scores</a></li>
-      </ul>
     </div>
     <div id="contentDiv">
       <div id="blocklyDiv">
@@ -38,6 +34,8 @@
           <button id="runButton">Run</button>
           <button id="viewButton">View Code</button>
           <button id="hintButton">Show Hint</button>
+          <button id="restartButton">Restart</button>
+          <button onclick="window.location.href='http://www.doc.ic.ac.uk/project/2017/271/g1727114/frontend/high_scores.html'">High Score</button>
         </div>
 
         <div id="codeDiv">
@@ -114,6 +112,12 @@
     }
 
     document.getElementById("hintButton").addEventListener("click", showHint);
+    
+    function restart(e) {
+      restartLevel();
+    }
+    
+    document.getElementById("restartButton").addEventListener("click", restart);
 
     var blocklyResize = function(e) {
       let element = blocklyDiv;

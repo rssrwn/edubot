@@ -1,7 +1,7 @@
 var canvas = document.getElementById("game_canvas");
 var ctx = canvas.getContext("2d");
 var level = new GridLevel(24, 24, 32);
-var edubot = new Robot();
+var edubot = null;
 var robotStepTime = 400;
 
 console.log("Initialising!");
@@ -90,7 +90,7 @@ GridLevel.prototype.moveEntity = function(entity, point) {
 }
 
 GridLevel.prototype.levelCompleted = function() {
-  let score = Math.max(2000 - 40 * actionsTaken, 100);
+  let score = Math.max(2000 - 40 * edubot.actionsTaken, 100);
   alert("You won! \nYour score is: " + score);
 }
 
@@ -148,11 +148,12 @@ GridSquare.prototype.isBlocking = function() {
   return this.entity !== null && this.entity.isBlocking();
 }
 
-initLevel();
+//initLevel();
 setInterval(update, 100);
 
-function initLevel() {
+/*function initLevel() {
   level.addEntity(new Bolt(), 0, 0);
+  edubot = new Robot();
   level.addEntity(edubot, 15, 15);
   
   for (i = 0; i < 20; i++) {
@@ -161,7 +162,7 @@ function initLevel() {
   for (i = 0; i < 40; i++) {
     level.addEntity(new BasicWall(), randomInt(level.width), randomInt(level.height));
   }
-}
+}*/
 
 function update() {
   //canvas.width = canvas.style.width;
