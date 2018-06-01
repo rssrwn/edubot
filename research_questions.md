@@ -48,18 +48,18 @@
 ### Users
 
 - Mark Atkinson (11 years old)
-- Dorothy Gray (13 years old)
+- Beth Gray (13 years old)
 
 ### Answers
 
 - Mark has no prior experience.
-- Dorothy has used Codecademy to learn Python.
+- Beth has used Codecademy to learn Python.
 
 - Mark isn't particularly interested but is still learning.
-- Dorothy doesn't understand some of the more complex concepts and wishes that there were a better learning platform.
+- Beth doesn't understand some of the more complex concepts and wishes that there were a better learning platform.
 
 - Mark thinks a more visual platform would make it more engaging.
-- Dorothy wishes there were a platform to help her understand some of the more challenging concepts.
+- Beth wishes there were a platform to help her understand some of the more challenging concepts.
 
 # Other Data Sources
 
