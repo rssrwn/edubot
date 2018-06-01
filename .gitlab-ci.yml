@@ -20,8 +20,8 @@ test:
 deploy:
   stage: deploy_staging_server
   script:
-    - rm -rf web.tar.gz
-    - tar -czvf web.tar.gz frontend
+    #- rm -rf web.tar.gz
+    #- tar -czvf web.tar.gz frontend
     #- scp -o StrictHostKeyChecking=no web.tar.gz g1727114_u@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727114/
     #- ssh g1727114_u@shell2.doc.ic.ac.uk "cd /vol/project/2017/271/g1727114/ && rm -f .htaccess && tar -xzvf web.tar.gz && rm -rf web.tar.gz"
     #- pwd
