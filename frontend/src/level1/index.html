@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8">
   <title>EduBot</title>
-  <link rel="stylesheet" type="text/css" href="base_style.css">
+  <link rel="stylesheet" type="text/css" href="../base_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-  <script src="blockly/blockly_compressed.js"></script>
-  <script src="blockly/blocks_compressed.js"></script>
-  <script src="blockly/msg/js/en.js"></script>
+  <script src="../../lib/blockly/blockly_compressed.js"></script>
+  <script src="../../lib/blockly/blocks_compressed.js"></script>
+  <script src="../../lib/blockly/msg/js/en.js"></script>
 
-  <script src="blockly/javascript_compressed.js"></script>
-  <script src="custom_blocks/robot_blocks.js"></script>
-  <script src="custom_blocks/robot_generator.js"></script>
+  <script src="../../lib/blockly/javascript_compressed.js"></script>
+  <script src="../custom_blocks/robot_blocks.js"></script>
+  <script src="../custom_blocks/robot_generator.js"></script>
 
-  <script src="scripts/utils.js"></script>
+  <script src="../scripts/utils.js"></script>
 
 </head>
 <body>
@@ -45,14 +45,14 @@
         <div id="canvasDiv">
           <div id="canvasPaddingDiv">
             <canvas id="game_canvas", width=1024, height=1024></canvas>
-            <img class="game_image", src="images/rob.png",
+            <img class="game_image", src="../images/rob.png",
               alt="Rob", id="robot_image"></img>
-            <img class="game_image", src="images/nuts_and_bolts.png", alt="Nuts and bolts",
+            <img class="game_image", src="../images/nuts_and_bolts.png", alt="Nuts and bolts",
               id="nuts_and_bolts"></img>
-            <script src="scripts/entities.js"></script>
-            <script src="scripts/robot_control.js"></script>
-            <script src="scripts/edubot.js"></script>
-            <script src="scripts/levels.js"></script>
+            <script src="../scripts/entities.js"></script>
+            <script src="../scripts/robot_control.js"></script>
+            <script src="../scripts/edubot.js"></script>
+            <script src="../scripts/levels.js"></script>
           </div>
         </div>
       </div>
