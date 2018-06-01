@@ -16,13 +16,18 @@
   <script src="../custom_blocks/robot_generator.js"></script>
 
   <script src="../scripts/utils.js"></script>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head>
 <body>
   <div id="page">
-    <div id="bannerDiv">
-      <h1>EduBot</h1>
-    </div>
+    <div id="bannerDiv"></div>
+    <script>
+      $("#bannerDiv").load("../banner.html");
+    </script>
+
+
     <div id="contentDiv">
       <div id="blocklyDiv">
         <div id="blocklyWorkspaceDiv"> </div>
