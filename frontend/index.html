@@ -77,7 +77,6 @@
         
     var generateCode = function(e) {
       let code = Blockly.JavaScript.workspaceToCode(workspace);
-      code = code + workspace.getAllBlocks().length;
       document.getElementById("code").value = code;
     }; 
     workspace.addChangeListener(generateCode);
