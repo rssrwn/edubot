@@ -12,27 +12,21 @@ const pool = new Pool({
   ssl: true
 });
 
-/*pool.query("select * from users", [], (err, res) => {
-  if (err) {
-    console.log(err.stack)
-  } else {
-    console.log(res.rows[0])
-  }
-  pool.end()
-})*/
-
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
-app.get('/', function(req, res, next) {
-  // Handle the get for this route
-});
+app.post('/high_score', (req, res, next) => {
+  const value = req.body;
 
-app.post('/', function(req, res, next) {
- // Handle the post for this route
+  pool.query("insert into high_score values ($1, $2, $3);", [value.uname, value.level, value.score])
+  .then(db_res => {
+    res.send(200);
+    console.log("200 status code sent");
+  })
+  .catch(e => next(e));
 });
 
 app.get('/', (req, res, next) => {
@@ -40,33 +34,16 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/high_score', (req, res, next) => {
-  /*pool.query("select * from users", [], (err, res2) => {
-    if (err) {
-      console.log(err.stack)
-    } else {
-      res.send(res2.rows[0])
-      console.log('response sent')
-    }
-  })*/
-
   pool.query("select * from high_score", [])
-  .then(res2 => {
-    res.send(res2.rows);
-    console.log(res2.rows);
+  .then(db_res => {
+    res.send(db_res.rows);
+    console.log(db_res.rows);
   })
   .catch(e => next(e));
 });
 
-/*app.listen(port, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  }
-
-  console.log(`server is listening on ${port}`)
-})*/
-
 app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
+  console.log(`Our app is running on port ${ PORT }`);
 });
 
 /*
@@ -89,40 +66,6 @@ app.get('/', function (req, res, next) {
   })
 })
 
-app.listen(port, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  }
-
-  console.log(`server is listening on ${port}`)
-})
-
-/*
-
-app.use((request, response, next) => {
-  console.log(request.headers)
-  next()
-})
-
-app.use((request, response, next) => {
-  request.chance = Math.random()
-  next()
-})
-
-app.get('/', (request, response) => {
-  response.send('Hello world')
-})
-
-app.listen(port, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  }
-
-  console.log(`server is listening on ${port}`)
-})
-
-
-
 const users = []
 
 app.post('/users', function (req, res) {
@@ -133,17 +76,5 @@ app.post('/users', function (req, res) {
       age: user.age
     })
     res.send('successfully registered')
-})
-
-app.get('/', (request, response) => {
-  response.send('Hello from Express!')
-})
-
-app.listen(port, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  }
-
-  console.log(`server is listening on ${port}`)
 })
 */
