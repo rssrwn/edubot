@@ -20,7 +20,6 @@ var DirProperties = {
 
 var commands = [];
 var runningCommands = false;
-var actionsTaken = 0;
 
 function addCommand(command) {
   console.log("Adding " + JSON.stringify(command) + " command");
@@ -82,6 +81,7 @@ BlockedByWallCommand.prototype.execute = function () {return edubot.blockedByWal
 function Robot() {
   Entity.call(this);
   this.dir = Dir.RIGHT;
+  this.actionsTaken = 0;
 }
 
 Robot.prototype = Object.create(Entity.prototype);
@@ -118,17 +118,17 @@ Robot.prototype.moveForward = function() {
   let x = counter;
   counter++;
   this.setLocation(DirProperties[this.dir].moveForward(this.loc));
-  actionsTaken++;
+  this.actionsTaken++;
 }
 
 Robot.prototype.rotateRight = function() {
   this.dir = DirProperties[this.dir].rotateRight;
-  actionsTaken++;
+  this.actionsTaken++;
 }
 
 Robot.prototype.rotateLeft = function() {
   this.dir = DirProperties[this.dir].rotateLeft;
-  actionsTaken++;
+  this.actionsTaken++;
 }
 
 // Conditionals
