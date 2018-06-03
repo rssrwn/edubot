@@ -24,15 +24,14 @@ html, body {
 
 #bannerDiv {
   display: table;
-  height: 150px;
+  height: 100px;
   margin: auto;
-  margin-bottom: 20px;
   padding: 0;
 }
 
 #bannerDivContents {
   display: table-cell;
-  height: 115px;
+  height: 80px;
   margin: auto;
   vertical-align: middle;
 }
@@ -44,9 +43,9 @@ html, body {
 
 #titleDiv {
   display: inline-block;
-  font-size: 60px;
+  font-size: 45px;
   margin-left: 20px;
-  line-height: 115px;
+  line-height: 80px;
   color: #e68119;
 }
 
@@ -60,10 +59,11 @@ html, body {
 #formButtons {
   display: table;
   margin: 0 auto;
+  margin-top: 5px;
 }
 
 .formItem {
-  margin: 7px auto;
+  margin: 2px auto;
 }
 
 #formDiv > label {
