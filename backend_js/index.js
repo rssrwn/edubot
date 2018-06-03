@@ -45,7 +45,6 @@ app.post('/high_score', (req, res, next) => {
     }
   })
   .catch(e => {
-    console.log(error); // debugging
     next(e);
   });
 
@@ -83,10 +82,7 @@ app.post('/login', (req, res, next) => {
 
   pool.query("select users.uname, users.hash from users where uname=$1", [body.uname])
   .then(db_res => {
-    //console.log(db_res.rows[0].hash);
-    console.log(db_res.rows);
     if (compareHash(body.pass, db_res.rows[0].hash)) {
-      console.log("success");
       res.sendStatus(200);
     } else {
       res.status(401).send("Failed login");
