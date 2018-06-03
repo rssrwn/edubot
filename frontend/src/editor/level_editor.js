@@ -3,7 +3,8 @@ var entityPicker = document.getElementById("entityPicker");
 var saverField = document.getElementById("saverField");
 
 document.getElementById("saveButton").addEventListener("click", saveLevel);
-document.getElementById("loadButton").addEventListener("change", loadLevel, false);
+document.getElementById("loadButton").addEventListener("change", loadLevel);
+document.getElementById("newLevelButton").addEventListener("click", newLevel);
 
 new ClipboardJS(".clipboard_button");
 
@@ -39,6 +40,25 @@ function squareClicked(x, y) {
   }
 }
 
+function newLevel() {
+	let width = getDimension(document.getElementById("widthField").value);
+	let height = getDimension(document.getElementById("heightField").value);
+	
+	if (width > 0 && height > 0) {
+		setLevel(new GridLevel(width, height, defaultSquareSize));
+	}
+}
+
+function getDimension(value) {
+	let dim = Number(value);
+	
+	if (dim !== NaN && dim > 0 && dim <= 64) {
+		return dim;
+	} else {
+		return -1;
+	}
+}
+
 function saveLevel() {
 	saverField.value = JSON.stringify(level);
 }
@@ -54,7 +74,7 @@ function loadLevel(loadEvent) {
 			newLevel = parseLevel(text);
 			
 			if (newLevel !== null) {
-				level = newLevel;
+				setLevel(newLevel);
 			}
     };
   })(file);
