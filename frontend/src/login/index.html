@@ -18,29 +18,43 @@
       </div>
     </div>
     
-    <form>
+    <form name="loginForm">
       <div id="formDiv">
-        <label class="formItem" for="username"><b>Username</b></label>
-        <input class="formItem" type="text" placeholder="Enter Username" name="username" required>
+        <label class="formItem"><b>Username</b></label>
+        <input class="formItem" type="text" placeholder="Enter Username" name="uname" required>
         <br><br>
 
-        <label class="formItem" for="password"><b>Password</b></label>
-        <input class="formItem" type="password" placeholder="Enter Password" name="password" required>
+        <label class="formItem"><b>Password</b></label>
+        <input class="formItem" type="password" placeholder="Enter Password" name="pass" required>
         <br><br>
         
         <div id="formButtons">
-          <button class="formItem" type="submit"
-            onclick="httpPost(https://edubot-backend.herokuapp.com/login, {uname: 'user2', pass: 'qwert'}, buildForm);">Login</button>
-          <button class="formItem" type="button">Forgot Password</button>
+          <button class="formItem" type="button" onclick="validateForm();">Login</button>
+          <button class="formItem" type="button" onclick="forgotPassword()">Forgot Password</button>
         </div>
       </div>
     </form>
     
     <script>
+    function validateForm() {      
+      let uname = document.forms["loginForm"]["uname"].value;
+      let pass = document.forms["loginForm"]["pass"].value;
+      
+      if (uname && pass) {
+        httpPost('https://edubot-backend.herokuapp.com/login', {uname: uname, pass: pass}, buildForm);
+      }
+    }
     
+    function forgotPassword() {
+      alert("Please contact your school to reset your password.");
+    }
     
-    function buildForm(x) {
-      alert("Success");
+    function buildForm(status) {
+      switch (status) {
+        case 200: break; // login
+        case 401: alert("The username and/or password are incorrect."); break;
+        default: alert("Unknown error occurred: " + status + ".");
+      }
     }
     </script>
   </div>  
