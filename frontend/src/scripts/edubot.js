@@ -89,6 +89,16 @@ GridLevel.prototype.moveEntity = function(entity, point) {
   return false;
 }
 
+GridLevel.prototype.getTopLeft = function() {
+  return new Point((canvas.width - level.width * level.squareSize) / 2, 
+    (canvas.height - level.height * level.squareSize) / 2);
+}
+
+GridLevel.prototype.getBottomRight = function() {
+  return new Point(canvas.width - (canvas.width - level.width * level.squareSize) / 2, 
+    canvas.height - (canvas.height - level.height * level.squareSize) / 2);
+}
+
 GridLevel.prototype.levelCompleted = function() {
   let score = Math.max(2000 - 40 * edubot.actionsTaken, 100);
   alert("You won! \nYour score is: " + score);
@@ -189,12 +199,77 @@ function draw() {
 }
 
 
-// Entities
+// Level
 
 function clampToGrid(point) {
   return new Point(clamp(point.x, 0, level.width - 1), clamp(point.y, 0, level.height - 1));
 }
 
+// Parse a level from JSON
+function parseLevel(level) {
+  let reviver = function(key, value) {
+    if (key === "") {
+      // Reviving the full object.
+      
+      //console.log("Restoring level");
+      
+      let gridLevel = Object.create(GridLevel.prototype);
+      //let gridLevel = new GridLevel(0, 0, 1);
+      
+      // Restore level properties.
+      for (var vr in value) {
+        gridLevel[vr] = value[vr];
+      }
+      
+      //console.log("Restored grid level object:");
+      //console.log(gridLevel);
+      //console.log("\nRestoring grid squares:");
+      
+      // Restore grid squares.
+      for (let x = 0; x < gridLevel.width; x++) {
+        for (let y = 0; y < gridLevel.height; y++) {
+          let newSquare = Object.create(GridSquare.prototype);
+          let oldSquare = gridLevel.grid[x][y];
+          
+          for (var vr in oldSquare) {
+            newSquare[vr] = oldSquare[vr];
+          }
+          
+          gridLevel.grid[x][y] = newSquare;
+          
+          // Restore entity.
+          if (newSquare.entity != null) {
+            let entity = generateEntityFromId(newSquare.entity.entityId);
+            
+            for (var vr in newSquare.entity) {
+              entity[vr] = newSquare.entity[vr];
+            }
+            
+            newSquare.entity = entity;
+          }
+        }
+      }
+      
+      //console.log("\nRestored full level:");
+      //console.log(gridLevel);
+      
+      return gridLevel;
+    } else {
+      return value;
+    }
+  }
+  
+  return JSON.parse(level, reviver);
+}
+
+function generateEntityFromId(entityId) {
+  // Only accept a single word id.
+  if (/^[a-zA-Z]+$/.test(entityId)) {
+    var entity;
+    eval("entity = new " + entityId + "();");
+    return entity;
+  }
+}
 
 // Drawing
 

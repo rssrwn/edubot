@@ -1,15 +1,16 @@
-function Entity(blocksEntities) {
+function Entity(blocksEntities, entityId) {
   this.loc = null;
   this.blocksEntities = blocksEntities;
   this.updateState = false;
+  this.entityId = entityId;
 }
 
 function Bolt() {
-  Entity.call(this, false);
+  Entity.call(this, false, "Bolt");
 }
 
 function BasicWall() {
-  Entity.call(this, true);
+  Entity.call(this, true, "BasicWall");
 }
 
 Bolt.prototype = Object.create(Entity.prototype);
