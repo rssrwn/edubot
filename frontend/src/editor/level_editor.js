@@ -41,7 +41,22 @@ function squareClicked(x, y) {
 }
 
 function newLevel() {
+	let width = getDimension(document.getElementById("widthField").value);
+	let height = getDimension(document.getElementById("heightField").value);
 	
+	if (width > 0 && height > 0) {
+		setLevel(new GridLevel(width, height, defaultSquareSize));
+	}
+}
+
+function getDimension(value) {
+	let dim = Number(value);
+	
+	if (dim !== NaN && dim > 0 && dim <= 64) {
+		return dim;
+	} else {
+		return -1;
+	}
 }
 
 function saveLevel() {

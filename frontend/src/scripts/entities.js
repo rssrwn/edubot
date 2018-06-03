@@ -16,9 +16,10 @@ function BasicWall() {
 Bolt.prototype = Object.create(Entity.prototype);
 BasicWall.prototype = Object.create(Entity.prototype);
 
-Entity.prototype.update = function() {}
-Entity.prototype.draw = function(x, y) {}
-Entity.prototype.isBlocking = function() {return this.blocksEntities}
+Entity.prototype.update = function () {}
+Entity.prototype.draw = function (x, y) {}
+Entity.prototype.isBlocking = function () {return this.blocksEntities}
+Entity.prototype.isRobot = function () {return false}
 
 Entity.prototype.setLocation = function(point) {
   level.moveEntity(this, point);

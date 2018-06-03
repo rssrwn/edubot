@@ -5,21 +5,23 @@ function setExecutionTimeoutId(id) {
 }
 
 Blockly.JavaScript['move_forward'] = function(block) {
-  var code = 'edubot.moveForward();\nawait sleep(robotStepTime, setExecutionTimeoutId);\n';
+  var code = 'getRobot().moveForward();\nawait sleep(robotStepTime, ' +
+    'setExecutionTimeoutId);\n';
   return code;
 };
 
 Blockly.JavaScript['rotate_right'] = function(block) {
-  var code = 'edubot.rotateRight();\nawait sleep(robotStepTime, setExecutionTimeoutId);\n';
+  var code = 'getRobot().rotateRight();\nawait sleep(robotStepTime,' +
+     'setExecutionTimeoutId);\n';
   return code;
 };
 
 Blockly.JavaScript['rotate_left'] = function(block) {
-  var code = 'edubot.rotateLeft();\nawait sleep(robotStepTime, setExecutionTimeoutId);\n';
+  var code = 'getRobot().rotateLeft();\nawait sleep(robotStepTime, setExecutionTimeoutId);\n';
   return code;
 };
 
 Blockly.JavaScript['wall_in_front'] = function(block) {
-  var code = 'edubot.blockedByWall()';
+  var code = 'getRobot().blockedByWall()';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
