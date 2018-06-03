@@ -71,20 +71,22 @@ RotateLeftCommand.prototype = Object.create(Command.prototype);
 RotateRightCommand.prototype = Object.create(Command.prototype);
 BlockedByWallCommand.prototype = Object.create(Command.prototype);
 
-MoveCommand.prototype.execute = function() {edubot.moveForward()};
-RotateLeftCommand.prototype.execute = function() {edubot.rotateLeft()};
-RotateRightCommand.prototype.execute = function() {edubot.rotateRight()};
-BlockedByWallCommand.prototype.execute = function () {return edubot.blockedByWall()}
+MoveCommand.prototype.execute = function() {getRobot().moveForward()};
+RotateLeftCommand.prototype.execute = function() {getRobot().rotateLeft()};
+RotateRightCommand.prototype.execute = function() {getRobot().rotateRight()};
+BlockedByWallCommand.prototype.execute = function () {return getRobot().blockedByWall()}
 
 // The robot
 
 function Robot() {
-  Entity.call(this);
+  Entity.call(this, true, "Robot");
   this.dir = Dir.RIGHT;
   this.actionsTaken = 0;
 }
 
 Robot.prototype = Object.create(Entity.prototype);
+
+Robot.prototype.isRobot = function () {return true}
 
 Robot.prototype.update = function() {
   if (Math.random() <= 0.3) {

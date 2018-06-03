@@ -1,23 +1,25 @@
-function Entity(blocksEntities) {
+function Entity(blocksEntities, entityId) {
   this.loc = null;
   this.blocksEntities = blocksEntities;
   this.updateState = false;
+  this.entityId = entityId;
 }
 
 function Bolt() {
-  Entity.call(this, false);
+  Entity.call(this, false, "Bolt");
 }
 
 function BasicWall() {
-  Entity.call(this, true);
+  Entity.call(this, true, "BasicWall");
 }
 
 Bolt.prototype = Object.create(Entity.prototype);
 BasicWall.prototype = Object.create(Entity.prototype);
 
-Entity.prototype.update = function() {}
-Entity.prototype.draw = function(x, y) {}
-Entity.prototype.isBlocking = function() {return this.blocksEntities}
+Entity.prototype.update = function () {}
+Entity.prototype.draw = function (x, y) {}
+Entity.prototype.isBlocking = function () {return this.blocksEntities}
+Entity.prototype.isRobot = function () {return false}
 
 Entity.prototype.setLocation = function(point) {
   level.moveEntity(this, point);

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EduBot</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  
+  <script src="../scripts/backend_utils.js"></script>
+</head>
+<body>
+  <div id="page">
+    <div id="bannerDiv">
+      <div id="bannerDivContents">
+        <img id="logo" src="../images/edubot.png" alt="EduBot"></img>
+        <h1 id="titleDiv">EduBot</h1>
+      </div>
+    </div>
+    
+    <form>
+      <div id="formDiv">
+        <label class="formItem" for="username"><b>Username</b></label>
+        <input class="formItem" type="text" placeholder="Enter Username" name="username" required>
+        <br><br>
+
+        <label class="formItem" for="password"><b>Password</b></label>
+        <input class="formItem" type="password" placeholder="Enter Password" name="password" required>
+        <br><br>
+        
+        <div id="formButtons">
+          <button class="formItem" type="submit"
+            onclick="httpPost(https://edubot-backend.herokuapp.com/login, {uname: 'user2', pass: 'qwert'}, buildForm);">Login</button>
+          <button class="formItem" type="button">Forgot Password</button>
+        </div>
+      </div>
+    </form>
+    
+    <script>
+    
+    
+    function buildForm(x) {
+      alert("Success");
+    }
+    </script>
+  </div>  
+</body>
+</html>
