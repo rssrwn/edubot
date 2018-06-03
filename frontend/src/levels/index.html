@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EduBot</title>
+  <link rel="stylesheet" type="text/css" href="../base_style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <script src="../../lib/blockly/blockly_compressed.js"></script>
+  <script src="../../lib/blockly/blocks_compressed.js"></script>
+  <script src="../../lib/blockly/msg/js/en.js"></script>
+
+  <script src="../../lib/blockly/javascript_compressed.js"></script>
+  <script src="../custom_blocks/robot_blocks.js"></script>
+  <script src="../custom_blocks/robot_generator.js"></script>
+
+  <script src="../scripts/utils.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+</head>
+<body>
+  <div id="page">
+    <div id="bannerDiv"></div>
+    <script>
+      $("#bannerDiv").load("../banners/student.html");
+    </script>
+
+
+    <div id="contentDiv">
+      <div id="blocklyDiv">
+        <div id="blocklyWorkspaceDiv"> </div>
+      </div>
+
+      <div id="visualDiv">
+
+        <div id="controlsDiv">
+          <button id="runButton">Run</button>
+          <button id="viewButton">View Code</button>
+          <button id="hintButton">Show Hint</button>
+          <button id="restartButton">Restart</button>
+          <button onclick="window.location.href='http://www.doc.ic.ac.uk/project/2017/271/g1727114/frontend/high_scores.html'">High Score</button>
+        </div>
+
+        <div id="codeDiv">
+          <textarea readonly id="code"></textarea>
+        </div>
+
+        <div id="canvasDiv">
+          <div id="canvasPaddingDiv">
+            <canvas id="game_canvas", width=1024, height=1024></canvas>
+            <img class="game_image", src="../images/rob.png",
+              alt="Rob", id="robot_image"></img>
+            <img class="game_image", src="../images/nuts_and_bolts.png", alt="Nuts and bolts",
+              id="nuts_and_bolts"></img>
+            <script src="../scripts/entities.js"></script>
+            <script src="../scripts/robot_control.js"></script>
+            <script src="../scripts/edubot.js"></script>
+            <script src="../scripts/levels.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <xml id="toolbox" style="display: none">
+    <block type="controls_repeat_ext"></block>
+    <block type="controls_whileUntil"></block>
+    <block type="logic_negate"></block>
+    <block type="controls_if"></block>
+    <block type="math_number"></block>
+    <block type="move_forward"></block>
+    <block type="rotate_right"></block>
+    <block type="rotate_left"></block>
+    <block type="wall_in_front"></block>
+  </xml>
+
+  <script>
+    var blocklyDiv = document.getElementById("blocklyDiv");
+    var blocklyWorkspaceDiv = document.getElementById("blocklyWorkspaceDiv");
+    var workspace = Blockly.inject("blocklyWorkspaceDiv",
+        {toolbox: document.getElementById("toolbox")});
+
+    var generateCode = function(e) {
+      let code = Blockly.JavaScript.workspaceToCode(workspace);
+      document.getElementById("code").value = code;
+    };
+    workspace.addChangeListener(generateCode);
+
+    var runCode = function(e) {
+      if (!runningCommands) {
+        let code = document.getElementById("code").value;
+        code = "async function evalCode() {" + code + "}; evalCode();";
+        eval(code);
+        executeCommands();
+      }
+    };
+    let runButton = document.getElementById("runButton");
+    runButton.addEventListener("click", runCode);
+
+    var viewCode = function(e) {
+      let codeView = document.getElementById("codeDiv");
+      if (codeView.style.display === "none") {
+        codeView.style.display = "block";
+      } else {
+        codeView.style.display = "none";
+      }
+      onResize();
+    };
+    document.getElementById("codeDiv").style.display = "none";
+    let viewButton = document.getElementById("viewButton");
+    viewButton.addEventListener("click", viewCode);
+
+    function showHint(e) {
+      level.showHint();
+    }
+
+    document.getElementById("hintButton").addEventListener("click", showHint);
+    
+    function restart(e) {
+      restartLevel();
+    }
+    
+    document.getElementById("restartButton").addEventListener("click", restart);
+
+    var blocklyResize = function(e) {
+      let element = blocklyDiv;
+      let x = 0;
+      let y = 0;
+      do {
+        x += element.offsetLeft;
+        y += element.offsetTop;
+        element = element.offsetParent;
+      } while (element !== null);
+      blocklyWorkspaceDiv.style.left = x + "px";
+      blocklyWorkspaceDiv.style.top = y + "px";
+      blocklyWorkspaceDiv.style.width = blocklyDiv.offsetWidth + "px";
+      blocklyWorkspaceDiv.style.height = blocklyDiv.offsetHeight + "px";
+      Blockly.svgResize(workspace);
+    };
+
+    var canvasResize = function(e) {
+      let canvasPaddingDiv = document.getElementById("canvasPaddingDiv");
+      let gameCanvas = document.getElementById("game_canvas");
+
+      let size = Math.min(canvasPaddingDiv.offsetWidth, canvasPaddingDiv.offsetHeight);
+      gameCanvas.style.width = size + "px";
+      gameCanvas.style.height = size + "px";
+    };
+
+    var onResize = function(e) {
+      canvasResize(e);
+      blocklyResize(e);
+    };
+    window.addEventListener("resize", onResize, false);
+    onResize();
+  </script>
+</body>
+</html>
