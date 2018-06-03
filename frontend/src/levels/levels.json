@@ -1,0 +1,26 @@
+{
+  "levels": [
+    {
+      "category": "Movement",
+      "levels": [
+        {
+          "name": "Basic",
+          "id": "0"
+        }
+      ]
+    },
+    {
+      "category": "Looping",
+      "levels": [
+        {
+          "name": "Repeat",
+          "id": "1"
+        },
+        {
+          "name": "Repeat Until",
+          "id": "2"
+        }
+      ]
+    }
+  ]
+}

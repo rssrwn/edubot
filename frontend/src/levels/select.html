@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EduBot</title>
+  <link rel="stylesheet" type="text/css" href="../base_style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <script src="../../lib/blockly/blockly_compressed.js"></script>
+  <script src="../../lib/blockly/blocks_compressed.js"></script>
+  <script src="../../lib/blockly/msg/js/en.js"></script>
+
+  <script src="../../lib/blockly/javascript_compressed.js"></script>
+  <script src="../custom_blocks/robot_blocks.js"></script>
+  <script src="../custom_blocks/robot_generator.js"></script>
+
+  <script src="../scripts/utils.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+</head>
+<body>
+  <div id="page">
+    <div id="bannerDiv"></div>
+    <script>
+      $("#bannerDiv").load("../banners/student.html");
+    </script>
+    <div id="contentDiv">
+      
+    </div>
+    <script>
+      $.getJSON("levels.json", function (data) {
+        console.log(data.levels);
+        for (i = 0; i < data.levels.length; i++) {
+          let category = data.levels[i];
+          let categoryName = category.category;
+          for (j = 0; j < category.levels.length; j++) {
+            let level = category.levels[j].name;
+            console.log(level);
+          }
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>
