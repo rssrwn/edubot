@@ -5,32 +5,33 @@
   <meta charset="utf-8">
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" type="text/css" href="../base_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
   <div id="page">
-    <div id="bannerDiv"></div>
-    <script>
-      $("#bannerDiv").load("../banners/main.html");
-    </script>
+    <div id="bannerDiv">
+      <div id="bannerDivContents">
+        <img id="logo" src="../images/edubot.png" alt="EduBot"></img>
+        <h1 id="titleDiv">EduBot</h1>
+      </div>
+    </div>
     
     <form>
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-        <br>
+      <div id="formDiv">
+        <label class="formItem" for="uname"><b>Username</b></label>
+        <input class="formItem" type="text" placeholder="Enter Username" name="uname" required>
+        <br><br>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-        <br>
+        <label class="formItem" for="psw"><b>Password</b></label>
+        <input class="formItem" type="password" placeholder="Enter Password" name="psw" required>
+        <br><br>
         
-        <button type="submit">Login</button>
-        <button type="button">Forgot Password</button>
+        <div id="formButtons">
+          <button class="formItem" type="submit">Login</button>
+          <button class="formItem" type="button">Forgot Password</button>
+        </div>
       </div>
     </form>
-  </div>
-
-  
+  </div>  
 </body>
 </html>
