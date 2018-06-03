@@ -110,7 +110,8 @@ Robot.prototype.draw = function(x, y) {
   let rot = this.dir * 90 * Math.PI / 180;
   
   ctx.rotate(rot);
-  drawImage("robot_image", -size / 2, -size / 2, size, size);
+  //drawImage("robot_image", -size / 2, -size / 2, size, size);
+  anims.draw(x, y);
 }
 
 Robot.prototype.added = function () {
