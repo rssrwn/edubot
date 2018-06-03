@@ -3,8 +3,8 @@ var sampleLevel1 = null;
 initSampleLevel1();
 
 function initSampleLevel1() {
-  sampleLevel1 = new GridLevel(15, 15, 48);
-  level = sampleLevel1;
+  sampleLevel1 = new GridLevel(15, 15, defaultSquareSize);
+  setLevel(sampleLevel1);
   let l = sampleLevel1;
   
   for (let i = 0; i < l.width; i++) {
@@ -20,9 +20,10 @@ function initSampleLevel1() {
   let x = 7;
   let y = 10;
   
-  edubot = new Robot();
+  let robot = new Robot();
   
-  l.addEntity(edubot, x, y);
+  l.setRobot(robot);
+  l.addEntity(robot, x, y);
   
   x++;
   
