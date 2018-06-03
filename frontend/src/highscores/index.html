@@ -6,6 +6,8 @@
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="base_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  
+  <script src="../scripts/backend_utils.js"></script>
 </head>
 <body onLoad="request()">
   <div id="page">
@@ -45,16 +47,6 @@
         cell1.innerHTML = uname;
         cell2.innerHTML = level;
         cell3.innerHTML = score;
-      }
-
-      function httpGet(url, callback) {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() {
-          if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
-        }
-        xmlHttp.open("GET", url, true); // true for asynchronous
-        xmlHttp.send();
       }
       </script>
 
