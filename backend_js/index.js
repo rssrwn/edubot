@@ -82,7 +82,7 @@ app.post('/login', (req, res, next) => {
 
   pool.query("select users.uname, users.hash from users where uname=$1", [body.uname])
   .then(db_res => {
-    if (compareHash(body.pass, db_res.rows[0].hash)) {
+    if (db_res.rows.length !== 0 && compareHash(body.pass, db_res.rows[0].hash)) {
       res.sendStatus(200);
     } else {
       res.status(401).send("Failed login");
