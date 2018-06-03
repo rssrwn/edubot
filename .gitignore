@@ -1,2 +1,2 @@
 .DS_Store
-backend_js/node_modules
+backend_js/node_modules/*
