@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EduBot</title>
+  <link rel="stylesheet" type="text/css" href="base_style.css">
+  <script src="scripts/utils.js"></script>
+
+</head>
+<body>
+  <div id="page">
+    <div id="bannerDiv">
+      <h1>EduBot</h1>
+    </div>
+    <div id="contentDiv">
+      
+      <div id="visualDiv">
+
+        <script src="clipboard/dist/clipboard.min.js"></script>
+        
+        <div id="controlsDiv">
+          <select id="entityPicker">
+            <option value="BasicFood">Basic food</option>
+            <option value="BasicWall">Basic wall</option>
+          </select>
+          <button id="saveButton">Save</button>
+          <input id="saverField"></input>
+          <button class="clipboard_button" data-clipboard-target="#saverField">
+            Copy to clipboard
+          </button>
+          
+          <input type="file", id="loadButton", name="file"></input>
+        </div>
+        
+        <div id="canvasDiv">
+          <div id="canvasPaddingDiv">
+            <canvas id="game_canvas", width=1024, height=1024, 
+              onclick="canvasClicked(event)"></canvas>
+            <img class="game_image" src="images/rob.png" alt="Rob" id="robot_image"></img>
+            <script src="scripts/entities.js"></script>
+            <script src="scripts/robot_control.js"></script>
+            <script src="scripts/edubot.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="scripts/level_editor.js"></script>
+</body>
+</html>
