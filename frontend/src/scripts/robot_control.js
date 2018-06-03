@@ -114,6 +114,24 @@ Robot.prototype.draw = function(x, y) {
   ctx.translate(-xTrans, -yTrans);
 }
 
+Robot.prototype.added = function () {
+  let existingRobot = level.robot;
+  
+  if (existingRobot !== null) {
+    level.getSquare(existingRobot.loc.x, existingRobot.loc.y).setEntity(null);
+  }
+  
+  level.robot = this;
+}
+
+Robot.prototype.removed = function () {
+  if (level.robot === this) {
+    level.robot = null;
+  }
+}
+
+// Robot actions
+
 var counter = 0;
 
 Robot.prototype.moveForward = function() {

@@ -32,6 +32,7 @@
           <select id="entityPicker">
             <option value="Bolt">Nuts and Bolts</option>
             <option value="BasicWall">Basic wall</option>
+            <option value="Robot">Robot</option>
           </select>
           <button id="saveButton">Save</button>
           <input id="saverField"></input>
@@ -45,7 +46,7 @@
         <div id="canvasDiv", class="working_divs">
           <div id="canvasPaddingDiv">
             <canvas id="game_canvas", width=1024, height=1024, 
-              onclick="canvasClicked(event)"></canvas>
+              onmousedown="canvasClicked(event)"></canvas>
             <img class="game_image" src="../images/rob.png" alt="Rob" id="robot_image"></img>
             <img class="nuts_and_bolts" src="../images/nuts_and_bolts.png" id="nuts_and_bolts" alt="Nuts and bolts"></img>
             <script src="../scripts/entities.js"></script>

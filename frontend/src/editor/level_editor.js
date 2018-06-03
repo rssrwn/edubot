@@ -26,18 +26,22 @@ function canvasClicked(event){
     let square = level.getSquare(xIndex, yIndex);
     
     if (square != null) {
-      squareClicked(xIndex, yIndex);
+      squareClicked(event.button, xIndex, yIndex);
     }
   }
 }
 
-function squareClicked(x, y) {
-  let type = entityPicker.options[entityPicker.selectedIndex].value;
-  eval("var entityToCreate = new " + type + "();");
-  
-  if (entityToCreate !== null) {
-    level.addEntity(entityToCreate, x, y);
-  }
+function squareClicked(button, x, y) {
+	if (button === 0) {
+	  let type = entityPicker.options[entityPicker.selectedIndex].value;
+	  eval("var entityToCreate = new " + type + "();");
+	  
+	  if (entityToCreate !== null) {
+	    level.addEntity(entityToCreate, x, y);
+	  }
+	} else if (button === 1){
+		level.getSquare(x, y).setEntity(null);
+	}
 }
 
 function newLevel() {
