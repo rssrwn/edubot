@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="../base_style.css">
+  <link rel="stylesheet" type="text/css" href="select_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
   <script src="../../lib/blockly/blockly_compressed.js"></script>
@@ -27,18 +28,25 @@
       $("#bannerDiv").load("../banners/student.html");
     </script>
     <div id="contentDiv">
-      
+      <div id="selectionWrapperDiv">
+        <div id="selectionDiv"></div>
+      </div>
     </div>
     <script>
       $.getJSON("levels.json", function (data) {
-        console.log(data.levels);
         for (i = 0; i < data.levels.length; i++) {
           let category = data.levels[i];
           let categoryName = category.category;
+          let levelHtml = "";
           for (j = 0; j < category.levels.length; j++) {
             let level = category.levels[j].name;
-            console.log(level);
+            levelHtml += "<h3>" + level + "</h3>";
           }
+          $("#selectionDiv").append(
+            "<div class='categoryDiv'> \
+              <h2>" + categoryName + "</h2> \
+              <div class='levelDiv'>" + levelHtml + "</div> \
+            </div>");
         }
       });
     </script>
