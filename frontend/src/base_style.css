@@ -79,6 +79,28 @@ html, body {
   background-color: #e68119;
 }
 
+#logoutLinksDiv {
+  display: grid;
+  height: 80px;
+  margin-right: 20px;
+  line-height: 23px;
+  font-size: 15px;
+  float: right;
+  color: white;
+}
+
+.logoutLink {
+  border-radius: 5px;
+  height: 24px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 28px;
+  margin-bottom: 28px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #e68119;
+}
+
 #contentDiv {
   display: table-row;
   width: 100%;
