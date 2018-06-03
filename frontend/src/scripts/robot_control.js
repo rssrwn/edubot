@@ -82,6 +82,7 @@ function Robot() {
   Entity.call(this, true, "Robot");
   this.dir = Dir.RIGHT;
   this.actionsTaken = 0;
+  this.anims = new RobotAnims();
 }
 
 Robot.prototype = Object.create(Entity.prototype);
@@ -110,8 +111,6 @@ Robot.prototype.draw = function(x, y) {
   
   ctx.rotate(rot);
   drawImage("robot_image", -size / 2, -size / 2, size, size);
-  ctx.rotate(-rot);
-  ctx.translate(-xTrans, -yTrans);
 }
 
 Robot.prototype.added = function () {
@@ -128,6 +127,10 @@ Robot.prototype.removed = function () {
   if (level.robot === this) {
     level.robot = null;
   }
+}
+
+Robot.prototype.loaded = function () {
+  this.anims = new RobotAnims();
 }
 
 // Robot actions

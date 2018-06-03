@@ -29,8 +29,10 @@ Entity.prototype.needsUpdating = function(updateTrueState) {
   return this.updateState != updateTrueState;
 }
 
-Entity.prototype.added = function() {}
-Entity.prototype.removed = function() {}
+Entity.prototype.added = function () {}
+Entity.prototype.removed = function () {}
+
+Entity.prototype.loaded = function () {}
 
 Bolt.prototype.draw = function draw(x, y) {
   //ctx.beginPath();

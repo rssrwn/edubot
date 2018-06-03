@@ -3,6 +3,7 @@ var ctx = canvas.getContext("2d");
 var defaultSquareSize = 48;
 var level = new GridLevel(16, 16, defaultSquareSize);
 var robotStepTime = 400;
+var frameTime = 50;
 
 console.log("Initialising!");
 
@@ -24,6 +25,7 @@ function GridLevel(width, height, squareSize) {
   this.robot = null;
   this.hints = [];
   this.hintCounter = 0;
+  this.runtimeMillis = 0;
   
   for (i = 0; i < width; i++) {
     for (j = 0; j < height; j++) {
@@ -169,7 +171,7 @@ GridSquare.prototype.isBlocking = function() {
   return this.entity !== null && this.entity.isBlocking();
 }
 
-setInterval(update, 100);
+setInterval(update, frameTime);
 
 
 function update() {
@@ -184,12 +186,9 @@ function update() {
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
-  let xOffset = (canvas.width - level.width * level.squareSize) / 2;
-  let yOffset = (canvas.height - level.height * level.squareSize) / 2;
-  ctx.translate(xOffset, yOffset);
-  
   level.grid.forEach(function (column) {
     column.forEach(function (square) {
+      resetCanvasTransforms();
       square.draw();
     });
   });
@@ -255,6 +254,8 @@ function parseLevel(level) {
             if (entity.isRobot()) {
               gridLevel.robot = entity;
             }
+            
+            entity.loaded();
           }
         }
       }
@@ -289,4 +290,7 @@ function drawImage(imageId, x, y, width, height) {
 
 function resetCanvasTransforms() {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
+  let xOffset = (canvas.width - level.width * level.squareSize) / 2;
+  let yOffset = (canvas.height - level.height * level.squareSize) / 2;
+  ctx.translate(xOffset, yOffset);
 }
