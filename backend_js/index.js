@@ -1,7 +1,10 @@
 const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3000;
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 const { Pool, Client } = require('pg');
+const PORT = process.env.PORT || 3000;
+
+const app = express();
 
 const pool = new Pool({
   user: 'g1727114_u',
@@ -12,19 +15,79 @@ const pool = new Pool({
   ssl: true
 });
 
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
-app.post('/high_score', (req, res, next) => {
-  const value = req.body;
+function hashPass(pass) {
+  let hash = bcrypt.hashSync(pass, 10);
+  return hash;
+}
 
-  pool.query("insert into high_score values ($1, $2, $3);", [value.uname, value.level, value.score])
+function compareHash(pass, hash) {
+  return bcrypt.compareSync(pass, hash);
+}
+
+app.post('/high_score', (req, res, next) => {
+  const body = req.body;
+
+  pool.query("select * from high_score where uname=$1;", [body.uname])
   .then(db_res => {
-    res.send(200);
+    //console.log(db_res.rows);
+    //res.sendStatus(200);
+    if (db_res.rows !== []) {
+      res.status(400).send("Username already exists");
+    }
+  })
+  .catch(e => {
+    console.log(error); // debugging
+    next(e);
+  });
+
+  /*pool.query("insert into high_score values ($1, $2, $3);", [body.uname, body.level, body.score])
+  .then(db_res => {
+    console.log(db_res);
+    res.sendStatus(200);
     console.log("200 status code sent");
+  })
+  .catch(e => next(e));*/
+});
+
+app.post('/signup', (req, res, next) => {
+  const body = req.body;
+
+  pool.query("select * from users where uname=$1;", [body.uname])
+  .then(db_res => {
+    if (db_res.rows.length !== 0) {
+      res.status(400).send("Username already exists");
+    } else {
+      const hash = hashPass(body.pass);
+      pool.query("insert into users values ($1, $2, $3, $4, $5, $6);",
+        [body.uname, hash, body.fname, body.lname, body.age, body.sch_id])
+      .then(db_res => {
+        res.sendStatus(200);
+      })
+      .catch(e => next(e));
+    }
+  })
+  .catch(e => next(e));
+});
+
+app.post('/login', (req, res, next) => {
+  const body = req.body;
+
+  pool.query("select users.uname, users.hash from users where uname=$1", [body.uname])
+  .then(db_res => {
+    if (compareHash(body.pass, db_res.rows[0].hash)) {
+      res.sendStatus(200);
+    } else {
+      res.status(401).send("Failed login");
+    }
   })
   .catch(e => next(e));
 });
@@ -36,7 +99,7 @@ app.get('/', (req, res, next) => {
 app.get('/high_score', (req, res, next) => {
   pool.query("select * from high_score", [])
   .then(db_res => {
-    res.send(db_res.rows);
+    res.json(db_res.rows);
     console.log(db_res.rows);
   })
   .catch(e => next(e));
