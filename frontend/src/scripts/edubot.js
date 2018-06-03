@@ -1,12 +1,18 @@
 var canvas = document.getElementById("game_canvas");
 var ctx = canvas.getContext("2d");
-var level = new GridLevel(24, 24, 32);
+var level = new GridLevel(16, 16, 32);
 var edubot = null;
 var robotStepTime = 400;
 
 console.log("Initialising!");
 
 // Initialisation
+
+function setLevel(newLevel) {
+  if (newLevel instanceof GridLevel) {
+    level = newLevel;
+  }
+}
 
 function GridLevel(width, height, squareSize) {
   this.width = width;

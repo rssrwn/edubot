@@ -15,11 +15,20 @@
     </div>
     <div id="contentDiv">
       
-      <div id="visualDiv">
+      <div id="leftDiv", class="working_divs">
+        <button id="newLevelButton">New Level</button>
+        
+        <div id="dimensionsDiv", class="working_divs">
+          <input id="widthField", class="dimension_fields", value="16"></input>
+          <input id="heightField", class="dimension_fields", value="16"></input>
+        </div>
+      </div>
+      
+      <div id="visualDiv", class="working_divs">
 
         <script src="../../lib/clipboard/dist/clipboard.min.js"></script>
         
-        <div id="controlsDiv">
+        <div id="controlsDiv", class="working_divs">
           <select id="entityPicker">
             <option value="Bolt">Nuts and Bolts</option>
             <option value="BasicWall">Basic wall</option>
@@ -33,7 +42,7 @@
           <input type="file", id="loadButton", name="file"></input>
         </div>
         
-        <div id="canvasDiv">
+        <div id="canvasDiv", class="working_divs">
           <div id="canvasPaddingDiv">
             <canvas id="game_canvas", width=1024, height=1024, 
               onclick="canvasClicked(event)"></canvas>
