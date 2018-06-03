@@ -79,7 +79,7 @@ BlockedByWallCommand.prototype.execute = function () {return edubot.blockedByWal
 // The robot
 
 function Robot() {
-  Entity.call(this);
+  Entity.call(this, true, "Robot");
   this.dir = Dir.RIGHT;
   this.actionsTaken = 0;
 }

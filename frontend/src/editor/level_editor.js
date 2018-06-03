@@ -51,7 +51,7 @@ function loadLevel(loadEvent) {
 	reader.onload = (function(theFile) {
     return function(e) {
       text = e.target.result;
-			newLevel = JSON.parse(text);
+			newLevel = parseLevel(text);
 			
 			if (newLevel !== null) {
 				level = newLevel;
