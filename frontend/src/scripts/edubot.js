@@ -89,6 +89,16 @@ GridLevel.prototype.moveEntity = function(entity, point) {
   return false;
 }
 
+GridLevel.prototype.getTopLeft = function() {
+  return new Point((canvas.width - level.width * level.squareSize) / 2, 
+    (canvas.height - level.height * level.squareSize) / 2);
+}
+
+GridLevel.prototype.getBottomRight = function() {
+  return new Point(canvas.width - (canvas.width - level.width * level.squareSize) / 2, 
+    canvas.height - (canvas.height - level.height * level.squareSize) / 2);
+}
+
 GridLevel.prototype.levelCompleted = function() {
   let score = Math.max(2000 - 40 * edubot.actionsTaken, 100);
   alert("You won! \nYour score is: " + score);

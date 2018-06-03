@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="base_style.css">
-  <script src="scripts/utils.js"></script>
+  <script src="../scripts/utils.js"></script>
 
 </head>
 <body>
@@ -17,11 +17,11 @@
       
       <div id="visualDiv">
 
-        <script src="clipboard/dist/clipboard.min.js"></script>
+        <script src="../../lib/clipboard/dist/clipboard.min.js"></script>
         
         <div id="controlsDiv">
           <select id="entityPicker">
-            <option value="BasicFood">Basic food</option>
+            <option value="Bolt">Nuts and Bolts</option>
             <option value="BasicWall">Basic wall</option>
           </select>
           <button id="saveButton">Save</button>
@@ -37,16 +37,17 @@
           <div id="canvasPaddingDiv">
             <canvas id="game_canvas", width=1024, height=1024, 
               onclick="canvasClicked(event)"></canvas>
-            <img class="game_image" src="images/rob.png" alt="Rob" id="robot_image"></img>
-            <script src="scripts/entities.js"></script>
-            <script src="scripts/robot_control.js"></script>
-            <script src="scripts/edubot.js"></script>
+            <img class="game_image" src="../images/rob.png" alt="Rob" id="robot_image"></img>
+            <img class="nuts_and_bolts" src="../images/nuts_and_bolts.png" id="nuts_and_bolts" alt="Nuts and bolts"></img>
+            <script src="../scripts/entities.js"></script>
+            <script src="../scripts/robot_control.js"></script>
+            <script src="../scripts/edubot.js"></script>
           </div>
         </div>
       </div>
     </div>
   </div>
   
-  <script src="scripts/level_editor.js"></script>
+  <script src="level_editor.js"></script>
 </body>
 </html>
