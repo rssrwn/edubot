@@ -90,7 +90,7 @@ Robot.prototype = Object.create(Entity.prototype);
 Robot.prototype.isRobot = function () {return true}
 
 Robot.prototype.update = function() {
-  if (Math.random() <= 0.3) {
+  /*if (Math.random() <= 0.3) {
     if (Math.random() <= 0.5) {
       this.rotateLeft();
     } else {
@@ -98,7 +98,7 @@ Robot.prototype.update = function() {
     }
   }
   
-  this.moveForward();
+  this.moveForward();*/
 }
 
 Robot.prototype.draw = function(x, y) {
@@ -107,17 +107,18 @@ Robot.prototype.draw = function(x, y) {
   let yTrans = y + level.squareSize / 2;
   ctx.translate(xTrans, yTrans);
   
-  let rot = this.dir * 90 * Math.PI / 180;
+  //let rot = this.dir * 90 * Math.PI / 180;
   
-  ctx.rotate(rot);
+  //ctx.rotate(rot);
   //drawImage("robot_image", -size / 2, -size / 2, size, size);
-  anims.draw(x, y);
+  this.anims.draw(0, 0);
 }
 
 Robot.prototype.added = function () {
+  //console.log("Robot added");
   let existingRobot = level.robot;
   
-  if (existingRobot !== null) {
+  if (existingRobot !== null && existingRobot !== this) {
     level.getSquare(existingRobot.loc.x, existingRobot.loc.y).setEntity(null);
   }
   
@@ -125,6 +126,8 @@ Robot.prototype.added = function () {
 }
 
 Robot.prototype.removed = function () {
+  //console.log("Robot removed!");
+  //console.trace();
   if (level.robot === this) {
     level.robot = null;
   }
