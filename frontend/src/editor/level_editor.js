@@ -49,7 +49,9 @@ function newLevel() {
 	let height = getDimension(document.getElementById("heightField").value);
 	
 	if (width > 0 && height > 0) {
-		setLevel(new GridLevel(width, height, defaultSquareSize));
+		let lev = createBoundedLevel(width, height, defaultSquareSize);
+		
+		setLevel(lev);
 	}
 }
 

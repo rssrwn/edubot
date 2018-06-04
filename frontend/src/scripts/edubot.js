@@ -183,6 +183,21 @@ GridSquare.prototype.isBlocking = function() {
 
 setInterval(update, frameTime);
 
+function createBoundedLevel(width, height, squareSize) {
+  let lev = new GridLevel(width, height, squareSize);
+  
+  for (let i = 0; i < lev.width; i++) {
+    lev.addEntity(new BasicWall(), i, 0);
+    lev.addEntity(new BasicWall(), i, height - 1);
+  }
+  
+  for (let i = 0; i < lev.height; i++) {
+    lev.addEntity(new BasicWall(), 0, i);
+    lev.addEntity(new BasicWall(), width - 1, i);
+  }
+  
+  return lev;
+}
 
 function update() {
   //canvas.width = canvas.style.width;
