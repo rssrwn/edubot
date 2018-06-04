@@ -1,24 +1,24 @@
 const express = require('express');
-const fs = require('fs');
-const https = require('https');
+//const fs = require('fs');
+//const https = require('https');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const { Pool, Client } = require('pg');
 const PORT = process.env.PORT || 3000;
 
-const key = fs.readFileSync('encryption/private.key');
-const cert = fs.readFileSync( 'encryption/primary.crt');
+//const key = fs.readFileSync('encryption/private.key');
+//const cert = fs.readFileSync( 'encryption/primary.crt');
 //const ca = fs.readFileSync( 'encryption/intermediate.crt');
 
-const options = {
-  key: key,
-  cert: cert,
+//const options = {
+//  key: key,
+//  cert: cert,
   //ca: ca
-};
+//};
 
-const app = https.createServer(options, app);
+//const app = https.createServer(options, app);
 
-//const app = express();
+const app = express();
 
 const pool = new Pool({
   user: 'g1727114_u',
