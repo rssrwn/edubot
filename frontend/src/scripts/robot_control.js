@@ -107,9 +107,9 @@ Robot.prototype.draw = function(x, y) {
   let yTrans = y + level.squareSize / 2;
   ctx.translate(xTrans, yTrans);
   
-  //let rot = this.dir * 90 * Math.PI / 180;
+  let rot = this.dir * 90 * Math.PI / 180;
   
-  //ctx.rotate(rot);
+  ctx.rotate(rot);
   //drawImage("robot_image", -size / 2, -size / 2, size, size);
   this.anims.draw(0, 0);
 }

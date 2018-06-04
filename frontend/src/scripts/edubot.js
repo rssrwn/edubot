@@ -95,7 +95,7 @@ GridLevel.prototype.moveEntity = function(entity, point) {
   }
   
   if (!this.grid[point.x][point.y].isBlocking()) {
-    this.grid[entity.loc.x][entity.loc.y].setEntity(null);
+    this.grid[entity.loc.x][entity.loc.y].entityMoved();
     this.grid[point.x][point.y].setEntity(entity);
     entity.loc = new Point(point.x, point.y);
     return true;
@@ -165,7 +165,11 @@ GridSquare.prototype.draw = function () {
   }
 }
 
-GridSquare.prototype.setEntity = function(entity) {
+GridSquare.prototype.entityMoved = function () {
+  this.entity = null;
+}
+
+GridSquare.prototype.setEntity = function (entity) {
   if (this.entity !== null) {
     this.entity.removed();
   }
@@ -179,6 +183,21 @@ GridSquare.prototype.isBlocking = function() {
 
 setInterval(update, frameTime);
 
+function createBoundedLevel(width, height, squareSize) {
+  let lev = new GridLevel(width, height, squareSize);
+  
+  for (let i = 0; i < lev.width; i++) {
+    lev.addEntity(new BasicWall(), i, 0);
+    lev.addEntity(new BasicWall(), i, height - 1);
+  }
+  
+  for (let i = 0; i < lev.height; i++) {
+    lev.addEntity(new BasicWall(), 0, i);
+    lev.addEntity(new BasicWall(), width - 1, i);
+  }
+  
+  return lev;
+}
 
 function update() {
   //canvas.width = canvas.style.width;
@@ -206,6 +225,8 @@ function draw() {
 // Level
 
 function getRobot() {
+  console.log("Robot:");
+  console.log(level.robot);
   return level.robot;
 }
 
