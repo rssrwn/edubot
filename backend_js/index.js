@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
 const { Pool, Client } = require('pg');
 const PORT = process.env.PORT || 3000;
 
@@ -28,8 +29,10 @@ const pool = new Pool({
   ssl: true
 });
 
+app.use(cookieParser());
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(express.static(__dirname + '/public'));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
