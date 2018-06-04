@@ -1,12 +1,11 @@
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
-const https = require('https');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const { Pool, Client } = require('pg');
 const PORT = process.env.PORT || 3000;
 
+/*
 const key = fs.readFileSync('encryption/private.key');
 const cert = fs.readFileSync('encryption/domain.crt');
 //const ca = fs.readFileSync('encryption/intermediate.crt');
@@ -16,9 +15,9 @@ const options = {
   cert: cert,
   //ca: ca
 };
+*/
 
 const app = express();
-const app2 = https.createServer(options, app);
 
 const pool = new Pool({
   user: 'g1727114_u',
@@ -38,7 +37,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app2.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Our app is running on port ${ PORT }`);
 });
 
@@ -50,22 +49,6 @@ function hashPass(pass) {
 function compareHash(pass, hash) {
   return bcrypt.compareSync(pass, hash);
 }
-
-/*app.post('/high_score', (req, res, next) => {
-  const body = req.body;
-
-  pool.query("select * from high_score where uname=$1;", [body.uname])
-  .then(db_res => {
-    //console.log(db_res.rows);
-    //res.sendStatus(200);
-    if (db_res.rows !== []) {
-      res.status(400).send("Username already exists");
-    }
-  })
-  .catch(e => {
-    next(e);
-  });
-});*/
 
 app.post('/signup', (req, res, next) => {
   const body = req.body;
