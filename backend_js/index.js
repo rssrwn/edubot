@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 //const fs = require('fs');
 //const https = require('https');
 const bodyParser = require('body-parser');
@@ -99,7 +100,7 @@ app.post('/login', (req, res, next) => {
 
 app.get('/', (req, res, next) => {
   //res.send('You reached the home page');
-  res.sendFile(index.html);
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 app.get('/high_score', (req, res, next) => {
