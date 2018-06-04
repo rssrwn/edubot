@@ -63,10 +63,6 @@ function compareHash(pass, hash) {
   });
 });*/
 
-app.get('/home', (req, res, next) => {
-  res.sendFile(index.html);
-});
-
 app.post('/signup', (req, res, next) => {
   const body = req.body;
 
@@ -102,7 +98,8 @@ app.post('/login', (req, res, next) => {
 });
 
 app.get('/', (req, res, next) => {
-  res.send('You reached the home page');
+  //res.send('You reached the home page');
+  res.sendFile(index.html);
 });
 
 app.get('/high_score', (req, res, next) => {
