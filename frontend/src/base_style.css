@@ -44,6 +44,7 @@ html, body {
 }
 
 #levelLinksDiv {
+  float: left;
   margin-left: 50px;
   margin-right: 10px;
   text-align: center;
