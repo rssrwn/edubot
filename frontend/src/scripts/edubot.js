@@ -76,8 +76,10 @@ GridLevel.prototype.boltCollected = function() {
 }
 
 GridLevel.prototype.update = function () {
-  for (i = 0; i < width; i++) {
-    for (j = 0; j < height; j++) {
+  this.runtimeMillis += frameTime;
+  
+  for (i = 0; i < this.width; i++) {
+    for (j = 0; j < this.height; j++) {
       this.grid[i][j].update();
     }
   }
@@ -113,8 +115,12 @@ GridLevel.prototype.getBottomRight = function() {
 }
 
 GridLevel.prototype.levelCompleted = function() {
-  let score = Math.max(2000 - 40 * getRobot().actionsTaken, 100);
-  alert("You won! \nYour score is: " + score);
+  let rob = getRobot();
+  
+  if (rob !== null) {
+    let score = Math.max(2000 - 40 * getRobot().actionsTaken, 100);
+    alert("You won! \nYour score is: " + score);
+  }
 }
 
 GridLevel.prototype.showHint = function() {
@@ -147,16 +153,16 @@ GridSquare.prototype.update = function () {
 }
 
 GridSquare.prototype.draw = function () {
-  if (this.entity !== null) {
-    this.entity.draw(
-      level.getDrawingOrdinate(this.loc.x), level.getDrawingOrdinate(this.loc.y));
-  }
-  
   ctx.beginPath();
   ctx.rect(this.loc.x * level.squareSize, this.loc.y * level.squareSize, level.squareSize, level.squareSize);
   ctx.strokeStyle = "#adadb2"
   ctx.stroke();
   ctx.closePath();
+  
+  if (this.entity !== null) {
+    this.entity.draw(
+      level.getDrawingOrdinate(this.loc.x), level.getDrawingOrdinate(this.loc.y));
+  }
 }
 
 GridSquare.prototype.setEntity = function(entity) {
@@ -178,7 +184,7 @@ function update() {
   //canvas.width = canvas.style.width;
   //canvas.height = canvas.style.height;
   
-  //level.update();
+  level.update();
   draw();
 }
 
