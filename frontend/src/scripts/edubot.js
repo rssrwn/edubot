@@ -225,7 +225,6 @@ function draw() {
 // Level
 
 function getRobot() {
-  console.log("Robot:");
   console.log(level.robot);
   return level.robot;
 }
