@@ -1,42 +1,24 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
-const cookieParser = require('cookie-parser');
-const { Pool, Client } = require('pg');
+//const cookieParser = require('cookie-parser');
+//const db = require('./models/db.js');
 const PORT = process.env.PORT || 3000;
-
-/*
-const key = fs.readFileSync('encryption/private.key');
-const cert = fs.readFileSync('encryption/domain.crt');
-//const ca = fs.readFileSync('encryption/intermediate.crt');
-
-const options = {
-  key: key,
-  cert: cert,
-  //ca: ca
-};
-*/
 
 const app = express();
 
-const pool = new Pool({
-  user: 'g1727114_u',
-  host: 'db.doc.ic.ac.uk',
-  database: 'g1727114_u',
-  password: 'nNrnFYebmJ',
-  port: 5432,
-  ssl: true
-});
+app.use(require('./controllers'));
 
-app.use(cookieParser());
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+//app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static(__dirname + '/public'));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
@@ -44,31 +26,20 @@ app.listen(PORT, () => {
   console.log(`Our app is running on port ${ PORT }`);
 });
 
-function hashPass(pass) {
-  let hash = bcrypt.hashSync(pass, 10);
-  return hash;
-}
-
-function compareHash(pass, hash) {
-  return bcrypt.compareSync(pass, hash);
-}
-
+/*
 app.post('/signup', (req, res, next) => {
   const body = req.body;
 
-  pool.query("select * from users where uname=$1;", [body.uname])
-  .then(db_res => {
-    if (db_res.rows.length !== 0) {
-      res.status(400).send("Username already exists");
-    } else {
-      const hash = hashPass(body.pass);
-      pool.query("insert into users values ($1, $2, $3, $4, $5, $6);",
-        [body.uname, hash, body.fname, body.lname, body.age, body.sch_id])
-      .then(db_res => {
-        res.sendStatus(200);
-      })
+  db.unameFree(body.uname)
+  .then(free => {
+    if (free) {
+      db.insertUser(body)
       .catch(e => next(e));
+
+      res.sendStatus(200);
+      return;
     }
+    res.status(400).send("Username already exists");
   })
   .catch(e => next(e));
 });
@@ -76,17 +47,19 @@ app.post('/signup', (req, res, next) => {
 app.post('/login', (req, res, next) => {
   const body = req.body;
 
-  pool.query("select users.uname, users.hash from users where uname=$1", [body.uname])
-  .then(db_res => {
-    if (db_res.rows.length !== 0 && compareHash(body.pass, db_res.rows[0].hash)) {
+  db.attemptLogin(body.uname, body.pass)
+  .then(success => {
+    if (success) {
       res.sendStatus(200);
-    } else {
-      res.status(401).send("Failed login");
+      return;
     }
+    res.status(401).send("Failed login");
   })
-  .catch(e => next(e));
+  .catch(err => next(err));
 });
+*/
 
+/*
 app.get('/', (req, res, next) => {
   //res.send('You reached the home page');
   res.sendFile(path.join(__dirname + '/index.html'));
@@ -100,36 +73,4 @@ app.get('/high_score', (req, res, next) => {
   })
   .catch(e => next(e));
 });
-
-/*
-app.get('/', function (req, res, next) {
-  pg.connect(conString, function (err, client, done) {
-    if (err) {
-      // pass the error to the express error handler
-      return next(err)
-    }
-    client.query('SELECT * from users', [], function (err, result) {
-      done()
-
-      if (err) {
-        // pass the error to the express error handler
-        return next(err)
-      }
-
-      res.json(result.rows)
-    })
-  })
-})
-
-const users = []
-
-app.post('/users', function (req, res) {
-    // retrieve user posted data from the body
-    const user = req.body
-    users.push({
-      name: user.name,
-      age: user.age
-    })
-    res.send('successfully registered')
-})
 */
