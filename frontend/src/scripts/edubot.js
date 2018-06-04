@@ -95,7 +95,7 @@ GridLevel.prototype.moveEntity = function(entity, point) {
   }
   
   if (!this.grid[point.x][point.y].isBlocking()) {
-    this.grid[entity.loc.x][entity.loc.y].setEntity(null);
+    this.grid[entity.loc.x][entity.loc.y].entityMoved();
     this.grid[point.x][point.y].setEntity(entity);
     entity.loc = new Point(point.x, point.y);
     return true;
@@ -165,7 +165,11 @@ GridSquare.prototype.draw = function () {
   }
 }
 
-GridSquare.prototype.setEntity = function(entity) {
+GridSquare.prototype.entityMoved = function () {
+  this.entity = null;
+}
+
+GridSquare.prototype.setEntity = function (entity) {
   if (this.entity !== null) {
     this.entity.removed();
   }
@@ -206,6 +210,8 @@ function draw() {
 // Level
 
 function getRobot() {
+  console.log("Robot:");
+  console.log(level.robot);
   return level.robot;
 }
 
