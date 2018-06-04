@@ -199,6 +199,25 @@ function createBoundedLevel(width, height, squareSize) {
   return lev;
 }
 
+function loadLevel(loadEvent) {
+	let file = loadEvent.target.files[0];
+	let reader = new FileReader();
+	let text = null;
+	
+	reader.onload = (function(theFile) {
+    return function(e) {
+      text = e.target.result;
+			newLevel = parseLevel(text);
+			
+			if (newLevel !== null) {
+				setLevel(newLevel);
+			}
+    };
+  })(file);
+	
+	reader.readAsText(file);
+}
+
 function update() {
   //canvas.width = canvas.style.width;
   //canvas.height = canvas.style.height;
@@ -225,7 +244,6 @@ function draw() {
 // Level
 
 function getRobot() {
-  console.log(level.robot);
   return level.robot;
 }
 
@@ -274,6 +292,8 @@ function parseLevel(level) {
             for (var vr in newSquare.entity) {
               entity[vr] = newSquare.entity[vr];
             }
+            
+            entity.loc = new Point(entity.loc.x, entity.loc.y);
             
             newSquare.entity = entity;
             

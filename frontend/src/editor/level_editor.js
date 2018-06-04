@@ -69,25 +69,6 @@ function saveLevel() {
 	saverField.value = JSON.stringify(level);
 }
 
-function loadLevel(loadEvent) {
-	let file = loadEvent.target.files[0];
-	let reader = new FileReader();
-	let text = null;
-	
-	reader.onload = (function(theFile) {
-    return function(e) {
-      text = e.target.result;
-			newLevel = parseLevel(text);
-			
-			if (newLevel !== null) {
-				setLevel(newLevel);
-			}
-    };
-  })(file);
-	
-	reader.readAsText(file);
-}
-
 var canvasResize = function(e) {
   let canvasPaddingDiv = document.getElementById("canvasPaddingDiv");
   let gameCanvas = document.getElementById("game_canvas");
