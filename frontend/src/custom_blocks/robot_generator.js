@@ -25,3 +25,8 @@ Blockly.JavaScript['wall_in_front'] = function(block) {
   var code = 'getRobot().blockedByWall()';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
+
+Blockly.JavaScript['return'] = function(block) {
+  var code = 'return;\n';
+  return code;
+};

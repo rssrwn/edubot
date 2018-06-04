@@ -44,3 +44,15 @@ Blockly.Blocks['wall_in_front'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['return'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("return");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+ this.setTooltip("Return");
+ this.setHelpUrl("");
+  }
+};
