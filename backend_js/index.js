@@ -1,10 +1,24 @@
 const express = require('express');
+const fs = require('fs');
+const https = require('https');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const { Pool, Client } = require('pg');
 const PORT = process.env.PORT || 3000;
 
-const app = express();
+const key = fs.readFileSync('encryption/private.key');
+const cert = fs.readFileSync( 'encryption/primary.crt');
+//const ca = fs.readFileSync( 'encryption/intermediate.crt');
+
+const options = {
+  key: key,
+  cert: cert,
+  //ca: ca
+};
+
+const app = https.createServer(options, app);
+
+//const app = express();
 
 const pool = new Pool({
   user: 'g1727114_u',
@@ -33,7 +47,7 @@ function compareHash(pass, hash) {
   return bcrypt.compareSync(pass, hash);
 }
 
-app.post('/high_score', (req, res, next) => {
+/*app.post('/high_score', (req, res, next) => {
   const body = req.body;
 
   pool.query("select * from high_score where uname=$1;", [body.uname])
@@ -47,14 +61,10 @@ app.post('/high_score', (req, res, next) => {
   .catch(e => {
     next(e);
   });
+});*/
 
-  /*pool.query("insert into high_score values ($1, $2, $3);", [body.uname, body.level, body.score])
-  .then(db_res => {
-    console.log(db_res);
-    res.sendStatus(200);
-    console.log("200 status code sent");
-  })
-  .catch(e => next(e));*/
+app.get('/home', (req, res, next) => {
+  res.sendFile(index.html);
 });
 
 app.post('/signup', (req, res, next) => {
