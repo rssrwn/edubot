@@ -1,25 +1,24 @@
 const express = require('express');
 const path = require('path');
-//const fs = require('fs');
-//const https = require('https');
+const fs = require('fs');
+const https = require('https');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const { Pool, Client } = require('pg');
 const PORT = process.env.PORT || 3000;
 
-//const key = fs.readFileSync('encryption/private.key');
-//const cert = fs.readFileSync( 'encryption/primary.crt');
-//const ca = fs.readFileSync( 'encryption/intermediate.crt');
+const key = fs.readFileSync('encryption/private.key');
+const cert = fs.readFileSync('encryption/domain.crt');
+//const ca = fs.readFileSync('encryption/intermediate.crt');
 
-//const options = {
-//  key: key,
-//  cert: cert,
+const options = {
+  key: key,
+  cert: cert,
   //ca: ca
-//};
-
-//const app = https.createServer(options, app);
+};
 
 const app = express();
+const app2 = https.createServer(options, app);
 
 const pool = new Pool({
   user: 'g1727114_u',
@@ -37,6 +36,10 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
+});
+
+app2.listen(PORT, () => {
+  console.log(`Our app is running on port ${ PORT }`);
 });
 
 function hashPass(pass) {
@@ -110,10 +113,6 @@ app.get('/high_score', (req, res, next) => {
     console.log(db_res.rows);
   })
   .catch(e => next(e));
-});
-
-app.listen(PORT, () => {
-  console.log(`Our app is running on port ${ PORT }`);
 });
 
 /*
