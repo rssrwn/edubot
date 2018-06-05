@@ -24,9 +24,12 @@
   <div id="page">
     <div id="bannerDiv"></div>
     <script>
+    if (Math.rand() > 0.5) {
       $("#bannerDiv").load("../banners/student.html");
+    } else {
+      $("#bannerDiv").load("../banners/teacher.html");
+    }
     </script>
-
 
     <div id="contentDiv">
       <div id="blocklyDiv">
