@@ -1,13 +1,16 @@
 const express = require('express');
 const path = require('path');
+const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+const hbs = exphbs.create();
 
-app.set('view engine', 'pug');
+app.engine('handlebars', hbs.engine);
 app.set('views', './views');
+app.set('view engine', 'handlebars');
 
 // Third-party middleware
 app.use(cookieParser());
