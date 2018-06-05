@@ -1,20 +1,11 @@
 <span>
   <h2>{{class_name}}</h2>
   
-  <!--
-  Change this to insert a link to the appropriate student page:
-  
-  Handlebars.registerHelper('list', function(items, options) {
-    var out = "<ul>";
-
-    for(var i=0, l=items.length; i<l; i++) {
-      out = out + "<li>" + options.fn(items[i]) + "</li>";
-    }
-
-    return out + "</ul>";
-  });
-  -->
-  {{#list class_members}}{{name}} {{/list}}
+  <ul class="classMembers">
+    {{#each class_members}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
   
   <button type="button" onclick="todo(event)">Add Member</button>
 </span>
