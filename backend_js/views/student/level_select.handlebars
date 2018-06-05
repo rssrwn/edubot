@@ -18,7 +18,16 @@
     {{/if}}
     <div id="contentDiv">
       <div id="selectionWrapperDiv">
-        <div id="selectionDiv"></div>
+        <div id="selectionDiv">
+          {{#each categories}}
+            {{> category_block this}}
+            <div class='categoryDiv'>
+              <h2>Category 1</h2>
+              <div class='levelDiv'>Level 1</div>
+              <div class='levelDiv'>Level 2</div>
+            </div>
+          {{/each}}
+        </div>
       </div>
     </div>
   </div>
