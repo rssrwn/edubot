@@ -71,5 +71,10 @@ function initSampleLevel1() {
 
 function restartLevel() {
   clearTimeout(executionTimeoutId);
-  initSampleLevel1();
+  
+  if (levelSource !== null) {
+    enterLevel(levelSource);
+  } else {
+    initSampleLevel1();
+  }
 }

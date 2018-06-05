@@ -1,6 +1,7 @@
 var canvas = document.getElementById("game_canvas");
 var ctx = canvas.getContext("2d");
 var defaultSquareSize = 48;
+var levelSource = null;
 var level = new GridLevel(16, 16, defaultSquareSize);
 var robotStepTime = 400;
 var frameTime = 50;
@@ -206,16 +207,22 @@ function loadLevel(loadEvent) {
 	
 	reader.onload = (function(theFile) {
     return function(e) {
-      text = e.target.result;
-			newLevel = parseLevel(text);
-			
-			if (newLevel !== null) {
-				setLevel(newLevel);
-			}
+			enterLevel(e.target.result);
     };
   })(file);
 	
 	reader.readAsText(file);
+}
+
+function enterLevel(jsonLevel) {
+  let newLevel = parseLevel(jsonLevel);
+  
+  if (newLevel !== null) {
+    setLevel(newLevel);
+    return true;
+  }
+  
+  return false;
 }
 
 function update() {
@@ -228,6 +235,7 @@ function update() {
 
 // Repaints the game
 function draw() {
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   level.grid.forEach(function (column) {
@@ -240,6 +248,17 @@ function draw() {
   resetCanvasTransforms();
 }
 
+function drawImage(imageId, x, y, width, height) {
+  var image = document.getElementById(imageId);
+  ctx.drawImage(image, x, y, width, height);
+}
+
+function resetCanvasTransforms() {
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  let xOffset = (canvas.width - level.width * level.squareSize) / 2;
+  let yOffset = (canvas.height - level.height * level.squareSize) / 2;
+  ctx.translate(xOffset, yOffset);
+}
 
 // Level
 
@@ -315,7 +334,13 @@ function parseLevel(level) {
     }
   }
   
-  return JSON.parse(level, reviver);
+  let newLevel = JSON.parse(level, reviver);
+  
+  if (newLevel !== null && newLevel !== undefined) {
+    levelSource = level;
+  }
+  
+  return newLevel;
 }
 
 function generateEntityFromId(entityId) {
@@ -325,18 +350,4 @@ function generateEntityFromId(entityId) {
     eval("entity = new " + entityId + "();");
     return entity;
   }
-}
-
-// Drawing
-
-function drawImage(imageId, x, y, width, height) {
-  var image = document.getElementById(imageId);
-  ctx.drawImage(image, x, y, width, height);
-}
-
-function resetCanvasTransforms() {
-  ctx.setTransform(1, 0, 0, 1, 0, 0);
-  let xOffset = (canvas.width - level.width * level.squareSize) / 2;
-  let yOffset = (canvas.height - level.height * level.squareSize) / 2;
-  ctx.translate(xOffset, yOffset);
 }
