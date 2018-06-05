@@ -1,0 +1,27 @@
+<span class="levelDiv">
+  <span id="nameDiv">
+    Level {{number}}
+  </span>
+  <span class="starsDiv">
+    {{#if score_z}}
+    <img class="starImage", alt="star", src="../images/star_empty.png">
+    <img class="starImage", alt="star", src="../images/star_empty.png">
+    <img class="starImage", alt="star", src="../images/star_empty.png">
+
+    {{else if score_o}}
+    <img class="starImage", alt="star", src="../images/star_filled.png">
+    <img class="starImage", alt="star", src="../images/star_empty.png">
+    <img class="starImage", alt="star", src="../images/star_empty.png">
+
+    {{else if score_t}}
+    <img class="starImage", alt="star", src="../images/star_filled.png">
+    <img class="starImage", alt="star", src="../images/star_filled.png">
+    <img class="starImage", alt="star", src="../images/star_empty.png">
+
+    {{else if score_th}}
+    <img class="starImage", alt="star", src="../images/star_filled.png">
+    <img class="starImage", alt="star", src="../images/star_filled.png">
+    <img class="starImage", alt="star", src="../images/star_filled.png">
+    {{/if}}
+  </span>
+</span>
