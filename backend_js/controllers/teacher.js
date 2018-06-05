@@ -7,7 +7,7 @@ router.get('/classes', (req, res, next) => {
 });
 
 router.get('/student', (req, res, next) => {
-
+  res.send('hello world');
 });
 
 router.get('/level_selection', (req, res, next) => {
