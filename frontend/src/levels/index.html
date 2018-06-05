@@ -18,13 +18,23 @@
   <script src="../scripts/utils.js"></script>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  
+  <link rel="import" href="../banners/student.html">
 
 </head>
 <body>
   <div id="page">
     <div id="bannerDiv"></div>
     <script>
-      $("#bannerDiv").load("../banners/student.html");
+      // $("#bannerDiv").load("../banners/student.html");
+      
+      var link = document.querySelector('link[rel="import"]');
+
+    // Clone the <template> in the import.
+    var template = link.import.querySelector('template');
+    var clone = document.importNode(template.content, true);
+
+    document.querySelector('#bannerDiv').appendChild(clone);
     </script>
 
 
