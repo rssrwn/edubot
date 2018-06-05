@@ -1,7 +1,5 @@
 # Names
 
-- login
-- logout
 - student/
   - level_selection
   - level_results
@@ -13,5 +11,7 @@
   - level_selection
   - account
 - shared/
-  - level_intro
-  - play
+  - [x] login
+  - [x] logout
+  - [ ] level_intro
+  - [x] play
