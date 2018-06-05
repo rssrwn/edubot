@@ -6,6 +6,9 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+app.set('view engine', 'pug');
+app.set('views', './views');
+
 // Third-party middleware
 app.use(cookieParser());
 app.use(bodyParser.json());

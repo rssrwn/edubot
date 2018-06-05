@@ -89,7 +89,7 @@ Blockly.JavaScript['procedures_callnoreturn'] = function(block) {
     args[i] = Blockly.JavaScript.valueToCode(block, 'ARG' + i,
         Blockly.JavaScript.ORDER_COMMA) || 'null';
   }
-  var code = 'await new Promise(r => {' + funcName + '(' + args.join(', ') + ')});\n';
+  var code = 'await ' + funcName + '(' + args.join(', ') + ');\n';
   return code;
 };
 

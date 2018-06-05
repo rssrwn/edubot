@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Level Editor</title>
+  <link rel="stylesheet" type="text/css" href="base_style.css">
+  <script src="../scripts/utils.js"></script>
+
+</head>
+<body>
+  <div id="page">
+    <div id="bannerDiv">
+      <h1>EduBot Level Editor</h1>
+    </div>
+    <div id="contentDiv">
+      
+      <div id="leftDiv", class="working_divs">
+        <button id="newLevelButton">New Level</button>
+        
+        <div id="dimensionsDiv", class="working_divs">
+          <input id="widthField", class="dimension_fields", value="16"></input>
+          <input id="heightField", class="dimension_fields", value="16"></input>
+        </div>
+      </div>
+      
+      <div id="visualDiv", class="working_divs">
+
+        <script src="../../lib/clipboard/dist/clipboard.min.js"></script>
+        
+        <div id="controlsDiv", class="working_divs">
+          <select id="entityPicker">
+            <option value="Bolt">Nuts and Bolts</option>
+            <option value="BasicWall">Basic wall</option>
+            <option value="Robot">Robot</option>
+          </select>
+          <button id="saveButton">Save</button>
+          <input id="saverField"></input>
+          <button class="clipboard_button" data-clipboard-target="#saverField">
+            Copy to clipboard
+          </button>
+          
+          <input type="file", id="loadButton", name="file"></input>
+        </div>
+        
+        <div id="canvasDiv", class="working_divs">
+          <div id="canvasPaddingDiv">
+            <canvas id="game_canvas", width=1024, height=1024, 
+              onmousedown="canvasClicked(event)"></canvas>
+            <img class="game_image" src="../images/rob.png" alt="Rob" id="robot_image"></img>
+            <img class="nuts_and_bolts" src="../images/nuts_and_bolts.png" id="nuts_and_bolts" alt="Nuts and bolts"></img>
+            <script src="../scripts/entities.js"></script>
+            <script src="../scripts/robot_anims.js"></script>
+            <script src="../scripts/robot_control.js"></script>
+            <script src="../scripts/edubot.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="level_editor.js"></script>
+</body>
+</html>
