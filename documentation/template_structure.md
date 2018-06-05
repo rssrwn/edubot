@@ -1,7 +1,7 @@
 # Names
 
 - login
-- logout
+- signup
 - student/
   - level_selection
   - level_results
