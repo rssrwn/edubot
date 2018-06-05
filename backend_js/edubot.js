@@ -17,14 +17,14 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/shared', express.static(path.join(__dirname, 'public'))); // Do something better here
-app.use('/student', express.static(path.join(__dirname, 'public')));
-app.use('/teacher', express.static(path.join(__dirname, 'public')));
+//app.use('/shared', express.static(path.join(__dirname, 'public/shared'))); // Do something better here
+//app.use('/student', express.static(path.join(__dirname, 'public/student')));
+//app.use('/teacher', express.static(path.join(__dirname, 'public/teacher')));
 
 // Our middleware (top executed first)
 app.use(require('./middlewares/res_header'));
-app.use('/teacher', require('./middlewares/teacher_auth'));
-app.use('/student', require('./middlewares/student_auth'));
+//app.use('/teacher', require('./middlewares/teacher_auth'));
+//app.use('/student', require('./middlewares/student_auth'));
 app.use(require('./controllers'));
 
 // Listen on port

@@ -8,17 +8,17 @@ router.get('/level_selection', (req, res, next) => {
     levels: [
     {
       number: 1,
-      score_z: false,
-      score_o: true,
-      score_t: false,
-      score_th: false
+      score0: false,
+      score1: true,
+      score2: false,
+      score3: false
     },
     {
       number: 2,
-      score_z: true,
-      score_t: false,
-      score_t: false,
-      score_th: false
+      score0: true,
+      score1: false,
+      score2: false,
+      score3: false
     }]
   };
   res.render('student/level_select', context);

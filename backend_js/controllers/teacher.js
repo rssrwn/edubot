@@ -3,14 +3,6 @@ const router = express.Router();
 const db = require('../models/db.js');
 
 router.get('/classes', (req, res, next) => {
-
-});
-
-router.get('/student', (req, res, next) => {
-  res.send('hello world');
-});
-
-router.get('/level_selection', (req, res, next) => {
   var context = {
     student: false,
     class_list: [{
@@ -19,6 +11,14 @@ router.get('/level_selection', (req, res, next) => {
     }]
   };
   res.render('teacher/classes', context);
+});
+
+router.get('/student', (req, res, next) => {
+  res.send('hello world');
+});
+
+router.get('/level_selection', (req, res, next) => {
+
 });
 
 router.get('/account', (req, res, next) => {
