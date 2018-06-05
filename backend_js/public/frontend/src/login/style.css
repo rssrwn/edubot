@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+	height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+#page {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  border-radius: 25px;
+  display: inline-block;
+  background-color: #d2d2d2d2;
+}
+
+#bannerDiv {
+  display: table;
+  height: 150px;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+#bannerDivContents {
+  display: table-cell;
+  height: 115px;
+  margin: auto;
+  vertical-align: middle;
+}
+
+#logo {
+  float: left;
+  height: 100%;
+}
+
+#titleDiv {
+  display: inline-block;
+  font-size: 60px;
+  margin-left: 20px;
+  line-height: 115px;
+  color: #e68119;
+}
+
+#formDiv {
+  display: block;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+#formButtons {
+  display: table;
+  margin: 0 auto;
+}
+
+.formItem {
+  margin: 7px auto;
+}
+
+#formDiv > label {
+  display: block;
+  text-align: center;
+}
