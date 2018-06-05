@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/shared', express.static(path.join(__dirname, 'public')));
 
 // Our middleware (top executed first)
 app.use(require('./middlewares/res_header'));
