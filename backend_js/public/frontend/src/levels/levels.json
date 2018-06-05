@@ -1,0 +1,43 @@
+{
+  "levels": [
+    {
+      "category": "Movement",
+      "levels": [
+        {
+          "name": "Basic",
+          "id": "0"
+        }
+      ]
+    },
+    {
+      "category": "Looping",
+      "levels": [
+        {
+          "name": "Repeat",
+          "id": "1"
+        },
+        {
+          "name": "Repeat Until",
+          "id": "2"
+        },
+        {
+          "name": "Do While",
+          "id": "3"
+        }
+      ]
+    },
+    {
+      "category": "Conditionals",
+      "levels": [
+        {
+          "name": "If",
+          "id": "4"
+        },
+        {
+          "name": "If Else",
+          "id": "5"
+        }
+      ]
+    }
+  ]
+}

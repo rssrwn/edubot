@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EduBot</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  
+  <script src="../scripts/backend_utils.js"></script>
+</head>
+<body>
+  <div id="page">
+    <div id="bannerDiv">
+      <div id="bannerDivContents">
+        <img id="logo" src="../images/edubot.png" alt="EduBot"></img>
+        <h1 id="titleDiv">EduBot</h1>
+      </div>
+    </div>
+    
+    <form name="signupForm">
+      <div id="formDiv">
+        <label class="formItem"><b>Username</b></label>
+        <input class="formItem" type="text" placeholder="Enter Username" name="uname" required>
+        <br>
+
+        <label class="formItem"><b>Password</b></label>
+        <input class="formItem" type="password" placeholder="Enter Password" name="pass" required>
+        <br>
+
+        <label class="formItem"><b>First Name</b></label>
+        <input class="formItem" type="text" placeholder="Enter First Name" name="fname" required>
+        <br>
+
+        <label class="formItem"><b>Last Name</b></label>
+        <input class="formItem" type="text" placeholder="Enter Last Name" name="lname" required>
+        <br>
+
+        <label class="formItem"><b>Age</b></label>
+        <input class="formItem" type="text" placeholder="Enter Age" name="age" required>
+        <br>
+
+        <label class="formItem"><b>School ID</b></label>
+        <input class="formItem" type="text" placeholder="Enter School ID" name="sch_id" required>
+        <br>
+        
+        <div id="formButtons">
+          <button class="formItem" type="button" onclick="validateForm();">Create New Account</button>
+        </div>
+      </div>
+    </form>
+    
+    <script>
+    function validateForm() {
+      let uname = document.forms["signupForm"]["uname"].value;
+      let pass = document.forms["signupForm"]["pass"].value;
+      let fname = document.forms["signupForm"]["fname"].value;
+      let lname = document.forms["signupForm"]["lname"].value;
+      let age = document.forms["signupForm"]["age"].value;
+      let sch_id = document.forms["signupForm"]["sch_id"].value;
+      
+      if (isNaN(age) || isNaN(sch_id)) {
+        alert("Please enter a number for the age and school id.");
+      } else if (pass.length < 6) {
+        alert("Please enter a password at least 6 characters long.");
+      } else if (uname && pass && fname && lname && age && sch_id) {
+        httpPost('https://edubot-backend.herokuapp.com/signup', {uname: uname, pass: pass, fname: fname, lname: lname, age: age, sch_id: sch_id}, buildForm);
+      }
+    }
+    
+    function buildForm(status) {
+      switch (status) {
+        case 200: break; // signup
+        case 400: alert("The username has already taken."); break;
+        default: alert("Unknown error occurred: " + status + ".");
+      }
+    }
+    </script>
+  </div>  
+</body>
+</html>

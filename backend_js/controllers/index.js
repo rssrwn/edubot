@@ -10,8 +10,4 @@ router.use('/signup', require('./signup'));
   })
 })*/
 
-router.get('/', (req, res, next) => {
-  res.send('You reached the home page');
-});
-
 module.exports = router;

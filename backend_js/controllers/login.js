@@ -17,7 +17,9 @@ router.post('/', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  res.send('you reached login');
+  //res.send('you reached login');
+  //res.render('index');
+  res.sendFile('index.html');
 });
 
 module.exports = router;
