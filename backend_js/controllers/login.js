@@ -17,6 +17,7 @@ router.post('/', (req, res, next) => {
   .catch(err => next(err));
 });
 
+/*
 router.get('/', (req, res, next) => {
   //res.send('you reached login');
   //var stuff = hbs.getTemplate('index.handlebars')();
@@ -28,5 +29,6 @@ router.get('/', (req, res, next) => {
   res.render('index', {student: false, name: 'Ross', occupation: 'stuff'});
   //res.sendFile('index.html');
 });
+*/
 
 module.exports = router;
