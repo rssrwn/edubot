@@ -7,7 +7,7 @@ router.get('/level_intro', (req, res, next) => {
 });
 
 router.get('/play', (req, res, next) => {
-  res.render('play', {});
+  res.render('shared/play', {});
 });
 
 module.exports = router;
