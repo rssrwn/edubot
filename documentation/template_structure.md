@@ -5,7 +5,7 @@
   - level_results
   - account
 - teacher/
-  - classes
+  - [x] classes
   - [classroom]
   - student
   - level_selection
