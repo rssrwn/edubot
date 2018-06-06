@@ -10,6 +10,12 @@ const pool = new Pool({
   ssl: true
 });
 
+exports.userTypeEnum = {
+  NEITHER: 0,
+  STUDENT: 1,
+  TEACHER: 2,
+};
+
 function hashPass(pass) {
   let hash = bcrypt.hashSync(pass, 10);
   return hash;
@@ -17,6 +23,29 @@ function hashPass(pass) {
 
 function compareHash(pass, hash) {
   return bcrypt.compareSync(pass, hash);
+}
+
+exports.getUserType = function(uname) {
+  return new Promise(function (resolve, reject) {
+    pool.query("select * from users where uname=$1;", [uname])
+    .then(db_res => {
+      if (db_res.rows.length !== 0) {
+        resolve(userTypeEnum.STUDENT);
+        return;
+      }
+    })
+    .catch(e => reject(e));
+
+    pool.query("select * from teacher where uname=$1", [uname])
+    .then(db_res => {
+      if (db_res.rows.length !== 0) {
+        resolve(userTypeEnum.TEACHER);
+      } else {
+        resolve(userTypeEnum.NEITHER);
+      }
+    })
+    .catch(e => reject(e));
+  });
 }
 
 // Returns true is the given username is free
