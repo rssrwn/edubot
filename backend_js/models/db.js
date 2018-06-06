@@ -10,12 +10,6 @@ const pool = new Pool({
   ssl: true
 });
 
-exports.userTypeEnum = {
-  NEITHER: 0,
-  STUDENT: 1,
-  TEACHER: 2,
-};
-
 userTypeEnum = {
   NEITHER: 0,
   STUDENT: 1,
@@ -28,35 +22,21 @@ function hashPass(pass) {
 }
 
 function compareHash(pass, hash) {
-  console.log(pass, hash);
-  console.log(hashPass(pass));
-  ret = bcrypt.compareSync(pass, hash);
-  console.log(ret);
-  return ret;
+  return bcrypt.compareSync(pass, hash);
 }
 
+// Get the type of the user with uname
 exports.getUserType = function(uname) {
   return new Promise(function (resolve, reject) {
     pool.query("select users.type from users where uname=$1;", [uname])
     .then(db_res => {
-      if (db_res.rows.length !== 0) {
-        console.log(db_res.rows);
+      if (db_res.rows[0].type === 1) {
         resolve(userTypeEnum.STUDENT);
-      } else {
-        resolve(userTypeEnum.NEITHER);
+      } else if (db_res.rows[0].type === 2) {
+        resolve(userTypeEnum.TEACHER);
       }
     })
     .catch(e => reject(e));
-
-    /*pool.query("select * from teacher where uname=$1", [uname])
-    .then(db_res => {
-      if (db_res.rows.length !== 0) {
-        resolve(userTypeEnum.TEACHER);
-      } else {
-        resolve(userTypeEnum.NEITHER);
-      }
-    })
-    .catch(e => reject(e));*/
   });
 }
 
@@ -103,3 +83,5 @@ exports.attemptLogin = function(uname, pass) {
     .catch(e => reject(e));
   });
 }
+
+exports.userTypeEnum = userTypeEnum;

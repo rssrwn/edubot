@@ -30,7 +30,7 @@ router.post('/', (req, res, next) => {
 });
 
 /*router.get('/', (req, res, next) => {
-  res.sendFile(__dirname + '/../login.html');
+  res.sendFile(__dirname + './login.html');
 });*/
 
 
