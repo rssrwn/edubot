@@ -69,8 +69,9 @@ exports.unameFree = function(uname) {
 exports.insertUser = function(params) {
   return new Promise(function(resolve, reject) {
     const hash = hashPass(params.pass);
-    pool.query("insert into users values ($1, $2, $3, $4, $5, $6);",
-      [params.uname, hash, params.fname, params.lname, params.age, params.sch_id])
+    pool.query("insert into users values ($1, $2, $3, $4, $5, $6, $7);",
+      [params.uname, hash, params.fname, params.lname, params.type,
+      params.age, params.sch_id])
     .then(db_res => {
       resolve(true);
     })
