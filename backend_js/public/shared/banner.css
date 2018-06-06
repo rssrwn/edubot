@@ -90,3 +90,7 @@
   text-decoration: none;
   color: inherit;
 }
+
+.hoverLink:hover {
+  color: #6b6a6a;
+}
