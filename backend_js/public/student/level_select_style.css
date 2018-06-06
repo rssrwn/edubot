@@ -14,7 +14,7 @@
 }
 
 .levelDiv {
-  align-content: center;
+  display: flex;
   margin-top: 10px;
   margin-bottom: 10px;
 }
