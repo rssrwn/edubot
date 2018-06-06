@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EduBot</title>
+  <link rel="stylesheet" type="text/css" href="../shared/base_style.css">
+  <link rel="stylesheet" type="text/css" href="../shared/banner.css">
+  <link rel="stylesheet" type="text/css" href="classes_style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+</head>
+<body>
+  <div id="page">
+    {{#if student}}
+    {{> banners/student}}
+    {{else}}
+    {{> banners/teacher}}
+    {{/if}}
+    
+    <span>
+      <ul id="classList">
+        {{#each class_list}}
+          <li>{{> class_box this}}</li>
+        {{/each}}
+      </ul>
+
+      <button type="button" onclick="todo(event)">Add Class</button>
+    </span>
+  </div>
+</body>
+</html>
