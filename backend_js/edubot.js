@@ -10,7 +10,16 @@ const app = express();
 
 //app.engine('handlebars', hbs.engine);
 app.engine('handlebars', exphbs({
-        partialsDir:'./public/partials'
+        partialsDir:'./public/partials',
+        helpers: {
+          for: function(from, to, increment, elem) {
+            let code = "";
+            for (let i = from; i < to; i += increment) {
+              code += elem.fn(i);
+            }
+            return code;
+          }
+        }
 }));
 app.set('view engine', 'handlebars');
 app.set('views', './public');
