@@ -24,13 +24,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Our middleware (top executed first)
 app.use(require('./middlewares/res_header'));
 //app.use('/teacher', require('./middlewares/teacher_auth'));
-//app.use('/student', require('./middlewares/student_auth'));
+app.use('/student', require('./middlewares/student_auth'));
 app.use(require('./controllers'));
 
 // Listen on port
 app.listen(PORT, () => {
   console.log(`EduBot is running on port ${ PORT }`);
 });
+
+app.get('/stuff', (req, res, next) => {
+  console.log('Cookies: ', req.cookies);
+})
 
 /*
 app.get('/high_score', (req, res, next) => {

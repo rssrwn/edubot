@@ -1,5 +1,6 @@
 module.exports = function(req, res, next) {
-  if (req.user) {
+  value = req.cookies['edubot-cookie'];
+  if (value === 'student') {
     next()
   } else {
     res.status(401).send("Access denied");
