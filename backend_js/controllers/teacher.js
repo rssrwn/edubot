@@ -52,6 +52,14 @@ router.get('/account', (req, res, next) => {
 
 });
 
+router.post('add_class', (req, res, next) => {
+  
+});
+
+router.post('add_member', (req, res, next) => {
+
+});
+
 /*
 router.post('/classroom', (req, res, next) => {
 

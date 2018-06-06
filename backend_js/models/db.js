@@ -82,4 +82,42 @@ exports.attemptLogin = async function(uname, pass) {
   });
 }
 
+// Insert class into db with given name, school_id and teacher username
+exports.insertClass = async function(name, school_id, teacher) {
+  return new Promise(function(resolve, reject) {
+    //var db_res = await pool.query("select MAX(class_id) from class;");
+    //console.log(db_res);
+    //var max = db_res.rows[0]; //??
+    //console.log(max);
+    await pool.query("insert into class values ($1, (select MAX(class_id) from class)+1, $2, $3);", [school_id, name, teacher]);
+    resolve(true);
+  });
+}
+
+// Add a member with given uname into class with class_id
+exports.addMember = async function(uname, class_id) {
+  var free = await exports.unameFree(uname);
+  if (free) {
+    resolve(false);
+    return;
+  }
+
+  await pool.query("insert into student_class values ($1, $2);", [uname, class_id]);
+  resolve(true);
+}
+
+// Get a list of class_ids for teacher with uname teacher
+// TODO: TEST
+exports.getClasses = async function(teacher) {
+  var ret = await pool.query("select class_id from class where teacher=$1;", [teacher]);
+  return ret;
+}
+
+// Get a list of students (usernames') who are members of class_id
+// TODO: TEST
+exports.getMembers = async function(class_id) {
+  var ret = await pool.query("select uname from student_class where class_id=$1;", [class_id]);
+  return ret;
+}
+
 exports.userTypeEnum = userTypeEnum;
