@@ -5,23 +5,30 @@ const db = require('../models/db.js');
 router.get('/level_selection', (req, res, next) => {
   var context = {
     student: true,
-    categorys: [
+    categories: [
       {
         categoryName: "Introduction",
         levels: [
           {
-            number: 1,
-            score0: false,
-            score1: true,
-            score2: false,
-            score3: false
+            stars: 1,
+            number: 1
           },
           {
-            number: 2,
-            score0: true,
-            score1: false,
-            score2: false,
-            score3: false
+            stars: 3,
+            number: 2
+          }
+        ]
+      },
+      {
+        categoryName: "Looping",
+        levels: [
+          {
+            stars: 2,
+            number: 1
+          },
+          {
+            stars: 0,
+            number: 2
           }
         ]
       }
