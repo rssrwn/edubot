@@ -6,11 +6,14 @@ const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-const hbs = exphbs.create();
+//const hbs = exphbs.create();
 
-app.engine('handlebars', hbs.engine);
-app.set('views', './public');
+//app.engine('handlebars', hbs.engine);
+app.engine('handlebars', exphbs({
+        partialsDir:'./public/partials'
+}));
 app.set('view engine', 'handlebars');
+app.set('views', './public');
 
 // Third-party middleware
 app.use(cookieParser());
@@ -31,10 +34,6 @@ app.use(require('./controllers'));
 app.listen(PORT, () => {
   console.log(`EduBot is running on port ${ PORT }`);
 });
-
-app.get('/stuff', (req, res, next) => {
-  console.log('Cookies: ', req.cookies);
-})
 
 /*
 app.get('/high_score', (req, res, next) => {
