@@ -15,14 +15,16 @@ router.post('/', async function(req, res, next) {
   db.attemptLogin(body.uname, body.pass)
   .then(success => {
     if (success) {
+      res.cookie('edubot-cookie', body.uname);
+
       // Student login
       if (type === db.userTypeEnum.STUDENT) {
-        res.cookie('edubot-cookie', 'student');
+        //res.cookie('edubot-cookie', 'student');
         res.sendStatus(250);
 
       // Teacher login
       } else if (type === db.userTypeEnum.TEACHER) {
-        res.cookie('edubot-cookie', 'teacher');
+        //res.cookie('edubot-cookie', 'teacher');
         res.sendStatus(251);
       }
       return;

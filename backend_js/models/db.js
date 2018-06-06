@@ -64,7 +64,7 @@ exports.insertUser = async function(params) {
   .then(db_res => {
     return true;
   })
-  .catch(e => reject(e));
+  .catch(e => Promise.reject(e));
 }
 
 // Returns true for successfull login, false otherwise

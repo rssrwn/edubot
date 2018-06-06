@@ -1,9 +1,14 @@
-module.exports = function(req, res, next) {
+const db = require('../models/db.js');
+
+module.exports = async function(req, res, next) {
   // console.log("student cookies auth", req.cookies);
-  value = req.cookies['edubot-cookie'];
-  if (value === 'student') {
-    next()
+  uname = req.cookies['edubot-cookie'];
+  var type = await db.getUserType(uname);
+
+  if (type === db.userTypeEnum.STUDENT) {
+    next();
   } else {
-    res.status(401).send("Access denied");
+    console.log(uname, " was denied student access");
+    res.status(401).send("You do not have permission to access this page");
   }
 }
