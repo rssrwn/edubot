@@ -27,32 +27,28 @@ function compareHash(pass, hash) {
 
 // Get the type of the user with uname
 exports.getUserType = async function(uname) {
-  return new Promise(function (resolve, reject) {
-    pool.query("select users.type from users where uname=$1;", [uname])
-    .then(db_res => {
-      if (db_res.rows[0].type === 1) {
-        resolve(userTypeEnum.STUDENT);
-      } else if (db_res.rows[0].type === 2) {
-        resolve(userTypeEnum.TEACHER);
-      }
-    })
-    .catch(e => reject(e));
-  });
+  pool.query("select users.type from users where uname=$1;", [uname])
+  .then(db_res => {
+    if (db_res.rows[0].type === 1) {
+      resolve(userTypeEnum.STUDENT);
+    } else if (db_res.rows[0].type === 2) {
+      resolve(userTypeEnum.TEACHER);
+    }
+  })
+  .catch(e => reject(e));
 }
 
 // Returns true is the given username is free
 exports.unameFree = async function(uname) {
-  return new Promise(function(resolve, reject) {
-    pool.query("select * from users where uname=$1;", [uname])
-    .then(db_res => {
-      if (db_res.rows.length !== 0) {
-        resolve(false);
-      } else {
-        resolve(true);
-      }
-    })
-    .catch(e => reject(e));
-  });
+  pool.query("select * from users where uname=$1;", [uname])
+  .then(db_res => {
+    if (db_res.rows.length !== 0) {
+      resolve(false);
+    } else {
+      resolve(true);
+    }
+  })
+  .catch(e => reject(e));
 }
 
 // Inserts user with required params into db
@@ -69,29 +65,25 @@ exports.insertUser = async function(params) {
 
 // Returns true for successfull login, false otherwise
 exports.attemptLogin = async function(uname, pass) {
-  return new Promise(function(resolve, reject) {
-    pool.query("select users.uname, users.hash from users where uname=$1", [uname])
-    .then(db_res => {
-      if (db_res.rows.length !== 0 && compareHash(pass, db_res.rows[0].hash)) {
-        resolve(true);
-      } else {
-        resolve(false);
-      }
-    })
-    .catch(e => reject(e));
-  });
+  pool.query("select users.uname, users.hash from users where uname=$1", [uname])
+  .then(db_res => {
+    if (db_res.rows.length !== 0 && compareHash(pass, db_res.rows[0].hash)) {
+      resolve(true);
+    } else {
+      resolve(false);
+    }
+  })
+  .catch(e => reject(e));
 }
 
 // Insert class into db with given name, school_id and teacher username
 exports.insertClass = async function(name, school_id, teacher) {
-  return new Promise(function(resolve, reject) {
-    //var db_res = await pool.query("select MAX(class_id) from class;");
-    //console.log(db_res);
-    //var max = db_res.rows[0]; //??
-    //console.log(max);
-    await pool.query("insert into class values ($1, (select MAX(class_id) from class)+1, $2, $3);", [school_id, name, teacher]);
-    resolve(true);
-  });
+  //var db_res = await pool.query("select MAX(class_id) from class;");
+  //console.log(db_res);
+  //var max = db_res.rows[0]; //??
+  //console.log(max);
+  await pool.query("insert into class values ($1, (select MAX(class_id) from class)+1, $2, $3);", [school_id, name, teacher]);
+  resolve(true);
 }
 
 // Add a member with given uname into class with class_id
