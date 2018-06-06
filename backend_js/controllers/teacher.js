@@ -25,7 +25,26 @@ router.get('/student', (req, res, next) => {
 });
 
 router.get('/level_selection', (req, res, next) => {
-
+  var context = {
+    student: true,
+    categories: [
+      {
+        categoryName: "Introduction",
+        levels: [
+          {number: 1},
+          {number: 2}
+        ]
+      },
+      {
+        categoryName: "Looping",
+        levels: [
+          {number: 1},
+          {number: 2}
+        ]
+      }
+    ]
+  };
+  res.render('teacher/level_select', context);
 });
 
 router.get('/account', (req, res, next) => {
