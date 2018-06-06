@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EduBot</title>
+  <link rel="stylesheet" type="text/css" href="base_style.css">
+  <link rel="stylesheet" type="text/css" href="level_intro.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+  <h1 class="titles">Loops and Conditionals</h1>
+  
+  <div class="descriptionDiv">
+    <p>
+      So far we have covered simple instructions such as move forward, turn left and turn right, using these to feed poor edubot. However, when the environment becomes larger or more complicated, manually telling edubot what to do will become tedious. A level with 20 bolts to eat will require at minimum 20 code blocks!
+    </p>
+      
+    <p>
+      This is where loops and conditionals come in. A loop lets edubot repeat an action multiple times. It may repeat a fixed number of times or perhaps repeat until edubot hits a wall. By taking advantage of patterns in the level, we can code edubot using far fewer instructions.
+    </p>
+  </div>
+  
+  <h2 class="titles">Level 1 - Basic Object Oriented Programming</h2>
+  
+  <div id="levelDiv" class="descriptionDiv">
+    <div id="levelDescriptionDiv" class="descriptionDiv">
+      <p>
+        Blocks available:
+        
+        <img id="blocksImage" src="../images/loops_blocks.png" alt="Available blocks"></img>
+        
+        <!-- <ul>
+          <li>Move forward</li>
+          <li>Rotate left</li>
+          <li>Rotate right</li>
+          <li>Repeat X Times</li>
+          <li>Repeat until CONDITION</li>
+          <li>Is wall in front</li>
+          <li>Not CONDITION</li>
+        </ul> -->
+      </p>
+      
+      <p>
+        Hints:
+        <ul>
+          <li>You can program your robot to behave differently when it encounters a wall by adding a wall in front block to a repeat-while block.</li>
+          <li>If you're stuck, you can start by manually guiding the robot around the level and seeing what patterns appear in the actions, and what can be placed in a loop.</li>
+        </ul>
+      </p>
+    </div>
+    
+    <img id="levelImage" src="../images/loops_and_iteration_1.png" alt="loops_and_iteration_1"></img>
+  </div>
+
+  <button id="levelButton" type="button">Try Level</button>
+
+</body>
+</html>
