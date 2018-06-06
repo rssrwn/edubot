@@ -16,13 +16,23 @@ exports.userTypeEnum = {
   TEACHER: 2,
 };
 
+userTypeEnum = {
+  NEITHER: 0,
+  STUDENT: 1,
+  TEACHER: 2,
+};
+
 function hashPass(pass) {
   let hash = bcrypt.hashSync(pass, 10);
   return hash;
 }
 
 function compareHash(pass, hash) {
-  return bcrypt.compareSync(pass, hash);
+  console.log(pass, hash);
+  console.log(hashPass(pass));
+  ret = bcrypt.compareSync(pass, hash);
+  console.log(ret);
+  return ret;
 }
 
 exports.getUserType = function(uname) {
