@@ -10,19 +10,17 @@ function httpGet(url, callback) {
 }
 
 async function httpPost(url, params, callback) {
-  console.log(url);
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("POST", url, true); // true for asynchronous
   xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   xmlHttp.onreadystatechange = function() {
     if (xmlHttp.readyState == XMLHttpRequest.DONE) {
-      console.log("hello", xmlHttp.status);
       callback(xmlHttp.status);
     }
   }
-  var postParams = "";
 
+  var postParams = "";
   for (var key in params) {
     postParams += key + "=" + params[key] + "&";
   }

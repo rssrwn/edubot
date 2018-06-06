@@ -1,5 +1,5 @@
 module.exports = function(req, res, next) {
-  console.log("student cookies auth", req.cookies);
+  // console.log("student cookies auth", req.cookies);
   value = req.cookies['edubot-cookie'];
   if (value === 'student') {
     next()

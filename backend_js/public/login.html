@@ -38,8 +38,7 @@
     </form>
 
     <script>
-    async function validateForm() {
-      console.log('validateForm');
+    function validateForm() {
       let uname = document.forms["loginForm"]["uname"].value;
       let pass = document.forms["loginForm"]["pass"].value;
 
@@ -55,11 +54,11 @@
 
     function buildForm(status) {
       switch (status) {
-        case 200: break; // login
+        case 250: location.href='/student/level_selection'; break; // student login
+        case 251: location.href='/teacher/classes'; break; // teacher login
         case 401: alert("The username and/or password are incorrect."); break;
-        default:  console.log('status:', status); alert("Unknown error occurred: " + status + ".");
+        default: alert("Unknown error occurred: " + status + ".");
       }
-      location.href='/student/level_selection';
     };
     </script>
   </div>
