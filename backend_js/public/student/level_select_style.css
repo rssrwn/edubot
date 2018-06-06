@@ -9,10 +9,6 @@
   margin-right: 20%;
 }
 
-#nameDiv {
-  
-}
-
 .categoryDiv {
   padding-top: 30px;
 }
@@ -26,6 +22,12 @@
 .levelDiv h3 {
   text-align: left;
   padding-top: 10px;
+}
+
+.nameDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .starImage {
