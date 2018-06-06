@@ -13,6 +13,10 @@ html, body {
   color: inherit;
 }
 
+.hoverLink:hover {
+  color: #6b6a6a;
+}
+
 #page {
   display: table;
   width: 100%;
@@ -23,5 +27,5 @@ html, body {
   display: table-row;
   width: 100%;
   height: 100%;
-  background-color: #e4dfda;
+  // background-color: #e4dfda;
 }
