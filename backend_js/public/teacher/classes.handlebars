@@ -18,11 +18,11 @@
     {{> banners/teacher}}
     {{/if}}
     
-    <ul id="classList">
+    <div id="classList">
       {{#each class_list}}
-        <li>{{> class_box this}}</li>
+        <div>{{> class_box this}}</div>
       {{/each}}
-    </ul>
+    </div>
 
     <div id="addClass">
       <button type="button" onclick="todo(event)">Add Class</button>
