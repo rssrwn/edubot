@@ -12,10 +12,10 @@ const app = express();
 app.engine('handlebars', exphbs({
         partialsDir:'./public/partials',
         helpers: {
-          for: function(from, to, incr, block) {
+          for: function(from, to, increment, elem) {
             let code = "";
-            for (let i = from; i < to; i += incr) {
-              code += block.fn(i);
+            for (let i = from; i < to; i += increment) {
+              code += elem.fn(i);
             }
             return code;
           }
