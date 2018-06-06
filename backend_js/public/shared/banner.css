@@ -6,6 +6,7 @@
   text-align: left;
   line-height: 80px;
   font-size: 25px;
+  border-bottom: 1px solid black;
 }
 
 .logoImage {
@@ -84,13 +85,4 @@
   text-align: center;
   vertical-align: middle;
   background-color: #e68119;
-}
-
-.linkPlain {
-  text-decoration: none;
-  color: inherit;
-}
-
-.hoverLink:hover {
-  color: #6b6a6a;
 }
