@@ -1,5 +1,6 @@
 <div class='categoryDiv'>
   <h2>{categoryName}</h2>
-  <div class='levelDiv'>Level 1</div>
-  <div class='levelDiv'>Level 2</div>
+  {{#each levels}}
+    {{> level_select_scores this}}
+  {{/each}}
 </div>
