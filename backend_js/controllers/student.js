@@ -9,15 +9,16 @@ router.get('/level_selection', (req, res, next) => {
       {
         categoryName: "Introduction",
         levels: [
-          {stars: 1, number: 1},
-          {stars: 3, number: 2}
+          {stars: 1, number: 1, name: "Using blocks"},
+          {stars: 3, number: 2, name: "Basic movement"},
+          {stars: 2, number: 3, name: "Advanced movement"}
         ]
       },
       {
         categoryName: "Looping",
         levels: [
-          {stars: 2, number: 1},
-          {stars: 0, number: 2}
+          {stars: 2, number: 1, name: "Basic looping"},
+          {stars: 0, number: 2, name: "Advanced looping"}
         ]
       }
     ]
