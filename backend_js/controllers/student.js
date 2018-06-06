@@ -9,27 +9,15 @@ router.get('/level_selection', (req, res, next) => {
       {
         categoryName: "Introduction",
         levels: [
-          {
-            stars: 1,
-            number: 1
-          },
-          {
-            stars: 3,
-            number: 2
-          }
+          {stars: 1, number: 1},
+          {stars: 3, number: 2}
         ]
       },
       {
         categoryName: "Looping",
         levels: [
-          {
-            stars: 2,
-            number: 1
-          },
-          {
-            stars: 0,
-            number: 2
-          }
+          {stars: 2, number: 1},
+          {stars: 0, number: 2}
         ]
       }
     ]
