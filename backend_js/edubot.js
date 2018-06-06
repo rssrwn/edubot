@@ -35,8 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Our middleware (top executed first)
 app.use(require('./middlewares/res_header'));
-app.use('/teacher', require('./middlewares/teacher_auth'));
-app.use('/student', require('./middlewares/student_auth'));
+//app.use('/teacher', require('./middlewares/teacher_auth'));
+//app.use('/student', require('./middlewares/student_auth'));
 app.use(require('./controllers'));
 
 // Listen on port
