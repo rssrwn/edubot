@@ -14,7 +14,7 @@
 }
 
 .levelDiv {
-  align-content: center;
+  display: flex;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -33,6 +33,7 @@
 .starImage {
   width: 30px;
   height: 30px;
+  vertical-align: middle;
 }
 
 .starsDiv {
