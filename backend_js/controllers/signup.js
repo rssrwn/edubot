@@ -8,6 +8,7 @@ router.post('/', (req, res, next) => {
   db.unameFree(body.uname)
   .then(free => {
     if (free) {
+      console.log("hello", body);
       db.insertUser(body)
       .catch(e => next(e));
 
