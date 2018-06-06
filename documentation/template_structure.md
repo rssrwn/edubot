@@ -1,7 +1,7 @@
 # Names
 
 - student/
-  - level_selection
+  - [x] level_selection
   - level_results
   - account
 - teacher/
