@@ -6,7 +6,7 @@ const db = require('../models/db.js');
 router.post('/', (req, res, next) => {
   const body = req.body;
   type = db.userTypeEnum.NEITHER;
-  db.getUserType(uname)
+  db.getUserType(body.uname)
   .then(res => {
     type = res;
   })
