@@ -5,7 +5,7 @@ const db = require('../models/db.js');
 
 router.post('/', (req, res, next) => {
   const body = req.body;
-  type = userTypeEnum.NEITHER;
+  type = db.userTypeEnum.NEITHER;
   db.getUserType(uname)
   .then(res => {
     type = res;
@@ -15,12 +15,12 @@ router.post('/', (req, res, next) => {
   db.attemptLogin(body.uname, body.pass)
   .then(success => {
     if (success) {
-      if (type === userTypeEnum.STUDENT) {
+      if (type === db.userTypeEnum.STUDENT) {
         res.cookie('edubot-cookie', 'student');
-      } else if (type === userTypeEnum.TEACHER) {
+      } else if (type === db.userTypeEnum.TEACHER) {
         res.cookie('edubot-cookie', 'teacher');
       }
-      
+
       res.sendStatus(200);
       return;
     }
@@ -29,18 +29,9 @@ router.post('/', (req, res, next) => {
   .catch(err => next(err));
 });
 
-/*
-router.get('/', (req, res, next) => {
-  //res.send('you reached login');
-  //var stuff = hbs.getTemplate('index.handlebars')();
-  //console.log(stuff);
-  //fs.readFile('./views/banners/student.html', 'utf8', function(err, html) {
-  //  console.log('hi' + html);
-  //  res.render('index', {banner: html, name: 'Ross', occupation: 'stuff'} );
-  //});
-  res.render('index', {student: false, name: 'Ross', occupation: 'stuff'});
-  //res.sendFile('index.html');
-});
-*/
+/*router.get('/', (req, res, next) => {
+  res.sendFile(__dirname + '/../login.html');
+});*/
+
 
 module.exports = router;
