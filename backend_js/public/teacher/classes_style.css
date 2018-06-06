@@ -1,0 +1,27 @@
+.classBox {
+  margin: 20px auto;
+  padding: 20px;
+  width: 500px;
+  border-radius: 25px;
+  background-color: #d2d2d2d2;
+  text-align: center;
+}
+
+.className {
+  font-size: 30px;
+}
+
+.classMembersTable {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px auto;
+}
+
+td, th {
+  text-align: left;
+  padding: 8px;
+}
+
+#addClass {
+  text-align: center;
+}
