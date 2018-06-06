@@ -6,9 +6,8 @@
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="../shared/base_style.css">
   <link rel="stylesheet" type="text/css" href="../shared/banner.css">
-  <link rel="stylesheet" type="text/css" href="classes_style.css">
+  <link rel="stylesheet" type="text/css" href="level_select_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
 </head>
 <body>
   <div id="page">
@@ -17,15 +16,15 @@
     {{else}}
     {{> banners/teacher}}
     {{/if}}
-    
-    <ul id="classList">
-      {{#each class_list}}
-        <li>{{> class_box this}}</li>
-      {{/each}}
-    </ul>
-
-    <div id="addClass">
-      <button type="button" onclick="todo(event)">Add Class</button>
+    <div id="contentDiv">
+      <div id="selectionWrapperDiv">
+        <h1>Level Selection</h1>
+        <div id="selectionDiv">
+          {{#each categories}}
+            {{> teacher/category_block this}}
+          {{/each}}
+        </div>
+      </div>
     </div>
   </div>
 </body>

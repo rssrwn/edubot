@@ -4,27 +4,53 @@
 <head>
   <meta charset="utf-8">
   <title>EduBot</title>
-  <link rel="stylesheet" type="text/css" href="../base_style.css">
-  <link rel="stylesheet" type="text/css" href="../partials/banners/style/banner.css">
-  <link rel="stylesheet" type="text/css" href="style/level_intro.css">
+  <link rel="stylesheet" type="text/css" href="base_style.css">
+  <link rel="stylesheet" type="text/css" href="banner.css">
+  <link rel="stylesheet" type="text/css" href="level_intro.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
 </head>
+
 <body>
   <div id="page">
-    {{banner}}
+    {{#if student}}
+    {{> banners/student}}
+    {{else}}
+    {{> banners/teacher}}
+    {{/if}}
     
-    <h1 id="conceptTitle">{{concept}}</h1>
+    <h1 class="titles">{{concept}}</h1>
     
-    <p id="conceptDescription">{{concept_description}}</p>
-    
-    <h2 id="levelTitle">{{level}}</h2>
-    
-    <div id="levelDescriptionDiv">
-      {{blocks_available}}
-      {{hints}}
+    <div class="descriptionDiv">
+      {{{concept_description}}}
     </div>
-    <img id="levelImage" src="{{level_image}}"/>
+    
+    <h2 class="titles">{{level_name}}</h2>
+    
+    <div id="levelDiv" class="descriptionDiv clearFix">
+      <div id="levelDescriptionDiv" class="descriptionDiv clearFix">
+        <p>
+          Blocks available:
+          
+          <br>
+          
+          <img id="blocksImage" src={{blocks_available}} alt="Available blocks"></img>
+        </p>
+        
+        <p>
+          Hints:
+          <ul>
+            {{#each hints}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </p>
+      </div>
+      
+      <img id="levelImage" src="{{level_image}}"/>
+      <!--<img id="levelImage" src="../images/loops_and_iteration_1.png" alt="loops_and_iteration_1"></img>-->
+    </div>
+
+    <button id="levelButton" type="button" onclick="location.href='/play'">Try Level</button>
   </div>
 </body>
 </html>
