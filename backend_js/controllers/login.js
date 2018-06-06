@@ -9,6 +9,7 @@ router.post('/', (req, res, next) => {
   db.attemptLogin(body.uname, body.pass)
   .then(success => {
     if (success) {
+      res.cookie('edubot-cookie', 'student');
       res.sendStatus(200);
       return;
     }
