@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="shared/base_style.css">
   <link rel="stylesheet" type="text/css" href="signup.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  
+
   <script src="../scripts/backend_utils.js"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
         <h1 id="titleDiv">EduBot</h1>
       </div>
     </div>
-    
+
     <form name="signupForm">
       <div id="formDiv">
         <label class="formItem"><b>Username</b></label>
@@ -44,13 +44,13 @@
         <label class="formItem"><b>School ID</b></label>
         <input class="formItem" type="text" placeholder="Enter School ID" name="sch_id" required>
         <br>
-        
+
         <div id="formButtons">
           <button class="formItem" type="button" onclick="validateForm();">Create New Account</button>
         </div>
       </div>
     </form>
-    
+
     <script>
     function validateForm() {
       let uname = document.forms["signupForm"]["uname"].value;
@@ -59,16 +59,16 @@
       let lname = document.forms["signupForm"]["lname"].value;
       let age = document.forms["signupForm"]["age"].value;
       let sch_id = document.forms["signupForm"]["sch_id"].value;
-      
+
       if (isNaN(age) || isNaN(sch_id)) {
         alert("Please enter a number for the age and school id.");
       } else if (pass.length < 6) {
         alert("Please enter a password at least 6 characters long.");
       } else if (uname && pass && fname && lname && age && sch_id) {
-        httpPost('https://edubot-backend.herokuapp.com/signup', {uname: uname, pass: pass, fname: fname, lname: lname, age: age, sch_id: sch_id}, buildForm);
+        httpPost('https://edubot-backend.herokuapp.com/signup', {uname: uname, pass: pass, fname: fname, lname: lname, type=1, age: age, sch_id: sch_id}, buildForm);
       }
     }
-    
+
     function buildForm(status) {
       switch (status) {
         case 200: break; // signup
@@ -77,6 +77,6 @@
       }
     }
     </script>
-  </div>  
+  </div>
 </body>
 </html>

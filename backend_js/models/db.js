@@ -27,16 +27,18 @@ function compareHash(pass, hash) {
 
 exports.getUserType = function(uname) {
   return new Promise(function (resolve, reject) {
-    pool.query("select * from users where uname=$1;", [uname])
+    pool.query("select users.type from users where uname=$1;", [uname])
     .then(db_res => {
       if (db_res.rows.length !== 0) {
+        console.log(db_res.rows);
         resolve(userTypeEnum.STUDENT);
-        return;
+      } else {
+        resolve(userTypeEnum.NEITHER);
       }
     })
     .catch(e => reject(e));
 
-    pool.query("select * from teacher where uname=$1", [uname])
+    /*pool.query("select * from teacher where uname=$1", [uname])
     .then(db_res => {
       if (db_res.rows.length !== 0) {
         resolve(userTypeEnum.TEACHER);
@@ -44,7 +46,7 @@ exports.getUserType = function(uname) {
         resolve(userTypeEnum.NEITHER);
       }
     })
-    .catch(e => reject(e));
+    .catch(e => reject(e));*/
   });
 }
 
@@ -67,8 +69,9 @@ exports.unameFree = function(uname) {
 exports.insertUser = function(params) {
   return new Promise(function(resolve, reject) {
     const hash = hashPass(params.pass);
-    pool.query("insert into users values ($1, $2, $3, $4, $5, $6);",
-      [params.uname, hash, params.fname, params.lname, params.age, params.sch_id])
+    pool.query("insert into users values ($1, $2, $3, $4, $5, $6, $7);",
+      [params.uname, hash, params.fname, params.lname, params.type,
+      params.age, params.sch_id])
     .then(db_res => {
       resolve(true);
     })
