@@ -18,39 +18,41 @@
     {{> banners/teacher}}
     {{/if}}
     
-    <h1 class="titles">{{concept}}</h1>
-    
-    <div class="descriptionDiv">
-      {{{concept_description}}}
-    </div>
-    
-    <h2 class="titles">{{level_name}}</h2>
-    
-    <div id="levelDiv" class="descriptionDiv clearFix">
-      <div id="levelDescriptionDiv" class="descriptionDiv clearFix">
-        <p>
-          Blocks available:
-          
-          <br>
-          
-          <img id="blocksImage" src={{blocks_available}} alt="Available blocks"></img>
-        </p>
-        
-        <p>
-          Hints:
-          <ul>
-            {{#each hints}}
-              <li>{{this}}</li>
-            {{/each}}
-          </ul>
-        </p>
+    <div id="contentDiv">
+      <h1 class="titles">{{concept}}</h1>
+      
+      <div class="descriptionDiv">
+        {{{concept_description}}}
       </div>
       
-      <img id="levelImage" src="{{level_image}}"/>
-      <!--<img id="levelImage" src="../images/loops_and_iteration_1.png" alt="loops_and_iteration_1"></img>-->
-    </div>
+      <h2 class="titles">{{level_name}}</h2>
+      
+      <div id="levelDiv" class="descriptionDiv clearFix">
+        <div id="levelDescriptionDiv" class="descriptionDiv clearFix">
+          <p>
+            Blocks available:
+            
+            <br>
+            
+            <img id="blocksImage" src={{blocks_available}} alt="Available blocks"></img>
+          </p>
+          
+          <p>
+            Hints:
+            <ul>
+              {{#each hints}}
+                <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          </p>
+        </div>
+        
+        <img id="levelImage" src="{{level_image}}"/>
+        <!--<img id="levelImage" src="../images/loops_and_iteration_1.png" alt="loops_and_iteration_1"></img>-->
+      </div>
 
-    <button id="levelButton" type="button" onclick="location.href='/shared/play'">Try Level</button>
+      <button id="levelButton" type="button" onclick="location.href='/shared/play'">Try Level</button>
+    </div>
   </div>
 </body>
 </html>
