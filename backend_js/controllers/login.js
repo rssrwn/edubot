@@ -15,9 +15,9 @@ router.post('/', (req, res, next) => {
   db.attemptLogin(body.uname, body.pass)
   .then(success => {
     if (success) {
-      if (type === userTypeEnum.STUDENT) {
+      if (type === db.userTypeEnum.STUDENT) {
         res.cookie('edubot-cookie', 'student');
-      } else if (type === userTypeEnum.TEACHER) {
+      } else if (type === db.userTypeEnum.TEACHER) {
         res.cookie('edubot-cookie', 'teacher');
       }
 
