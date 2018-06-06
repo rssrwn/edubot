@@ -85,3 +85,8 @@
   vertical-align: middle;
   background-color: #e68119;
 }
+
+.linkPlain {
+  text-decoration: none;
+  color: inherit;
+}
