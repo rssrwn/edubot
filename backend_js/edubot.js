@@ -12,10 +12,10 @@ const app = express();
 app.engine('handlebars', exphbs({
         partialsDir:'./public/partials',
         helpers: {
-          for: function(from, to, incr, block) {
+          for: function(from, to, increment, elem) {
             let code = "";
-            for (let i = from; i < to; i += incr) {
-              code += block.fn(i);
+            for (let i = from; i < to; i += increment) {
+              code += elem.fn(i);
             }
             return code;
           }
@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use('/shared', express.static(path.join(__dirname, 'public/shared'))); // Do something better here
+//app.use('/shared', express.static(path.join(__dirname, 'public/shared')));
 //app.use('/student', express.static(path.join(__dirname, 'public/student')));
 //app.use('/teacher', express.static(path.join(__dirname, 'public/teacher')));
 

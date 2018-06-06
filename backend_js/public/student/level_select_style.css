@@ -9,19 +9,12 @@
   margin-right: 20%;
 }
 
-#nameDiv {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .categoryDiv {
   padding-top: 30px;
 }
 
 .levelDiv {
-  align-content: center;
+  display: flex;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -31,9 +24,16 @@
   padding-top: 10px;
 }
 
+.nameDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .starImage {
   width: 30px;
   height: 30px;
+  vertical-align: middle;
 }
 
 .starsDiv {

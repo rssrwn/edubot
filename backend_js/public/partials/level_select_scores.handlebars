@@ -1,29 +1,8 @@
 <div class="levelDiv">
-  <span id="nameDiv">
+  <span class="nameDiv">
     Level {{number}}
   </span>
-  <span class="starsDiv">
-    {{#if score0}}
-    <img class="starImage", alt="star", src="../images/star_empty.png">
-    <img class="starImage", alt="star", src="../images/star_empty.png">
-    <img class="starImage", alt="star", src="../images/star_empty.png">
-
-    {{else if score1}}
-    <img class="starImage", alt="star", src="../images/star_filled.png">
-    <img class="starImage", alt="star", src="../images/star_empty.png">
-    <img class="starImage", alt="star", src="../images/star_empty.png">
-
-    {{else if score2}}
-    <img class="starImage", alt="star", src="../images/star_filled.png">
-    <img class="starImage", alt="star", src="../images/star_filled.png">
-    <img class="starImage", alt="star", src="../images/star_empty.png">
-
-    {{else if score3}}
-    <img class="starImage", alt="star", src="../images/star_filled.png">
-    <img class="starImage", alt="star", src="../images/star_filled.png">
-    <img class="starImage", alt="star", src="../images/star_filled.png">
-    {{/if}}
-    
+  <span class="starsDiv">    
     {{#for 0 stars 1}}
       <img class="starImage", alt="star", src="../images/star_filled.png">
     {{/for}}

@@ -5,11 +5,22 @@ const db = require('../models/db.js');
 
 router.post('/', (req, res, next) => {
   const body = req.body;
+  type = userTypeEnum.NEITHER;
+  db.getUserType(uname)
+  .then(res => {
+    type = res;
+  })
+  .catch(err => next(err));
 
   db.attemptLogin(body.uname, body.pass)
   .then(success => {
     if (success) {
-      res.cookie('edubot-cookie', 'student');
+      if (type === userTypeEnum.STUDENT) {
+        res.cookie('edubot-cookie', 'student');
+      } else if (type === userTypeEnum.TEACHER) {
+        res.cookie('edubot-cookie', 'teacher');
+      }
+      
       res.sendStatus(200);
       return;
     }
