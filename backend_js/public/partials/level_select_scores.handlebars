@@ -23,5 +23,12 @@
     <img class="starImage", alt="star", src="../images/star_filled.png">
     <img class="starImage", alt="star", src="../images/star_filled.png">
     {{/if}}
+    
+    {{#for 0 stars 1}}
+      <img class="starImage", alt="star", src="../images/star_filled.png">
+    {{/for}}
+    {{#for stars 3 1}}
+      <img class="starImage", alt="star", src="../images/star_empty.png">
+    {{/for}}
   </span>
 </div>
