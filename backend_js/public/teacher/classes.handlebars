@@ -17,15 +17,16 @@
     {{else}}
     {{> banners/teacher}}
     {{/if}}
-    
-    <div id="classList">
-      {{#each class_list}}
-        <div>{{> class_box this}}</div>
-      {{/each}}
-    </div>
+    <div id="contentDiv">
+      <div id="classList">
+        {{#each class_list}}
+          <div>{{> class_box this}}</div>
+        {{/each}}
+      </div>
 
-    <div id="addClass">
-      <button type="button" onclick="todo(event)">Add Class</button>
+      <div id="addClass">
+        <button type="button" onclick="todo(event)">Add Class</button>
+      </div>
     </div>
   </div>
 </body>
