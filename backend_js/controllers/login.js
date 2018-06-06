@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
 const router = express.Router();
 const db = require('../models/db.js');
 
@@ -37,9 +38,9 @@ router.post('/', async function(req, res, next) {
 
 });
 
-/*router.get('/', (req, res, next) => {
-  res.sendFile(__dirname + './login.html');
-});*/
+router.get('/', (req, res, next) => {
+  res.sendFile(path.join(__dirname + './../public/login.html'));
+});
 
 
 module.exports = router;
