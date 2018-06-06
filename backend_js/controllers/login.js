@@ -3,14 +3,14 @@ const fs = require('fs');
 const router = express.Router();
 const db = require('../models/db.js');
 
-router.post('/', (req, res, next) => {
+router.post('/', async function(req, res, next) {
   const body = req.body;
   type = db.userTypeEnum.NEITHER;
-  db.getUserType(body.uname)
-  .then(res => {
-    type = res;
-  })
-  .catch(err => next(err));
+  try {
+    type = await db.getUserType(body.uname);
+  } catch(e) {
+    next(e);
+  };
 
   db.attemptLogin(body.uname, body.pass)
   .then(success => {
@@ -20,13 +20,13 @@ router.post('/', (req, res, next) => {
       } else if (type === db.userTypeEnum.TEACHER) {
         res.cookie('edubot-cookie', 'teacher');
       }
-
       res.sendStatus(200);
-      return;
+    } else {
+      res.status(401).send("Failed login");
     }
-    res.status(401).send("Failed login");
   })
   .catch(err => next(err));
+
 });
 
 /*router.get('/', (req, res, next) => {

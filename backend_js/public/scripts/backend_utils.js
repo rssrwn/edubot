@@ -9,13 +9,15 @@ function httpGet(url, callback) {
   xmlHttp.send();
 }
 
-function httpPost(url, params, callback) {
+async function httpPost(url, params, callback) {
+  console.log(url);
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("POST", url, true); // true for asynchronous
   xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   xmlHttp.onreadystatechange = function() {
     if (xmlHttp.readyState == XMLHttpRequest.DONE) {
+      console.log("hello", xmlHttp.status);
       callback(xmlHttp.status);
     }
   }

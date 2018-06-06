@@ -26,7 +26,7 @@ function compareHash(pass, hash) {
 }
 
 // Get the type of the user with uname
-exports.getUserType = function(uname) {
+exports.getUserType = async function(uname) {
   return new Promise(function (resolve, reject) {
     pool.query("select users.type from users where uname=$1;", [uname])
     .then(db_res => {
@@ -41,7 +41,7 @@ exports.getUserType = function(uname) {
 }
 
 // Returns true is the given username is free
-exports.unameFree = function(uname) {
+exports.unameFree = async function(uname) {
   return new Promise(function(resolve, reject) {
     pool.query("select * from users where uname=$1;", [uname])
     .then(db_res => {
@@ -56,21 +56,19 @@ exports.unameFree = function(uname) {
 }
 
 // Inserts user with required params into db
-exports.insertUser = function(params) {
-  return new Promise(function(resolve, reject) {
-    const hash = hashPass(params.pass);
-    pool.query("insert into users values ($1, $2, $3, $4, $5, $6, $7);",
+exports.insertUser = async function(params) {
+  const hash = hashPass(params.pass);
+  pool.query("insert into users values ($1, $2, $3, $4, $5, $6, $7);",
       [params.uname, hash, params.fname, params.lname, params.type,
       params.age, params.sch_id])
-    .then(db_res => {
-      resolve(true);
-    })
-    .catch(e => reject(e));
-  });
+  .then(db_res => {
+    return true;
+  })
+  .catch(e => reject(e));
 }
 
 // Returns true for successfull login, false otherwise
-exports.attemptLogin = function(uname, pass) {
+exports.attemptLogin = async function(uname, pass) {
   return new Promise(function(resolve, reject) {
     pool.query("select users.uname, users.hash from users where uname=$1", [uname])
     .then(db_res => {

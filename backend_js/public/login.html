@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="shared/base_style.css">
   <link rel="stylesheet" type="text/css" href="login.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  
+
   <script src="../scripts/backend_utils.js"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
         <h1 id="titleDiv">EduBot</h1>
       </div>
     </div>
-    
+
     <form name="loginForm">
       <div id="formDiv">
         <label class="formItem"><b>Username</b></label>
@@ -28,38 +28,40 @@
         <label class="formItem"><b>Password</b></label>
         <input class="formItem" type="password" placeholder="Enter Password" name="pass" required>
         <br><br>
-        
+
         <div id="formButtons">
-          <!--<button class="formItem" type="button" onclick="validateForm();">Login</button>-->
-          <button class="formItem" type="button" onclick="location.href='/teacher/classes'">Login</button>
+          <button class="formItem" type="button" onclick="validateForm()">Login</button>
 
           <button class="formItem" type="button" onclick="forgotPassword()">Forgot Password</button>
         </div>
       </div>
     </form>
-    
+
     <script>
-    function validateForm() {      
+    async function validateForm() {
+      console.log('validateForm');
       let uname = document.forms["loginForm"]["uname"].value;
       let pass = document.forms["loginForm"]["pass"].value;
-      
+
       if (uname && pass) {
         httpPost('https://edubot-backend.herokuapp.com/login', {uname: uname, pass: pass}, buildForm);
+        //httpPost('http://localhost:3000/login', {uname: uname, pass: pass}, buildForm);
       }
-    }
-    
+    };
+
     function forgotPassword() {
       alert("Please contact your school to reset your password.");
-    }
-    
+    };
+
     function buildForm(status) {
       switch (status) {
         case 200: break; // login
         case 401: alert("The username and/or password are incorrect."); break;
-        default: alert("Unknown error occurred: " + status + ".");
+        default:  console.log('status:', status); alert("Unknown error occurred: " + status + ".");
       }
-    }
+      location.href='/teacher/classes';
+    };
     </script>
-  </div>  
+  </div>
 </body>
 </html>
