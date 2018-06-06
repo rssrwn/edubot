@@ -27,16 +27,18 @@ function compareHash(pass, hash) {
 
 exports.getUserType = function(uname) {
   return new Promise(function (resolve, reject) {
-    pool.query("select * from users where uname=$1;", [uname])
+    pool.query("select users.type from users where uname=$1;", [uname])
     .then(db_res => {
       if (db_res.rows.length !== 0) {
+        console.log(db_res.rows);
         resolve(userTypeEnum.STUDENT);
-        return;
+      } else {
+        resolve(userTypeEnum.NEITHER);
       }
     })
     .catch(e => reject(e));
 
-    pool.query("select * from teacher where uname=$1", [uname])
+    /*pool.query("select * from teacher where uname=$1", [uname])
     .then(db_res => {
       if (db_res.rows.length !== 0) {
         resolve(userTypeEnum.TEACHER);
@@ -44,7 +46,7 @@ exports.getUserType = function(uname) {
         resolve(userTypeEnum.NEITHER);
       }
     })
-    .catch(e => reject(e));
+    .catch(e => reject(e));*/
   });
 }
 

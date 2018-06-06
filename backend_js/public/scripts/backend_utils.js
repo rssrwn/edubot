@@ -1,6 +1,6 @@
 function httpGet(url, callback) {
   var xmlHttp = new XMLHttpRequest();
-  
+
   xmlHttp.onreadystatechange = function() {
     if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
       callback(xmlHttp.responseText);
@@ -13,14 +13,14 @@ function httpPost(url, params, callback) {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("POST", url, true); // true for asynchronous
   xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    
+
   xmlHttp.onreadystatechange = function() {
-    if (xmlHttp.readyState == XMLHttpRequest.DONE/* && xmlHttp.status == 200*/) {
+    if (xmlHttp.readyState == XMLHttpRequest.DONE) {
       callback(xmlHttp.status);
     }
   }
   var postParams = "";
-  
+
   for (var key in params) {
     postParams += key + "=" + params[key] + "&";
   }
