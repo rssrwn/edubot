@@ -16,7 +16,6 @@ router.get('/classes', (req, res, next) => {
       class_members: [{ fname: 'Mark', lname: 'Wheelhouse', age: 0, uname: 322}]
     }]
   };
-  };
 
   res.render('teacher/classes', context);
 });
