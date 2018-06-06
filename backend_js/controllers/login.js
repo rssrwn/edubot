@@ -28,7 +28,7 @@ router.post('/', async function(req, res, next) {
       return;
 
     } else {
-      res.status(402).send("Failed login");
+      res.status(401).send("Failed login");
     }
   })
   .catch(err => next(err));
