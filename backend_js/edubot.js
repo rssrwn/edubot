@@ -41,14 +41,3 @@ app.use(require('./controllers'));
 app.listen(PORT, () => {
   console.log(`EduBot is running on port ${ PORT }`);
 });
-
-/*
-app.get('/high_score', (req, res, next) => {
-  pool.query("select * from high_score", [])
-  .then(db_res => {
-    res.json(db_res.rows);
-    console.log(db_res.rows);
-  })
-  .catch(e => next(e));
-});
-*/
