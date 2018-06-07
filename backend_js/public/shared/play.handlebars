@@ -35,11 +35,17 @@
       <div id="visualDiv">
 
         <div id="controlsDiv">
-          <button id="runButton">Run</button>
+          <button class="runButton">Run</button>
           <button id="viewButton">View Code</button>
-          <button id="hintButton">Show Hint</button>
-          <button id="restartButton">Restart</button>
+          <button class="hintButton">Show Hint</button>
+          <button class="restartButton">Restart</button>
           <input type="file", id="loadButton", name="file", onchange="loadLevel(event)"></input>
+        </div>
+        
+        <div id="simpleControlsDiv">
+          <img src="../images/run_button.png" class="simpleControl runButton" alt="Run"/>
+          <img src="../images/restart_button.png" class="simpleControl restartButton" alt="Restart"/>
+          <img src="../images/hint_button.png" class="simpleControl hintButton" alt="Show Hint"/>
         </div>
 
         <div id="codeDiv">

@@ -57,10 +57,12 @@
         <!--<img id="levelImage" src="../images/loops_and_iteration_1.png" alt="loops_and_iteration_1"></img>-->
       </div>
 
-      <button class="levelButton" type="button" onclick="location.href='/shared/play'">Try Level</button>
-      {{#unless student}}
-      <button class="levelButton" type="button" onclick="location.href='/teacher/solution'">Sample Solution</button>
-      {{/unless}}
+      <div id="levelButtonsDiv">
+        <button class="levelButton" type="button" onclick="location.href='/shared/play'">Try Level</button>
+        {{#unless student}}
+        <button class="levelButton" type="button" onclick="location.href='/teacher/solution'">Sample Solution</button>
+        {{/unless}}
+      </div>
     </div>
   </div>
 </body>

@@ -22,6 +22,19 @@
 #controlsDiv {
   display: table-row;
   width: 100%;
+  display: none;
+}
+
+#simpleControlsDiv {
+  display: table-row;
+  width: 100%;
+  text-align: center;
+}
+
+.simpleControl {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
 }
 
 #codeDiv {
