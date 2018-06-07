@@ -81,8 +81,8 @@ var intro3Context = {
   level_image: "../images/intro_3.png"
 };
 
-router.get('/level_intro/:levelId', (req, res, next) => {
-  let levelName = req.params.levelId;
+router.get('/level_intro', (req, res, next) => {
+  let levelName = req.query.levelId;
 
   var context = null;
 
