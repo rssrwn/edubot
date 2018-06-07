@@ -26,10 +26,13 @@
       </div>
     </div>
     <script>
-      var activeButton;
+      var activeButton = null;
     
       var addMemberEvent = function(class_id, button) {
         if (activeButton) {
+          console.log(activeButton);
+          $(activeButton.addButton).remove();
+          $(activeButton.textInput).remove();
           activeButton.style.display = "inline-block";
         }
         activeButton = button;
@@ -47,9 +50,10 @@
       };
       
       var addMemberSubmitEvent = function() {
-        activeButton.addButton.style.display = "none";
-        activeButton.textInput.style.display = "none";
+        $(activeButton.addButton).remove();
+        $(activeButton.textInput).remove();
         activeButton.style.display = "inline-block";
+        activeButton = null;
       };
     </script>
   </div>
