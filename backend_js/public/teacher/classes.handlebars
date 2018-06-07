@@ -27,10 +27,16 @@
     </div>
     <script>
       var addMemberEvent = function(class_id, button) {
-        console.log(class_id);
-        console.log(button);
-        $(button).append("<input type='text'></input>")
-        console.log("clicked");
+        if (!button.adding) {
+          button.adding = true;
+          button.style.display = "none";
+          $(button).parent().append("<input type='text'></input>");
+          $(button).parent().append("<input type='button' onclick='addMemberSubmitEvent(" + button + ")'>Add</input>");
+        }
+      };
+      
+      var addMemberSubmitEvent = function() {
+        button.style.display = "inline-block";
       };
     </script>
   </div>
