@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="../shared/banner.css">
   <link rel="stylesheet" type="text/css" href="classes_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="jquery-3.3.1.min.js"></script>
 
 </head>
 <body>
@@ -24,6 +25,14 @@
         <button type="button" onclick="todo(event)">Add Class</button>
       </div>
     </div>
+    <script>
+      var addMemberEvent = function(class_id, button) {
+        console.log(class_id);
+        console.log(button);
+        $(button).append("<input type='text'></input>")
+        console.log("clicked");
+      };
+    </script>
   </div>
 </body>
 </html>
