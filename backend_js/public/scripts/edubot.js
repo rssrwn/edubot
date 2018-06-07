@@ -328,6 +328,8 @@ function parseLevel(level) {
       console.log("\nRestored full level:");
       console.log(gridLevel);
       
+      gridLevel.runtimeMillis = 0;
+      
       return gridLevel;
     } else {
       return value;

@@ -2,6 +2,10 @@ p {
   margin-bottom: 10px;
 }
 
+li {
+  margin-bottom: 10px;
+}
+
 .titles {
   display: block;
   margin: auto;
