@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/db.js');
+const levels = require('../models/level_utils.js');
+const fs = require('fs');
 
 router.get('/classes', async function(req, res, next) {
   let uname = 'teacher2'; //req.cookies["edubot-cookie"];
@@ -43,8 +45,14 @@ router.get('/student', (req, res, next) => {
   res.send('hello world');
 });
 
-router.get('/solution', (req, res, next) => {
-  res.render('teacher/solution', {});
+router.get('/solution', async function(req, res, next) {
+  let levelName = req.query.levelId;
+  let context = {student: true};
+
+  let jsonLevel = await levels.getLevel(levelName, function(jsonLevel) {
+    context.json_level = jsonLevel;
+    res.render('teacher/solution', context);
+  });
 });
 
 router.get('/level_selection', (req, res, next) => {
