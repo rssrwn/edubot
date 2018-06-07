@@ -29,7 +29,13 @@
     {{/if}}
     <div id="contentDiv">
       <div id="blocklyDiv">
-        <div id="blocklyWorkspaceDiv"> </div>
+        <div id="simpleControlsDiv">
+          <img src="../images/run.png" id="simpleRunButton" class="simpleControl" alt="Run"/>
+          <img src="../images/restart.png" id="simpleRestartButton" class="simpleControl" alt="Restart"/>
+          <img src="../images/hint.png" id="simpleHintButton" class="simpleControl" alt="Show Hint"/>
+        </div>
+        
+        <div id="blocklyWorkspaceDiv"></div>
       </div>
 
       <div id="visualDiv">
@@ -40,12 +46,6 @@
           <button id="hintButton">Show Hint</button>
           <button id="restartButton">Restart</button>
           <input type="file", id="loadButton", name="file", onchange="loadLevel(event)"></input>
-        </div>
-        
-        <div id="simpleControlsDiv">
-          <img src="../images/run.png" id="simpleRunButton" class="simpleControl" alt="Run"/>
-          <img src="../images/restart.png" id="simpleRestartButton" class="simpleControl" alt="Restart"/>
-          <img src="../images/hint.png" id="simpleHintButton" class="simpleControl" alt="Show Hint"/>
         </div>
 
         <div id="codeDiv">

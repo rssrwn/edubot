@@ -20,7 +20,7 @@ var runCode = function(e) {
 let runButton = document.getElementById("runButton");
 runButton.addEventListener("click", runCode);
 let simpleRunButton = document.getElementById("simpleRunButton");
-runButton.addEventListener("click", runCode);
+simpleRunButton.addEventListener("click", runCode);
 
 var viewCode = function(e) {
   let codeView = document.getElementById("codeDiv");
