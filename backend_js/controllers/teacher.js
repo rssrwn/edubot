@@ -2,21 +2,25 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db.js');
 
-router.get('/classes', (req, res, next) => {
-  let uname = req.cookies["edubot-cookie"];
+router.get('/classes', async function(req, res, next) {
+  let uname = 'teacher2'; //req.cookies["edubot-cookie"];
   let class_data = [];
-  let class_ids = db.getClasses(uname);
+  let class_ids = await db.getClasses(uname);
+
   for (let i = 0; i < class_ids.length; i++) {
-    let members = db.getMembers(class_ids[i]);
-    let class_info = [];
-    class_info.class_name = getClassName(class_ids[i]);
+    let members = await db.getMembers(class_ids[i]);
+    let class_info = {};
+    class_info.class_name = await db.getClassName(class_ids[i]);
+    class_info.class_members = [];
+
     for (let j = 0; j < members.length; j++) {
-      let member_info = getUserInfo(members[j]);
-      class_info.append(member_info);
+      let member_info = await db.getUserInfo(members[j]);
+      class_info.class_members.push(member_info);
     }
-    class_data.append(class_info);
+
+    class_data.push(class_info);
   }
-  
+
   var context = {
     class_list: class_data
     // [{
