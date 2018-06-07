@@ -93,7 +93,7 @@ var intro3Context = {
 router.get('/level_intro', (req, res, next) => {
   let levelName = req.query.levelId;
 
-  var context = null;
+  let context = null;
 
   switch (levelName) {
     case "intro_1":
@@ -132,11 +132,7 @@ router.get('/play', async function(req, res, next) {
   let levelName = req.query.levelId;
   let context = {student: true};
   
-  console.log("Tried to get level");
-  
   getLevel(levelName, function (jsonLevel) {context.json_level = jsonLevel});
-  
-  console.log("Post getting level");
   
   res.render('shared/play', context);
 });
