@@ -81,5 +81,10 @@ var canvasResize = function(e) {
 var onResize = function(e) {
   canvasResize(e);
 };
+
+initSampleLevel1();
+
+console.log(JSON.stringify(level));
+
 window.addEventListener("resize", onResize, false);
 onResize();
