@@ -107,17 +107,23 @@ exports.addMember = async function(uname, class_id) {
   return true;
 }
 
-// Get a list of class_ids for teacher with uname teacher
-// TODO: TEST
+// Get an array of class_ids for teacher with uname teacher
 exports.getClasses = async function(teacher) {
-  var ret = await pool.query("select class_id from class where teacher=$1;", [teacher]);
+  var res = await pool.query("select class_id from class where teacher=$1;", [teacher]);
+  ret = [];
+  for (var i=0; i<res.rows.length; i++) {
+    ret[i] = res.rows[i].class_id;
+  }
   return ret;
 }
 
 // Get a list of students (usernames') who are members of class_id
-// TODO: TEST
 exports.getMembers = async function(class_id) {
-  var ret = await pool.query("select uname from student_class where class_id=$1;", [class_id]);
+  var res = await pool.query("select uname from student_class where class_id=$1;", [class_id]);
+  ret = [];
+  for (var i=0; i<res.rows.length; i++) {
+    ret[i] = res.rows[i].uname;
+  }
   return ret;
 }
 

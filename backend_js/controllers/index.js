@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('../models/db.js');
 const router = express.Router();
 
 router.use('/login', require('./login'));
@@ -7,12 +8,8 @@ router.use('/teacher', require('./teacher'));
 router.use('/student', require('./student'));
 router.use('/shared', require('./shared'));
 
-router.get('/test', function(req, res) {
-  // Comments.all(function(err, comments) {
-  //   res.render('index', {comments: comments})
-  // })
-  console.log(getClasses("teacher2"));
-  console.log(getMembers(1));
+router.get('/test', async function(req, res) {
+  res.sendStatus(200);
 });
 
 module.exports = router;
