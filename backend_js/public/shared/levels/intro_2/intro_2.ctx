@@ -6,13 +6,13 @@
         "You see, EduBot is a hungry critter, constantly on the search for more nuts and bolts to consume.",
         "We'll show you how to get EduBot moving and get it started on its search for food!"
     ],
-    "level_name": "Level 1 - Basic Movement",
-    "blocks_available": "../images/move_forward_block.png",
-    "objective": "Eat the single bolt",
+    "level_name": "Level 2 - Rotation",
+    "blocks_available": "../images/movement_blocks.png",
+    "objective": "Eat the two bolts",
     "hints": [
         "You program EduBot by dragging and dropping blocks into the space on the left of the screen. You can get EduBot to carry out your program by clicking run.",
-        "Blocks are like puzzle pieces, you can connect them together to create more useful programs!",
-        "Each block corresponds to a specific action or piece of logic for EduBot to use."
+        "EduBot always moves forwards. You can change its direction by dragging and connecting rotate left and right blocks.",
+        "If you want to attempt the level again, simply press the restart button."
     ],
-    "level_image": "../images/intro_1.png"
+    "level_image": "../images/intro_2.png"
 }
