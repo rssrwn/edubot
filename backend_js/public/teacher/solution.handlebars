@@ -6,7 +6,7 @@
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="../shared/base_style.css">
   <link rel="stylesheet" type="text/css" href="../shared/banner.css">
-  <link rel="stylesheet" type="text/css" href="solution_style.css">
+  <link rel="stylesheet" type="text/css" href="../shared/play.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
   <script src="../lib/blockly/blockly_compressed.js"></script>
@@ -21,12 +21,8 @@
 
 </head>
 <body>
-  <div id="page", onload="enterLevel({{{json_level}}})">
-    {{#if student}}
-    {{> banners/student}}
-    {{else}}
+  <div id="page">
     {{> banners/teacher}}
-    {{/if}}
     <div id="contentDiv">
       <div id="blocklyDiv">
         <div id="simpleControlsDiv">
@@ -34,7 +30,7 @@
           <img src="../images/restart.png" id="simpleRestartButton" class="simpleControl" alt="Restart"/>
           <img src="../images/hint.png" id="simpleHintButton" class="simpleControl" alt="Show Hint"/>
         </div>
-        
+
         <div id="blocklyWorkspaceDiv"></div>
       </div>
 
@@ -59,12 +55,12 @@
               alt="Rob", id="robot_image"></img>
             <img class="game_image", src="../images/nuts_and_bolts.png", alt="Nuts and bolts",
               id="nuts_and_bolts"></img>
-            <script src="../scripts/utils.js"></script>
             <script src="../scripts/entities.js"></script>
             <script src="../scripts/robot_anims.js"></script>
             <script src="../scripts/robot_control.js"></script>
             <script src="../scripts/edubot.js"></script>
             <script src="../scripts/levels.js"></script>
+            <script>enterLevel('{{{json_level}}}')</script>
           </div>
         </div>
       </div>
@@ -93,8 +89,9 @@
   </xml>
 
   <script src="../scripts/level_events.js"></script>
+
   <script>
-    putBlockXML('<xml xmlns="http://www.w3.org/1999/xhtml"><block type="controls_repeat_ext" id="G^6:[QzzCrE8${];nv$M" x="336" y="206"><value name="TIMES"><block type="math_number" id="nFjz`;Qp^]9[K:2juB:?"><field name="NUM">4</field></block></value><statement name="DO"><block type="controls_whileUntil" id="r1p9lOQKM:J2_;U~NK0h"><field name="MODE">WHILE</field><value name="BOOL"><block type="logic_negate" id="#*6ynQp`:_RfLOH;$nmt"><value name="BOOL"><block type="wall_in_front" id="=y}Bb@,sni_tQ1zWcR{h"></block></value></block></value><statement name="DO"><block type="move_forward" id="`he%3*j}O~kCYL=T.#h}"></block></statement><next><block type="rotate_left" id="(Kf8+f8Y:3)x]whAJ,*h"></block></next></block></statement></block></xml>');
+    putBlockXML('{{{json_solution}}}');
   </script>
 </body>
 </html>
