@@ -53,6 +53,7 @@
       var addMemberSubmitEvent = function() {
         let uname = activeButton.textInput.value;
         let class_id = activeButton.class_id;
+        console.log("Add user uname: " + uname + " class_id: " + class_id);
         httpPost('https://edubot-backend.herokuapp.com/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
         
         $(activeButton.addButton).remove();
