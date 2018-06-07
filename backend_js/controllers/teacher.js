@@ -10,6 +10,7 @@ router.get('/classes', async function(req, res, next) {
   for (let i = 0; i < class_ids.length; i++) {
     let members = await db.getMembers(class_ids[i]);
     let class_info = {};
+    class_info.class_id = class_ids[i];
     class_info.class_name = await db.getClassName(class_ids[i]);
     class_info.class_members = [];
 
