@@ -44,7 +44,7 @@ router.get('/student', (req, res, next) => {
 });
 
 router.get('/solution', (req, res, next) => {
-  res.render('teacher/solution', context);
+  res.render('teacher/solution', {});
 });
 
 router.get('/level_selection', (req, res, next) => {
@@ -75,12 +75,24 @@ router.get('/account', (req, res, next) => {
 
 });
 
-router.post('/add_class', (req, res, next) => {
-
+router.post('/add_class', async function(req, res, next) {
+  const body = req.body;
+  var success = await db.insertClass(body.name, body.sch_id, body.teacher);
+  if (success === -1) {
+    res.status(470).send("That teacher does not exist");
+  } else {
+    res.sendStatus(200);
+  }
 });
 
-router.post('/add_member', (req, res, next) => {
-
+router.post('/add_member', async function(req, res, next) {
+  const body = req.body;
+  var success = await db.addMember(body.uname, body.class_id);
+  if (success) {
+    res.sendStatus(200);
+  } else {
+    res.status(470).send("That username does not have an account");
+  }
 });
 
 /*
