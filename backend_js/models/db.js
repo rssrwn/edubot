@@ -30,12 +30,12 @@ exports.getUserType = async function(uname) {
   pool.query("select users.type from users where uname=$1;", [uname])
   .then(db_res => {
     if (db_res.rows[0].type === 1) {
-      resolve(userTypeEnum.STUDENT);
+      return userTypeEnum.STUDENT;
     } else if (db_res.rows[0].type === 2) {
-      resolve(userTypeEnum.TEACHER);
+      return userTypeEnum.TEACHER;
     }
   })
-  .catch(e => reject(e));
+  .catch(e => Promise.reject(e));
 }
 
 // Returns true is the given username is free
@@ -43,12 +43,12 @@ exports.unameFree = async function(uname) {
   pool.query("select * from users where uname=$1;", [uname])
   .then(db_res => {
     if (db_res.rows.length !== 0) {
-      resolve(false);
+      return false;
     } else {
-      resolve(true);
+      return true;
     }
   })
-  .catch(e => reject(e));
+  .catch(e => Promise.reject(e));
 }
 
 // Inserts user with required params into db
@@ -68,12 +68,12 @@ exports.attemptLogin = async function(uname, pass) {
   pool.query("select users.uname, users.hash from users where uname=$1", [uname])
   .then(db_res => {
     if (db_res.rows.length !== 0 && compareHash(pass, db_res.rows[0].hash)) {
-      resolve(true);
+      return true;
     } else {
-      resolve(false);
+      return false;
     }
   })
-  .catch(e => reject(e));
+  .catch(e => Promise.reject(e));
 }
 
 // Insert class into db with given name, school_id and teacher username
@@ -83,19 +83,18 @@ exports.insertClass = async function(name, school_id, teacher) {
   //var max = db_res.rows[0]; //??
   //console.log(max);
   await pool.query("insert into class values ($1, (select MAX(class_id) from class)+1, $2, $3);", [school_id, name, teacher]);
-  resolve(true);
+  return true;
 }
 
 // Add a member with given uname into class with class_id
 exports.addMember = async function(uname, class_id) {
   var free = await exports.unameFree(uname);
   if (free) {
-    resolve(false);
-    return;
+    return false;
   }
 
   await pool.query("insert into student_class values ($1, $2);", [uname, class_id]);
-  resolve(true);
+  return true;
 }
 
 // Get a list of class_ids for teacher with uname teacher
