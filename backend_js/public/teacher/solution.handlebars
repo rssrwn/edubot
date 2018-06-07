@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EduBot</title>
+  <link rel="stylesheet" type="text/css" href="../shared/base_style.css">
+  <link rel="stylesheet" type="text/css" href="../shared/banner.css">
+  <link rel="stylesheet" type="text/css" href="solution_style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+</head>
+<body>
+  <div id="page", onload="enterLevel({{{json_level}}})">
+    {{> banners/teacher}}
+    <div id="contentDiv">
+      <div id="blocklyDiv">
+        <div id="blocklyWorkspaceDiv"> </div>
+      </div>
+
+      <div id="visualDiv">
+
+        <div id="controlsDiv">
+          <button id="runButton">Run</button>
+          <button id="viewButton">View Code</button>
+          <button id="hintButton">Show Hint</button>
+          <button id="restartButton">Restart</button>
+          <input type="file", id="loadButton", name="file", onchange="loadLevel(event)"></input>
+        </div>
+
+        <div id="codeDiv">
+          <textarea readonly id="code"></textarea>
+        </div>
+
+        <div id="canvasDiv">
+          <div id="canvasPaddingDiv">
+            <canvas id="game_canvas", width=1024, height=1024></canvas>
+            <img class="game_image", src="../images/rob.png",
+              alt="Rob", id="robot_image"></img>
+            <img class="game_image", src="../images/nuts_and_bolts.png", alt="Nuts and bolts",
+              id="nuts_and_bolts"></img>
+            <script src="../scripts/entities.js"></script>
+            <script src="../scripts/robot_anims.js"></script>
+            <script src="../scripts/robot_control.js"></script>
+            <script src="../scripts/edubot.js"></script>
+            <script src="../scripts/levels.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <xml id="toolbox" style="display: none">
+    <category name="Movement">
+      <block type="move_forward"></block>
+      <block type="rotate_right"></block>
+      <block type="rotate_left"></block>
+    </category>
+    <category name="Loops">
+      <block type="math_number"></block>
+      <block type="controls_repeat_ext"></block>
+      <block type="controls_whileUntil"></block>
+    </category>
+    <category name="Logic">
+      <block type="controls_if"></block>
+      <block type="logic_negate"></block>
+      <block type="wall_in_front"></block>
+      <block type="return"></block>
+    </category>
+    <category name="Variables" custom="VARIABLE"></category>
+    <category name="Functions" custom="PROCEDURE"></category>
+  </xml>
+
+  <script src="../scripts/level_events.js"></script>
+  <div id="page">
+    {{> banners/teacher}}
+    <div id="contentDiv">
+      <div id="classList">
+        {{#each class_list}}
+          <div>{{> class_box this}}</div>
+        {{/each}}
+      </div>
+
+      <div id="addClass">
+        <button type="button" onclick="todo(event)">Add Class</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    putBlockXML('<xml xmlns="http://www.w3.org/1999/xhtml"><block type="controls_repeat_ext" id="G^6:[QzzCrE8${];nv$M" x="336" y="206"><value name="TIMES"><block type="math_number" id="nFjz`;Qp^]9[K:2juB:?"><field name="NUM">4</field></block></value><statement name="DO"><block type="controls_whileUntil" id="r1p9lOQKM:J2_;U~NK0h"><field name="MODE">WHILE</field><value name="BOOL"><block type="logic_negate" id="#*6ynQp`:_RfLOH;$nmt"><value name="BOOL"><block type="wall_in_front" id="=y}Bb@,sni_tQ1zWcR{h"></block></value></block></value><statement name="DO"><block type="move_forward" id="`he%3*j}O~kCYL=T.#h}"></block></statement><next><block type="rotate_left" id="(Kf8+f8Y:3)x]whAJ,*h"></block></next></block></statement></block></xml>');
+  </script>
+</body>
+</html>
