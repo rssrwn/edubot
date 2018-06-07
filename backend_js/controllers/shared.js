@@ -29,8 +29,6 @@ function getLevel(levelName, callback) {
   );
 }
 
-getLevelIntroContext("intro_1", function (ctx) {introContext = ctx});
-
 var loops1Context = {
   student: false,
   concept: "Loops and Conditionals",
