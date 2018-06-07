@@ -5,7 +5,7 @@ const levels = require('../models/level_utils.js');
 const fs = require('fs');
 
 router.get('/classes', async function(req, res, next) {
-  let uname = 'teacher2'; //req.cookies["edubot-cookie"];
+  let uname = req.cookies["edubot-cookie"];
   let class_data = [];
   let class_ids = await db.getClasses(uname);
 
