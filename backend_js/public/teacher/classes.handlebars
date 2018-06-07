@@ -42,7 +42,7 @@
         var submitButton = $("<button type='button' onclick='addMemberSubmitEvent()'>Add</button>");
         var textInput = $("<input type='text'></input>");
         
-        activeButton.addButton = button;
+        activeButton.addButton = submitButton;
         activeButton.textInput = textInput;
         
         $(button).parent().append(textInput);
@@ -52,6 +52,7 @@
       var addMemberSubmitEvent = function() {
         $(activeButton.addButton).remove();
         $(activeButton.textInput).remove();
+        console.log("Add member: " + activeButton.textInput.value);
         activeButton.style.display = "inline-block";
         activeButton = null;
       };
