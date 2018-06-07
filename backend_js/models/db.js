@@ -76,18 +76,16 @@ exports.attemptLogin = async function(uname, pass) {
 
 // Insert class into db with given name, school_id and teacher username and returns the class_id of the new class
 exports.insertClass = async function(name, school_id, teacher) {
+  var type = await exports.getUserType(teacher);
+  if (type !== userTypeEnum.TEACHER) {
+    return -1;
+  }
+
   var db_res = await pool.query("select MAX(class_id) from class;");
-  console.log(db_res);
-  var max = db_res.rows[0]; //??
+  var max = db_res.rows[0].max;
   console.log(max);
   await pool.query("insert into class values ($1, $2, $3, $4);", [school_id, max+1, name, teacher]);
-  return true;
-}
-
-// Get a class name from a class_id
-exports.getClassName = async function(class_id) {
-  var db_res = await pool.query("select name from class where class_id=$1", [class_id]);
-  return db_res.rows[0].name;
+  return max+1;
 }
 
 // Add a member with given uname into class with class_id
@@ -99,6 +97,12 @@ exports.addMember = async function(uname, class_id) {
 
   await pool.query("insert into student_class values ($1, $2);", [uname, class_id]);
   return true;
+}
+
+// Get a class name from a class_id
+exports.getClassName = async function(class_id) {
+  var db_res = await pool.query("select name from class where class_id=$1", [class_id]);
+  return db_res.rows[0].name;
 }
 
 // Get an array of class_ids for teacher with uname teacher

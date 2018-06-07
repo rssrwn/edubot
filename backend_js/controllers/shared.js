@@ -20,7 +20,7 @@ var introContext = null;
 
 getLevelIntroContext("intro_1", function (ctx) {introContext = ctx});*/
 
-var introContext = {
+var loops1Context = {
   student: false,
   concept: "Loops and Conditionals",
   concept_description: ["So far we have covered simple instructions such as move forward, turn left and turn right, using these to feed poor edubot.", "However, when the environment becomes larger or more complicated, manually telling edubot what to do will become too long.", "A level with 20 bolts to eat will require at minimum 20 code blocks!", "This is where loops and conditionals come in. A loop lets edubot repeat an action multiple times.", "It may repeat a fixed number of times or perhaps repeat until edubot hits a wall. By taking advantage of patterns in the level, we can code edubot using far fewer instructions."],
@@ -36,8 +36,76 @@ var introContext = {
   level_image: "../images/loops_and_iteration_1.png"
 };
 
-router.get('/level_intro', (req, res, next) => {
-  res.render('shared/level_intro', introContext);
+var intro1Context = {
+  student: false,
+  concept: "Introduction",
+  concept_description: ["Hey there! Welcome to the land of EduBot! In this first set of levels, we're going to introduce you to the basics of how to guide EduBot.", "You see, EduBot is a hungry critter, constantly on the search for more nuts and bolts to consume.", "We'll show you how to get EduBot moving and get it started on its search for food!"],
+  
+  level_name: "Level 1 - Basic Movement",
+  blocks_available: "../images/move_forward_block.png",
+  
+  objective: "Eat the single bolt",
+  
+  hints: ["You program EduBot by dragging and dropping blocks into the space on the left of the screen. You can get EduBot to carry out your program by clicking run.", "Blocks are like puzzle pieces, you can connect them together to create more useful programs!", "Each block corresponds to a specific action or piece of logic for EduBot to use."],
+  
+  level_image: "../images/intro_1.png"
+};
+
+var intro2Context = {
+  student: false,
+  concept: "Introduction",
+  concept_description: ["Hey there! Welcome to the land of EduBot! In this first set of levels, we're going to introduce you to the basics of how to guide EduBot.", "You see, EduBot is a hungry critter, constantly on the search for more nuts and bolts to consume.", "We'll show you how to get EduBot moving and get it started on its search for food!"],
+  
+  level_name: "Level 2 - Rotation",
+  blocks_available: "../images/movement_blocks.png",
+  
+  objective: "Eat the two bolts",
+  
+  hints: ["You program EduBot by dragging and dropping blocks into the space on the left of the screen. You can get EduBot to carry out your program by clicking run.", "EduBot always moves forwards. You can change its direction by dragging and connecting rotate left and right blocks.", "If you want to attempt the level again, simply press the restart button."],
+  
+  level_image: "../images/intro_2.png"
+};
+
+var intro3Context = {
+  student: false,
+  concept: "Introduction",
+  concept_description: ["Hey there! Welcome to the land of EduBot! In this first set of levels, we're going to introduce you to the basics of how to guide EduBot.", "You see, EduBot is a hungry critter, constantly on the search for more nuts and bolts to consume.", "We'll show you how to get EduBot moving and get it started on its search for food!"],
+  
+  level_name: "Level 3 - Rotation",
+  blocks_available: "../images/movement_blocks.png",
+  
+  objective: "Guide EduBot around the wall and eat the bolt",
+  
+  hints: ["You program EduBot by dragging and dropping blocks into the space on the left of the screen. You can get EduBot to carry out your program by clicking run.", "Use a combination of rotation and movement blocks to send EduBot around the wall.", "Try and create a single program set of blocks that will EduBot all the way from the start position to the final bolt. You can try again by pressing restart."],
+  
+  level_image: "../images/intro_3.png"
+};
+
+router.get('/level_intro/:levelId', (req, res, next) => {
+  let levelName = req.params.levelId;
+  
+  console.log("levelName");
+  
+  let context = null;
+  
+  switch (context) {
+    case "intro_1":
+      context = intro1Context;
+      break;
+    case "intro_2":
+      context = intro2Context;
+      break;
+    case "intro_3":
+      context = intro3Context;
+      break;
+    case "loops_1":
+      context = loops1Context;
+      break;
+  }
+  
+  if (context !== null) {
+    res.render('shared/level_intro', introContext);
+  }
 });
 
 router.get('/play', (req, res, next) => {
