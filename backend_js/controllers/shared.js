@@ -81,8 +81,9 @@ var intro3Context = {
   level_image: "../images/intro_3.png"
 };
 
-router.get('/level_intro/:levelId', (req, res, next) => {
-  let levelName = req.params.levelId;
+router.get('/level_intro', (req, res, next) => {
+  console.log("Reached");
+  /*let levelName = req.params.levelId;
   
   console.log("levelName");
   
@@ -103,9 +104,9 @@ router.get('/level_intro/:levelId', (req, res, next) => {
       break;
   }
   
-  if (context !== null) {
-    res.render('shared/level_intro', introContext);
-  }
+  if (context !== null) {*/
+    res.render('shared/level_intro', intro1Context);
+  //}
 });
 
 router.get('/play', (req, res, next) => {
