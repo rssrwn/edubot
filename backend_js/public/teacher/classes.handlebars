@@ -30,7 +30,7 @@
         if (!button.adding) {
           button.adding = true;
           button.style.display = "none";
-          var submitButton = $("<input type='button' onclick='addMemberSubmitEvent(this)'>Add</input>");
+          var submitButton = $("<button type='button' onclick='addMemberSubmitEvent(this)'>Add</button>");
           var textInput = $("<input type='text'></input>");
           submitButton.addButton = button;
           submitButton.textInput = textInput;
