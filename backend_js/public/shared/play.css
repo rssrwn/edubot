@@ -37,6 +37,10 @@
   margin: 10px;
 }
 
+.simpleControl:hover {
+  opacity: 0.5;
+}
+
 #codeDiv {
   display: table-row;
   height: 200px;
