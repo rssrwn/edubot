@@ -76,3 +76,13 @@ var onResize = function(e) {
 };
 window.addEventListener("resize", onResize, false);
 onResize();
+
+var getBlockXML = function() {
+  var xml = Blockly.Xml.workspaceToDom(workspace);
+  return Blockly.Xml.domToText(xml);
+};
+
+var putBlockXML = function(xml_text) {
+  var xml = Blockly.Xml.textToDom(xml_text);
+  Blockly.Xml.domToWorkspace(xml, workspace);
+};
