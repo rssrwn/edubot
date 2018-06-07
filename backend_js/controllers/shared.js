@@ -83,8 +83,7 @@ var intro3Context = {
 
 router.get('/level_intro/:levelId', (req, res, next) => {
   let levelName = req.params.levelId;
-
-  console.log("levelName");
+  //console.log(levelName);
 
   let context = null;
 
@@ -104,7 +103,7 @@ router.get('/level_intro/:levelId', (req, res, next) => {
   }
 
   if (context !== null) {
-    res.render('shared/level_intro', introContext);
+    res.render('shared/level_intro', context);
   }
 });
 
