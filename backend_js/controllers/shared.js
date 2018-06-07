@@ -5,18 +5,6 @@ const db = require('../models/db.js');
 const levels = require('../models/level_utils.js');
 const fs = require('fs');
 
-function isStudentContext() {
-  var uname = req.cookies["edubot-cookie"];
-  var type = db.userTypeEnum.NEITHER;
-  try {
-    type = await db.getUserType(uname);
-  } catch(e) {
-    return -1;
-  };
-  
-  return type === db.userTypeEnum.STUDENT;
-}
-
 var loops1Context = {
   student: false,
   concept: "Loops and Conditionals",
@@ -79,13 +67,6 @@ var intro3Context = {
 };
 
 router.get('/level_intro', (req, res, next) => {
-  let isStudent = isStudentContext();
-  
-  if (isStudent === -1) {
-    next();
-    return;
-  }
-  
   let levelName = req.query.levelId;
 
   let context = null;
@@ -106,24 +87,26 @@ router.get('/level_intro', (req, res, next) => {
   }
 
   if (context !== null) {
-    context.student = isStudent;
     context.level_id = levelName;
     res.render('shared/level_intro', context);
   }
 });
 
 router.get('/play', async function(req, res, next) {
-  let isStudent = isStudentContext();
-  
-  if (isStudent === -1) {
-    next();
-    return;
+  var uname = req.cookies["edubot-cookie"];
+  var type = db.userTypeEnum.NEITHER;
+  try {
+    type = await db.getUserType(uname);
+  } catch(e) {
+    next(e);
+  };
+  student = false;
+  if (type === db.userTypeEnum.STUDENT) {
+    student = true;
   }
-  
-  let context = {};
-  context.student = isStudent;
 
   let levelName = req.query.levelId;
+  let context = {student: true};
 
   let jsonLevel = await levels.getLevel(levelName, function(jsonLevel) {
     context.json_level = jsonLevel;
