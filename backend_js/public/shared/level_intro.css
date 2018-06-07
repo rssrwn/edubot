@@ -22,10 +22,6 @@ p {
   width: 50%;
 }
 
-#levelDiv {
-  
-}
-
 #levelDescriptionDiv {
   float: left
 }
@@ -42,7 +38,7 @@ p {
   width: 40%;
 }
 
-#levelButton {
+.levelButton {
   display: block;
   margin-top: 50px;
   margin: auto;
