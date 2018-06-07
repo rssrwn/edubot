@@ -26,16 +26,6 @@ router.get('/classes', async function(req, res, next) {
 
   var context = {
     class_list: class_data
-    // [{
-    //   class_name: 'Group 14',
-    //   class_members: [{ fname: 'Harry', lname: 'Davis', age: 20, uname: 16},
-    //                   { fname: 'Ross', lname: 'Irwin', age: 20, uname: 616},
-    //                   { fname: 'Jordan', lname: 'Glanfield', age: 20, uname: 1216},
-    //                   { fname: 'Julien', lname: 'Amblard', age: 19, uname: 1616}]
-    // }, {
-    //   class_name: 'Older Members',
-    //   class_members: [{ fname: 'Mark', lname: 'Wheelhouse', age: 0, uname: 322}]
-    // }]
   };
 
   res.render('teacher/classes', context);

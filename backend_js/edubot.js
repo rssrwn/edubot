@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+// Configure app
 app.engine('handlebars', exphbs({
   partialsDir:'./public/partials',
   helpers: {

@@ -106,9 +106,9 @@ router.get('/play', async function(req, res, next) {
   }
 
   let levelName = req.query.levelId;
-  let context = {student: true};
+  let context = {student: student};
 
-  let jsonLevel = await levels.getLevel(levelName, function(jsonLevel) {
+  levels.getLevel(levelName, function(jsonLevel) {
     context.json_level = jsonLevel;
     res.render('shared/play', context);
   });

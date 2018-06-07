@@ -33,36 +33,10 @@ router.post('/', async function(req, res, next) {
   } else {
     res.status(401).send("Failed login");
   }
-
-
-/*  .then(success => {
-    if (success) {
-      res.cookie('edubot-cookie', body.uname);
-
-      // Student login
-      if (type === db.userTypeEnum.STUDENT) {
-        console.log('sudent login');
-        //res.cookie('edubot-cookie', 'student');
-        res.sendStatus(250);
-
-      // Teacher login
-      } else if (type === db.userTypeEnum.TEACHER) {
-        //res.cookie('edubot-cookie', 'teacher');
-        res.sendStatus(251);
-      }
-      return;
-
-    } else {
-      res.status(401).send("Failed login");
-    }
-  })
-  .catch(err => next(err));*/
-
 });
 
 router.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname + './../public/login.html'));
 });
-
 
 module.exports = router;
