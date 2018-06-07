@@ -276,7 +276,7 @@ function parseLevel(level) {
     if (key === "") {
       // Reviving the full object.
       
-      //console.log("Restoring level");
+      console.log("Restoring level");
       
       let gridLevel = Object.create(GridLevel.prototype);
       //let gridLevel = new GridLevel(0, 0, 1);
@@ -325,14 +325,17 @@ function parseLevel(level) {
         }
       }
       
-      //console.log("\nRestored full level:");
-      //console.log(gridLevel);
+      console.log("\nRestored full level:");
+      console.log(gridLevel);
       
       return gridLevel;
     } else {
       return value;
     }
   }
+  
+  console.log("The original level is:");
+  console.log(level);
   
   let newLevel = JSON.parse(level, reviver);
   
