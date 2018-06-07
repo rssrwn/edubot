@@ -19,6 +19,7 @@ const fs = require('fs');
 var introContext = null;*/
 
 function getLevel(levelName, callback) {
+  console.log("Trying to get level: " + levelName);
   fs.readFile('shared/levels/' + levelName + '/' + levelName + '.lev', 'utf8',
     function (err, data) {
       console.log("Level is:");
@@ -132,7 +133,14 @@ router.get('/play', async function(req, res, next) {
   let levelName = req.query.levelId;
   let context = {student: true};
   
-  getLevel(levelName, function (jsonLevel) {context.json_level = jsonLevel});
+  getLevel(levelName, function (jsonLevel) {
+    console.log("Context before:");
+    console.log(context);
+    context.json_level = jsonLevel
+  });
+  
+  console.log("Context after:");
+  console.log(context);
   
   res.render('shared/play', context);
 });
