@@ -30,13 +30,20 @@
         if (!button.adding) {
           button.adding = true;
           button.style.display = "none";
-          $(button).parent().append("<input type='text'></input>");
-          $(button).parent().append("<input type='button' onclick='addMemberSubmitEvent(" + button + ")'>Add</input>");
+          var submitButton = $("<button type='button' onclick='addMemberSubmitEvent(this)'>Add</button>");
+          var textInput = $("<input type='text'></input>");
+          submitButton.addButton = button;
+          submitButton.textInput = textInput;
+          $(button).parent().append(textInput);
+          $(button).parent().append(submitButton);
         }
       };
       
-      var addMemberSubmitEvent = function() {
-        button.style.display = "inline-block";
+      var addMemberSubmitEvent = function(button) {
+        console.log(button);
+        button.style.display = "none";
+        button.textInput.style.display = "none";
+        button.addButton.style.display = "inline-block";
       };
     </script>
   </div>
