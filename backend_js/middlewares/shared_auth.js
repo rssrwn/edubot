@@ -4,7 +4,7 @@ module.exports = async function(req, res, next) {
   console.log("shared cookies auth", req.cookies);
   uname = req.cookies['edubot-cookie'];
   console.log('uname: ', uname);
-  var type = await db.getUserType(uname);
+  let type = await db.getUserType(uname);
 
   if (type === db.userTypeEnum.STUDENT || type === db.userTypeEnum.TEACHER) {
     next();

@@ -19,7 +19,6 @@ router.post('/', async function(req, res, next) {
 
     // Student login
     if (type === db.userTypeEnum.STUDENT) {
-      console.log('sudent login');
       //res.cookie('edubot-cookie', 'student');
       res.sendStatus(250);
 
@@ -28,6 +27,7 @@ router.post('/', async function(req, res, next) {
       //res.cookie('edubot-cookie', 'teacher');
       res.sendStatus(251);
     }
+    console.log(body.uname + ' type: ' + type + ' logged in');
     return;
 
   } else {

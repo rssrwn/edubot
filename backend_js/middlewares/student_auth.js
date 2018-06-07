@@ -3,7 +3,7 @@ const db = require('../models/db.js');
 module.exports = async function(req, res, next) {
   console.log("student cookies auth", req.cookies);
   uname = req.cookies['edubot-cookie'];
-  var type = await db.getUserType(uname);
+  let type = await db.getUserType(uname);
 
   console.log('type', type);
 
