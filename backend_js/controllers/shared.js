@@ -81,7 +81,7 @@ var intro3Context = {
 router.get('/level_intro', (req, res, next) => {
   let isStudent = isStudentContext();
   
-  if (student === -1) {
+  if (isStudent === -1) {
     next();
     return;
   }
@@ -115,12 +115,13 @@ router.get('/level_intro', (req, res, next) => {
 router.get('/play', async function(req, res, next) {
   let isStudent = isStudentContext();
   
-  if (student === -1) {
+  if (isStudent === -1) {
     next();
     return;
   }
   
-  let context = {student: isStudent};
+  let context = {};
+  context.student = isStudent;
 
   let levelName = req.query.levelId;
 
