@@ -27,53 +27,63 @@ function compareHash(pass, hash) {
 
 // Get the type of the user with uname
 exports.getUserType = async function(uname) {
-  pool.query("select users.type from users where uname=$1;", [uname])
-  .then(db_res => {
+  try {
+    var db_res = await pool.query("select users.type from users where uname=$1;", [uname]);
     if (db_res.rows[0].type === 1) {
       return userTypeEnum.STUDENT;
     } else if (db_res.rows[0].type === 2) {
       return userTypeEnum.TEACHER;
     }
-  })
-  .catch(e => Promise.reject(e));
+  } catch(e) {
+    Promise.reject(e);
+  }
 }
 
 // Returns true is the given username is free
 exports.unameFree = async function(uname) {
-  pool.query("select * from users where uname=$1;", [uname])
-  .then(db_res => {
+  var db_res = await pool.query("select * from users where uname=$1;", [uname]);
+  if (db_res.rows.length !== 0) {
+    return false;
+  } else {
+    return true;
+  }
+
+  /*.then(db_res => {
     if (db_res.rows.length !== 0) {
       return false;
     } else {
       return true;
     }
   })
-  .catch(e => Promise.reject(e));
+  .catch(e => Promise.reject(e));*/
 }
 
 // Inserts user with required params into db
 exports.insertUser = async function(params) {
   const hash = hashPass(params.pass);
-  pool.query("insert into users values ($1, $2, $3, $4, $5, $6, $7);",
+  var db_res = await pool.query("insert into users values ($1, $2, $3, $4, $5, $6, $7);",
       [params.uname, hash, params.fname, params.lname, params.type,
       params.age, params.sch_id])
-  .then(db_res => {
-    return true;
-  })
-  .catch(e => Promise.reject(e));
+  return true;
 }
 
 // Returns true for successfull login, false otherwise
 exports.attemptLogin = async function(uname, pass) {
-  pool.query("select users.uname, users.hash from users where uname=$1", [uname])
-  .then(db_res => {
+  var db_res = await pool.query("select users.uname, users.hash from users where uname=$1", [uname]);
+  if (db_res.rows.length !== 0 && compareHash(pass, db_res.rows[0].hash)) {
+    return true;
+  } else {
+    return false;
+  }
+
+  /*.then(db_res => {
     if (db_res.rows.length !== 0 && compareHash(pass, db_res.rows[0].hash)) {
       return true;
     } else {
       return false;
     }
   })
-  .catch(e => Promise.reject(e));
+  .catch(e => Promise.reject(e));*/
 }
 
 // Insert class into db with given name, school_id and teacher username

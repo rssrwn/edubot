@@ -16,6 +16,7 @@ async function httpPost(url, params, callback) {
 
   xmlHttp.onreadystatechange = function() {
     if (xmlHttp.readyState == XMLHttpRequest.DONE) {
+      console.log('status', xmlHttp.status);
       callback(xmlHttp.status);
     }
   }
