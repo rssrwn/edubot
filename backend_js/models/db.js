@@ -27,6 +27,11 @@ function compareHash(pass, hash) {
 
 // Get the type of the user with uname
 exports.getUserType = async function(uname) {
+  var free = await exports.unameFree(uname);
+  if (free) {
+    return userTypeEnum.NEITHER;
+  }
+
   try {
     var db_res = await pool.query("select users.type from users where uname=$1;", [uname]);
     if (db_res.rows[0].type === 1) {
