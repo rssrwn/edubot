@@ -17,8 +17,8 @@ router.get('/level_selection', (req, res, next) => {
       {
         categoryName: "Looping",
         levels: [
-          {stars: 2, number: 1, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
-          {stars: 0, number: 2, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
+          {stars: 2, number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
+          {stars: 0, number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
         ]
       }
     ]

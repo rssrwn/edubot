@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/db.js');
-const levels = require('../models/level_utils.js');
+const util = require('../models/util.js');
 const fs = require('fs');
 
 router.get('/classes', async function(req, res, next) {
@@ -39,7 +39,7 @@ router.get('/solution', async function(req, res, next) {
   let levelName = req.query.levelId;
   let context = {student: true};
 
-  let jsonLevel = await levels.getLevel(levelName, function(jsonLevel) {
+  let jsonLevel = await util.getLevel(levelName, function(jsonLevel) {
     context.json_level = jsonLevel;
     res.render('teacher/solution', context);
   });
@@ -60,8 +60,8 @@ router.get('/level_selection', (req, res, next) => {
       {
         categoryName: "Looping",
         levels: [
-          {number: 1, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
-          {number: 2, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
+          {number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
+          {number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
         ]
       }
     ]
