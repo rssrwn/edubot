@@ -6,7 +6,6 @@
 }
 
 #blocklyWorkspaceDiv {
-  position: absolute;
   width: 0px;
   height: 0px;
 }
@@ -22,6 +21,23 @@
 #controlsDiv {
   display: table-row;
   width: 100%;
+  display: none;
+}
+
+#simpleControlsDiv {
+  display: table-row;
+  width: 100%;
+  text-align: center;
+}
+
+.simpleControl {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+}
+
+.simpleControl:hover {
+  opacity: 0.5;
 }
 
 #codeDiv {
