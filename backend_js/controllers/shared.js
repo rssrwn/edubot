@@ -82,11 +82,9 @@ var intro3Context = {
 };
 
 router.get('/level_intro/:levelId', (req, res, next) => {
-  console.log('level intro');
   let levelName = req.params.levelId;
-  console.log(levelName);
 
-  //let context = null;
+  context == null;
 
   switch (levelName) {
     case "intro_1":
