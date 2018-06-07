@@ -54,16 +54,16 @@ router.get('/level_selection', (req, res, next) => {
       {
         categoryName: "Introduction",
         levels: [
-          {number: 1, name: "Using blocks"},
-          {number: 2, name: "Basic movement"},
-          {number: 3, name: "Advanced movement"}
+          {number: 1, name: "Moving EduBot", link: '/shared/level_intro/intro_1'},
+          {number: 2, name: "Movement and Rotation", link: '/shared/level_intro/intro_2'},
+          {number: 3, name: "Obstacles", link: '/shared/level_intro/intro_3'}
         ]
       },
       {
         categoryName: "Looping",
         levels: [
-          {number: 1, name: "Basic looping", link: '/shared/level_intro'},
-          {number: 2, name: "Advanced looping"}
+          {number: 1, name: "Basic looping", link: '/shared/level_intro/loops_1'},
+          {number: 2, name: "Advanced looping", link: '/shared/level_intro/loops_1'}
         ]
       }
     ]
