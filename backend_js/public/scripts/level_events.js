@@ -17,7 +17,7 @@ var runCode = function(e) {
     executeCommands();
   }
 };
-let runButton = document.getElementById("runButton");
+let runButton = document.getElementByClassName("runButton");
 runButton.addEventListener("click", runCode);
 
 var viewCode = function(e) {
@@ -37,13 +37,13 @@ function showHint(e) {
   level.showHint();
 }
 
-document.getElementById("hintButton").addEventListener("click", showHint);
+document.getElementByClassName("hintButton").addEventListener("click", showHint);
 
 function restart(e) {
   restartLevel();
 }
 
-document.getElementById("restartButton").addEventListener("click", restart);
+document.getElementByClassName("restartButton").addEventListener("click", restart);
 
 var blocklyResize = function(e) {
   let element = blocklyDiv;
