@@ -7,10 +7,12 @@ router.use('/teacher', require('./teacher'));
 router.use('/student', require('./student'));
 router.use('/shared', require('./shared'));
 
-/*router.get('/', function(req, res) {
-  Comments.all(function(err, comments) {
-    res.render('index', {comments: comments})
-  })
-})*/
+router.get('/test', function(req, res) {
+  // Comments.all(function(err, comments) {
+  //   res.render('index', {comments: comments})
+  // })
+  getClasses("teacher2");
+  getMembers(1);
+});
 
 module.exports = router;
