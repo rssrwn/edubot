@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="classes_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../scripts/backend_utils.js"></script>
 
 </head>
 <body>
@@ -30,12 +31,12 @@
     
       var addMemberEvent = function(class_id, button) {
         if (activeButton) {
-          console.log(activeButton);
           $(activeButton.addButton).remove();
           $(activeButton.textInput).remove();
           activeButton.style.display = "inline-block";
         }
         activeButton = button;
+        activeButton.class_id = class_id;
 
         button.style.display = "none";
         
@@ -50,12 +51,23 @@
       };
       
       var addMemberSubmitEvent = function() {
+        let uname = activeButton.textInput.value;
+        let class_id = activeButton.class_id;
+        httpPost('https://edubot-backend.herokuapp.com/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
+        
         $(activeButton.addButton).remove();
         $(activeButton.textInput).remove();
-        console.log("Add member: " + activeButton.textInput.value);
         activeButton.style.display = "inline-block";
         activeButton = null;
       };
+      
+      var addMemberCallback = function(status) {
+        switch (status) {
+          case 200: alert("Added member");
+          case 470: alert("Username does not exist");
+          default: alert("Unknown error occurred: " + status + ".");
+        }
+      }
     </script>
   </div>
 </body>
