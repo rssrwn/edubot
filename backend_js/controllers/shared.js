@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/db.js');
-/*const fs = require('fs');
+const fs = require('fs');
 
-function getLevelIntroContext(levelName, callback) {
+/*function getLevelIntroContext(levelName, callback) {
   fs.readFile('../shared/levels/' + levelName + '/' + levelName + '.ctx', 'utf8', function (err, data) {
     if (data !== null) {
       console.log("Context is:");
@@ -16,9 +16,20 @@ function getLevelIntroContext(levelName, callback) {
   });
 }
 
-var introContext = null;
+var introContext = null;*/
 
-getLevelIntroContext("intro_1", function (ctx) {introContext = ctx});*/
+function getLevel(levelName, callback) {
+  fs.readFile('shared/levels/' + levelName + '/' + levelName + '.lev', 'utf8',
+    function (err, data) {
+      console.log("Level is:");
+      console.log(data);
+      
+      callback(data);
+    }
+  );
+}
+
+getLevelIntroContext("intro_1", function (ctx) {introContext = ctx});
 
 var loops1Context = {
   student: false,
@@ -102,6 +113,7 @@ router.get('/level_intro', (req, res, next) => {
   }
 
   if (context !== null) {
+    context.level_id = levelName;
     res.render('shared/level_intro', context);
   }
 });
@@ -118,7 +130,12 @@ router.get('/play', async function(req, res, next) {
   if (type === db.userTypeEnum.STUDENT) {
     student = true;
   }
-  res.render('shared/play', {student: true});
+  
+  let levelName = req.query.levelId;
+  let context = {student: true};
+  getLevel(levelName, function (jsonLevel) {context.json_level = jsonLevel});
+  
+  res.render('shared/play', context);
 });
 
 module.exports = router;
