@@ -18,10 +18,11 @@
     {{/each}}
   </table>
 
-  <button type="button" onclick="addMemberEvent({{{class_id}}})">Add Member</button>
+  <button type="button" onclick="addMemberEvent({{{class_id}}}, this)">Add Member</button>
   <script>
-    var addMemberEvent = function(class_id) {
+    var addMemberEvent = function(class_id, button) {
       console.log(class_id);
+      console.log(button);
       console.log("clicked");
     };
   </script>
