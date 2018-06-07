@@ -18,5 +18,10 @@
     {{/each}}
   </table>
 
-  <button type="button" onclick="todo(event)">Add Member</button>
+  <button type="button" onclick="addMemberEvent(this)">Add Member</button>
+  <script>
+    var addMemberEvent = function(button) {
+      button.innerHtml = "TEST";
+    };
+  </script>
 </div>
