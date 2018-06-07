@@ -1,22 +1,28 @@
 <div class="classBox">
   <h2 class="className">{{class_name}}</h2>
-  
+
   <table class="classMembersTable">
     <tr>
+      <th>Username</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Age</th>
-      <th>Student ID</th>
     </tr>
     {{#each class_members}}
       <tr>
+        <td>{{this.uname}}</td>
         <td>{{this.fname}}</td>
         <td>{{this.lname}}</td>
         <td>{{this.age}}</td>
-        <td>{{this.user_id}}</td>
       </tr>
     {{/each}}
   </table>
-  
-  <button type="button" onclick="todo(event)">Add Member</button>
+
+  <button type="button" onclick="addMemberEvent({{{class_id}}})">Add Member</button>
+  <script>
+    var addMemberEvent = function(class_id) {
+      console.log(classid);
+      console.log("clicked");
+    };
+  </script>
 </div>
