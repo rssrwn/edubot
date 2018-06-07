@@ -13,13 +13,35 @@ router.post('/', async function(req, res, next) {
     next(e);
   };
 
-  db.attemptLogin(body.uname, body.pass)
-  .then(success => {
+  var success = await db.attemptLogin(body.uname, body.pass);
+  if (success) {
+    res.cookie('edubot-cookie', body.uname);
+
+    // Student login
+    if (type === db.userTypeEnum.STUDENT) {
+      console.log('sudent login');
+      //res.cookie('edubot-cookie', 'student');
+      res.sendStatus(250);
+
+    // Teacher login
+    } else if (type === db.userTypeEnum.TEACHER) {
+      //res.cookie('edubot-cookie', 'teacher');
+      res.sendStatus(251);
+    }
+    return;
+
+  } else {
+    res.status(401).send("Failed login");
+  }
+
+
+/*  .then(success => {
     if (success) {
       res.cookie('edubot-cookie', body.uname);
 
       // Student login
       if (type === db.userTypeEnum.STUDENT) {
+        console.log('sudent login');
         //res.cookie('edubot-cookie', 'student');
         res.sendStatus(250);
 
@@ -34,7 +56,7 @@ router.post('/', async function(req, res, next) {
       res.status(401).send("Failed login");
     }
   })
-  .catch(err => next(err));
+  .catch(err => next(err));*/
 
 });
 
