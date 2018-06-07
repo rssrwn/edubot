@@ -52,7 +52,7 @@
       </div>
 
       <button class="levelButton" type="button" onclick="location.href='/shared/play'">Try Level</button>
-      {{#if teacher}}
+      {{#unless student}}
       <button class="levelButton" type="button" onclick="location.href='/teacher/solution'">Sample Solution</button>
       {{/if}}
     </div>
