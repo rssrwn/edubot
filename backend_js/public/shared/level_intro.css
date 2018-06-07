@@ -39,14 +39,12 @@ p {
 }
 
 #levelButtonsDiv {
-  display: block;
-  width: 50%;
-  margin: 50px 0 auto auto;
+  display: table;
+  margin: 0 auto;
 }
 
 .levelButton {
-  display: table-cell;
-  margin: 5px;
+  margin: 5px auto;
   width: 150px;
   height: 50px;
 }
