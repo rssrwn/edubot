@@ -43,7 +43,7 @@ router.get('/student', (req, res, next) => {
 });
 
 router.get('/solution', (req, res, next) => {
-  
+  res.send('hello world');
 });
 
 router.get('/level_selection', (req, res, next) => {
