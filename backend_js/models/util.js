@@ -18,6 +18,14 @@ exports.getSolution = function(levelName, callback) {
   });
 }
 
+exports.getBlocks = function(levelName, callback) {
+  var loc = __dirname;
+  var level_path = path.join(__dirname, './../public/shared/levels/' + levelName + '/' + levelName + '.blocks');
+  fs.readFile(level_path, 'utf8', function(err, data) {
+    callback(data);
+  });
+}
+
 exports.isStudent = async function(uname) {
   var type = db.userTypeEnum.NEITHER;
   try {
