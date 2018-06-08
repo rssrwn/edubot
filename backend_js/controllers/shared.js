@@ -101,10 +101,10 @@ router.get('/play', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   let context = {student: await util.isStudent(uname)};
 
-  util.getLevel(levelName, function(jsonLevel) {
+  util.getLevelData(levelName, 'lev', function(jsonLevel) {
     context.json_level = jsonLevel;
     
-    util.getBlocks(levelName, function(xmlBlocks) {
+    util.getLevelData(levelName, 'blocks', function(xmlBlocks) {
       context.xml_blocks = xmlBlocks;
       res.render('shared/play', context);
     });
