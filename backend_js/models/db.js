@@ -159,7 +159,7 @@ exports.getSchId = async function(uname) {
 }
 
 exports.getLevelResults = async function(uname) {
-  let let free = await exports.unameFree(uname);
+  let free = await exports.unameFree(uname);
   if (free) {
     return -1;
   }
