@@ -10,22 +10,13 @@ exports.getLevel = function(levelName, callback) {
   });
 }
 
-// 
-// function getLevelFileData(levelName, extension, callback) {
-//   let loc = __dirname;
-//   let level_path = path.join(__dirname, './../public/shared/levels/' + levelName + '/' + levelName + '.' + extension);
-//   fs.readFile(level_path, 'utf8', function(err, data) {
-//     callback(data);
-//   });
-// }
-
-// exports.getLevel = function(levelName, callback) {
-//   getLevelFileData(levelName, '.lev', callback);
-// }
-// 
-// exports.getSolution = function(levelName, callback) {
-//   getLevelFileData(levelName, '.sol', callback);
-// }
+exports.getSolution = function(levelName, callback) {
+  var loc = __dirname;
+  var level_path = path.join(__dirname, './../public/shared/levels/' + levelName + '/' + levelName + '.sol');
+  fs.readFile(level_path, 'utf8', function(err, data) {
+    callback(data);
+  });
+}
 
 exports.isStudent = async function(uname) {
   var type = db.userTypeEnum.NEITHER;
