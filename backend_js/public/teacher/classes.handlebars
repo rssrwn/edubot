@@ -66,7 +66,8 @@
       var addMemberCallback = function(status) {
         switch (status) {
           case 200: break;
-          case 470: alert("Username does not exist"); break;
+          case 480: alert("Username does not exist"); break;
+          case 481: alert("User already in a class"); break;
           default: alert("Unknown error occurred adding member: " + status); break;
         }
       }
@@ -95,7 +96,7 @@
         let class_name = activeButton.textInput.value;
         let class_id = activeButton.class_id;
         
-        httpPost('https://edubot-backend.herokuapp.com/teacher/add_class', {name: class_name});
+        httpPost('https://edubot-backend.herokuapp.com/teacher/add_class', {name: class_name}, addClassCallback);
         //httpPost('http://localhost:3000/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
 
         $(activeButton.addButton).remove();
