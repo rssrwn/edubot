@@ -24,6 +24,9 @@ Consequently, in case we do not manage to get a working system for the above, we
 ## Features Implemented
 
 Shared:
+- Each level now has its own set of blocks
+- Made buttons simpler and more user friendly
+- Added more levels
 
 Teachers:
 - Teachers can now view example solutions and attempt levels
@@ -31,6 +34,7 @@ Teachers:
 
 Students:
 - Level introduction screen. Mocked it up. Got feedback on it, improved the screen to better convey the information.
+- Added stars to show level success
 
 Mocked up:
 - Student level selection screen, fleshing out next week
