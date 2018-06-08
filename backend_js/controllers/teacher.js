@@ -38,16 +38,16 @@ router.get('/student', (req, res, next) => {
 // router.get('/solution', async function(req, res, next) {
 //   let levelName = req.query.levelId;
 //   let context = {student: false};
-// 
+//
 //   // util.getLevel(levelName, function(jsonLevel) {
 //   //   context.json_level = jsonLevel;
-//   // 
+//   //
 //   //   util.getSolution(levelName, function(jsonLevel) {
 //   //     context.json_solution = jsonLevel;
 //   //     res.render('shared/play', context);
 //   //   });
 //   // });
-//   // 
+//   //
 //   util.getLevel(levelName, function(jsonLevel) {
 //     context.json_level = jsonLevel;
 //     res.render('shared/play', context);
@@ -94,7 +94,7 @@ router.get('/account', (req, res, next) => {
 
 router.post('/add_class', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
-  let sch_id = db.getSchId(uname);
+  let sch_id = await db.getSchId(uname);
   if (sch_id === -1) {
     res.status(480).send("Teacher does not exist");
   }
@@ -102,8 +102,7 @@ router.post('/add_class', async function(req, res, next) {
   const body = req.body;
   var success = await db.insertClass(body.name, sch_id, uname);
   if (success !== -1) {
-    res.status(500).send();
-    res.status(200).send(success);
+    res.sendStatus(200);
   } else {
     res.sendStatus(500);
   }

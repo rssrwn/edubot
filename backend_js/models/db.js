@@ -88,7 +88,6 @@ exports.insertClass = async function(name, school_id, teacher) {
 
   var db_res = await pool.query("select MAX(class_id) from class;");
   var max = db_res.rows[0].max;
-  console.log(max);
   await pool.query("insert into class values ($1, $2, $3, $4);", [school_id, max+1, name, teacher]);
   return max+1;
 }
