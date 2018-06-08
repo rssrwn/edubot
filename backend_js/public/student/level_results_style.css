@@ -1,7 +1,8 @@
 #wrapperDiv {
   margin: auto;
+  margin-top: 50px;
   width: 500px;
-  height: 500px;
+  height: 350px;
   border-radius: 25px;
   background-color: #d2d2d2d2;
 }
@@ -15,19 +16,19 @@
 #completedDiv {
   display: block;
   margin: auto;
-  height: 100px;
+  height: 20%;
 }
 
 #levelDiv {
-  height: 250px;
+  height: 30%;
 }
 
 #starsDiv {
-  height: 150px;
+  height: 30%;
 }
 
 #buttonsDiv {
-  height: 100px;
+  height: 20%;
 }
 
 .starImage {
