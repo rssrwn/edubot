@@ -41,15 +41,15 @@ router.get('/solution', async function(req, res, next) {
 
   util.getLevelData(levelName, 'lev', function(jsonLevel) {
     context.json_level = jsonLevel;
-    
-    util.getLevelData(levelName, 'sol', function(xmlBlocks) {
-      context.xml_blocks = xmlBlocks;
-      
-      util.getLevelData(levelName, 'blocks', function(jsonLevel) {
-        context.json_solution = jsonLevel;
-        res.render('shared/play', context);
-      });
-    });
+  });
+  
+  util.getLevelData(levelName, 'sol', function(xmlBlocks) {
+    context.xml_blocks = xmlBlocks;
+  });
+  
+  util.getLevelData(levelName, 'blocks', function(jsonLevel) {
+    context.json_solution = jsonLevel;
+    res.render('shared/play', context);
   });
 });
 
