@@ -131,7 +131,7 @@ GridLevel.prototype.levelCompleted = async function() {
     draw();
     await sleep(125);
     alert("You won!");
-    location.href = '/shared/play?levelId=' + this.levelId + '&nextId=' + this.nextLevelId + '&sts=' + starsAttained;
+    location.href = '/student/level_results?levelId=' + this.levelId + '&nextId=' + this.nextLevelId + '&sts=' + starsAttained;
   }
 }
 
