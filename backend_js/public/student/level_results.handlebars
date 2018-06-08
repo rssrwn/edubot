@@ -18,28 +18,28 @@
     {{else}}
     {{> banners/teacher}}
     {{/if}}
-  </div>
   
-  <div id="completedDiv" class="centered">
-    <h1 id="completed">Completed!</h1>
-  </div>
-  
-  <div id="levelDiv" class="centered">
-    <!--<h2>{{level_name}}</h2>-->
-    
-    <div id="starDiv" class="centered">
-      {{#for 0 stars 1}}
-        <img class="starImage", alt="star", src="../images/star_filled.png">
-      {{/for}}
-      {{#for stars 3 1}}
-        <img class="starImage", alt="star", src="../images/star_empty.png">
-      {{/for}}
+    <div id="completedDiv" class="centered">
+      <h1 id="completed">Completed!</h1>
     </div>
-  </div>
-  
-  <div id="buttonsDiv" class="centered">
-    <button id="retryButton" class="buttons" type="button" onclick="location.href='/shared/play?levelId={{level_id}}'">Retry</button>
-    <button id="nextLevelButton" class="buttons" type="button" onclick="location.href='/shared/level_intro?levelId={{next_level_id}}'">Next Level</button>
+    
+    <div id="levelDiv" class="centered">
+      <!--<h2>{{level_name}}</h2>-->
+      
+      <div id="starDiv" class="centered">
+        {{#for 0 stars 1}}
+          <img class="starImage", alt="star", src="../images/star_filled.png">
+        {{/for}}
+        {{#for stars 3 1}}
+          <img class="starImage", alt="star", src="../images/star_empty.png">
+        {{/for}}
+      </div>
+    </div>
+    
+    <div id="buttonsDiv" class="centered">
+      <button id="retryButton" class="buttons" type="button" onclick="location.href='/shared/play?levelId={{level_id}}'">Retry</button>
+      <button id="nextLevelButton" class="buttons" type="button" onclick="location.href='/shared/level_intro?levelId={{next_level_id}}'">Next Level</button>
+    </div>
   </div>
   
 </body>
