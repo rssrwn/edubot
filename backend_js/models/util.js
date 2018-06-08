@@ -19,13 +19,13 @@ exports.getLevel = function(levelName, callback) {
 //   });
 // }
 
-exports.getLevel = function(levelName, callback) {
-  getLevelFileData(levelName, '.lev', callback);
-}
-
-exports.getSolution = function(levelName, callback) {
-  getLevelFileData(levelName, '.sol', callback);
-}
+// exports.getLevel = function(levelName, callback) {
+//   getLevelFileData(levelName, '.lev', callback);
+// }
+// 
+// exports.getSolution = function(levelName, callback) {
+//   getLevelFileData(levelName, '.sol', callback);
+// }
 
 exports.isStudent = async function(uname) {
   var type = db.userTypeEnum.NEITHER;
