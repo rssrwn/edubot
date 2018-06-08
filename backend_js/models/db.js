@@ -95,13 +95,31 @@ exports.insertClass = async function(name, school_id, teacher) {
 
 // Add a member with given uname into class with class_id
 exports.addMember = async function(uname, class_id) {
-  var free = await exports.unameFree(uname);
+  let free = await exports.unameFree(uname);
   if (free) {
-    return false;
+    return -1;
+  }
+
+  let member = await inClass(uname);
+  if (member) {
+    return -2;
   }
 
   await pool.query("insert into student_class values ($1, $2);", [uname, class_id]);
-  return true;
+  return 1;
+}
+
+// Find whether uname is already in a class
+inClass = async function(uname) {
+  let db_res = await pool.query("select uname from student_class;");
+  res = false;
+  for (var i=0; i<db_res.rows.length; i++) {
+    console.log(db_res.rows[i].uname);
+    if (db_res.rows[i].uname == uname) {
+      res = true;
+    }
+  }
+  return res;
 }
 
 // Get a class name from a class_id
@@ -122,12 +140,23 @@ exports.getClasses = async function(teacher) {
 
 // Get a list of students (usernames') who are members of class_id
 exports.getMembers = async function(class_id) {
-  var res = await pool.query("select uname from student_class where class_id=$1;", [class_id]);
+  let res = await pool.query("select uname from student_class where class_id=$1;", [class_id]);
   ret = [];
   for (var i=0; i<res.rows.length; i++) {
     ret[i] = res.rows[i].uname;
   }
   return ret;
+}
+
+// Get the sch_id for a teacher uname
+exports.getSchId = async function(uname) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return -1;
+  }
+
+  let db_res = await pool.query("select sch_id from users where uname=$1", [uname]);
+  return db_res.rows[0].sch_id;
 }
 
 exports.userTypeEnum = userTypeEnum;

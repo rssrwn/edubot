@@ -35,17 +35,32 @@ router.get('/student', (req, res, next) => {
   res.send('hello world');
 });
 
+// router.get('/solution', async function(req, res, next) {
+//   let levelName = req.query.levelId;
+//   let context = {student: false};
+// 
+//   // util.getLevel(levelName, function(jsonLevel) {
+//   //   context.json_level = jsonLevel;
+//   // 
+//   //   util.getSolution(levelName, function(jsonLevel) {
+//   //     context.json_solution = jsonLevel;
+//   //     res.render('shared/play', context);
+//   //   });
+//   // });
+//   // 
+//   util.getLevel(levelName, function(jsonLevel) {
+//     context.json_level = jsonLevel;
+//     res.render('shared/play', context);
+//   });
+// });
+
 router.get('/solution', async function(req, res, next) {
   let levelName = req.query.levelId;
   let context = {student: true};
 
-  let jsonLevel = util.getLevel(levelName, function(jsonLevel) {
+  let jsonLevel = await util.getLevel(levelName, function(jsonLevel) {
     context.json_level = jsonLevel;
-    
-    let jsonSolution = util.getSolution(levelName, function(jsonSolution) {
-      context.json_solution = jsonSolution;
-      res.render('shared/play', context);
-    });
+    res.render('teacher/solution', context);
   });
 });
 
@@ -78,22 +93,33 @@ router.get('/account', (req, res, next) => {
 });
 
 router.post('/add_class', async function(req, res, next) {
+  let uname = req.cookies["edubot-cookie"];
+  let sch_id = db.getSchId(uname);
+  if (sch_id === -1) {
+    res.status(480).send("Teacher does not exist");
+  }
+
   const body = req.body;
-  var success = await db.insertClass(body.name, body.sch_id, body.teacher);
-  if (success === -1) {
-    res.status(470).send("That teacher does not exist");
+  var success = await db.insertClass(body.name, sch_id, uname);
+  if (success !== -1) {
+    res.status(500).send();
+    res.status(200).send(success);
   } else {
-    res.sendStatus(200);
+    res.sendStatus(500);
   }
 });
 
 router.post('/add_member', async function(req, res, next) {
   const body = req.body;
-  var success = await db.addMember(body.uname, body.class_id);
-  if (success) {
+  var status = await db.addMember(body.uname, body.class_id);
+  if (status === 1) {
     res.sendStatus(200);
+  } else if (status === -1) {
+    res.status(480).send("That username does not have an account");
+  } else if (status === -2) {
+    res.status(481).send("That username is alreday in a class");
   } else {
-    res.status(470).send("That username does not have an account");
+    res.status(500).send("Unknown error");
   }
 });
 
