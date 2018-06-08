@@ -42,9 +42,13 @@ router.get('/solution', async function(req, res, next) {
   util.getLevel(levelName, function(jsonLevel) {
     context.json_level = jsonLevel;
     
-    util.getSolution(levelName, function(jsonLevel) {
-      context.json_solution = jsonLevel;
-      res.render('shared/play', context);
+    util.getBlocks(levelName, function(xmlBlocks) {
+      context.xml_blocks = xmlBlocks;
+      
+      util.getSolution(levelName, function(jsonLevel) {
+        context.json_solution = jsonLevel;
+        res.render('shared/play', context);
+      });
     });
   });
 });

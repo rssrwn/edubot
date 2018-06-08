@@ -103,7 +103,11 @@ router.get('/play', async function(req, res, next) {
 
   util.getLevel(levelName, function(jsonLevel) {
     context.json_level = jsonLevel;
-    res.render('shared/play', context);
+    
+    util.getBlocks(levelName, function(xmlBlocks) {
+      context.xml_blocks = xmlBlocks;
+      res.render('shared/play', context);
+    });
   });
 });
 
