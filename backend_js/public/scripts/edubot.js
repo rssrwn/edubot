@@ -18,6 +18,8 @@ function setLevel(newLevel) {
 }
 
 function GridLevel(width, height, squareSize) {
+  this.levelId = null;
+  this.nextLevelId = null;
   this.width = width;
   this.height = height;
   this.squareSize = squareSize;
@@ -128,7 +130,8 @@ GridLevel.prototype.levelCompleted = async function() {
     
     draw();
     await sleep(125);
-    alert("You won! \nYour score is: " + score);
+    alert("You won!");
+    location.href = '/shared/play?levelId=' + this.levelId + '&nextId=' + this.nextLevelId + '&sts=' + starsAttained;
   }
 }
 
