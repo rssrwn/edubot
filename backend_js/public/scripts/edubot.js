@@ -5,7 +5,7 @@ var levelSource = null;
 var level = new GridLevel(16, 16, defaultSquareSize);
 var robotStepTime = 400;
 var frameTime = 50;
-var stars = 1;
+var starsAttained = 1;
 
 console.log("Initialising!");
 
@@ -124,7 +124,7 @@ GridLevel.prototype.levelCompleted = async function() {
   if (rob !== null) {
     let diff = this.maxActions - this.minActions;
     let score = Math.max(diff - (rob.actionsTaken - this.minActions), 0) / diff;
-    stars = Math.min(Math.floor(score * 3) + 1, 3);
+    starsAttained = Math.min(Math.floor(score * 3) + 1, 3);
     
     draw();
     await sleep(125);
