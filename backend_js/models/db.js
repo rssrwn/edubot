@@ -88,7 +88,6 @@ exports.insertClass = async function(name, school_id, teacher) {
 
   var db_res = await pool.query("select MAX(class_id) from class;");
   var max = db_res.rows[0].max;
-  console.log(max);
   await pool.query("insert into class values ($1, $2, $3, $4);", [school_id, max+1, name, teacher]);
   return max+1;
 }
@@ -157,6 +156,16 @@ exports.getSchId = async function(uname) {
 
   let db_res = await pool.query("select sch_id from users where uname=$1", [uname]);
   return db_res.rows[0].sch_id;
+}
+
+exports.getLevelResults = async function(uname) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return -1;
+  }
+
+  let db_res = await pool.query("select level_id, score from student_level where uname=$1", [uname]);
+  // TODO
 }
 
 exports.userTypeEnum = userTypeEnum;
