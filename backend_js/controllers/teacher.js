@@ -37,7 +37,7 @@ router.get('/student', (req, res, next) => {
 
 router.get('/solution', async function(req, res, next) {
   let levelName = req.query.levelId;
-  let context = {student: true};
+  let context = {student: false};
 
   util.getLevelData(levelName, 'lev', function(jsonLevel) {
     context.json_level = jsonLevel;
