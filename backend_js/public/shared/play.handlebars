@@ -64,21 +64,17 @@
             <script src="../scripts/robot_control.js"></script>
             <script src="../scripts/edubot.js"></script>
             <script src="../scripts/levels.js"></script>
-            <script>enterLevel('{{{json_level}}}')</script>
+            <script>enterLevel('{{{json_level}}}');</script>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <xml id="toolbox" style="display: none">
-    {{{xml_blocks}}}
-  </xml>
+  <xml id="toolbox">{{{xml_blocks}}}</xml>
 
   <script src="../scripts/level_events.js"></script>
 
-  <script>
-    putBlockXML('{{{json_solution}}}');
-  </script>
+  <script>putBlockXML('{{{json_solution}}}');</script>
 </body>
 </html>
