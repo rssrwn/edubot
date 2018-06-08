@@ -65,7 +65,7 @@
 
       var addMemberCallback = function(status) {
         switch (status) {
-          case 200: break;
+          case 200: location.reload(); break;
           case 480: alert("Username does not exist"); break;
           case 481: alert("User already in a class"); break;
           default: alert("Unknown error occurred adding member: " + status); break;
@@ -107,7 +107,7 @@
 
       var addClassCallback = function(status) {
         switch (status) {
-          case 200: break;
+          case 200: location.reload(); break;
           case 480: alert("Teacher doesn't exist"); break;
           default: alert("Unknown error occurred adding class: " + status); break;
         }
