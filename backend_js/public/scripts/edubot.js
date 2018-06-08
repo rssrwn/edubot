@@ -5,6 +5,7 @@ var levelSource = null;
 var level = new GridLevel(16, 16, defaultSquareSize);
 var robotStepTime = 400;
 var frameTime = 50;
+var stars = 1;
 
 console.log("Initialising!");
 
@@ -27,6 +28,8 @@ function GridLevel(width, height, squareSize) {
   this.hints = [];
   this.hintCounter = 0;
   this.runtimeMillis = 0;
+  this.minActions = 0;
+  this.maxActions = 0;
   
   for (i = 0; i < width; i++) {
     for (j = 0; j < height; j++) {
@@ -115,11 +118,16 @@ GridLevel.prototype.getBottomRight = function() {
     canvas.height - (canvas.height - level.height * level.squareSize) / 2);
 }
 
-GridLevel.prototype.levelCompleted = function() {
+GridLevel.prototype.levelCompleted = async function() {
   let rob = getRobot();
   
   if (rob !== null) {
-    let score = Math.max(2000 - 40 * getRobot().actionsTaken, 100);
+    let diff = this.maxActions - this.minActions;
+    let score = Math.max(diff - (rob.actionsTaken - this.minActions), 0) / diff;
+    stars = Math.min(Math.floor(score * 3) + 1, 3);
+    
+    draw();
+    await sleep(125);
     alert("You won! \nYour score is: " + score);
   }
 }
@@ -171,11 +179,13 @@ GridSquare.prototype.entityMoved = function () {
 }
 
 GridSquare.prototype.setEntity = function (entity) {
-  if (this.entity !== null) {
-    this.entity.removed();
-  }
+  let oldEntity = this.entity;
   
   this.entity = entity;
+  
+  if (oldEntity !== null) {
+    oldEntity.removed();
+  }
 }
 
 GridSquare.prototype.isBlocking = function() {
@@ -276,7 +286,7 @@ function parseLevel(level) {
     if (key === "") {
       // Reviving the full object.
       
-      console.log("Restoring level");
+      //console.log("Restoring level");
       
       let gridLevel = Object.create(GridLevel.prototype);
       //let gridLevel = new GridLevel(0, 0, 1);
@@ -325,8 +335,8 @@ function parseLevel(level) {
         }
       }
       
-      console.log("\nRestored full level:");
-      console.log(gridLevel);
+      //console.log("\nRestored full level:");
+      //console.log(gridLevel);
       
       gridLevel.runtimeMillis = 0;
       
@@ -336,8 +346,8 @@ function parseLevel(level) {
     }
   }
   
-  console.log("The original level is:");
-  console.log(level);
+  //console.log("The original level is:");
+  //console.log(level);
   
   let newLevel = JSON.parse(level, reviver);
   
