@@ -22,9 +22,11 @@
       <h1 class="titles">{{concept}}</h1>
       
       <div class="descriptionDiv">
+        <ul>
         {{#each concept_description}}
           <li>{{this}}</li>
         {{/each}}
+        </ul>
       </div>
       
       <h2 class="titles">{{level_name}}</h2>
@@ -32,11 +34,11 @@
       <div id="levelDiv" class="descriptionDiv clearFix">
         <div id="levelDescriptionDiv" class="descriptionDiv clearFix">
           <p>
-            {{objective}}
+            <b>Objective: </b> {{objective}}
           </p>
           
           <p>
-            Blocks available:
+            <b>Blocks available:</b>
             
             <br>
             
@@ -44,7 +46,7 @@
           </p>
           
           <p>
-            Hints:
+            <b>Hints:</b>
             <ul>
               {{#each hints}}
                 <li>{{this}}</li>
@@ -58,7 +60,7 @@
       </div>
 
       <div id="levelButtonsDiv">
-        <button class="levelButton" type="button" onclick="location.href='/shared/play'">Try Level</button>
+        <button class="levelButton" type="button" onclick="location.href='/shared/play?levelId={{level_id}}'">Try Level</button>
         {{#unless student}}
         <button class="levelButton" type="button" onclick="location.href='/teacher/solution'">Sample Solution</button>
         {{/unless}}

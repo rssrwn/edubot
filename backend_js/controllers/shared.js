@@ -1,24 +1,9 @@
 const express = require('express');
+const path = require('path');
 const router = express.Router();
 const db = require('../models/db.js');
-/*const fs = require('fs');
-
-function getLevelIntroContext(levelName, callback) {
-  fs.readFile('../shared/levels/' + levelName + '/' + levelName + '.ctx', 'utf8', function (err, data) {
-    if (data !== null) {
-      console.log("Context is:");
-      console.log(data);
-      let ctx = JSON.parse(data);
-      callback(ctx);
-    } else {
-      console.log("Failed to read level intro context")
-    }
-  });
-}
-
-var introContext = null;
-
-getLevelIntroContext("intro_1", function (ctx) {introContext = ctx});*/
+const util = require('../models/util.js')
+const fs = require('fs');
 
 var loops1Context = {
   student: false,
@@ -81,10 +66,10 @@ var intro3Context = {
   level_image: "../images/intro_3.png"
 };
 
-router.get('/level_intro', (req, res, next) => {
+router.get('/level_intro', async function(req, res, next) {
   let levelName = req.query.levelId;
 
-  var context = null;
+  let context = null;
 
   switch (levelName) {
     case "intro_1":
@@ -102,23 +87,24 @@ router.get('/level_intro', (req, res, next) => {
   }
 
   if (context !== null) {
+    let uname = req.cookies["edubot-cookie"];
+    context.student = await util.isStudent(uname);
+    context.level_id = levelName;
     res.render('shared/level_intro', context);
+  } else {
+    res.sendStatus(500);
   }
 });
 
 router.get('/play', async function(req, res, next) {
-  var uname = req.cookies["edubot-cookie"];
-  var type = db.userTypeEnum.NEITHER;
-  try {
-    type = await db.getUserType(uname);
-  } catch(e) {
-    next(e);
-  };
-  student = false;
-  if (type === db.userTypeEnum.STUDENT) {
-    student = true;
-  }
-  res.render('shared/play', {student: true});
+  let levelName = req.query.levelId;
+  let uname = req.cookies["edubot-cookie"];
+  let context = {student: await util.isStudent(uname)};
+
+  util.getLevel(levelName, function(jsonLevel) {
+    context.json_level = jsonLevel;
+    res.render('shared/play', context);
+  });
 });
 
 module.exports = router;

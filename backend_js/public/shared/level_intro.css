@@ -2,6 +2,10 @@ p {
   margin-bottom: 10px;
 }
 
+li {
+  margin-bottom: 10px;
+}
+
 .titles {
   display: block;
   margin: auto;
@@ -44,7 +48,7 @@ p {
 }
 
 .levelButton {
-  margin: 5px auto;
+  margin: 0 15px;
   width: 150px;
   height: 50px;
 }

@@ -28,7 +28,7 @@
     </div>
     <script>
       var activeButton = null;
-    
+
       var addMemberEvent = function(class_id, button) {
         if (activeButton) {
           $(activeButton.addButton).remove();
@@ -39,32 +39,36 @@
         activeButton.class_id = class_id;
 
         button.style.display = "none";
-        
+
         var submitButton = $("<button type='button' onclick='addMemberSubmitEvent()'>Add</button>");
         var textInput = $("<input type='text'></input>");
+<<<<<<< HEAD
         
         console.log(textInput.innerHtml);
         
+=======
+
+>>>>>>> 44a6bde070d18f5f0ae92e2e51fc5a1bcf85a88b
         activeButton.addButton = submitButton;
         activeButton.textInput = textInput;
-        
+
         $(button).parent().append(textInput);
         $(button).parent().append(submitButton);
       };
-      
+
       var addMemberSubmitEvent = function() {
         let uname = activeButton.textInput.value;
         let class_id = activeButton.class_id;
-        console.log(activeButton.textInput);
         console.log("Add user uname: " + uname + " class_id: " + class_id);
         httpPost('https://edubot-backend.herokuapp.com/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
-        
+        //httpPost('http://localhost:3000/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
+
         $(activeButton.addButton).remove();
         $(activeButton.textInput).remove();
         activeButton.style.display = "inline-block";
         activeButton = null;
       };
-      
+
       var addMemberCallback = function(status) {
         switch (status) {
           case 200: alert("Added member"); break;

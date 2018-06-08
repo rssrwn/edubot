@@ -9,7 +9,7 @@ function httpGet(url, callback) {
   xmlHttp.send();
 }
 
-async function httpPost(url, params, callback) {
+function httpPost(url, params, callback) {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("POST", url, true); // true for asynchronous
   xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

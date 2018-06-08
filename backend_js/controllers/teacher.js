@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/db.js');
+const util = require('../models/util.js');
+const fs = require('fs');
 
 router.get('/classes', async function(req, res, next) {
-  let uname = 'teacher2'; //req.cookies["edubot-cookie"];
+  let uname = req.cookies["edubot-cookie"];
   let class_data = [];
   let class_ids = await db.getClasses(uname);
 
@@ -24,16 +26,6 @@ router.get('/classes', async function(req, res, next) {
 
   var context = {
     class_list: class_data
-    // [{
-    //   class_name: 'Group 14',
-    //   class_members: [{ fname: 'Harry', lname: 'Davis', age: 20, uname: 16},
-    //                   { fname: 'Ross', lname: 'Irwin', age: 20, uname: 616},
-    //                   { fname: 'Jordan', lname: 'Glanfield', age: 20, uname: 1216},
-    //                   { fname: 'Julien', lname: 'Amblard', age: 19, uname: 1616}]
-    // }, {
-    //   class_name: 'Older Members',
-    //   class_members: [{ fname: 'Mark', lname: 'Wheelhouse', age: 0, uname: 322}]
-    // }]
   };
 
   res.render('teacher/classes', context);
@@ -43,8 +35,14 @@ router.get('/student', (req, res, next) => {
   res.send('hello world');
 });
 
-router.get('/solution', (req, res, next) => {
-  res.render('teacher/solution', {});
+router.get('/solution', async function(req, res, next) {
+  let levelName = req.query.levelId;
+  let context = {student: true};
+
+  let jsonLevel = await util.getLevel(levelName, function(jsonLevel) {
+    context.json_level = jsonLevel;
+    res.render('teacher/solution', context);
+  });
 });
 
 router.get('/level_selection', (req, res, next) => {
@@ -62,8 +60,8 @@ router.get('/level_selection', (req, res, next) => {
       {
         categoryName: "Looping",
         levels: [
-          {number: 1, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
-          {number: 2, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
+          {number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
+          {number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
         ]
       }
     ]
