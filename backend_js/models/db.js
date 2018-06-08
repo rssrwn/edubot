@@ -158,4 +158,14 @@ exports.getSchId = async function(uname) {
   return db_res.rows[0].sch_id;
 }
 
+exports.getLevelResults = async function(uname) {
+  let let free = await exports.unameFree(uname);
+  if (free) {
+    return -1;
+  }
+
+  let db_res = await pool.query("select level_id, score from student_level where uname=$1", [uname]);
+  // TODO
+}
+
 exports.userTypeEnum = userTypeEnum;
