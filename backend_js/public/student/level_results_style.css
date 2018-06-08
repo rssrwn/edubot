@@ -1,0 +1,61 @@
+#page {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  border-radius: 25px;
+  display: inline-block;
+  background-color: #d2d2d2d2;
+}
+
+.centered {
+  margin: auto;
+  text-align: center;
+  width: 500px;
+}
+
+#completedDiv {
+  display: block;
+  margin: auto;
+  height: 100px;
+}
+
+#levelDiv {
+  height: 250px;
+}
+
+#starsDiv {
+  height: 150px;
+}
+
+#buttonsDiv {
+  height: 100px;
+}
+
+.starImage {
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+}
+
+.starsDiv {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.buttons {
+  width: 100px;
+  height: 50px;
+}
+
+#retryButton {
+  margin-right: 20px;
+}
+
+#nextLevelButton {
+  margin-left: 20px;
+}
