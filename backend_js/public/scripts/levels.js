@@ -67,6 +67,9 @@ function initSampleLevel1() {
     + "the level and seeing what patterns appear in the actions, and what can be placed "
     + "in a loop");
   l.hintCounter = randomInt(2);
+  
+  l.minActions = 18;
+  l.maxActions = 30;
 }
 
 function restartLevel() {
