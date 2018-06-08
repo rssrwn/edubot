@@ -9,11 +9,11 @@ router.use('/student', require('./student'));
 router.use('/shared', require('./shared'));
 
 router.get('/test', async function(req, res) {
-  //var info = await db.insertClass('Year 8B', 1, 'teacher2');
+  //var info = await db.insertClass('Year 8C', 1, 'teacher2');
   //var info = await db.addMember('ryan06', 1);
   //var info = await db.getClassName(1);
-  let info = await db.getSchId('new_user');
-  console.log(info);
+  //let info = await db.getSchId('new_user');
+  //console.log(info);
   res.sendStatus(200);
 });
 
