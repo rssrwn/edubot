@@ -43,10 +43,10 @@
         var submitButton = $("<button type='button' onclick='addMemberSubmitEvent()'>Add</button>");
         var textInput = $("<input type='text'></input>");
         
-        console.log(textInput.innerHtml);
+        activeButton.addButton = submitButton.get(0);
+        activeButton.textInput = textInput.get(0);
         
-        activeButton.addButton = submitButton;
-        activeButton.textInput = textInput;
+        console.log(activeButton.textInput.value);
 
         $(button).parent().append(textInput);
         $(button).parent().append(submitButton);
