@@ -96,7 +96,7 @@
         let class_name = activeButton.textInput.value;
         let class_id = activeButton.class_id;
         
-        httpPost('https://edubot-backend.herokuapp.com/teacher/add_class', {name: class_name);
+        httpPost('https://edubot-backend.herokuapp.com/teacher/add_class', {name: class_name});
         //httpPost('http://localhost:3000/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
 
         $(activeButton.addButton).remove();
