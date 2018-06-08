@@ -45,8 +45,6 @@
         
         activeButton.addButton = submitButton.get(0);
         activeButton.textInput = textInput.get(0);
-        
-        console.log(activeButton.textInput.value);
 
         $(button).parent().append(textInput);
         $(button).parent().append(submitButton);
@@ -55,7 +53,7 @@
       var addMemberSubmitEvent = function() {
         let uname = activeButton.textInput.value;
         let class_id = activeButton.class_id;
-        console.log("Add user uname: " + uname + " class_id: " + class_id);
+        
         httpPost('https://edubot-backend.herokuapp.com/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
         //httpPost('http://localhost:3000/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
 
@@ -67,9 +65,9 @@
 
       var addMemberCallback = function(status) {
         switch (status) {
-          case 200: alert("Added member"); break;
+          case 200: break;
           case 470: alert("Username does not exist"); break;
-          default: alert("Unknown error occurred: " + status + "."); break;
+          default: alert("Unknown error occurred adding member: " + status); break;
         }
       }
     </script>
