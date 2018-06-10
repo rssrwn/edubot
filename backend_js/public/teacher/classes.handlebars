@@ -42,7 +42,7 @@
 
         var submitButton = $("<button type='button' onclick='addMemberSubmitEvent()'>Add</button>");
         var textInput = $("<input type='text'></input>");
-        
+
         activeButton.addButton = submitButton.get(0);
         activeButton.textInput = textInput.get(0);
 
@@ -53,8 +53,9 @@
       var addMemberSubmitEvent = function() {
         let uname = activeButton.textInput.value;
         let class_id = activeButton.class_id;
-        
-        httpPost('https://edubot-backend.herokuapp.com/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
+
+        httpPost('https://edubot-learn.herokuapp.com/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
+        //httpPost('https://edubot-backend.herokuapp.com/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
         //httpPost('http://localhost:3000/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
 
         $(activeButton.addButton).remove();
@@ -71,7 +72,7 @@
           default: alert("Unknown error occurred adding member: " + status); break;
         }
       }
-      
+
       var addClassEvent = function(button) {
         if (activeButton) {
           $(activeButton.addButton).remove();
@@ -84,19 +85,20 @@
 
         var submitButton = $("<button type='button' onclick='addClassSubmitEvent()'>Add</button>");
         var textInput = $("<input type='text'></input>");
-        
+
         activeButton.addButton = submitButton.get(0);
         activeButton.textInput = textInput.get(0);
 
         $(button).parent().append(textInput);
         $(button).parent().append(submitButton);
       }
-      
+
       var addClassSubmitEvent = function() {
         let class_name = activeButton.textInput.value;
         let class_id = activeButton.class_id;
-        
-        httpPost('https://edubot-backend.herokuapp.com/teacher/add_class', {name: class_name}, addClassCallback);
+
+        httpPost('https://edubot-learn.herokuapp.com/teacher/add_class', {name: class_name}, addClassCallback);
+        //httpPost('https://edubot-backend.herokuapp.com/teacher/add_class', {name: class_name}, addClassCallback);
         //httpPost('http://localhost:3000/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
 
         $(activeButton.addButton).remove();
