@@ -132,22 +132,16 @@ GridLevel.prototype.levelCompleted = async function() {
     await sleep(125);
     alert("You won!");
 
-    await httpPost("https://edubot-learn.herokuapp.com/student/set_result",
-        {level: this.levelId, score: starsAttained}, resultCallback);
-    //await httpPost("http://localhost:3000/student/set_result",
-    //    {level: this.levelId, score: starsAttained}, resultCallback);
-  }
-}
+    //httpPost("http://localhost:3000/student/set_result", {level: this.levelId, score: starsAttained}, function(status) {
+    let status = await httpPost("https://edubot-learn.herokuapp.com/student/set_result",
+        {level: this.levelId, score: starsAttained}, function(status) {
+      console.log('result callback status ', status);
+      if (!(status == 200 || status === 250)) {
+        alert("Unknown error");
+      }
+    });
 
-function resultCallback(status) {
-  console.log('result callback status ', status);
-  if (status === 200) {
     location.href = '/student/level_results?levelId=' + this.levelId + '&nextId=' + this.nextLevelId + '&sts=' + starsAttained;
-  } else if (status === 250) {
-    // Score no better than already in db
-    location.href = '/student/level_results?levelId=' + this.levelId + '&nextId=' + this.nextLevelId + '&sts=' + starsAttained;
-  } else {
-    alert("Unknown error");
   }
 }
 

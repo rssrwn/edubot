@@ -34,13 +34,13 @@ function sleep(timeMillis, processTimeoutId) {
   });
 }
 
-async function httpPost(url, params, callback) {
+function httpPost(url, params, callback) {
   console.log('http post');
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("POST", url, true); // true for asynchronous
   xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-  xmlHttp.onreadystatechange = function() {
+  xmlHttp.onreadystatechange = async function() {
     if (xmlHttp.readyState == XMLHttpRequest.DONE) {
       callback(xmlHttp.status);
     }
@@ -54,7 +54,7 @@ async function httpPost(url, params, callback) {
   xmlHttp.send(postParams);
 }
 
-async function httpGet(url, callback) {
+function httpGet(url, callback) {
   var xmlHttp = new XMLHttpRequest();
 
   xmlHttp.onreadystatechange = function() {
