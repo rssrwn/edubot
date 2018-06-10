@@ -32,7 +32,7 @@ function GridLevel(width, height, squareSize) {
   this.runtimeMillis = 0;
   this.minActions = 0;
   this.maxActions = 0;
-  
+
   for (i = 0; i < width; i++) {
     for (j = 0; j < height; j++) {
       this.grid[i][j] = new GridSquare(i, j);
@@ -44,7 +44,7 @@ GridLevel.prototype.getSquare = function (x, y) {
   if (x >= this.width || y >= this.height || x < 0 || y < 0) {
     return null;
   }
-  
+
   return this.grid[x][y];
 }
 
@@ -58,7 +58,7 @@ GridLevel.prototype.setRobot = function (robot) {
 
 GridLevel.prototype.addEntity = function (entity, x, y) {
   var square = this.getSquare(x, y);
-  
+
   if (square.entity === null) {
     square.entity = entity;
     entity.loc = new Point(x, y);
@@ -83,55 +83,68 @@ GridLevel.prototype.boltCollected = function() {
 
 GridLevel.prototype.update = function () {
   this.runtimeMillis += frameTime;
-  
+
   for (i = 0; i < this.width; i++) {
     for (j = 0; j < this.height; j++) {
       this.grid[i][j].update();
     }
   }
-  
+
   this.updateState = !this.updateState;
 }
 
 GridLevel.prototype.moveEntity = function(entity, point) {
   point = clampToGrid(point);
-  
+
   if (entity.loc.is(point)) {
     return false;
   }
-  
+
   if (!this.grid[point.x][point.y].isBlocking()) {
     this.grid[entity.loc.x][entity.loc.y].entityMoved();
     this.grid[point.x][point.y].setEntity(entity);
     entity.loc = new Point(point.x, point.y);
     return true;
   }
-  
+
   return false;
 }
 
 GridLevel.prototype.getTopLeft = function() {
-  return new Point((canvas.width - level.width * level.squareSize) / 2, 
+  return new Point((canvas.width - level.width * level.squareSize) / 2,
     (canvas.height - level.height * level.squareSize) / 2);
 }
 
 GridLevel.prototype.getBottomRight = function() {
-  return new Point(canvas.width - (canvas.width - level.width * level.squareSize) / 2, 
+  return new Point(canvas.width - (canvas.width - level.width * level.squareSize) / 2,
     canvas.height - (canvas.height - level.height * level.squareSize) / 2);
 }
 
 GridLevel.prototype.levelCompleted = async function() {
   let rob = getRobot();
-  
+
   if (rob !== null) {
     let diff = this.maxActions - this.minActions;
     let score = Math.max(diff - (rob.actionsTaken - this.minActions), 0) / diff;
     starsAttained = Math.min(Math.floor(score * 3) + 1, 3);
-    
+
     draw();
     await sleep(125);
     alert("You won!");
+
+    await httpPost("https://edubot-learn.herokuapp.com/student/set_result",
+        {level: this.levelId, score: starsAttained}, resultCallback);
+    //await httpPost("http://localhost:3000/student/set_result",
+    //    {level: this.levelId, score: starsAttained}, resultCallback);
+  }
+}
+
+function resultCallback(status) {
+  console.log('result callback status ', status);
+  if (status === 200) {
     location.href = '/student/level_results?levelId=' + this.levelId + '&nextId=' + this.nextLevelId + '&sts=' + starsAttained;
+  } else {
+    alert("Unknown error");
   }
 }
 
@@ -170,7 +183,7 @@ GridSquare.prototype.draw = function () {
   ctx.strokeStyle = "#adadb2"
   ctx.stroke();
   ctx.closePath();
-  
+
   if (this.entity !== null) {
     this.entity.draw(
       level.getDrawingOrdinate(this.loc.x), level.getDrawingOrdinate(this.loc.y));
@@ -183,9 +196,9 @@ GridSquare.prototype.entityMoved = function () {
 
 GridSquare.prototype.setEntity = function (entity) {
   let oldEntity = this.entity;
-  
+
   this.entity = entity;
-  
+
   if (oldEntity !== null) {
     oldEntity.removed();
   }
@@ -199,17 +212,17 @@ setInterval(update, frameTime);
 
 function createBoundedLevel(width, height, squareSize) {
   let lev = new GridLevel(width, height, squareSize);
-  
+
   for (let i = 0; i < lev.width; i++) {
     lev.addEntity(new BasicWall(), i, 0);
     lev.addEntity(new BasicWall(), i, height - 1);
   }
-  
+
   for (let i = 0; i < lev.height; i++) {
     lev.addEntity(new BasicWall(), 0, i);
     lev.addEntity(new BasicWall(), width - 1, i);
   }
-  
+
   return lev;
 }
 
@@ -217,31 +230,31 @@ function loadLevel(loadEvent) {
 	let file = loadEvent.target.files[0];
 	let reader = new FileReader();
 	let text = null;
-	
+
 	reader.onload = (function(theFile) {
     return function(e) {
 			enterLevel(e.target.result);
     };
   })(file);
-	
+
 	reader.readAsText(file);
 }
 
 function enterLevel(jsonLevel) {
   let newLevel = parseLevel(jsonLevel);
-  
+
   if (newLevel !== null) {
     setLevel(newLevel);
     return true;
   }
-  
+
   return false;
 }
 
 function update() {
   //canvas.width = canvas.style.width;
   //canvas.height = canvas.style.height;
-  
+
   level.update();
   draw();
 }
@@ -250,14 +263,14 @@ function update() {
 function draw() {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+
   level.grid.forEach(function (column) {
     column.forEach(function (square) {
       resetCanvasTransforms();
       square.draw();
     });
   });
-  
+
   resetCanvasTransforms();
 }
 
@@ -288,76 +301,76 @@ function parseLevel(level) {
   let reviver = function(key, value) {
     if (key === "") {
       // Reviving the full object.
-      
+
       //console.log("Restoring level");
-      
+
       let gridLevel = Object.create(GridLevel.prototype);
       //let gridLevel = new GridLevel(0, 0, 1);
-      
+
       // Restore level properties.
       for (var vr in value) {
         gridLevel[vr] = value[vr];
       }
-      
+
       gridLevel.robot = null;
-      
+
       //console.log("Restored grid level object:");
       //console.log(gridLevel);
       //console.log("\nRestoring grid squares:");
-      
+
       // Restore grid squares.
       for (let x = 0; x < gridLevel.width; x++) {
         for (let y = 0; y < gridLevel.height; y++) {
           let newSquare = Object.create(GridSquare.prototype);
           let oldSquare = gridLevel.grid[x][y];
-          
+
           for (var vr in oldSquare) {
             newSquare[vr] = oldSquare[vr];
           }
-          
+
           gridLevel.grid[x][y] = newSquare;
-          
+
           // Restore entity.
           if (newSquare.entity != null) {
             let entity = generateEntityFromId(newSquare.entity.entityId);
-            
+
             for (var vr in newSquare.entity) {
               entity[vr] = newSquare.entity[vr];
             }
-            
+
             entity.loc = new Point(entity.loc.x, entity.loc.y);
-            
+
             newSquare.entity = entity;
-            
+
             if (entity.isRobot()) {
               gridLevel.robot = entity;
             }
-            
+
             entity.loaded();
           }
         }
       }
-      
+
       //console.log("\nRestored full level:");
       //console.log(gridLevel);
-      
+
       gridLevel.runtimeMillis = 0;
-      
+
       return gridLevel;
     } else {
       return value;
     }
   }
-  
+
   //console.log("The original level is:");
   //console.log(level);
-  
+
   let newLevel = JSON.parse(level, reviver);
-  
+
   if (newLevel !== null && newLevel !== undefined) {
     levelSource = level;
   }
-  
+
   return newLevel;
 }
 

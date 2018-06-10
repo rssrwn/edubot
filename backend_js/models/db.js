@@ -56,7 +56,7 @@ exports.unameFree = async function(uname) {
 
 // Returns an object with fields of user info (excluding pass and type)
 exports.getUserInfo = async function(uname) {
-  var db_res = await pool.query("select uname, fname, lname, age, sch_id from users where uname=$1", [uname]);
+  var db_res = await pool.query("select uname, fname, lname, age, sch_id from users where uname=$1;", [uname]);
   return db_res.rows[0];
 }
 
@@ -71,7 +71,7 @@ exports.insertUser = async function(params) {
 
 // Returns true for successfull login, false otherwise
 exports.attemptLogin = async function(uname, pass) {
-  var db_res = await pool.query("select users.uname, users.hash from users where uname=$1", [uname]);
+  var db_res = await pool.query("select users.uname, users.hash from users where uname=$1;", [uname]);
   if (db_res.rows.length !== 0 && compareHash(pass, db_res.rows[0].hash)) {
     return true;
   } else {
@@ -123,7 +123,7 @@ inClass = async function(uname) {
 
 // Get a class name from a class_id
 exports.getClassName = async function(class_id) {
-  var db_res = await pool.query("select name from class where class_id=$1", [class_id]);
+  var db_res = await pool.query("select name from class where class_id=$1;", [class_id]);
   return db_res.rows[0].name;
 }
 
@@ -154,18 +154,37 @@ exports.getSchId = async function(uname) {
     return -1;
   }
 
-  let db_res = await pool.query("select sch_id from users where uname=$1", [uname]);
+  let db_res = await pool.query("select sch_id from users where uname=$1;", [uname]);
   return db_res.rows[0].sch_id;
 }
 
+// Get a list of uname's results from all levels
 exports.getLevelResults = async function(uname) {
   let free = await exports.unameFree(uname);
   if (free) {
     return -1;
   }
 
-  let db_res = await pool.query("select level_id, score from student_level where uname=$1", [uname]);
-  // TODO
+  let db_res = await pool.query("select level_id, score from student_level where uname=$1;", [uname]);
+
+  ret = [];
+  for (var i=0; i<db_res.rows.length; i++) {
+    ret[i] = db_res.rows[i].score;
+  }
+  return ret;
+}
+
+exports.setResult = async function(uname, level, score) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return -1;
+  }
+  console.log('uname: ', uname);
+  console.log('level: ', level);
+  console.log('score: ', score);
+
+  let db_res = await pool.query("insert into student_level values($1, (select max(level_id) from level where link=$2), $3);", [uname, level, score]);
+  return 0;
 }
 
 exports.userTypeEnum = userTypeEnum;
