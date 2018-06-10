@@ -174,17 +174,37 @@ exports.getLevelResults = async function(uname) {
   return ret;
 }
 
+// Sets result of level to the largest of score and the current score
 exports.setResult = async function(uname, level, score) {
   let free = await exports.unameFree(uname);
   if (free) {
     return -1;
   }
-  console.log('uname: ', uname);
-  console.log('level: ', level);
-  console.log('score: ', score);
+  let res = await pool.query("select level_id from level where link=$1;", [level]);
+  let level_id = res.rows[0];
 
-  let db_res = await pool.query("insert into student_level values($1, (select max(level_id) from level where link=$2), $3);", [uname, level, score]);
+  let db_res = await pool.query("select score from student_result where uname=$1, level_id=$2;", [uname, level_id]);
+  if (db_res.rows.length > 0) {
+    curr = db_res.rows[0];
+    if (score > curr) {
+      await pool.query("update student_score set score=$1 where uname=$2, level_id=$3;", [score, uname, level_id]);
+    } else {
+      return 1;
+    }
+  } else {
+    await insertScore(uname, level_id, score);
+  }
+
   return 0;
+}
+
+// Insert a score
+insertScore = async function(uname, level_id, score) {
+  try {
+    await pool.query("insert into student_level values($1, $2, $3);", [uname, level_id, score]);
+  } catch(e) {
+    Promise.reject(e);
+  }
 }
 
 exports.userTypeEnum = userTypeEnum;

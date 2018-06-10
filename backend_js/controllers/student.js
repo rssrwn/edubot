@@ -38,6 +38,8 @@ router.post('/set_result', async function(req, res, next) {
   //console.log(success);
   if (success === -1) {
     res.sendStatus(500);
+  } else if(success === 1) {
+    res.sendStatus(250);
   } else {
     res.sendStatus(200);
   }

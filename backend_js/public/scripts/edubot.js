@@ -143,6 +143,8 @@ function resultCallback(status) {
   console.log('result callback status ', status);
   if (status === 200) {
     location.href = '/student/level_results?levelId=' + this.levelId + '&nextId=' + this.nextLevelId + '&sts=' + starsAttained;
+  } else if (status === 250) {
+    // Score no better than already in db
   } else {
     alert("Unknown error");
   }
