@@ -27,7 +27,18 @@ router.get('/level_selection', (req, res, next) => {
 });
 
 router.get('/level_results', (req, res, next) => {
-
+  let levelName = req.query.levelId;
+  let nextLevel = req.query.nextId;
+  let levelStars = req.query.sts;
+  
+  let context = {
+    student: true,
+    stars: levelStars,
+    level_id: levelName,
+    next_level_id: nextLevel
+  };
+  
+  res.render('student/level_results', context);
 });
 
 router.get('/account', (req, res, next) => {

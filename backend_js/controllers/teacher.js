@@ -37,19 +37,19 @@ router.get('/student', (req, res, next) => {
 
 router.get('/solution', async function(req, res, next) {
   let levelName = req.query.levelId;
-  let context = {student: true};
+  let context = {student: false};
 
   util.getLevelData(levelName, 'lev', function(jsonLevel) {
     context.json_level = jsonLevel;
-    
-    util.getLevelData(levelName, 'sol', function(xmlBlocks) {
-      context.xml_blocks = xmlBlocks;
-      
-      util.getLevelData(levelName, 'blocks', function(jsonLevel) {
-        context.json_solution = jsonLevel;
-        res.render('shared/play', context);
-      });
-    });
+  });
+  
+  util.getLevelData(levelName, 'blocks', function(xmlBlocks) {
+    context.xml_blocks = xmlBlocks;
+  });
+  
+  util.getLevelData(levelName, 'sol', function(jsonLevel) {
+    context.json_solution = jsonLevel;
+    res.render('shared/play', context);
   });
 });
 

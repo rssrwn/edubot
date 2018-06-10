@@ -5,7 +5,7 @@ var levelSource = null;
 var level = new GridLevel(16, 16, defaultSquareSize);
 var robotStepTime = 400;
 var frameTime = 50;
-var stars = 1;
+var starsAttained = 1;
 
 console.log("Initialising!");
 
@@ -18,6 +18,8 @@ function setLevel(newLevel) {
 }
 
 function GridLevel(width, height, squareSize) {
+  this.levelId = null;
+  this.nextLevelId = null;
   this.width = width;
   this.height = height;
   this.squareSize = squareSize;
@@ -124,11 +126,12 @@ GridLevel.prototype.levelCompleted = async function() {
   if (rob !== null) {
     let diff = this.maxActions - this.minActions;
     let score = Math.max(diff - (rob.actionsTaken - this.minActions), 0) / diff;
-    stars = Math.min(Math.floor(score * 3) + 1, 3);
+    starsAttained = Math.min(Math.floor(score * 3) + 1, 3);
     
     draw();
     await sleep(125);
-    alert("You won! \nYour score is: " + score);
+    alert("You won!");
+    location.href = '/student/level_results?levelId=' + this.levelId + '&nextId=' + this.nextLevelId + '&sts=' + starsAttained;
   }
 }
 

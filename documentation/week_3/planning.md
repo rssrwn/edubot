@@ -20,3 +20,21 @@ On a technical note, we would like to switch from writing pages in html and Java
 However, we need to experiment with some different templating frameworks (we are considering Handlebars.js, Mustache and Jade). It may also take some time restructuring our work so far to use the new framework.
 
 Consequently, in case we do not manage to get a working system for the above, we plan to create a limited version of the screens using html that will allow us to demonstrate to the teachers how the class management will work.
+
+## Features Implemented
+
+Shared:
+- Each level now has its own set of blocks
+- Made buttons simpler and more user friendly
+- Added more levels
+
+Teachers:
+- Teachers can now view example solutions and attempt levels
+- Teachers can now view classes and add members. Mocked it up with grid layout of classes to make efficient use of space, teacher thought
+
+Students:
+- Level introduction screen. Mocked it up. Got feedback on it, improved the screen to better convey the information.
+- Added stars to show level success
+
+Mocked up:
+- Student level selection screen, fleshing out next week
