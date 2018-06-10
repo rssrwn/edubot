@@ -1,4 +1,4 @@
-function httpGet(url, callback) {
+/*function httpGet(url, callback) {
   var xmlHttp = new XMLHttpRequest();
 
   xmlHttp.onreadystatechange = function() {
@@ -26,4 +26,4 @@ function httpPost(url, params, callback) {
   }
   postParams = postParams.substring(0, postParams.length - 1);
   xmlHttp.send(postParams);
-}
+}*/
