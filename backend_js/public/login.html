@@ -43,9 +43,9 @@
       let pass = document.forms["loginForm"]["pass"].value;
 
       if (uname && pass) {
-        httpPost('https://edubot-learn.herokuapp.com/login', {uname: uname, pass: pass}, buildForm);
+        //httpPost('https://edubot-learn.herokuapp.com/login', {uname: uname, pass: pass}, buildForm);
         //httpPost('https://edubot-backend.herokuapp.com/login', {uname: uname, pass: pass}, buildForm);
-        //httpPost('http://localhost:3000/login', {uname: uname, pass: pass}, buildForm);
+        httpPost('http://localhost:3000/login', {uname: uname, pass: pass}, buildForm);
       }
     };
 

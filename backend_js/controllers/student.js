@@ -29,13 +29,11 @@ router.get('/level_selection', async function(req, res, next) {
 });
 
 router.post('/set_result', async function(req, res, next) {
-  //console.log('set result called');
   let uname = req.cookies["edubot-cookie"];
   const body = req.body;
 
   let success = await db.setResult(uname, body.level, body.score);
 
-  //console.log(success);
   if (success === -1) {
     res.sendStatus(500);
   } else if(success === 1) {
@@ -49,8 +47,6 @@ router.get('/level_results', (req, res, next) => {
   let levelName = req.query.levelId;
   let nextLevel = req.query.nextId;
   let levelStars = req.query.sts;
-
-  console.log(levelStars);
 
   let context = {
     student: true,

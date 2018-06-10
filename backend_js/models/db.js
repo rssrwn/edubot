@@ -181,13 +181,13 @@ exports.setResult = async function(uname, level, score) {
     return -1;
   }
   let res = await pool.query("select level_id from level where link=$1;", [level]);
-  let level_id = res.rows[0];
+  let level_id = res.rows[0].level_id;
 
-  let db_res = await pool.query("select score from student_result where uname=$1, level_id=$2;", [uname, level_id]);
+  db_res = await pool.query("select score from student_level where uname=$1 and level_id=$2;", [uname, level_id]);
   if (db_res.rows.length > 0) {
-    curr = db_res.rows[0];
+    curr = db_res.rows[0].score;
     if (score > curr) {
-      await pool.query("update student_score set score=$1 where uname=$2, level_id=$3;", [score, uname, level_id]);
+      await pool.query("update student_level set score=$1 where uname=$2 and level_id=$3;", [score, uname, level_id]);
     } else {
       return 1;
     }
