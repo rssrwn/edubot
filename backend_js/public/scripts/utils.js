@@ -40,7 +40,7 @@ function httpPost(url, params, callback) {
   xmlHttp.open("POST", url, true); // true for asynchronous
   xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-  xmlHttp.onreadystatechange = async function() {
+  xmlHttp.onreadystatechange = function() {
     if (xmlHttp.readyState == XMLHttpRequest.DONE) {
       callback(xmlHttp.status);
     }

@@ -133,7 +133,7 @@ GridLevel.prototype.levelCompleted = async function() {
     alert("You won!");
 
     //httpPost("http://localhost:3000/student/set_result", {level: this.levelId, score: starsAttained}, function(status) {
-    let status = await httpPost("https://edubot-learn.herokuapp.com/student/set_result",
+    let status = httpPost("https://edubot-learn.herokuapp.com/student/set_result",
         {level: this.levelId, score: starsAttained}, function(status) {
       console.log('result callback status ', status);
       if (!(status == 200 || status === 250)) {
