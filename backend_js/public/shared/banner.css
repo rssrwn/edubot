@@ -6,7 +6,7 @@
   text-align: left;
   line-height: 80px;
   font-size: 25px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #e68119;
 }
 
 .logoImage {
@@ -30,13 +30,13 @@
 
 #levelLinksDiv {
   float: left;
-  margin-left: 50px;
+  margin-left: 150px;
   margin-right: 10px;
   text-align: center;
 }
 
 .levelLink {
-  margin-right: 20px;
+  margin-right: 100px;
 }
 
 .levelLink:hover {
@@ -68,20 +68,20 @@
 #logoutLinksDiv {
   display: grid;
   height: 80px;
-  margin-right: 20px;
-  line-height: 23px;
-  font-size: 15px;
+  margin-right: 40px;
+  line-height: 40px;
+  font-size: 20px;
   float: right;
   color: white;
 }
 
 .logoutLink {
-  border-radius: 5px;
-  height: 24px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-top: 28px;
-  margin-bottom: 28px;
+  border-radius: 10px;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
   vertical-align: middle;
   background-color: #e68119;
