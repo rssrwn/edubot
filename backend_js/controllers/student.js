@@ -34,9 +34,13 @@ router.post('/set_result', async function(req, res, next) {
 
   let success = await db.setResult(uname, body.level, body.score);
 
+  console.log('set result');
+
+  console.log('success', success);
+
   if (success === -1) {
     res.sendStatus(500);
-  } else if(success === 1) {
+  } else if (success === 1) {
     res.sendStatus(250);
   } else {
     res.sendStatus(200);

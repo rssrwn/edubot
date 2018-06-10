@@ -35,7 +35,6 @@ function sleep(timeMillis, processTimeoutId) {
 }
 
 function httpPost(url, params, callback) {
-  console.log('http post');
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("POST", url, true); // true for asynchronous
   xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

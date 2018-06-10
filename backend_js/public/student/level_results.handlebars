@@ -25,17 +25,18 @@
           <h1 id="completed">Completed!</h1>
         </div>
 
-        <div id="levelDiv" class="centered">
+          <div id="levelDiv" class="centered">
 
-          <div id="starDiv" class="centered">
-            {{#for 0 stars 1}}
-              <img class="starImage", alt="star", src="../images/star_filled.png">
-            {{/for}}
-            {{#for stars 3 1}}
-              <img class="starImage", alt="star", src="../images/star_empty.png">
-            {{/for}}
+            <div id="starDiv" class="centered">
+              {{#for 0 stars 1}}
+                <img class="starImage", alt="star", src="../images/star_filled.png">
+              {{/for}}
+              {{#for stars 3 1}}
+                <img class="starImage", alt="star", src="../images/star_empty.png">
+              {{/for}}
+            </div>
+            
           </div>
-        </div>
 
         <div id="buttonsDiv" class="centered">
           <button id="retryButton" class="buttons" type="button" onclick="location.href='/shared/play?levelId={{level_id}}'">Retry</button>
