@@ -132,10 +132,10 @@ GridLevel.prototype.levelCompleted = async function() {
     await sleep(125);
     alert("You won!");
 
-    //await httpPost("https://edubot-learn.herokuapp.com/student/set_result",
-    //    {level: this.levelId, score: starsAttained}, resultCallback);
-    await httpPost("http://localhost:3000/student/set_result",
+    await httpPost("https://edubot-learn.herokuapp.com/student/set_result",
         {level: this.levelId, score: starsAttained}, resultCallback);
+    //await httpPost("http://localhost:3000/student/set_result",
+    //    {level: this.levelId, score: starsAttained}, resultCallback);
   }
 }
 
