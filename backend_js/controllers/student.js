@@ -47,25 +47,6 @@ router.get('/level_selection', async function(req, res, next) {
   res.render('student/level_select', context);
 });
 
-router.post('/set_result', async function(req, res, next) {
-  let uname = req.cookies["edubot-cookie"];
-  const body = req.body;
-
-  let success = await db.setResult(uname, body.level, body.score);
-
-  console.log('set result');
-
-  console.log('success', success);
-
-  if (success === -1) {
-    res.status(251).send("That username is not a student");
-  } else if (success === 1) {
-    res.sendStatus(250);
-  } else {
-    res.sendStatus(200);
-  }
-});
-
 router.get('/level_results', (req, res, next) => {
   let levelName = req.query.levelId;
   let nextLevel = req.query.nextId;

@@ -110,12 +110,33 @@ router.get('/play', async function(req, res, next) {
 
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
     context.json_level = jsonLevel;
-    
+
     util.getLevelData(levelName, 'blocks').then(xmlBlocks => {
       context.xml_blocks = xmlBlocks;
       res.render('shared/play', context);
     }).catch((error) => {});
   }).catch((error) => {});
+});
+
+router.post('/set_result', async function(req, res, next) {
+  let uname = req.cookies["edubot-cookie"];
+  const body = req.body;
+
+  let success = await db.setResult(uname, body.level, body.score);
+
+  console.log('set result');
+
+  console.log('success', success);
+
+  if (success === -1) {
+    res.status(251).send("That username is not a student");
+  } else if (success === 1) {
+    res.sendStatus(250);
+  } else {
+    res.sendStatus(200);
+  }
+
+  console.log('status sent');
 });
 
 module.exports = router;
