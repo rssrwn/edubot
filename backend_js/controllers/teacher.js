@@ -74,7 +74,7 @@ router.get('/solution', async function(req, res, next) {
   });
 });
 
-router.get('/level_selection', async function(req, res, next) => {
+router.get('/level_selection', async function(req, res, next) {
   let studentId = req.query.userId;
   let studentInfo = await db.getUserInfo(studentId);
   
