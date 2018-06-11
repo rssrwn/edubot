@@ -15,7 +15,7 @@ var workspaceChange = function(e) {
   } else if (tutorialPhase === 1 && n === 1) {
     // Dropped block on workspace
     tutorialPhase = 2;
-  } else if (tutorialPhase === 0 && n === 1) {
+  } else if (tutorialPhase === 1 && n === 0) {
     // Placed block back down
     tutorialPhase = 0;
   }
