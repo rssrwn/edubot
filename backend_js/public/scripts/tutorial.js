@@ -10,7 +10,7 @@ var text = {
   0: "Drag blocks from the left to the workspace",
   1: "Connect blocks together to form programs",
   2: "Press the green triangle to execute your program",
-  3: "Press restart arrow to reset EduBot",
+  3: "Press the restart arrow to reset EduBot",
   4: "Click the question mark for a hint"
 };
 
