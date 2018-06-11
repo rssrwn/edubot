@@ -5,26 +5,45 @@ const db = require('../models/db.js');
 router.get('/level_selection', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   let results = await db.getLevelResults(uname);
+  let currLevel = await db.getCurrLevel(uname);
+
+  console.log('level select');
+
+  var categories = [
+    {
+      categoryName: "Introduction",
+      levels: [
+        {stars: results[0], number: 1, name: "Moving EduBot", link: '/shared/level_intro?levelId=intro_1'},
+        {stars: results[1], number: 2, name: "Movement and Rotation", link: '/shared/level_intro?levelId=intro_2'},
+        {stars: results[2], number: 3, name: "Obstacles", link: '/shared/level_intro?levelId=intro_3'}
+      ]
+    },
+    {
+      categoryName: "Looping",
+      levels: [
+        {stars: results[3], number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
+        {stars: results[4], number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
+      ]
+    }
+  ];
+
+  for (var i=0; i<categories.length; i++) {
+    let levels = categories[i].levels;
+    for (var j=0; j<levels.length; j++) {
+      let level = levels[j];
+      level.locked = true;
+      if (level.number <= currLevel) {
+        level.locked = false;
+      }
+      //console.log(level);
+    }
+  }
+
   var context = {
     student: true,
-    categories: [
-      {
-        categoryName: "Introduction",
-        levels: [
-          {stars: results[0], number: 1, name: "Moving EduBot", link: '/shared/level_intro?levelId=intro_1'},
-          {stars: results[1], number: 2, name: "Movement and Rotation", link: '/shared/level_intro?levelId=intro_2'},
-          {stars: results[2], number: 3, name: "Obstacles", link: '/shared/level_intro?levelId=intro_3'}
-        ]
-      },
-      {
-        categoryName: "Looping",
-        levels: [
-          {stars: results[3], number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
-          {stars: results[4], number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
-        ]
-      }
-    ]
+    categories: categories
   };
+
   res.render('student/level_select', context);
 });
 
@@ -39,7 +58,7 @@ router.post('/set_result', async function(req, res, next) {
   console.log('success', success);
 
   if (success === -1) {
-    res.sendStatus(500);
+    res.status(251).send("That username is not a student");
   } else if (success === 1) {
     res.sendStatus(250);
   } else {
@@ -58,7 +77,7 @@ router.get('/level_results', (req, res, next) => {
     level_id: levelName,
     next_level_id: nextLevel
   };
-  
+
   console.log("About to render level results with stars: " + context.stars);
 
   res.render('student/level_results', context);
