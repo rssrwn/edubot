@@ -102,15 +102,15 @@ router.get('/play', async function(req, res, next) {
   let context = {student: await util.isStudent(uname)
     , tutorial: levelName === "intro_1"};
 
-  await util.getLevelData(levelName, 'lev', function(jsonLevel) {
+  util.getLevelData(levelName, 'lev', function(jsonLevel) {
     context.json_level = jsonLevel;
   });
   
-  await util.getLevelData(levelName, 'blocks', function(xmlBlocks) {
+  util.getLevelData(levelName, 'blocks', function(xmlBlocks) {
     context.xml_blocks = xmlBlocks;
+    res.render('shared/play', context);
   });
   
-  res.render('shared/play', context);
 });
 
 module.exports = router;

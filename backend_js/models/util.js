@@ -8,10 +8,10 @@ const readFile = njsUtil.promisify(fs.readFile);
 exports.getLevelData = async function(levelName, extension, callback) {
   var loc = __dirname;
   var level_path = path.join(__dirname, './../public/shared/levels/' + levelName + '/' + levelName + '.' + extension);
-  (await readFile(level_path, 'utf8')).then(data => {callback(data);});
-  //fs.readFile(level_path, 'utf8', function(err, data) {
-  //  callback(data);
-  //});
+  //return await readFile(level_path, 'utf8')).then(data => {callback(data);};
+  fs.readFile(level_path, 'utf8', function(err, data) {
+    callback(data);
+  });
 }
 
 exports.isStudent = async function(uname) {
