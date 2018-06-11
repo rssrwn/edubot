@@ -52,29 +52,7 @@ router.get('/classes', async function(req, res, next) {
   res.render('teacher/classes', context);
 });
 
-router.get('/student', (req, res, next) => {
-  res.render('teacher/level_select', levelSelectionContext);
-});
-
-router.get('/solution', async function(req, res, next) {
-  let levelName = req.query.levelId;
-  let context = {student: false};
-
-  util.getLevelData(levelName, 'lev', function(jsonLevel) {
-    context.json_level = jsonLevel;
-  });
-  
-  util.getLevelData(levelName, 'blocks', function(xmlBlocks) {
-    context.xml_blocks = xmlBlocks;
-  });
-  
-  util.getLevelData(levelName, 'sol', function(jsonLevel) {
-    context.json_solution = jsonLevel;
-    res.render('shared/play', context);
-  });
-});
-
-router.get('/level_selection', async function(req, res, next) {
+router.get('/student', async function(req, res, next) {
   let studentId = req.query.userId;
   let studentInfo = await db.getUserInfo(studentId);
   let results = await db.getLevelResults(studentId);
@@ -98,6 +76,28 @@ router.get('/level_selection', async function(req, res, next) {
   ];
   levelSelectionContext[studentInfo] = studentInfo;
   
+  res.render('teacher/level_select', levelSelectionContext);
+});
+
+router.get('/solution', async function(req, res, next) {
+  let levelName = req.query.levelId;
+  let context = {student: false};
+
+  util.getLevelData(levelName, 'lev', function(jsonLevel) {
+    context.json_level = jsonLevel;
+  });
+  
+  util.getLevelData(levelName, 'blocks', function(xmlBlocks) {
+    context.xml_blocks = xmlBlocks;
+  });
+  
+  util.getLevelData(levelName, 'sol', function(jsonLevel) {
+    context.json_solution = jsonLevel;
+    res.render('shared/play', context);
+  });
+});
+
+router.get('/level_selection', (req, res, next) => {
   res.render('teacher/level_select', levelSelectionContext);
 });
 
