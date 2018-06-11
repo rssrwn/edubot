@@ -134,8 +134,16 @@ GridLevel.prototype.levelCompleted = async function() {
 
     var thisLevel = this.levelId;
     var nextLevel = this.nextLevelId;
+    
+    var xml = Blockly.Xml.workspaceToDom(workspace);
+    var xml_text = Blockly.Xml.domToText(xml);
 
     //httpPost("http://localhost:3000/shared/set_result", {level: this.levelId, score: starsAttained}, function(status) {
+    httpPost("https://edubot-learn.herokuapp.com/shared/set_solution", {level: this.levelId, solution: xml_text}, function(status) {
+      console.log('result callback status: ', status);
+      // TODO error codes
+    }
+    
     httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: this.levelId, score: starsAttained}, function(status) {
       console.log('result callback status: ', status);
 
