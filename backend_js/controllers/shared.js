@@ -96,21 +96,20 @@ router.get('/level_intro', async function(req, res, next) {
   }
 });
 
-router.get('/play', async function(req, res, next) {
+router.get('/play', function(req, res, next) {
   let levelName = req.query.levelId;
   let uname = req.cookies["edubot-cookie"];
   let context = {student: await util.isStudent(uname)
     , tutorial: levelName === "intro_1"};
 
-  util.getLevelData(levelName, 'lev', function(jsonLevel) {
+  util.getLevelData(levelName, 'lev').then(jsonLevel => {
     context.json_level = jsonLevel;
+    
+    util.getLevelData(levelName, 'blocks').then(xmlBlocks => {
+      context.xml_blocks = xmlBlocks;
+      res.render('shared/play', context);
+    });
   });
-  
-  util.getLevelData(levelName, 'blocks', function(xmlBlocks) {
-    context.xml_blocks = xmlBlocks;
-    res.render('shared/play', context);
-  });
-  
 });
 
 module.exports = router;
