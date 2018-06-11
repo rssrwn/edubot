@@ -176,10 +176,11 @@ exports.getLevelResults = async function(uname) {
 
 // Sets result of level to the largest of score and the current score
 exports.setResult = async function(uname, level, score) {
-  let free = await exports.unameFree(uname);
-  if (free) {
+  let type = await exports.getUserType(uname);
+  if (type !== userTypeEnum.STUDENT) {
     return -1;
   }
+
   let res = await pool.query("select level_id from level where link=$1;", [level]);
   let level_id = res.rows[0].level_id;
 
@@ -205,6 +206,17 @@ insertScore = async function(uname, level_id, score) {
   } catch(e) {
     Promise.reject(e);
   }
+}
+
+// Gets the level that uname has currently not played
+exports.getCurrLevel = async function(uname) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return -1;
+  }
+
+  let db_res = await pool.query("select max(level_id) from student_level where uname=$1;", [uname]);
+  return db_res.rows[0].max + 1;
 }
 
 exports.userTypeEnum = userTypeEnum;
