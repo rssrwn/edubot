@@ -10,18 +10,17 @@ var generateCode = function(e) {
 workspace.addChangeListener(generateCode);
 
 let runButton = document.getElementById("runButton");
+let simpleRunButton = document.getElementById("simpleRunButton");
 
 var runCode = function(e) {
   if (!runningCommands) {
     runningCommands = true;
-    runButton.style.visibility = "hidden";
-    runButton.style.pointerEvents = "none";
+    simpleRunButton.style.visibility = "hidden";
+    simpleRunButton.style.pointerEvents = "none";
     
-    // let our_code = "runningCommands = false;\
-    //   runButton.style.pointerEvents = 'auto';\n\
-    //   runButton.style.visibility = 'visible';\n";
-      
-    let our_code = "runningCommands = false;";
+    let our_code = "runningCommands = false;\
+      simpleRunButton.style.pointerEvents = 'auto';\n\
+      simpleRunButton.style.visibility = 'visible';\n";
           
     let code = document.getElementById("code").value;
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
@@ -31,7 +30,6 @@ var runCode = function(e) {
 };
 runButton.addEventListener("click", runCode);
 
-let simpleRunButton = document.getElementById("simpleRunButton");
 simpleRunButton.addEventListener("click", runCode);
 
 var viewCode = function(e) {
