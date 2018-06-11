@@ -71,7 +71,7 @@ exports.insertUser = async function(params) {
 
 // Returns true for successfull login, false otherwise
 exports.attemptLogin = async function(uname, pass) {
-  var db_res = await pool.query("select users.uname, users.hash from users where uname=$1;", [uname]);
+  let db_res = await pool.query("select users.uname, users.hash from users where uname=$1;", [uname]);
   if (db_res.rows.length !== 0 && compareHash(pass, db_res.rows[0].hash)) {
     return true;
   } else {
@@ -81,15 +81,26 @@ exports.attemptLogin = async function(uname, pass) {
 
 // Insert class into db with given name, school_id and teacher username and returns the class_id of the new class
 exports.insertClass = async function(name, school_id, teacher) {
-  var type = await exports.getUserType(teacher);
+  let type = await exports.getUserType(teacher);
   if (type !== userTypeEnum.TEACHER) {
     return -1;
   }
 
-  var db_res = await pool.query("select MAX(class_id) from class;");
-  var max = db_res.rows[0].max;
+  let db_res = await pool.query("select MAX(class_id) from class;");
+  let max = db_res.rows[0].max;
   await pool.query("insert into class values ($1, $2, $3, $4);", [school_id, max+1, name, teacher]);
   return max+1;
+}
+
+// Remove a class with class_id
+exports.removeClass = async function(teacher, class_id) {
+  let db_res = await pool.query("select * from class where class_id=$1 and teacher=$2;", [class_id, teacher]);
+  if (!db_res.rows[0]) {
+    return -1;
+  }
+
+  let res = await pool.query("delete from class where class_id=$1;", [class_id]);
+  return 0;
 }
 
 // Add a member with given uname into class with class_id
@@ -105,7 +116,33 @@ exports.addMember = async function(uname, class_id) {
   }
 
   await pool.query("insert into student_class values ($1, $2);", [uname, class_id]);
-  return 1;
+  return 0;
+}
+
+// Remove a member from a class
+exports.removeMember = async function(teacher, uname, class_id) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return -1;
+  }
+
+  let member = await pool.query("select * from student_class where uname=$1 and class_id=$2;", [uname, class_id]);
+  if (!member.rows[0]) {
+    return -2;
+  }
+
+  let allowed = await pool.query("select * from class where class_id=$1 and teacher=$2;", [class_id, teacher]);
+  if (!allowed.rows[0]) {
+    return -3;
+  }
+
+  try {
+    await pool.query("delete from student_class where uname=$1 and class_id=$2;", [uname, class_id]);
+  } catch(e) {
+    Promise.reject(e);
+  }
+
+  return 0;
 }
 
 // Find whether uname is already in a class
@@ -113,7 +150,6 @@ inClass = async function(uname) {
   let db_res = await pool.query("select uname from student_class;");
   res = false;
   for (var i=0; i<db_res.rows.length; i++) {
-    console.log(db_res.rows[i].uname);
     if (db_res.rows[i].uname == uname) {
       res = true;
     }
@@ -123,13 +159,13 @@ inClass = async function(uname) {
 
 // Get a class name from a class_id
 exports.getClassName = async function(class_id) {
-  var db_res = await pool.query("select name from class where class_id=$1;", [class_id]);
+  let db_res = await pool.query("select name from class where class_id=$1;", [class_id]);
   return db_res.rows[0].name;
 }
 
 // Get an array of class_ids for teacher with uname teacher
 exports.getClasses = async function(teacher) {
-  var res = await pool.query("select class_id from class where teacher=$1;", [teacher]);
+  let res = await pool.query("select class_id from class where teacher=$1;", [teacher]);
   ret = [];
   for (var i=0; i<res.rows.length; i++) {
     ret[i] = res.rows[i].class_id;
@@ -199,7 +235,6 @@ exports.setResult = async function(uname, level, score, solution) {
 }
 
 // Get uname's solution on level
-// TODO test
 exports.getSolution = async function(uname, level) {
   let type = await exports.getUserType(uname);
   if (type !== userTypeEnum.STUDENT) {

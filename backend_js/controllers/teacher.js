@@ -35,7 +35,7 @@ router.get('/student', async function(req, res, next) {
   let studentId = req.query.userId;
   let studentInfo = await db.getUserInfo(studentId);
   let results = await db.getLevelResults(studentId);
-  
+
   let context = {
     student: false,
     studentInfo: studentInfo,
@@ -63,13 +63,13 @@ router.get('/student', async function(req, res, next) {
 router.get('/solution', async function(req, res, next) {
   let levelName = req.query.levelId;
   let context = {student: false};
-  
+
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
     context.json_level = jsonLevel;
 
     util.getLevelData(levelName, 'blocks').then(xmlBlocks => {
       context.xml_blocks = xmlBlocks;
-      
+
       util.getLevelData(levelName, 'sol').then(jsonLevel => {
         context.json_solution = jsonLevel;
           res.render('shared/play', context);
@@ -99,7 +99,7 @@ router.get('/level_selection', (req, res, next) => {
       }
     ]
   };
-  
+
   res.render('teacher/level_select', context);
 });
 
@@ -126,7 +126,7 @@ router.post('/add_class', async function(req, res, next) {
 router.post('/add_member', async function(req, res, next) {
   const body = req.body;
   var status = await db.addMember(body.uname, body.class_id);
-  if (status === 1) {
+  if (status === 0) {
     res.sendStatus(200);
   } else if (status === -1) {
     res.status(480).send("That username does not have an account");
@@ -139,11 +139,31 @@ router.post('/add_member', async function(req, res, next) {
 
 router.post('/remove_member', async function(req, res, next) {
   const body = req.body;
-  var status = await db.removeMember(body.uname, body.class_id);
-  if (status === 1) {
+  let uname = req.cookies["edubot-cookie"];
+
+  let status = await db.removeMember(uname, body.uname, body.class_id);
+  if (status === 0) {
     res.sendStatus(200);
   } else if (status === -1) {
     res.status(480).send("That username does not have an account");
+  } else if (status === -2) {
+    res.status(481).send("That username is not in a class");
+  } else if (status === -3) {
+    res.status(482).send("You do not have permission");
+  } else {
+    res.status(500).send("Unknown error");
+  }
+});
+
+router.post('/remove_class', async function(req, res, next) {
+  const body =req.body;
+  let uname = req.cookies["edubot-cookie"];
+
+  let status = await db.removeClass(uname, body.class_id);
+  if (status === 0) {
+    res.sendStatus(200);
+  } else if (status === -1) {
+    res.status(480).send("Either that class does not exist or you do not have permission");
   } else {
     res.status(500).send("Unknown error");
   }

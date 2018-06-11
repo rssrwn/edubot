@@ -102,20 +102,11 @@ router.get('/play', async function(req, res, next) {
   let isStudent = await util.isStudent(uname);
   let context = {student: isStudent, tutorial: levelName === "intro_1" && isStudent};
 
-  let stuff = await db.getSolution('user2', 'intro_1');
-  console.log('stuff: ', stuff);
-
   let studentId = req.query.studentId;
-  console.log('studentid: ', studentId);
-
-  console.log('stuff: ', stuff);
 
   if (studentId != null) {
-    console.log('student id not null');
-    console.log('levelName: ', levelName);
     let sol = await db.getSolution(studentId, levelName);
     context.json_solution = sol;
-    console.log('json sol: ', context.json_solution);
   }
 
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
@@ -123,7 +114,6 @@ router.get('/play', async function(req, res, next) {
 
     util.getLevelData(levelName, 'blocks').then(xmlBlocks => {
       context.xml_blocks = xmlBlocks;
-      console.log('json sol: ', context.json_solution);
       res.render('shared/play', context);
     }).catch((error) => next(error));
   }).catch((error) => next(error));
@@ -135,10 +125,6 @@ router.post('/set_result', async function(req, res, next) {
 
   let success = await db.setResult(uname, body.level, body.score, body.solution);
 
-  console.log('set result');
-
-  console.log('success', success);
-
   if (success === -1) {
     res.status(251).send("That username is not a student");
   } else if (success === 1) {
@@ -146,8 +132,6 @@ router.post('/set_result', async function(req, res, next) {
   } else {
     res.sendStatus(200);
   }
-
-  console.log('status sent');
 });
 
 module.exports = router;
