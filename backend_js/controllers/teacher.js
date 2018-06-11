@@ -76,19 +76,6 @@ router.get('/solution', async function(req, res, next) {
       }).catch((error) => next(error));
     }).catch((error) => next(error));
   }).catch((error) => next(error));
-
-  // util.getLevelData(levelName, 'lev', function(jsonLevel) {
-  //   context.json_level = jsonLevel;
-  // });
-  // 
-  // util.getLevelData(levelName, 'blocks', function(xmlBlocks) {
-  //   context.xml_blocks = xmlBlocks;
-  // });
-  // 
-  // util.getLevelData(levelName, 'sol', function(jsonLevel) {
-  //   context.json_solution = jsonLevel;
-  //   res.render('shared/play', context);
-  // });
 });
 
 router.get('/level_selection', (req, res, next) => {
