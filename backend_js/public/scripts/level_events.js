@@ -18,9 +18,7 @@ var runCode = function(e) {
     simpleRunButton.style.visibility = "hidden";
     simpleRunButton.style.pointerEvents = "none";
     
-    let our_code = "runningCommands = false;\
-      simpleRunButton.style.pointerEvents = 'auto';\n\
-      simpleRunButton.style.visibility = 'visible';\n";
+    let our_code = "runningCommands = false";
           
     let code = document.getElementById("code").value;
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
@@ -53,6 +51,8 @@ document.getElementById("hintButton").addEventListener("click", showHint);
 document.getElementById("simpleHintButton").addEventListener("click", showHint);
 
 function restart(e) {
+  simpleRunButton.style.visibility = "visible";
+  simpleRunButton.style.pointerEvents = "auto";
   restartLevel();
 }
 
