@@ -53,10 +53,3 @@ li {
   width: 150px;
   height: 50px;
 }
-
-.clearFix {
-  overflow: auto;
-  content: "";
-  clear: both;
-  display: table;
-}
