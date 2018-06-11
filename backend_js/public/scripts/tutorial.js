@@ -1,5 +1,8 @@
 var tutorialDiv = document.getElementById("tutorialDiv");
 var tutorialText = document.getElementById("tutorialText");
+var runButton = document.getElementById("simpleRunButton");
+var restartButton = document.getElementById("simpleRunButton");
+
 var tutorialPhase = 0;
 
 var text = {
@@ -27,12 +30,28 @@ var updateTutorial = function(e) {
 
   if (text[tutorialPhase] !== undefined) {
     tutorialDiv.style.display = "block";
-    tutorialText.innerHtml = text[tutorialPhase];
+    tutorialText.innerText = text[tutorialPhase];
   } else {
     tutorialDiv.style.display = "none";
-    tutorialText.innerHtml = "";
+    tutorialText.innerText = "";
   }
 };
 workspace.addChangeListener(updateTutorial);
+
+var runPressed = function(e) {
+  if (tutorialPhase === 2) {
+    tutorialPhase = 3;
+  }
+  updateTutorial();
+}
+runButton.addEventListener(runPressed);
+
+var restartPressed = function(e) {
+  if (tutorialPhase === 3) {
+    tutorialPhase = 4;
+  }
+  updateTutorial();
+}
+restartButton.addEventListener(restartPressed);
 
 updateTutorial();
