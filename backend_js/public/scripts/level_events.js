@@ -21,7 +21,8 @@ var runCode = function(e) {
       evalCode(); \
       runningCommands = false; \
       runButton.style.pointerEvents = 'auto'; \
-      runButton.style.visibility = 'visible';";
+      runButton.style.visibility = 'visible'; \
+      console.log('done');";
     eval(code);
   }
 };
