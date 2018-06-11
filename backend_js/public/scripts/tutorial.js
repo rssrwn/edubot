@@ -21,7 +21,7 @@ var updateTutorial = function(e) {
   if (n == 1) {
     tutorialPhase = 1;
   }
-  if (n == 2) {
+  if (n == 2 && tutorialPhase == 1) {
     let blocks = workspace.getTopBlocks();
     if (blocks.length == 1) {
       tutorialPhase = 2;
@@ -39,8 +39,7 @@ var updateTutorial = function(e) {
 workspace.addChangeListener(updateTutorial);
 
 var tutorialRunPressed = function(e) {
-  console.log("run");
-  if (tutorialPhase === 2) {
+  if (tutorialPhase == 2) {
     tutorialPhase = 3;
   }
   updateTutorial();
@@ -48,8 +47,7 @@ var tutorialRunPressed = function(e) {
 tutorialRunButton.addEventListener("click", tutorialRunPressed);
 
 var tutorialRestartPressed = function(e) {
-  console.log("restart");
-  if (tutorialPhase === 3) {
+  if (tutorialPhase == 3) {
     tutorialPhase = 4;
   }
   updateTutorial();

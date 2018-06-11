@@ -98,6 +98,6 @@ canvas {
   background-color: white;
   border-radius: 25px;
   padding: 20px;
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   z-index: 100;
 }
