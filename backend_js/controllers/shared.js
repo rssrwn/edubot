@@ -108,8 +108,8 @@ router.get('/play', async function(req, res, next) {
     util.getLevelData(levelName, 'blocks').then(xmlBlocks => {
       context.xml_blocks = xmlBlocks;
       res.render('shared/play', context);
-    });
-  });
+    }).catch((error) => {});
+  }).catch((error) => {});
 });
 
 module.exports = router;
