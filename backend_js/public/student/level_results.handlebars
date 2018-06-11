@@ -28,11 +28,11 @@
           <div id="levelDiv" class="centered">
 
             <span id="starDiv" class="centered">
-              <script>console.log("Stars: " + {{stars}});</script>
-              {{#for 0 1 1}}
+              <script>console.log("Initially, stars: " + {{stars}});</script>
+              {{#for 0 stars 1}}
                 <img class="starImage" alt="star"  src="../images/star_filled.png">
               {{/for}}
-              {{#for 1 3 1}}
+              {{#for stars 3 1}}
                 <img class="starImage" alt="star"  src="../images/star_empty.png">
               {{/for}}
             </span>
