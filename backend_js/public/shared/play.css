@@ -25,6 +25,7 @@
 }
 
 #simpleControlsDiv {
+  pointer-events: none;
   display: table-row;
   position: fixed;
   bottom: 10px;
@@ -89,6 +90,7 @@ canvas {
 }
 
 #tutorialWrapperDiv {
+  pointer-events: none;
   display: table-row;
   position: fixed;
   bottom: 84px;
@@ -96,13 +98,9 @@ canvas {
 }
 
 #tutorialDiv {
+  pointer-events: none;
   text-align: center;
-  display: flex;
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center;
-  top: 200px;
-  left: 200px;
+  margin: 0 auto;
   width: 200px;
   height: 80px;
   background-color: white;
