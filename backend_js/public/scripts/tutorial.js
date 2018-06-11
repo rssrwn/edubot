@@ -31,7 +31,7 @@ var updateTutorial = function(e) {
   }
 
   if (text[tutorialPhase] !== undefined) {
-    tutorialDiv.style.display = "block";
+    tutorialDiv.style.display = "flex";
     tutorialText.innerText = text[tutorialPhase];
   } else {
     tutorialDiv.style.display = "none";

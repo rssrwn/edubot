@@ -99,6 +99,7 @@ canvas {
 }
 
 #tutorialDiv {
+  display: flex;
   pointer-events: none;
   text-align: center;
   margin: 0 auto;
@@ -109,4 +110,6 @@ canvas {
   padding: 15px;
   border: 2px solid #e68119;
   z-index: 100;
+  align-items: center;
+  justify-content: center;
 }
