@@ -91,10 +91,12 @@ canvas {
 #tutorialDiv {
   display: none;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 200px;
+  left: 200px;
   width: 200px;
   height: 100px;
-  background-color: orange;
+  background-color: white;
+  border-radius: 25px;
+  border: 2px solid #FFFFFF;
   z-index: 100;
 }
