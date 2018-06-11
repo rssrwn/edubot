@@ -29,7 +29,7 @@
     {{/if}}
     <div id="contentDiv">
       <div id="blocklyDiv">
-        <div id="simpleControlsDiv">
+        <div id="simpleControlsDiv" class="noSelect">
           <img src="../images/run.png" id="simpleRunButton" class="simpleControl" alt="Run"/>
           <img src="../images/restart.png" id="simpleRestartButton" class="simpleControl" alt="Restart"/>
           <img src="../images/hint.png" id="simpleHintButton" class="simpleControl" alt="Show Hint"/>
@@ -68,6 +68,10 @@
           </div>
         </div>
       </div>
+      
+      {{#if tutorial}}
+        <div id="tutorialDiv"><h3 id="tutorialText"></h3></div>
+      {{/if}}
     </div>
   </div>
 
