@@ -11,7 +11,7 @@ workspace.addChangeListener(generateCode);
 
 let runButton = document.getElementById("runButton");
 
-var runCode = function(e) {
+var runCode = async function(e) {
   if (!runningCommands) {
     runningCommands = true;
     runButton.style.visibility = "hidden";
