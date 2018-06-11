@@ -19,6 +19,7 @@ var updateTutorial = function(e) {
   
   if (n == 0) {
     workspace.options.maxBlocks = 2;
+    workspace.fireChangeEvent();
     tutorialPhase = 0;
   }
   if (n == 1) {
@@ -32,6 +33,7 @@ var updateTutorial = function(e) {
   }
   if (tutorialPhase == 5) {
     workspace.options.maxBlocks = undefined;
+    workspace.fireChangeEvent();
   }
 
   if (text[tutorialPhase] !== undefined) {
