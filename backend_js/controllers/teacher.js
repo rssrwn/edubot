@@ -4,6 +4,27 @@ const db = require('../models/db.js');
 const util = require('../models/util.js');
 const fs = require('fs');
 
+let levelSelectionContext = {
+  student: false,
+  categories: [
+    {
+      categoryName: "Introduction",
+      levels: [
+        {number: 1, name: "Moving EduBot", link: '/shared/level_intro?levelId=intro_1'},
+        {number: 2, name: "Movement and Rotation", link: '/shared/level_intro?levelId=intro_2'},
+        {number: 3, name: "Obstacles", link: '/shared/level_intro?levelId=intro_3'}
+      ]
+    },
+    {
+      categoryName: "Looping",
+      levels: [
+        {number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
+        {number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
+      ]
+    }
+  ]
+};
+
 router.get('/classes', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   let class_data = [];
@@ -32,7 +53,7 @@ router.get('/classes', async function(req, res, next) {
 });
 
 router.get('/student', (req, res, next) => {
-  res.send('hello world');
+  res.render('teacher/level_select', levelSelectionContext);
 });
 
 router.get('/solution', async function(req, res, next) {
@@ -54,27 +75,12 @@ router.get('/solution', async function(req, res, next) {
 });
 
 router.get('/level_selection', (req, res, next) => {
-  var context = {
-    student: false,
-    categories: [
-      {
-        categoryName: "Introduction",
-        levels: [
-          {number: 1, name: "Moving EduBot", link: '/shared/level_intro?levelId=intro_1'},
-          {number: 2, name: "Movement and Rotation", link: '/shared/level_intro?levelId=intro_2'},
-          {number: 3, name: "Obstacles", link: '/shared/level_intro?levelId=intro_3'}
-        ]
-      },
-      {
-        categoryName: "Looping",
-        levels: [
-          {number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
-          {number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
-        ]
-      }
-    ]
-  };
-  res.render('teacher/level_select', context);
+  let studentId = req.query.userId;
+  let studentInfo = await db.getUserInfo(studentId);
+  
+  let context = levelSelectionContext.extend({ studentInfo: studentInfo });
+  
+  res.render('teacher/level_select', levelSelectionContext);
 });
 
 router.get('/account', (req, res, next) => {
