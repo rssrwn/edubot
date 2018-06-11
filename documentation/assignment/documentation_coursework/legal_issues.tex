@@ -1,17 +1,20 @@
 \documentclass[a4wide, 11pt]{article}
-\usepackage{a4, fullpage, hyperref}
+\usepackage{a4, fullpage, hyperref, titling}
+\usepackage[T1]{fontenc}
 \setlength{\parskip}{0.3cm}
 \setlength{\parindent}{0cm}
 
 % This is the preamble section where you can include extra packages etc.
 
-\begin{document}
+\setlength{\droptitle}{-5em}
 
 \title{Copyright/Legal Issues Report}
 
 \author{Group 14}
 
 \date{\today}         % inserts today's date
+
+\begin{document}
 
 \maketitle            % generates the title from the data above
 
@@ -40,10 +43,12 @@ Roboto					& Font						& \url{https://fonts.google.com/specimen/Roboto}			& Apac
 
 \section{Legal Issues}
 
-The MIT license gives permission to anybody obtaining a copy of the software to do whatever they want with it, free of charge, so software under this license can be used without mention.
+All of the above licences are all permissive free software licences, allowing the user to use the software for any purpose, to distribute it, modify it and to distribute modified versions of the software.
 
-However, the Apache 2.0 licence, although it is open-source, requires that a copy of the licence be distributed with any copy of the software, along with any notices of copyright, trademark and patent rights. In addition, any modification made to the original software must be accompanied with a clear indication of who modified it.
+The MIT license gives permission to anybody obtaining a copy of the software to do whatever they want with it, free of charge, so software under this license can be used provided the licence terms and copyright notice is included.
 
-The Node.js licence, as far as its internal libraries go, is identical to the Apache 2.0 license. For its external libraries, the situation is different. OpenSSL requires in its licence that any advertising for software using OpenSSL must must mention a given message. In addition, you cannot use their to promote your software, and "OpenSSL" cannot appear in name of any software using the library. The licences for some of Node.js's other external libraries disallow using Google's name to promote any software using the library. The remaining external libraries come with the MIT licence.
+The Apache 2.0 licence, although it is open-source, requires that a copy of the licence be distributed with any copy of the software, along with any notices of copyright, trademark and patent rights. In addition, any modification made to the original software must be accompanied with a clear indication of who modified it.
+
+The Node.js licence, as far as its internal libraries go, is identical to the MIT licence. For its external libraries, the situation is different. OpenSSL requires in its licence that any advertising for software using OpenSSL must must mention a given message. In addition, you cannot use their name to promote your software, and "OpenSSL" cannot appear in name of any software using the library. The licences for some of Node.js's other external libraries disallow using Google's name to promote any software using the library. The remaining external libraries come with the MIT licence.
 
 \end{document}
