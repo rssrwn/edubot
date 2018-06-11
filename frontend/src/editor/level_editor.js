@@ -1,6 +1,7 @@
 var canvas = document.getElementById("game_canvas");
 var entityPicker = document.getElementById("entityPicker");
 var saverField = document.getElementById("saverField");
+var hintField = document.getElementById("hintField");
 
 document.getElementById("saveButton").addEventListener("click", saveLevel);
 document.getElementById("loadButton").addEventListener("change", loadLevel);
@@ -44,6 +45,10 @@ function squareClicked(button, x, y) {
 	}
 }
 
+function addHint() {
+	level.hints.push(hintField.value);
+}
+
 function newLevel() {
 	let width = getDimension(document.getElementById("widthField").value);
 	let height = getDimension(document.getElementById("heightField").value);
@@ -52,6 +57,15 @@ function newLevel() {
 		let lev = createBoundedLevel(width, height, defaultSquareSize);
 		
 		setLevel(lev);
+	}
+}
+
+function dirEntered(event) {
+	if (event.keyCode === 13) {
+		let rob = getRobot();
+		if (rob !== null) {
+			rob.dir = clamp(Number(document.getElementById("dirField").value), 0, 3);
+		}
 	}
 }
 
@@ -81,10 +95,6 @@ var canvasResize = function(e) {
 var onResize = function(e) {
   canvasResize(e);
 };
-
-initSampleLevel1();
-
-console.log(JSON.stringify(level));
 
 window.addEventListener("resize", onResize, false);
 onResize();

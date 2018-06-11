@@ -1,24 +1,30 @@
-var tutorialPhase = 0;
 var tutorialDiv = document.getElementById("tutorialDiv");
-var tutorialDiv = document.getElementById("tutorialText");
+var tutorialText = document.getElementById("tutorialText");
+var tutorialPhase = 0;
 
 var text = {
-  0: "Phase 0",
-  1: "Phase 1"
+  0: "Drag blocks to the workspace",
+  1: "Connect blocks together to form programs",
+  2: "Press run to execute your program",
+  3: "Press restart to reset EduBot"
 };
 
-var workspaceChange = function(e) {
+var updateTutorial = function(e) {
   let n = workspace.getAllBlocks().length;
-  if (tutorialPhase === 0 && n === 1) {
-    // Dragging block
-    tutorialPhase = 1;
-  } else if (tutorialPhase === 1 && n === 1) {
-    // Dropped block on workspace
-    tutorialPhase = 2;
-  } else if (tutorialPhase === 1 && n === 0) {
-    // Placed block back down
+  
+  if (n == 0) {
     tutorialPhase = 0;
   }
+  if (n == 1) {
+    tutorialPhase = 1;
+  }
+  if (n == 2) {
+    let blocks = workspace.getTopBlocks();
+    if (blocks.length == 1) {
+      tutorialPhase = 2;
+    }
+  }
+
   if (text[tutorialPhase] !== undefined) {
     tutorialDiv.style.display = "block";
     tutorialText.innerHtml = text[tutorialPhase];
@@ -27,4 +33,6 @@ var workspaceChange = function(e) {
     tutorialText.innerHtml = "";
   }
 };
-workspace.addChangeListener(workspaceChange);
+workspace.addChangeListener(updateTutorial);
+
+updateTutorial();
