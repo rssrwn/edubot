@@ -102,13 +102,19 @@ router.get('/play', async function(req, res, next) {
   let isStudent = await util.isStudent(uname);
   let context = {student: isStudent, tutorial: levelName === "intro_1" && isStudent};
 
+  let stuff = await db.getSolution('user2', 'intro_1');
+  console.log('stuff: ', stuff);
+
   let studentId = req.query.studentId;
   console.log('studentid: ', studentId);
+
+  console.log('stuff: ', stuff);
 
   if (studentId != null) {
     console.log('student id not null');
     console.log('levelName: ', levelName);
-    context.json_solution = await db.getSolution(uname, levelName);
+    let sol = await db.getSolution(uname, levelName);
+    context.json_solution = sol;
     console.log('json sol: ', context.json_solution);
   }
 
