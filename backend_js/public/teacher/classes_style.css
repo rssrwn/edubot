@@ -22,6 +22,10 @@ td, th {
   padding: 8px;
 }
 
+.studentRow:hover {
+  background-color: #afafaf;
+}
+
 #addClass {
   text-align: center;
 }
