@@ -110,6 +110,7 @@ router.get('/play', async function(req, res, next) {
     context.xml_blocks = xmlBlocks;
     res.render('shared/play', context);
   });
+  
 });
 
 module.exports = router;
