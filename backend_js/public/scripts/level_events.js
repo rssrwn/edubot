@@ -17,7 +17,7 @@ var runCode = function(e) {
     runButton.style.visibility = "hidden";
     runButton.style.pointerEvents = "none";
     let code = document.getElementById("code").value;
-    code = "async function evalCode() {" + code + "}; evalCode();";
+    code = "async function evalCode() {" + code + "}; await evalCode();";
     eval(code);
     console.log("done");
     runningCommands = false;
