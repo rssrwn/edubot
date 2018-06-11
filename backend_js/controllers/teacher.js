@@ -43,16 +43,16 @@ router.get('/student', async function(req, res, next) {
       {
         categoryName: "Introduction",
         levels: [
-          {student: true, stars: results[0], number: 1, name: "Moving EduBot", link: '/shared/play?levelId=intro_1?studentId=' + studentId},
-          {student: true, stars: results[1], number: 2, name: "Movement and Rotation", link: '/shared/play?levelId=intro_2?studentId=' + studentId},
-          {student: true, stars: results[2], number: 3, name: "Obstacles", link: '/shared/play?levelId=intro_3?studentId=' + studentId}
+          {student: true, stars: results[0], number: 1, name: "Moving EduBot", link: '/shared/play?levelId=intro_1&studentId=' + studentId},
+          {student: true, stars: results[1], number: 2, name: "Movement and Rotation", link: '/shared/play?levelId=intro_2&studentId=' + studentId},
+          {student: true, stars: results[2], number: 3, name: "Obstacles", link: '/shared/play?levelId=intro_3&studentId=' + studentId}
         ]
       },
       {
         categoryName: "Looping",
         levels: [
-          {student: true, stars: results[3], number: 4, name: "Basic looping", link: '/shared/play?levelId=loops_1?studentId=' + studentId},
-          {student: true, stars: results[4], number: 5, name: "Advanced looping", link: '/shared/play?levelId=loops_1?studentId=' + studentId}
+          {student: true, stars: results[3], number: 4, name: "Basic looping", link: '/shared/play?levelId=loops_1&studentId=' + studentId},
+          {student: true, stars: results[4], number: 5, name: "Advanced looping", link: '/shared/play?levelId=loops_1&studentId=' + studentId}
         ]
       }
     ]
@@ -76,19 +76,6 @@ router.get('/solution', async function(req, res, next) {
       }).catch((error) => next(error));
     }).catch((error) => next(error));
   }).catch((error) => next(error));
-
-  // util.getLevelData(levelName, 'lev', function(jsonLevel) {
-  //   context.json_level = jsonLevel;
-  // });
-  // 
-  // util.getLevelData(levelName, 'blocks', function(xmlBlocks) {
-  //   context.xml_blocks = xmlBlocks;
-  // });
-  // 
-  // util.getLevelData(levelName, 'sol', function(jsonLevel) {
-  //   context.json_solution = jsonLevel;
-  //   res.render('shared/play', context);
-  // });
 });
 
 router.get('/level_selection', (req, res, next) => {
@@ -145,6 +132,18 @@ router.post('/add_member', async function(req, res, next) {
     res.status(480).send("That username does not have an account");
   } else if (status === -2) {
     res.status(481).send("That username is alreday in a class");
+  } else {
+    res.status(500).send("Unknown error");
+  }
+});
+
+router.post('/remove_member', async function(req, res, next) {
+  const body = req.body;
+  var status = await db.removeMember(body.uname, body.class_id);
+  if (status === 1) {
+    res.sendStatus(200);
+  } else if (status === -1) {
+    res.status(480).send("That username does not have an account");
   } else {
     res.status(500).send("Unknown error");
   }

@@ -10,7 +10,7 @@ var text = {
   0: "Drag blocks from the left to the workspace",
   1: "Connect blocks together to form programs",
   2: "Press the green triangle to execute your program",
-  3: "Press restart arrow to reset EduBot",
+  3: "Press the restart arrow to reset EduBot",
   4: "Click the question mark for a hint"
 };
 
@@ -18,6 +18,7 @@ var updateTutorial = function(e) {
   let n = workspace.getAllBlocks().length;
   
   if (n == 0) {
+    workspace.options.maxBlocks = 2;
     tutorialPhase = 0;
   }
   if (n == 1) {
@@ -29,9 +30,12 @@ var updateTutorial = function(e) {
       tutorialPhase = 2;
     }
   }
+  if (tutorialPhase == 5) {
+    workspace.options.maxBlocks = undefined;
+  }
 
   if (text[tutorialPhase] !== undefined) {
-    tutorialDiv.style.display = "block";
+    tutorialDiv.style.display = "flex";
     tutorialText.innerText = text[tutorialPhase];
   } else {
     tutorialDiv.style.display = "none";

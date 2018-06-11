@@ -9,17 +9,25 @@ var generateCode = function(e) {
 };
 workspace.addChangeListener(generateCode);
 
+let runButton = document.getElementById("runButton");
+let simpleRunButton = document.getElementById("simpleRunButton");
+
 var runCode = function(e) {
   if (!runningCommands) {
+    runningCommands = true;
+    simpleRunButton.style.visibility = "hidden";
+    simpleRunButton.style.pointerEvents = "none";
+    
+    let our_code = "runningCommands = false";
+          
     let code = document.getElementById("code").value;
-    code = "async function evalCode() {" + code + "}; evalCode();";
+    code = "async function evalCode() {" + code + our_code + "}; evalCode();";
+    console.log(code);
     eval(code);
-    executeCommands();
   }
 };
-let runButton = document.getElementById("runButton");
 runButton.addEventListener("click", runCode);
-let simpleRunButton = document.getElementById("simpleRunButton");
+
 simpleRunButton.addEventListener("click", runCode);
 
 var viewCode = function(e) {
@@ -43,6 +51,8 @@ document.getElementById("hintButton").addEventListener("click", showHint);
 document.getElementById("simpleHintButton").addEventListener("click", showHint);
 
 function restart(e) {
+  simpleRunButton.style.visibility = "visible";
+  simpleRunButton.style.pointerEvents = "auto";
   restartLevel();
 }
 
