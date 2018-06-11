@@ -27,6 +27,14 @@ td, th {
   background-color: #afafaf;
 }
 
+.removeStudentButton {
+  color: #ff0000;
+}
+
+.removeStudentButton:hover {
+  color: #990000;
+}
+
 #addClass {
   text-align: center;
 }

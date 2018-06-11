@@ -137,6 +137,18 @@ router.post('/add_member', async function(req, res, next) {
   }
 });
 
+router.post('/remove_member', async function(req, res, next) {
+  const body = req.body;
+  var status = await db.removeMember(body.uname, body.class_id);
+  if (status === 1) {
+    res.sendStatus(200);
+  } else if (status === -1) {
+    res.status(480).send("That username does not have an account");
+  } else {
+    res.status(500).send("Unknown error");
+  }
+});
+
 /*
 router.post('/classroom', (req, res, next) => {
 
