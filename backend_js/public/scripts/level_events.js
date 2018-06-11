@@ -9,16 +9,24 @@ var generateCode = function(e) {
 };
 workspace.addChangeListener(generateCode);
 
+let runButton = document.getElementById("runButton");
+
 var runCode = function(e) {
   if (!runningCommands) {
+    runningCommands = true;
+    runButton.style.visibility = "hidden";
+    runButton.style.pointerEvents = "none";
     let code = document.getElementById("code").value;
-    code = "async function evalCode() {" + code + "}; evalCode();";
+    code = "async function evalCode() {" + code + "}; await evalCode();";
     eval(code);
-    executeCommands();
+    console.log("done");
+    runningCommands = false;
+    runButton.style.pointerEvents = "auto";
+    runButton.style.visibility = "visible";
   }
 };
-let runButton = document.getElementById("runButton");
 runButton.addEventListener("click", runCode);
+
 let simpleRunButton = document.getElementById("simpleRunButton");
 simpleRunButton.addEventListener("click", runCode);
 

@@ -26,24 +26,6 @@ function addCommand(command) {
   commands.push(command);
 }
 
-async function executeCommands() {
-  //console.log("Executing commands");
-  
-  runningCommands = true;
-  
-  while (commands.length > 0) {
-    let command = commands.shift();
-    await sleep(command.delay);
-    command.execute();
-    //console.log("Executed a command");
-  }
-  
-  //console.log("Done executing");
-  
-  commands = [];
-  runningCommands = false;
-}
-
 function Command(delay) {
   this.delay = delay;
 }
