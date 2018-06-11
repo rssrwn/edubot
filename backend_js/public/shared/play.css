@@ -107,7 +107,4 @@ canvas {
   padding: 20px;
   border: 2px solid #e68119;
   z-index: 100;
-  display: table-row;
-  position: fixed;
-  text-align: center;
 }
