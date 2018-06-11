@@ -1,7 +1,7 @@
 var tutorialDiv = document.getElementById("tutorialDiv");
 var tutorialText = document.getElementById("tutorialText");
-var runButton = document.getElementById("simpleRunButton");
-var restartButton = document.getElementById("simpleRunButton");
+var tutorialRunButton = document.getElementById("simpleRunButton");
+var tutorialRestartButton = document.getElementById("simpleRunButton");
 
 var tutorialPhase = 0;
 
@@ -44,7 +44,7 @@ var runPressed = function(e) {
   }
   updateTutorial();
 }
-runButton.addEventListener(runPressed);
+tutorialRunButton.addEventListener(runPressed);
 
 var restartPressed = function(e) {
   if (tutorialPhase === 3) {
@@ -52,6 +52,6 @@ var restartPressed = function(e) {
   }
   updateTutorial();
 }
-restartButton.addEventListener(restartPressed);
+tutorialRestartButton.addEventListener(restartPressed);
 
 updateTutorial();
