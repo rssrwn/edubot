@@ -9,8 +9,6 @@ var text = {
   3: "Press restart to reset EduBot"
 };
 
-updateTutorial();
-
 var updateTutorial = function(e) {
   let n = workspace.getAllBlocks().length;
   
@@ -36,3 +34,5 @@ var updateTutorial = function(e) {
   }
 };
 workspace.addChangeListener(updateTutorial);
+
+updateTutorial();
