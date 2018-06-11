@@ -72,6 +72,25 @@ html, body {
   float: right;
 }
 
+#hintsDiv {
+  margin: auto;
+  margin-top: 10px;
+}
+
+#hintButton {
+  margin: auto;
+  float: left;
+  width: 15%;
+  height: 60px;
+}
+
+#hintField {
+  margin: auto;
+  float: right;
+  width: 70%;
+  height: 60px;
+}
+
 /*Right panel style*/
 
 #visualDiv {
@@ -120,4 +139,11 @@ canvas {
 
 .game_image {
   display: none;
+}
+
+.clearFix {
+  overflow: auto;
+  content: "";
+  clear: both;
+  display: table;
 }

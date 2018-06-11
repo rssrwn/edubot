@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>Level Editor</title>
   <link rel="stylesheet" type="text/css" href="base_style.css">
-  <script src="../scripts/utils.js"></script>
+  <script src="../../../backend_js/public/scripts/utils.js"></script>
 
 </head>
 <body>
@@ -18,9 +18,19 @@
       <div id="leftDiv", class="working_divs">
         <button id="newLevelButton">New Level</button>
         
-        <div id="dimensionsDiv", class="working_divs">
+        <div id="dimensionsDiv", class="working_divs clearFix">
           <input id="widthField", class="dimension_fields", value="16"></input>
           <input id="heightField", class="dimension_fields", value="16"></input>
+        </div>
+        
+        <div id="hintsDiv", class="working_divs">
+          <button id="hintButton", onclick="addHint();">Add Hint</button>
+          <input id="hintField"></input>
+        </div>
+        
+        <div id="dirDiv", class="working_divs">
+          Robot direction:
+          <input id="dirField" onkeypress="dirEntered(event);"></input>
         </div>
       </div>
       
@@ -49,11 +59,11 @@
               onmousedown="canvasClicked(event)"></canvas>
             <img class="game_image" src="../images/rob.png" alt="Rob" id="robot_image"></img>
             <img class="nuts_and_bolts" src="../images/nuts_and_bolts.png" id="nuts_and_bolts" alt="Nuts and bolts"></img>
-            <script src="../scripts/entities.js"></script>
-            <script src="../scripts/robot_anims.js"></script>
-            <script src="../scripts/robot_control.js"></script>
-            <script src="../scripts/edubot.js"></script>
-            <script src="../scripts/levels.js"></script>
+            <script src="../../../backend_js/public/scripts/entities.js"></script>
+            <script src="../../../backend_js/public/scripts/robot_anims.js"></script>
+            <script src="../../../backend_js/public/scripts/robot_control.js"></script>
+            <script src="../../../backend_js/public/scripts/edubot.js"></script>
+            <script src="../../../backend_js/public/scripts/levels.js"></script>
           </div>
         </div>
       </div>
