@@ -80,7 +80,7 @@ router.get('/level_selection', async function(req, res, next) {
   
   let context = levelSelectionContext.extend({ studentInfo: studentInfo });
   
-  res.render('teacher/level_select', levelSelectionContext);
+  res.render('teacher/level_select', context);
 });
 
 router.get('/account', (req, res, next) => {
