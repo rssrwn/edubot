@@ -28,10 +28,9 @@
     </div>
     
     <script>
-    $("table").on( "click", "tr", function(){
-    // do something
-    alert( $(this).children("td:first").text() );
-});
+      $(".classMembersTable").on("click", "tr", function() {
+        window.location = "https://edubot-learn.herokuapp.com/teacher/student?id=" + $(this).children("td:first").text();
+      });
         
       var activeButton = null;
 
