@@ -33,7 +33,8 @@ var intro1Context = {
 
   hints: ["You program EduBot by dragging and dropping blocks into the space on the left of the screen. You can get EduBot to carry out your program by clicking run.", "Blocks are like puzzle pieces, you can connect them together to create more useful programs!", "Each block corresponds to a specific action or piece of logic for EduBot to use."],
 
-  level_image: "../images/intro_1.png"
+  level_image: "../images/intro_1.png",
+  tutorial: true
 };
 
 var intro2Context = {
