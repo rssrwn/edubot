@@ -4,7 +4,7 @@ const db = require('../models/db.js');
 const util = require('../models/util.js');
 const fs = require('fs');
 
-let levelSelectionContext = {
+var levelSelectionContext = {
   student: false,
   categories: [
     {
