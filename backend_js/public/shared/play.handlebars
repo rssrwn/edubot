@@ -74,7 +74,9 @@
   <xml id="toolbox">{{{xml_blocks}}}</xml>
 
   <script src="../scripts/level_events.js"></script>
-
   <script>putBlockXML('{{{json_solution}}}');</script>
+  {{#if tutorial}}
+    <script src="../scripts/tutorial.js"></script>
+  {{/if}}
 </body>
 </html>

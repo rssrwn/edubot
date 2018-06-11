@@ -14,5 +14,6 @@
         "Blocks are like puzzle pieces, you can connect them together to create more useful programs!",
         "Each block corresponds to a specific action or piece of logic for EduBot to use."
     ],
-    "level_image": "../images/intro_1.png"
+    "level_image": "../images/intro_1.png",
+    "tutorial": true
 }
