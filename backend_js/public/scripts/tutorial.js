@@ -4,8 +4,7 @@ var tutorialDiv = document.getElementById("tutorialText");
 
 var text = {
   0: "Phase 0",
-  1: "Phase 1",
-  2: "Phase 2"
+  1: "Phase 1"
 };
 
 var workspaceChange = function(e) {
@@ -20,7 +19,7 @@ var workspaceChange = function(e) {
     // Placed block back down
     tutorialPhase = 0;
   }
-  if (tutorialPhase == 0) {
+  if (text[tutorialPhase] !== undefined) {
     tutorialDiv.style.display = "block";
     tutorialText.innerHtml = text[tutorialPhase];
   } else {
