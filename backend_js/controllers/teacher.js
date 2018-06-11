@@ -56,6 +56,11 @@ router.get('/student', async function(req, res, next) {
   let studentId = req.query.userId;
   let studentInfo = await db.getUserInfo(studentId);
   let results = await db.getLevelResults(studentId);
+  
+  console.log("qwx " + studentId);
+  console.log("qwx " + studentInfo.fname);
+  console.log("qwx " + studentInfo.lname);
+  console.log("qwx " + results[0]);
 
   var categories = [
     {
@@ -75,6 +80,7 @@ router.get('/student', async function(req, res, next) {
     }
   ];
   levelSelectionContext[studentInfo] = studentInfo;
+  levelSelectionContext[categories] = categories;
   
   res.render('teacher/level_select', levelSelectionContext);
 });
