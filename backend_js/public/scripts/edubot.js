@@ -132,15 +132,24 @@ GridLevel.prototype.levelCompleted = async function() {
     await sleep(125);
     alert("You won!");
 
-    //httpPost("http://localhost:3000/student/set_result", {level: this.levelId, score: starsAttained}, function(status) {
-    httpPost("https://edubot-learn.herokuapp.com/student/set_result", {level: this.levelId, score: starsAttained}, function(status) {
+    var thisLevel = this.levelId;
+    var nextLevel = this.nextLevelId;
+
+    //httpPost("http://localhost:3000/shared/set_result", {level: this.levelId, score: starsAttained}, function(status) {
+    httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: this.levelId, score: starsAttained}, function(status) {
       console.log('result callback status: ', status);
+
+      // If teacher is logged in
+      if (status === 251) {
+        return;
+      }
+
       if (!(status === 200 || status === 250 || status === 251)) {
         alert("Unknown error, status: ", status);
       }
+      location.href = '/student/level_results?levelId=' + thisLevel + '&nextId=' + nextLevel + '&sts=' + starsAttained;
     });
 
-    location.href = '/student/level_results?levelId=' + this.levelId + '&nextId=' + this.nextLevelId + '&sts=' + starsAttained;
   }
 }
 
