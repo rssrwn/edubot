@@ -23,6 +23,7 @@ td, th {
 }
 
 .studentRow:hover {
+  cursor: pointer;
   background-color: #afafaf;
 }
 
