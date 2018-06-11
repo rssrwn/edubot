@@ -79,8 +79,11 @@
       };
       
       var removeMember = function(class_id, uname) {
-        // TODO
-        httpPost('https://edubot-learn.herokuapp.com/teacher/remove_member', {uname: uname, class_id: class_id}, removeMemberCallback);
+        var txt;
+        if (confirm("Are you sure you want to delete " + uname + " from " + class_id + "?")) {
+          // TODO
+          httpPost('https://edubot-learn.herokuapp.com/teacher/remove_member', {uname: uname, class_id: class_id}, removeMemberCallback);
+        }
       };
       
       var removeMemberCallback = function(status) {
