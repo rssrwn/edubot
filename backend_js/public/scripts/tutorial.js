@@ -1,5 +1,12 @@
 var tutorialPhase = 0;
 var tutorialDiv = document.getElementById("tutorialDiv");
+var tutorialDiv = document.getElementById("tutorialText");
+
+var text = {
+  0: "Phase 0",
+  1: "Phase 1",
+  2: "Phase 2"
+};
 
 var workspaceChange = function(e) {
   let n = workspace.getAllBlocks().length;
@@ -15,8 +22,10 @@ var workspaceChange = function(e) {
   }
   if (tutorialPhase == 0) {
     tutorialDiv.style.display = "block";
+    tutorialText.innerHtml = text[tutorialPhase];
   } else {
     tutorialDiv.style.display = "none";
+    tutorialText.innerHtml = "";
   }
 };
 workspace.addChangeListener(workspaceChange);
