@@ -19,7 +19,6 @@ var updateTutorial = function(e) {
   
   if (n == 0) {
     workspace.options.maxBlocks = 2;
-    workspace.fireChangeListener();
     tutorialPhase = 0;
   }
   if (n == 1) {
@@ -32,8 +31,7 @@ var updateTutorial = function(e) {
     }
   }
   if (tutorialPhase == 5) {
-    workspace.options.maxBlocks = undefined;
-    workspace.fireChangeListener();
+    workspace.options.maxBlocks = 100;
   }
 
   if (text[tutorialPhase] !== undefined) {
