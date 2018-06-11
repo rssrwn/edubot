@@ -26,7 +26,13 @@
         <button type="button" onclick="addClassEvent(this)">Add Class</button>
       </div>
     </div>
+    
     <script>
+    $("table").on( "click", "tr", function(){
+    // do something
+    alert( $(this).children("td:first").text() );
+});
+        
       var activeButton = null;
 
       var addMemberEvent = function(class_id, button) {
