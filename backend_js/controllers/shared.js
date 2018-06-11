@@ -96,7 +96,7 @@ router.get('/level_intro', async function(req, res, next) {
   }
 });
 
-router.get('/play', function(req, res, next) {
+router.get('/play', async function(req, res, next) {
   let levelName = req.query.levelId;
   let uname = req.cookies["edubot-cookie"];
   let context = {student: await util.isStudent(uname)
