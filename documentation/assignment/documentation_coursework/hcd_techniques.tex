@@ -1,18 +1,18 @@
 \documentclass[a4wide, 11pt]{article}
-\usepackage{a4, fullpage,hyperref, graphicx}
+\usepackage{a4, fullpage, hyperref, graphicx}
 \setlength{\parskip}{0.3cm}
 \setlength{\parindent}{0cm}
 \graphicspath{ {./images/} }
 
 % This is the preamble section where you can include extra packages etc.
 
+\title{\vspace{-2.0cm}Human Centred Design Techniques Report}
+
+\author{\vspace{-2.0cm}Group 14}
+
+\date{\vspace{-2.0cm}\today}         % inserts today's date
+
 \begin{document}
-
-\title{Human Centred Design Techniques Report}
-
-\author{Group 14}
-
-\date{\today}         % inserts today's date
 
 \maketitle            % generates the title from the data above
 
@@ -25,36 +25,24 @@
 
 \section{HCD Techniques}
 
-\subsection{Initial Research into Problem Statement} 
+\subsection{Initial Research into Problem Statement}
 
-We initially decided we wanted to address a problem in the field of education and felt that, as computing students, we would be well primed to produce a product that solved a problem in computing education. We started by researching the state of computing education in the UK.
+We decided to address the problem of a lack of quality programming education for Key Stage 3 students. After initial research we found that many schools are struggling to keep up with new the UK computing curriculum, where students are now taught Computing from 11-14 as a compulsory course, as there is a lack of skilled programming teachers.
 
-Interestingly, the UK computing curriculum has undergone large changes in recent times as the government has realised its importance. We dug into this further, and discovered several articles highlighting problems with the changes. Notably, information and communications (ICT) courses are being phased out in favour of computing, and ICT teachers are being forced to teach computing (a much more technical course). This puts a lot of pressure on teachers as the programming element of the course is much harder to grasp than the more lightweight elements of ICT.
+Many existing platforms either do not provide facilities for teachers to see student solutions or provide feedback, or don't give students any direction when attempting to teach challenging concepts.
 
-Additionally, students are now taught computing from 11-14 as a compulsory course. This presents a problem, as the technical nature of the programming component may be offputting to students who are simply taking it because they have to, which could lower the uptake of computing in higher level courses.
-
-We decided that we could potentially develop an application that makes it easier for teachers without a strong appreciation for programming to coding, and that engages the less interested students. We envisaged a web application with a portal for the teachers and for the students, whereby the teacher can set programming based exercises for their classes to complete in lesson.
-
-Our research of existing tools for learning programming helped us identify several issues with their current state:
-\begin{itemize}
-  \item Visual and engaging coding platforms such as Scratch do not give students the direction or broader programming concepts that the classroom requires.
-  \item More directed and extensive platforms such as Code Academy do not provide facilities for teachers to see student solutions, guide them or provide feedback.
-  \item Teaching text based programming languages to a class of students with mixed abilities and levels of interest may lead to disengagement of some students due to the syntax heavy and frustrating initial stages of learning the language.
-\end{itemize}}
-
-We aimed to address these issues like so:
-\begin{itemize}
-  \item We need to make a tool that is compelling and visual in order to capture the attention of students.
-  \item However, it must take students from the basics right up to the more advanced concepts. We will aim to integrate all the topics stipulated in the national curriculum.
-  \item The programming section of the application will be delivered in a visual form, separated from the syntax of specific languages. This allows the application to focus on teaching programmatic thinking and avoids the danger of discouraging students with unintuitive syntax and errors.
-\end{itemize}}  
+We envisaged an engaging web application to help students learn difficult progamming concepts that are not taught by other platforms, without discouraging them with unintuitive syntax. This platform would allow teachers to set exercises for their classes to complete and track their students' progress through the app.
 
 \subsection{HCD Research Methodology}
 
-Our approach to HCD in each week roughly follows the below cycle:
+We started the project by creating: personas for our target audience (figure X), a stakeholder map showing which groups of people our app will have an effect on (figure Y) and a mood-o-gram for a teacher's typical programming lesson without our app (figure Z).
+
+Each week we employed an HCD methodology, following roughly the below cycle:....
+
+We employed an HCD methodology each week roughly follows the below cycle:
 \begin{itemize}
   \item Initially, we collate the previous week's feedback. We use it to determine what existing features have been most useful to the users and what new features would give them the most benefit in the coming week.
-  \item After determining the key features, we develop a mocked up representation of the features. Initially, this would be on paper. However, after creating a vertical slice of the application, we were able to provide mock pages that would externally appear functioning, with or without the backend.
+  \item After determining the key features, we develop a mocked up representation of the features. Initially, this would be on paper. However, after creating a vertical slice of the application, we were able to provide mock pages that would externally appear functioning.
   \item Our primary user tester is a teacher - Lucy Glanfield. We have been arranging weekly interviews on the Tuesday where we present our mocked up features and let her play with them, generally with minimal guidance. By observing her unguided interactions we gain valuable information about the usability and intuitiveness of the feature. We then have more open discussions about the feature, application and problem area as a whole. This gives us more direction in terms of what features are needed next and helps us to gather more problem context. When we have ideas about new features, this is when we propose them and gauge how useful they will be.
   \item We aim to implement the most pressing desired features by Wednesday evening/Thursday morning. This allows us to request less formal impression and usability feedback to determine whether we are taking the right direction. She has also been able to demo the application with some members of her Key Stage 3 classes so that we get an idea of how we are doing on the student side as well.
   \item Thursday and Friday are then spent refining the new features in preparation for the following week.
@@ -66,7 +54,6 @@ Figure \ref{fig:mockup} shows a boat.
 
 \begin{figure}
   \begin{center}
-  \includegraphics[]{placeholder.png}
   \end{center}
   \label{fig:mockup}
 \end{figure}
