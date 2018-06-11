@@ -38,20 +38,22 @@ var updateTutorial = function(e) {
 };
 workspace.addChangeListener(updateTutorial);
 
-var runPressed = function(e) {
+var tutorialRunPressed = function(e) {
+  console.log("run");
   if (tutorialPhase === 2) {
     tutorialPhase = 3;
   }
   updateTutorial();
 }
-tutorialRunButton.addEventListener("click", runPressed);
+tutorialRunButton.addEventListener("click", tutorialRunPressed);
 
-var restartPressed = function(e) {
+var tutorialRestartPressed = function(e) {
+  console.log("restart");
   if (tutorialPhase === 3) {
     tutorialPhase = 4;
   }
   updateTutorial();
 }
-tutorialRestartButton.addEventListener("click", restartPressed);
+tutorialRestartButton.addEventListener("click", tutorialRestartPressed);
 
 updateTutorial();
