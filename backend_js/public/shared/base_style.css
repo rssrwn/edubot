@@ -29,3 +29,10 @@ html, body {
   height: 100%;
   // background-color: #e4dfda;
 }
+
+.clearFix {
+  overflow: auto;
+  content: "";
+  clear: both;
+  display: table;
+}

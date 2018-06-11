@@ -58,6 +58,8 @@ router.get('/level_results', (req, res, next) => {
     level_id: levelName,
     next_level_id: nextLevel
   };
+  
+  console.log("About to render level results with stars: " + context.stars);
 
   res.render('student/level_results', context);
 });
