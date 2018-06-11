@@ -1,6 +1,13 @@
 <div class="levelDiv">
   <span class="nameDiv">
-    <a class="linkPlain hoverLink" href="{{link}}">Level {{number}} - {{name}}</a>
+    {{#if locked}}
+    <span class="lockDiv">
+      <img class="lockImage", alt="lock", src="../images/lock.png">
+      <a class="linkLocked">Level {{number}} - {{name}}</a>
+    </span>
+    {{else}}
+      <a class="linkPlain hoverLink" href="{{link}}">Level {{number}} - {{name}}</a>
+    {{/if}}
   </span>
   <span class="starsDiv">
     {{#for 0 stars 1}}
