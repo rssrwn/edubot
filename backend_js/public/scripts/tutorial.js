@@ -31,7 +31,8 @@ var updateTutorial = function(e) {
     }
   }
   if (tutorialPhase == 5) {
-    workspace.options.maxBlocks = 100;
+    workspace.options.maxBlocks = 1000;
+    workspace.fireChangeListener(new Abstract());
   }
 
   if (text[tutorialPhase] !== undefined) {
