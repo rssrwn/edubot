@@ -100,12 +100,15 @@ router.get('/play', async function(req, res, next) {
   let levelName = req.query.levelId;
   let uname = req.cookies["edubot-cookie"];
   let isStudent = await util.isStudent(uname);
-  let context = {student: await util.isStudent(uname), tutorial: levelName === "intro_1" && isStudent};
+  let context = {student: isStudent, tutorial: levelName === "intro_1" && isStudent};
 
   let studentId = req.query.studentId;
+  console.log('studentid: ', studentId);
 
   if (studentId != null) {
+    console.log('student id not null');
     context.json_solution = await db.getSolution(uname, levelName);
+    console.log('json sol: ', context.json_solution);
   }
 
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
@@ -113,6 +116,7 @@ router.get('/play', async function(req, res, next) {
 
     util.getLevelData(levelName, 'blocks').then(xmlBlocks => {
       context.xml_blocks = xmlBlocks;
+      console.log('json sol: ', context.json_solution);
       res.render('shared/play', context);
     }).catch((error) => {});
   }).catch((error) => {});
