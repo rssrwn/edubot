@@ -203,7 +203,7 @@ exports.setResult = async function(uname, level, score, solution) {
 exports.getSolution = async function(uname, level) {
   let type = await exports.getUserType(uname);
   if (type !== userTypeEnum.STUDENT) {
-    return NULL;
+    return null;
   }
 
   let levelId = await getLevelId(level);
@@ -212,7 +212,7 @@ exports.getSolution = async function(uname, level) {
   if (db_res.rows[0].solution) {
     return db_res.rows[0].solution;
   } else {
-    return NULL;
+    return null;
   }
 }
 
