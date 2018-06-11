@@ -32,7 +32,7 @@ var updateTutorial = function(e) {
   }
   if (tutorialPhase == 5) {
     workspace.options.maxBlocks = 1000;
-    workspace.fireChangeListener(new Abstract());
+    workspace.fireChangeListener(null);
   }
 
   if (text[tutorialPhase] !== undefined) {
