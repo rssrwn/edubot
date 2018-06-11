@@ -87,3 +87,14 @@ canvas {
 .game_image {
   display: none;
 }
+
+#tutorialDiv {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  color: green;
+  z-index: 15;
+}
