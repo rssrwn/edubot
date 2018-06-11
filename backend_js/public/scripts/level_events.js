@@ -14,13 +14,13 @@ let runButton = document.getElementById("runButton");
 var runCode = function(e) {
   if (!runningCommands) {
     runningCommands = true;
-    runButton.style.visibility = "hidden";
+    runButton.style.pointerEvents = "none";
     let code = document.getElementById("code").value;
     code = "async function evalCode() {" + code + "}; evalCode();";
     eval(code);
-    executeCommands();
+    console.log("done");
     runningCommands = false;
-    runButton.style.visibility = "visible";
+    runButton.style.pointerEvents = "auto";
   }
 };
 runButton.addEventListener("click", runCode);
