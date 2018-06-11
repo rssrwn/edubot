@@ -33,8 +33,7 @@ var intro1Context = {
 
   hints: ["You program EduBot by dragging and dropping blocks into the space on the left of the screen. You can get EduBot to carry out your program by clicking run.", "Blocks are like puzzle pieces, you can connect them together to create more useful programs!", "Each block corresponds to a specific action or piece of logic for EduBot to use."],
 
-  level_image: "../images/intro_1.png",
-  tutorial: true
+  level_image: "../images/intro_1.png"
 };
 
 var intro2Context = {
@@ -100,7 +99,8 @@ router.get('/level_intro', async function(req, res, next) {
 router.get('/play', async function(req, res, next) {
   let levelName = req.query.levelId;
   let uname = req.cookies["edubot-cookie"];
-  let context = {student: await util.isStudent(uname)};
+  let context = {student: await util.isStudent(uname)
+    , tutorial: levelName === "intro_1"};
 
   util.getLevelData(levelName, 'lev', function(jsonLevel) {
     context.json_level = jsonLevel;

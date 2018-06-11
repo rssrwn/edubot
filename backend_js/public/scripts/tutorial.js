@@ -1,3 +1,4 @@
+console.log("Tutorial level");
 var workspaceChange = function(e) {
   let n = workspace.getAllBlocks().length;
   console.log(n);
