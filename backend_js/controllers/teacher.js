@@ -4,27 +4,6 @@ const db = require('../models/db.js');
 const util = require('../models/util.js');
 const fs = require('fs');
 
-var levelSelectionContext = {
-  student: false,
-  categories: [
-    {
-      categoryName: "Introduction",
-      levels: [
-        {number: 1, name: "Moving EduBot", link: '/shared/level_intro?levelId=intro_1'},
-        {number: 2, name: "Movement and Rotation", link: '/shared/level_intro?levelId=intro_2'},
-        {number: 3, name: "Obstacles", link: '/shared/level_intro?levelId=intro_3'}
-      ]
-    },
-    {
-      categoryName: "Looping",
-      levels: [
-        {number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
-        {number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
-      ]
-    }
-  ]
-};
-
 router.get('/classes', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   let class_data = [];
@@ -57,32 +36,28 @@ router.get('/student', async function(req, res, next) {
   let studentInfo = await db.getUserInfo(studentId);
   let results = await db.getLevelResults(studentId);
   
-  console.log("qwx " + studentId);
-  console.log("qwx " + studentInfo.fname);
-  console.log("qwx " + studentInfo.lname);
-  console.log("qwx " + results[0]);
-
-  var categories = [
-    {
-      categoryName: "Introduction",
-      levels: [
-        {stars: results[0], number: 1, name: "Moving EduBot", link: '/shared/play?levelId=intro_1?studentId=' + studentId},
-        {stars: results[1], number: 2, name: "Movement and Rotation", link: '/shared/play?levelId=intro_2?studentId=' + studentId},
-        {stars: results[2], number: 3, name: "Obstacles", link: '/shared/play?levelId=intro_3?studentId=' + studentId}
-      ]
-    },
-    {
-      categoryName: "Looping",
-      levels: [
-        {stars: results[3], number: 4, name: "Basic looping", link: '/shared/play?levelId=loops_1?studentId=' + studentId},
-        {stars: results[4], number: 5, name: "Advanced looping", link: '/shared/play?levelId=loops_1?studentId=' + studentId}
-      ]
-    }
-  ];
-  levelSelectionContext[studentInfo] = studentInfo;
-  levelSelectionContext[categories] = categories;
-  
-  res.render('teacher/level_select', levelSelectionContext);
+  let context = {
+    student: false,
+    studentInfo: studentInfo,
+    categories: [
+      {
+        categoryName: "Introduction",
+        levels: [
+          {stars: results[0], number: 1, name: "Moving EduBot", link: '/shared/play?levelId=intro_1?studentId=' + studentId},
+          {stars: results[1], number: 2, name: "Movement and Rotation", link: '/shared/play?levelId=intro_2?studentId=' + studentId},
+          {stars: results[2], number: 3, name: "Obstacles", link: '/shared/play?levelId=intro_3?studentId=' + studentId}
+        ]
+      },
+      {
+        categoryName: "Looping",
+        levels: [
+          {stars: results[3], number: 4, name: "Basic looping", link: '/shared/play?levelId=loops_1?studentId=' + studentId},
+          {stars: results[4], number: 5, name: "Advanced looping", link: '/shared/play?levelId=loops_1?studentId=' + studentId}
+        ]
+      }
+    ]
+  };
+  res.render('teacher/level_select', context);
 });
 
 router.get('/solution', async function(req, res, next) {
@@ -104,7 +79,28 @@ router.get('/solution', async function(req, res, next) {
 });
 
 router.get('/level_selection', (req, res, next) => {
-  res.render('teacher/level_select', levelSelectionContext);
+  let context = {
+    student: false,
+    categories: [
+      {
+        categoryName: "Introduction",
+        levels: [
+          {number: 1, name: "Moving EduBot", link: '/shared/level_intro?levelId=intro_1'},
+          {number: 2, name: "Movement and Rotation", link: '/shared/level_intro?levelId=intro_2'},
+          {number: 3, name: "Obstacles", link: '/shared/level_intro?levelId=intro_3'}
+        ]
+      },
+      {
+        categoryName: "Looping",
+        levels: [
+          {number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
+          {number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
+        ]
+      }
+    ]
+  };
+  
+  res.render('teacher/level_select', context);
 });
 
 router.get('/account', (req, res, next) => {
