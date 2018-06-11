@@ -74,13 +74,14 @@ router.get('/solution', async function(req, res, next) {
   });
 });
 
-router.get('/level_selection', (req, res, next) => {
+router.get('/level_selection', async function(req, res, next) {
   let studentId = req.query.userId;
   let studentInfo = await db.getUserInfo(studentId);
   
   let context = levelSelectionContext.extend({ studentInfo: studentInfo });
+  console.log(context);
   
-  res.render('teacher/level_select', levelSelectionContext);
+  res.render('teacher/level_select', context);
 });
 
 router.get('/account', (req, res, next) => {
