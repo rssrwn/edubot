@@ -9,16 +9,22 @@ var generateCode = function(e) {
 };
 workspace.addChangeListener(generateCode);
 
+let runButton = document.getElementById("runButton");
+
 var runCode = function(e) {
   if (!runningCommands) {
+    runningCommands = true;
+    runButton.style.visible = "hidden";
     let code = document.getElementById("code").value;
     code = "async function evalCode() {" + code + "}; evalCode();";
     eval(code);
     executeCommands();
+    runningCommands = false;
+    runButton.style.visible = "visible";
   }
 };
-let runButton = document.getElementById("runButton");
 runButton.addEventListener("click", runCode);
+
 let simpleRunButton = document.getElementById("simpleRunButton");
 simpleRunButton.addEventListener("click", runCode);
 
