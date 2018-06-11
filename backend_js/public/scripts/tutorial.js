@@ -18,6 +18,7 @@ var updateTutorial = function(e) {
   let n = workspace.getAllBlocks().length;
   
   if (n == 0) {
+    workspace.maxBlocks = 2;
     tutorialPhase = 0;
   }
   if (n == 1) {
@@ -28,6 +29,9 @@ var updateTutorial = function(e) {
     if (blocks.length == 1) {
       tutorialPhase = 2;
     }
+  }
+  if (tutorialPhase == 5) {
+    workspace.maxBlocks = undefined;
   }
 
   if (text[tutorialPhase] !== undefined) {
