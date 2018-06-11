@@ -88,6 +88,14 @@ canvas {
   display: none;
 }
 
+#tutorialWrapperDiv {
+  display: table-row;
+  position: fixed;
+  bottom: 84px;
+  width: 50%;
+  text-align: center;
+}
+
 #tutorialDiv {
   display: none;
   position: absolute;

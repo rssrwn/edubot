@@ -2,14 +2,16 @@ var tutorialDiv = document.getElementById("tutorialDiv");
 var tutorialText = document.getElementById("tutorialText");
 var tutorialRunButton = document.getElementById("simpleRunButton");
 var tutorialRestartButton = document.getElementById("simpleRestartButton");
+var tutorialHintButton = document.getElementById("simpleHintButton");
 
 var tutorialPhase = 0;
 
 var text = {
-  0: "Drag blocks to the workspace",
+  0: "Drag blocks from the left to the workspace",
   1: "Connect blocks together to form programs",
-  2: "Press run to execute your program",
-  3: "Press restart to reset EduBot"
+  2: "Press the green triangle to execute your program",
+  3: "Press restart arrow to reset EduBot",
+  4: "Click the question mark for a hint"
 };
 
 var updateTutorial = function(e) {
@@ -53,5 +55,13 @@ var tutorialRestartPressed = function(e) {
   updateTutorial();
 }
 tutorialRestartButton.addEventListener("click", tutorialRestartPressed);
+
+var tutorialHintPressed = function(e) {
+  if (tutorialPhase == 4) {
+    tutorialPhase = 5;
+  }
+  updateTutorial();
+}
+tutorialHintButton.addEventListener("click", tutorialHintPressed);
 
 updateTutorial();
