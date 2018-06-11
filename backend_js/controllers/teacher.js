@@ -52,7 +52,7 @@ router.get('/classes', async function(req, res, next) {
   res.render('teacher/classes', context);
 });
 
-router.get('/student', (req, res, next) => {
+router.get('/student', async function(req, res, next) {
   let studentId = req.query.userId;
   let studentInfo = await db.getUserInfo(studentId);
   let results = await db.getLevelResults(studentId);
@@ -97,7 +97,7 @@ router.get('/solution', async function(req, res, next) {
   });
 });
 
-router.get('/level_selection', async function(req, res, next) {
+router.get('/level_selection', (req, res, next) => {
   res.render('teacher/level_select', levelSelectionContext);
 });
 
