@@ -19,7 +19,11 @@
     
     <div id="contentDiv">
       <div id="selectionWrapperDiv">
+        {{#if studentInfo}}
+        <h1>{{studentInfo.fname}} {{studentInfo.lname}}</h1>
+        {{else}}
         <h1>Level Selection</h1>
+        {{/if}}
         <div id="selectionDiv">
           {{#each categories}}
             {{> teacher/category_block this}}
