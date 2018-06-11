@@ -142,7 +142,7 @@ GridLevel.prototype.levelCompleted = async function() {
     httpPost("https://edubot-learn.herokuapp.com/shared/set_solution", {level: this.levelId, solution: xml_text}, function(status) {
       console.log('result callback status: ', status);
       // TODO error codes
-    }
+    });
     
     httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: this.levelId, score: starsAttained}, function(status) {
       console.log('result callback status: ', status);
