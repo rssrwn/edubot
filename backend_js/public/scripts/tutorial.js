@@ -21,7 +21,7 @@ var updateTutorial = function(e) {
   if (n == 1) {
     tutorialPhase = 1;
   }
-  if (n == 2) {
+  if (n == 2 && tutorialPhase == 1) {
     let blocks = workspace.getTopBlocks();
     if (blocks.length == 1) {
       tutorialPhase = 2;
@@ -38,20 +38,20 @@ var updateTutorial = function(e) {
 };
 workspace.addChangeListener(updateTutorial);
 
-var runPressed = function(e) {
-  if (tutorialPhase === 2) {
+var tutorialRunPressed = function(e) {
+  if (tutorialPhase == 2) {
     tutorialPhase = 3;
   }
   updateTutorial();
 }
-tutorialRunButton.addEventListener("click", runPressed);
+tutorialRunButton.addEventListener("click", tutorialRunPressed);
 
-var restartPressed = function(e) {
-  if (tutorialPhase === 3) {
+var tutorialRestartPressed = function(e) {
+  if (tutorialPhase == 3) {
     tutorialPhase = 4;
   }
   updateTutorial();
 }
-tutorialRestartButton.addEventListener("click", restartPressed);
+tutorialRestartButton.addEventListener("click", tutorialRestartPressed);
 
 updateTutorial();
