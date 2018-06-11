@@ -1,6 +1,7 @@
 var tutorialPhase = 0;
 var tutorialDiv = document.getElementById("tutorialDiv");
 var tutorialDiv = document.getElementById("tutorialText");
+var i = 0;
 
 var text = {
   0: "Phase 0",
@@ -9,6 +10,8 @@ var text = {
 
 var workspaceChange = function(e) {
   let n = workspace.getAllBlocks().length;
+  console.log("i " + i + " " + tutorialPhase + " " + n)
+  i++;
   if (tutorialPhase === 0 && n === 1) {
     // Dragging block
     tutorialPhase = 1;
