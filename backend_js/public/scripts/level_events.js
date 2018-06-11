@@ -11,18 +11,18 @@ workspace.addChangeListener(generateCode);
 
 let runButton = document.getElementById("runButton");
 
-var runCode = async function(e) {
+var runCode = function(e) {
   if (!runningCommands) {
     runningCommands = true;
     runButton.style.visibility = "hidden";
     runButton.style.pointerEvents = "none";
     let code = document.getElementById("code").value;
-    code = "async function evalCode() {" + code + "}; await evalCode();";
+    code = "async function evalCode() {" + code + "}; \
+      evalCode(); \
+      runningCommands = false; \
+      runButton.style.pointerEvents = 'auto'; \
+      runButton.style.visibility = 'visible';";
     eval(code);
-    console.log("done");
-    runningCommands = false;
-    runButton.style.pointerEvents = "auto";
-    runButton.style.visibility = "visible";
   }
 };
 runButton.addEventListener("click", runCode);
