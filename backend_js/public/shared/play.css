@@ -94,10 +94,10 @@ canvas {
   top: 200px;
   left: 200px;
   width: 200px;
-  height: 100px;
+  height: 80px;
   background-color: white;
   border-radius: 25px;
   padding: 20px;
-  border: 1px solid #000000;
+  border: 2px solid #e68119;
   z-index: 100;
 }

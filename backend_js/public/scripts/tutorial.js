@@ -1,7 +1,7 @@
 var tutorialDiv = document.getElementById("tutorialDiv");
 var tutorialText = document.getElementById("tutorialText");
 var tutorialRunButton = document.getElementById("simpleRunButton");
-var tutorialRestartButton = document.getElementById("simpleRunButton");
+var tutorialRestartButton = document.getElementById("simpleRestartButton");
 
 var tutorialPhase = 0;
 
