@@ -22,7 +22,6 @@ var runCode = function(e) {
           
     let code = document.getElementById("code").value;
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
-    console.log(code);
     eval(code);
   }
 };
