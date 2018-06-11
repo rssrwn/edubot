@@ -1,15 +1,17 @@
 var tutorialDiv = document.getElementById("tutorialDiv");
 var tutorialText = document.getElementById("tutorialText");
-var runButton = document.getElementById("simpleRunButton");
-var restartButton = document.getElementById("simpleRunButton");
+var tutorialRunButton = document.getElementById("simpleRunButton");
+var tutorialRestartButton = document.getElementById("simpleRestartButton");
+var tutorialHintButton = document.getElementById("simpleHintButton");
 
 var tutorialPhase = 0;
 
 var text = {
-  0: "Drag blocks to the workspace",
+  0: "Drag blocks from the left to the workspace",
   1: "Connect blocks together to form programs",
-  2: "Press run to execute your program",
-  3: "Press restart to reset EduBot"
+  2: "Press the green triangle to execute your program",
+  3: "Press restart arrow to reset EduBot",
+  4: "Click the question mark for a hint"
 };
 
 var updateTutorial = function(e) {
@@ -21,7 +23,7 @@ var updateTutorial = function(e) {
   if (n == 1) {
     tutorialPhase = 1;
   }
-  if (n == 2) {
+  if (n == 2 && tutorialPhase == 1) {
     let blocks = workspace.getTopBlocks();
     if (blocks.length == 1) {
       tutorialPhase = 2;
@@ -38,20 +40,28 @@ var updateTutorial = function(e) {
 };
 workspace.addChangeListener(updateTutorial);
 
-var runPressed = function(e) {
-  if (tutorialPhase === 2) {
+var tutorialRunPressed = function(e) {
+  if (tutorialPhase == 2) {
     tutorialPhase = 3;
   }
   updateTutorial();
 }
-runButton.addEventListener(runPressed);
+tutorialRunButton.addEventListener("click", tutorialRunPressed);
 
-var restartPressed = function(e) {
-  if (tutorialPhase === 3) {
+var tutorialRestartPressed = function(e) {
+  if (tutorialPhase == 3) {
     tutorialPhase = 4;
   }
   updateTutorial();
 }
-restartButton.addEventListener(restartPressed);
+tutorialRestartButton.addEventListener("click", tutorialRestartPressed);
+
+var tutorialHintPressed = function(e) {
+  if (tutorialPhase == 4) {
+    tutorialPhase = 5;
+  }
+  updateTutorial();
+}
+tutorialHintButton.addEventListener("click", tutorialHintPressed);
 
 updateTutorial();
