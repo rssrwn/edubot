@@ -17,10 +17,12 @@ var runCode = function(e) {
     runButton.style.visibility = "hidden";
     runButton.style.pointerEvents = "none";
     
-    let our_code = "runningCommands = false;\
-      runButton.style.pointerEvents = 'auto';\n\
-      runButton.style.visibility = 'visible';\n";
-    
+    // let our_code = "runningCommands = false;\
+    //   runButton.style.pointerEvents = 'auto';\n\
+    //   runButton.style.visibility = 'visible';\n";
+      
+    let our_code = "runningCommands = false;";
+          
     let code = document.getElementById("code").value;
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
     console.log(code);
