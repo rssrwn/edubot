@@ -93,10 +93,10 @@ canvas {
   position: fixed;
   bottom: 84px;
   width: 50%;
-  text-align: center;
 }
 
 #tutorialDiv {
+  text-align: center;
   display: flex;
   flex-direction: column; 
   justify-content: center;
