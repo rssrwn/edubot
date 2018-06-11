@@ -44,7 +44,7 @@ var runPressed = function(e) {
   }
   updateTutorial();
 }
-tutorialRunButton.addEventListener(runPressed);
+tutorialRunButton.addEventListener("click", runPressed);
 
 var restartPressed = function(e) {
   if (tutorialPhase === 3) {
@@ -52,6 +52,6 @@ var restartPressed = function(e) {
   }
   updateTutorial();
 }
-tutorialRestartButton.addEventListener(restartPressed);
+tutorialRestartButton.addEventListener("click", restartPressed);
 
 updateTutorial();
