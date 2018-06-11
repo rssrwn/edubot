@@ -113,7 +113,7 @@ router.get('/play', async function(req, res, next) {
   if (studentId != null) {
     console.log('student id not null');
     console.log('levelName: ', levelName);
-    let sol = await db.getSolution(uname, levelName);
+    let sol = await db.getSolution(studentId, levelName);
     context.json_solution = sol;
     console.log('json sol: ', context.json_solution);
   }
