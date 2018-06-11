@@ -21,7 +21,7 @@ exports.isStudent = async function(uname) {
   } catch(e) {
     next(e);
   };
-  student = false;
+  let student = false;
   if (type === db.userTypeEnum.STUDENT) {
     student = true;
   }
