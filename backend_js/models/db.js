@@ -175,34 +175,57 @@ exports.getLevelResults = async function(uname) {
 }
 
 // Sets result of level to the largest of score and the current score
-exports.setResult = async function(uname, level, score) {
+exports.setResult = async function(uname, level, score, solution) {
   let type = await exports.getUserType(uname);
   if (type !== userTypeEnum.STUDENT) {
     return -1;
   }
 
-  let res = await pool.query("select level_id from level where link=$1;", [level]);
-  let level_id = res.rows[0].level_id;
+  let level_id = await getLevelId(level);
 
   db_res = await pool.query("select score from student_level where uname=$1 and level_id=$2;", [uname, level_id]);
   if (db_res.rows.length > 0) {
     curr = db_res.rows[0].score;
     if (score > curr) {
-      await pool.query("update student_level set score=$1 where uname=$2 and level_id=$3;", [score, uname, level_id]);
+      await pool.query("update student_level set score=$1, solution=$2 where uname=$3 and level_id=$4;", [score, solution, uname, level_id]);
     } else {
       return 1;
     }
   } else {
-    await insertScore(uname, level_id, score);
+    await insertSolution(uname, level_id, score, solution);
   }
 
   return 0;
 }
 
+// Get uname's solution on level
+// TODO test
+exports.getSolution = async function(uname, level) {
+  let type = await exports.getUserType(uname);
+  if (type !== userTypeEnum.STUDENT) {
+    return NULL;
+  }
+
+  let levelId = await getLevelId(level);
+  let db_res = await pool.query("select solution from student_level where uname=$1 and level_id=$2;", [uname, levelId]);
+
+  if (db_res.rows[0].solution) {
+    return db_res.rows[0].solution;
+  } else {
+    return NULL;
+  }
+}
+
+// Get an id for a level
+getLevelId = async function(level) {
+  let res = await pool.query("select level_id from level where link=$1;", [level]);
+  return res.rows[0].level_id;
+}
+
 // Insert a score
-insertScore = async function(uname, level_id, score) {
+insertSolution = async function(uname, level_id, score, solution) {
   try {
-    await pool.query("insert into student_level values($1, $2, $3);", [uname, level_id, score]);
+    await pool.query("insert into student_level values($1, $2, $3, $4);", [uname, level_id, score, solution]);
   } catch(e) {
     Promise.reject(e);
   }
