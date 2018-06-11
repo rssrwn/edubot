@@ -16,13 +16,14 @@ var runCode = function(e) {
     runningCommands = true;
     runButton.style.visibility = "hidden";
     runButton.style.pointerEvents = "none";
-    let code = document.getElementById("code").value;
-    code = "async function evalCode() {" + code + "}; \
-      evalCode(); \
-      runningCommands = false; \
+    
+    let our_code = "runningCommands = false; \
       runButton.style.pointerEvents = 'auto'; \
-      runButton.style.visibility = 'visible'; \
-      console.log('done');";
+      runButton.style.visibility = 'visible';";
+    
+    let code = document.getElementById("code").value;
+    code = "async function evalCode() {" + code + our_code + "}; evalCode();";
+    console.log(code);
     eval(code);
   }
 };
