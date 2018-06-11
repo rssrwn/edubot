@@ -107,6 +107,7 @@ router.get('/play', async function(req, res, next) {
 
   if (studentId != null) {
     console.log('student id not null');
+    console.log('levelName: ', levelName);
     context.json_solution = await db.getSolution(uname, levelName);
     console.log('json sol: ', context.json_solution);
   }
@@ -118,8 +119,8 @@ router.get('/play', async function(req, res, next) {
       context.xml_blocks = xmlBlocks;
       console.log('json sol: ', context.json_solution);
       res.render('shared/play', context);
-    }).catch((error) => {});
-  }).catch((error) => {});
+    }).catch((error) => next(error));
+  }).catch((error) => next(error));
 });
 
 router.post('/set_result', async function(req, res, next) {
