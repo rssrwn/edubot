@@ -100,11 +100,10 @@ router.get('/play', async function(req, res, next) {
   let levelName = req.query.levelId;
   let uname = req.cookies["edubot-cookie"];
   let isStudent = await util.isStudent(uname);
-  let context = {student: await util.isStudent(uname)
-    , tutorial: levelName === "intro_1" && isStudent};
-  
+  let context = {student: await util.isStudent(uname), tutorial: levelName === "intro_1" && isStudent};
+
   let studentId = req.query.studentId;
-  
+
   if (studentId != null) {
     context.json_solution = await db.getSolution(uname, levelName);
   }
@@ -123,7 +122,7 @@ router.post('/set_result', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   const body = req.body;
 
-  let success = await db.setResult(uname, body.level, body.score);
+  let success = await db.setResult(uname, body.level, body.score, body.solution);
 
   console.log('set result');
 
