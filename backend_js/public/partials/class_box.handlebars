@@ -15,10 +15,11 @@
         <td class="studentLinkButton">{{this.fname}}</td>
         <td class="studentLinkButton">{{this.lname}}</td>
         <td class="studentLinkButton">{{this.age}}</td>
-        <td><img src="../images/remove_member.png" onmouseover="this.src='../images/remove_member_hover.png'" onmouseout="this.src='../images/remove_member.png'" class="removeStudentButton" onclick="removeMember('{{../class_name}}', '{{this.uname}}')"/></td>
+        <td><img src="../images/remove_member.png" onmouseover="this.src='../images/remove_member_hover.png'" onmouseout="this.src='../images/remove_member.png'" class="removeStudentButton" onclick="removeMember({{../class_id}}, '{{../class_name}}' '{{this.uname}}')"/></td>
       </tr>
     {{/each}}
   </table>
 
-  <button type="button" onclick="addMemberEvent({{{class_id}}}, this)">Add Member</button>
+  <button class="classButton" type="button" onclick="removeClass({{{class_id, class_name}}})">Remove Class</button>
+  <button class="classButton" type="button" onclick="addMemberEvent({{{class_id}}}, this)">Add Member</button>
 </div>
