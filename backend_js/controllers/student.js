@@ -11,6 +11,7 @@ router.get('/level_selection', async function(req, res, next) {
 
   var categories = [
     {
+      conceptId: "intro",
       categoryName: "Introduction",
       levels: [
         {stars: results[0], number: 1, name: "Moving EduBot", link: '/shared/level_intro?levelId=intro_1'},
@@ -19,6 +20,7 @@ router.get('/level_selection', async function(req, res, next) {
       ]
     },
     {
+      conceptId: "loops",
       categoryName: "Looping",
       levels: [
         {stars: results[3], number: 4, name: "Basic looping", link: '/shared/play?levelId=loops_1'},

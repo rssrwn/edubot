@@ -85,15 +85,23 @@ Robot.prototype.update = function() {
 
 Robot.prototype.draw = function(x, y) {
   let size = level.squareSize * 1.2;
-  let xTrans = x + level.squareSize / 2;
-  let yTrans = y + level.squareSize / 2;
+  let progress = this.actionProgress();
+  
+  let prevX = this.prevLoc.x * level.squareSize;
+  let prevY = this.prevLoc.y * level.squareSize;
+  let curX = (x - prevX) * progress + prevX;
+  let curY = (y - prevY) * progress + prevY;
+  
+  let xTrans = curX + level.squareSize / 2;
+  let yTrans = curY + level.squareSize / 2;
   ctx.translate(xTrans, yTrans);
   
   let rot = this.dir * 90 * Math.PI / 180;
-  let prevRot = this.preDir * 90 * Math.PI / 180;
-  let curRot = (rot - prevRot) * this.actionProgress() + prevRot;
+  let prevRot = this.curDir * 90 * Math.PI / 180;
   
-  ctx.rotate(rot);
+  let curRot = rot - (1 - progress) * prevRot;
+  
+  ctx.rotate(curRot);
   //drawImage("robot_image", -size / 2, -size / 2, size, size);
   this.anims.draw(0, 0);
 }
@@ -119,44 +127,62 @@ Robot.prototype.removed = function () {
 
 Robot.prototype.loaded = function () {
   this.anims = new RobotAnims();
-  this.prevLoc = this.loc;
+  this.prevLoc = new Point(this.loc.x, this.loc.y);
 }
 
 // Robot actions
 
 var counter = 0;
 
+function progressConvert(x) {
+  //(1 / (1 + e^-(10(x - 0.5))) 
+  return 1 / (1 + Math.exp(-10 * (x - 0.5)));
+}
+
 Robot.prototype.actionProgress = function() {
-  let progress = (new Date().getTime() - this.actionStart) / robotStepTime;
-  if (progress > 1) {
-    progress = 1;
+  if (this.actionStart === undefined) {
+    return 0;
   }
-  if (progress < 0) {
+  let progress = (new Date().getTime() - this.actionStart) / robotStepTime;
+  
+  let pause = 0.25;
+  
+  if (progress > (1 - pause)) {
+    progress = 1;
+  } else if (progress < pause) {
     progress = 0;
+  } else {
+    progress = (progress - pause) * 2;
+    progress = progressConvert(progress);
   }
   return progress;
+}
+
+Robot.prototype.startAction = function() {
+  this.actionStart = new Date().getTime();
+  this.prevLoc = new Point(this.loc.x, this.loc.y);
+  this.curDir = 0;
 }
 
 Robot.prototype.moveForward = function() {
   let x = counter;
   counter++;
-  this.actionStart = new Date().getTime();
-  this.prevLoc = new Point(this.loc.x, this.loc.y);
+  this.startAction();
   this.setLocation(DirProperties[this.dir].moveForward(this.loc));
   this.actionsTaken++;
 }
 
 Robot.prototype.rotateRight = function() {
-  this.actionStart = new Date().getTime();
-  this.prevDir = this.dir;
+  this.startAction();
   this.dir = DirProperties[this.dir].rotateRight;
+  this.curDir = 1;
   this.actionsTaken++;
 }
 
 Robot.prototype.rotateLeft = function() {
-  this.actionStart = new Date().getTime();
-  this.prevDir = this.dir;
+  this.startAction();
   this.dir = DirProperties[this.dir].rotateLeft;
+  this.curDir = -1;
   this.actionsTaken++;
 }
 

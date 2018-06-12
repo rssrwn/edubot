@@ -20,7 +20,7 @@ var runCode = function(e) {
   if (workspace.getAllBlocks().length == 0) {
     return;
   }
-  if (!runningCommands) {
+  if (true || !runningCommands) {
     runningCommands = true;
     simpleRunButton.style.visibility = "hidden";
     simpleRunButton.style.pointerEvents = "none";

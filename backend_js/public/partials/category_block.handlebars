@@ -1,6 +1,7 @@
 <div class='categoryDiv'>
   <span class="inlineDiv">
-    <a class="linkPlain hoverLink introLink" href="{{introLink}}">{{categoryName}}</a>
+    <a class="linkPlain hoverLink introLink conceptTitle" onclick="window.location = '/shared/concept?conceptId={{conceptId}}';">{{categoryName}}</a>
+    <a class="linkPlain hoverLink buttonLink learnMoreLink" onclick="window.location = '/shared/concept?conceptId={{conceptId}}';">Learn More</a>
   </span>
   {{#each levels}}
     {{> level_select_scores this}}

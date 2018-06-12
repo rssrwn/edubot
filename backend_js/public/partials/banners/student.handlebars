@@ -1,3 +1,18 @@
+<script src="../scripts/utils.js"></script>
+<script>
+async function getCurrLevel() {
+  httpGet("https://edubot-backend.herokuapp.com/curr_level", getCurrLevelCallback);
+}
+
+async function getCurrLevelCallback(currLevel) {
+  window.location = '/shared/level_intro?levelId=' + currLevel;
+}
+
+function redirectToCurrLevel() {
+  getCurrLevel();
+}
+</script>
+
 <span id="bannerDiv" class="clearFix">
   <span id="titleDiv">
     <img class="logoImage", src="../images/edubot.png",
@@ -5,7 +20,7 @@
     <h1>EduBot</h1>
   </span>
   <span id="levelLinksDiv">
-    <a class="levelLink hoverLink linkPlain" href="/student/level_selection">Play</a>
+    <a class="levelLink hoverLink linkPlain" onclick="redirectToCurrLevel();">Play</a>
     <a class="levelLink hoverLink linkPlain" href="/student/level_selection">Levels</a>
     <a class="levelLink hoverLink linkPlain">Account</a>
   </span>
