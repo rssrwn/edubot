@@ -14,8 +14,10 @@
   </span>
 </span>
 <script>
+const utils = require('../scripts/utils.js');
+
 var getCurrLevel = function() {
-  httpGet("https://edubot-backend.herokuapp.com/curr_level", getCurrLevelCallback);
+  utils.httpGet("https://edubot-backend.herokuapp.com/curr_level", getCurrLevelCallback);
 }
 
 var getCurrLevelCallback = function(result) {
