@@ -97,6 +97,7 @@ Robot.prototype.draw = function(x, y) {
   ctx.translate(xTrans, yTrans);
   
   let rot = this.dir * 90 * Math.PI / 180;
+  
   let prevRot = this.curDir * 90 * Math.PI / 180;
   
   let curRot = rot - (1 - progress) * prevRot;
@@ -128,11 +129,17 @@ Robot.prototype.removed = function () {
 Robot.prototype.loaded = function () {
   this.anims = new RobotAnims();
   this.prevLoc = new Point(this.loc.x, this.loc.y);
+  this.curDir = 0;
 }
 
 // Robot actions
 
 var counter = 0;
+
+function progressConvert(x) {
+  //(1 / (1 + e^-(10(x - 0.5))) 
+  return 1 / (1 + Math.exp(-10 * (x - 0.5)));
+}
 
 Robot.prototype.actionProgress = function() {
   if (this.actionStart === undefined) {
@@ -148,6 +155,7 @@ Robot.prototype.actionProgress = function() {
     progress = 0;
   } else {
     progress = (progress - pause) * 2;
+    progress = progressConvert(progress);
   }
   return progress;
 }
