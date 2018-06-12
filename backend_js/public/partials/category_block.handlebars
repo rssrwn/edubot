@@ -1,5 +1,7 @@
 <div class='categoryDiv'>
-  <h2>{{categoryName}}</h2>
+  <span class="inlineDiv">
+    <a class="linkPlain hoverLink introLink" href="{{introLink}}">{{categoryName}}</a>
+  </span>
   {{#each levels}}
     {{> level_select_scores this}}
   {{/each}}
