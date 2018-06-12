@@ -99,7 +99,7 @@ Robot.prototype.draw = function(x, y) {
   let rot = this.dir * 90 * Math.PI / 180;
   let prevRot = this.prevDir * 90 * Math.PI / 180;
   
-  let curRot = rot - progress * prevRot;
+  let curRot = rot - (1 - progress) * prevRot;
   
   ctx.rotate(curRot);
   //drawImage("robot_image", -size / 2, -size / 2, size, size);
