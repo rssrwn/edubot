@@ -155,6 +155,7 @@ Robot.prototype.actionProgress = function() {
     progress = 0;
   } else {
     progress = (progress - pause) * 2;
+    progress = progressConvert(progress);
   }
   return progress;
 }
