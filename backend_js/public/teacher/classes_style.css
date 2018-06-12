@@ -29,6 +29,7 @@ td, th {
 
 .removeStudentButton {
   height: 1em;
+  margin-top: 3px;
 }
 
 .classButton {

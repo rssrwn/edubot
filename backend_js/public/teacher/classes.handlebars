@@ -29,7 +29,7 @@
     
     <script>
       $(".classMembersTable").on("click", ".studentLinkButton", function() {
-        window.location = "https://edubot-learn.herokuapp.com/teacher/student?userId=" + $(this).children("td:first").text();
+        window.location = "https://edubot-learn.herokuapp.com/teacher/student?userId=" + $(this).closest("tr").children("td:first").text();
       });
         
       var activeButton = null;
