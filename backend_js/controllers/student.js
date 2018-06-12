@@ -9,7 +9,7 @@ router.get('/level_selection', async function(req, res, next) {
 
   console.log('level select');
 
-  var categories = [
+  /*var categories = [
     {
       conceptId: "intro",
       categoryName: "Introduction",
@@ -40,7 +40,9 @@ router.get('/level_selection', async function(req, res, next) {
       }
       //console.log(level);
     }
-  }
+  }*/
+
+  let categories = db.getAllLevels(uname);
 
   var context = {
     student: true,
