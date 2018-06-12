@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EduBot</title>
+  <link rel="stylesheet" type="text/css" href="../shared/base_style.css">
+  <link rel="stylesheet" type="text/css" href="../shared/banner.css">
+  <link rel="stylesheet" type="text/css" href="../level_select_style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+  <div id="page">
+    {{#if student}}
+    {{> banners/student}}
+    {{else}}
+    {{> banners/teacher}}
+    {{/if}}
+    
+    <div id="contentDiv">
+      <div id="selectionWrapperDiv">
+        {{#if studentInfo}}
+        <h1>{{studentInfo.fname}} {{studentInfo.lname}}</h1>
+        {{else}}
+        <h1>Level Selection</h1>
+        {{/if}}
+        <div id="selectionDiv">
+          {{#each categories}}
+            {{> category_block this}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
