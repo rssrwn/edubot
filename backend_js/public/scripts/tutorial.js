@@ -33,10 +33,11 @@ var updateTutorial = function(e) {
   if (tutorialPhase == 5) {
     workspace.options.maxBlocks = 1000;
     // hack to reload workspace
-    let xml = Blockly.Xml.workspaceToDom(workspace);
-    // let xml_text = Blockly.Xml.domToText(xml);
+    //let xml = Blockly.Xml.workspaceToDom(workspace);
+    /// let xml_text = Blockly.Xml.domToText(xml);
     // let xml = Blockly.Xml.textToDom(xml_text);
-    Blockly.Xml.domToWorkspace(xml, workspace);
+    //Blockly.Xml.domToWorkspace(xml, workspace);
+    blocklyResize();
     tutorialPhase = 6;
   }
 
