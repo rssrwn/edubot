@@ -119,7 +119,7 @@ Robot.prototype.removed = function () {
 
 Robot.prototype.loaded = function () {
   this.anims = new RobotAnims();
-  this.prevLoc = loc;
+  this.prevLoc = this.loc;
 }
 
 // Robot actions
