@@ -22,4 +22,9 @@ router.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname + './../public/login.html'));
 });
 
+router.get('/logout', (req, res, next) => {
+  res.clearCookie("edubot-cookie");
+  res.sendFile(path.join(__dirname + './../public/login.html'));
+});
+
 module.exports = router;
