@@ -87,12 +87,10 @@ Robot.prototype.draw = function(x, y) {
   let size = level.squareSize * 1.2;
   let progress = this.actionProgress();
   
-  let prevX = this.prevLoc.x;
-  let prevY = this.prevLoc.y;
+  let prevX = this.prevLoc.x * level.squareSize;
+  let prevY = this.prevLoc.y * level.squareSize;
   let curX = (x - prevX) * progress + prevX;
   let curY = (y - prevY) * progress + prevY;
-  
-  console.log(prevX + " " + prevY);
   
   let xTrans = curX + level.squareSize / 2;
   let yTrans = curY + level.squareSize / 2;
