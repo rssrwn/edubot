@@ -5,6 +5,14 @@ const db = require('../models/db.js');
 const util = require('../models/util.js')
 const fs = require('fs');
 
+/*
+Note, to save the model solutions for a level, simply use:
+var xml = Blockly.Xml.workspaceToDom(workspace);
+var xml_text = Blockly.Xml.domToText(xml);
+
+In the console. The XML for the blocks will then be stored in variable xml_text.
+*/
+
 var loops1Context = {
   student: false,
   concept: "Loops and Conditionals",
