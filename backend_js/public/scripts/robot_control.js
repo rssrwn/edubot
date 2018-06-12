@@ -155,6 +155,7 @@ Robot.prototype.actionProgress = function() {
 Robot.prototype.startAction = function() {
   this.actionStart = new Date().getTime();
   this.prevLoc = new Point(this.loc.x, this.loc.y);
+  this.curDir = 0;
 }
 
 Robot.prototype.moveForward = function() {
