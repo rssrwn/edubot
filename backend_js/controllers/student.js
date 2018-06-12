@@ -42,7 +42,8 @@ router.get('/level_selection', async function(req, res, next) {
 
   var context = {
     student: true,
-    categories: categories
+    categories: categories,
+    currLevel: currLevel
   };
 
   res.render('student/level_select', context);
