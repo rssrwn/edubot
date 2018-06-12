@@ -141,7 +141,7 @@ Robot.prototype.moveForward = function() {
   let x = counter;
   counter++;
   this.actionStart = new Date().getTime();
-  this.prevLoc = new Point(loc.x, loc.y);
+  this.prevLoc = new Point(this.loc.x, this.loc.y);
   this.setLocation(DirProperties[this.dir].moveForward(this.loc));
   this.actionsTaken++;
 }
