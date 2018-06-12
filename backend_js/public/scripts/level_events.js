@@ -3,6 +3,10 @@ var blocklyWorkspaceDiv = document.getElementById("blocklyWorkspaceDiv");
 var workspace = Blockly.inject("blocklyWorkspaceDiv",
     {toolbox: document.getElementById("toolbox")});
 
+var highlightBlock = function(id) {
+  workspace.highlightBlock(id);
+}
+
 var generateCode = function(e) {
   let code = Blockly.JavaScript.workspaceToCode(workspace);
   document.getElementById("code").value = code;
@@ -18,15 +22,20 @@ var runCode = function(e) {
     simpleRunButton.style.visibility = "hidden";
     simpleRunButton.style.pointerEvents = "none";
     
+    // Block highlighting
+    //Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
+    //Blockly.JavaScript.addReservedWords('highlightBlock');
+    
     let our_code = "runningCommands = false";
           
-    let code = document.getElementById("code").value;
+    let code = Blockly.JavaScript.workspaceToCode(workspace);
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
+    
     eval(code);
   }
 };
-runButton.addEventListener("click", runCode);
 
+runButton.addEventListener("click", runCode);
 simpleRunButton.addEventListener("click", runCode);
 
 var viewCode = function(e) {

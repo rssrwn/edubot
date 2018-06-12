@@ -120,7 +120,7 @@ router.get('/play', async function(req, res, next) {
   let levelName = req.query.levelId;
   let uname = req.cookies["edubot-cookie"];
   let isStudent = await util.isStudent(uname);
-  let context = {student: isStudent, tutorial: levelName === "intro_1" && isStudent};
+  let context = {student: isStudent, tutorial: levelName === "intro_1" && isStudent, levelName: levelName};
 
   let studentId = req.query.studentId;
 
@@ -152,6 +152,11 @@ router.post('/set_result', async function(req, res, next) {
   } else {
     res.sendStatus(200);
   }
+});
+
+router.get('/logout', (req, res, next) => {
+  res.clearCookie("edubot-cookie");
+  res.sendFile(path.join(__dirname + './../public/login.html'));
 });
 
 module.exports = router;

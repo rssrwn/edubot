@@ -92,15 +92,21 @@ exports.insertClass = async function(name, school_id, teacher) {
   return max+1;
 }
 
-// Remove a class with class_id
+// Remove a class with class_id and all members
 exports.removeClass = async function(teacher, class_id) {
   let db_res = await pool.query("select * from class where class_id=$1 and teacher=$2;", [class_id, teacher]);
   if (!db_res.rows[0]) {
     return -1;
   }
 
+  await removeAllMembers(class_id);
+
   let res = await pool.query("delete from class where class_id=$1;", [class_id]);
   return 0;
+}
+
+removeAllMembers = async function(class_id) {
+  let res = await pool.query("delete from student_class where class_id=$1;", [class_id]);
 }
 
 // Add a member with given uname into class with class_id
@@ -244,7 +250,7 @@ exports.getSolution = async function(uname, level) {
   let levelId = await getLevelId(level);
   let db_res = await pool.query("select solution from student_level where uname=$1 and level_id=$2;", [uname, levelId]);
 
-  if (db_res.rows[0].solution) {
+  if (db_res.rows[0]) {
     return db_res.rows[0].solution;
   } else {
     return null;
