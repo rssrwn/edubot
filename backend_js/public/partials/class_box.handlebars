@@ -15,7 +15,7 @@
         <td>{{this.fname}}</td>
         <td>{{this.lname}}</td>
         <td>{{this.age}}</td>
-        <td><img src="../images/remove_member.png" onmouseover="this.src='../images/remove_member_hover.png'" onmouseout="this.src='../images/remove_member.png'" class="removeStudentButton" onclick="console.log('trying to remove ' + class_name + ' in ' + this.uname);removeMember({{class_name}}, {{this.uname}})"/></td>
+        <td><img src="../images/remove_member.png" onmouseover="this.src='../images/remove_member_hover.png'" onmouseout="this.src='../images/remove_member.png'" class="removeStudentButton" onclick="removeMember({{../class_name}}, {{this.uname}})"/></td>
       </tr>
     {{/each}}
   </table>

@@ -27,6 +27,12 @@ td, th {
   background-color: #afafaf;
 }
 
+.removeStudentButton {
+  height: 1em;
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
+
 #addClass {
   text-align: center;
 }
