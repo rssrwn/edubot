@@ -25,8 +25,8 @@ var runCode = function(e) {
     eval(code);
   }
 };
-runButton.addEventListener("click", runCode);
 
+runButton.addEventListener("click", runCode);
 simpleRunButton.addEventListener("click", runCode);
 
 var viewCode = function(e) {
