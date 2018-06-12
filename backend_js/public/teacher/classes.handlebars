@@ -78,8 +78,8 @@
         }
       };
       
-      var removeMember = function(class_id, uname) {
-        if (confirm("Are you sure you want to delete " + uname + " from " + class_id + "?")) {
+      var removeMember = function(class_id, class_name, uname) {
+        if (confirm("Are you sure you want to delete " + uname + " from " + class_name + "?")) {
           httpPost('https://edubot-learn.herokuapp.com/teacher/remove_member', {uname: uname, class_id: class_id}, removeMemberCallback);
         }
       };
@@ -88,7 +88,6 @@
         switch (status) {
           case 200: location.reload(); break;
           case 480: alert("Username does not exist"); break;
-          case 481: alert("User already in a class"); break;
           default: alert("Unknown error occurred removing member: " + status); break;
         }
       };
@@ -133,7 +132,20 @@
           case 480: alert("Teacher doesn't exist"); break;
           default: alert("Unknown error occurred adding class: " + status); break;
         }
-      }
+      };
+      
+      var removeClass = function(class_id, class_name) {
+        if (confirm("Are you sure you want to delete " + class_name + "?")) {
+          httpPost('https://edubot-learn.herokuapp.com/teacher/remove_class', {class_id: class_id}, removeClassCallback);
+        }
+      };
+      
+      var removeClassCallback = function(status) {
+        switch (status) {
+          case 200: location.reload(); break;
+          default: alert("Unknown error occurred removing class: " + status); break;
+        }
+      };
     </script>
   </div>
 </body>

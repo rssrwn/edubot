@@ -29,8 +29,10 @@ td, th {
 
 .removeStudentButton {
   height: 1em;
-  text-align: middle;
-  margin-bottom: 3px;
+}
+
+.classButton {
+  margin-left: 
 }
 
 #addClass {
