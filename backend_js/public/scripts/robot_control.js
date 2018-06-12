@@ -97,7 +97,7 @@ Robot.prototype.draw = function(x, y) {
   ctx.translate(xTrans, yTrans);
   
   let rot = this.dir * 90 * Math.PI / 180;
-  let prevRot = this.preDir * 90 * Math.PI / 180;
+  let prevRot = this.prevDir * 90 * Math.PI / 180;
   
   let curRot = (rot - prevRot) * progress + prevRot;
   
