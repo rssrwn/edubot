@@ -1,0 +1,23 @@
+2.
+a.
+Facebook - Controller
+Kogan - Processor
+Cambridge - Processor
+
+Facebook as a controller need a legal basis for processing the data. This requirement likely hasn't been infringed as they have probably obtained basis on the grounds of unambiguous consent or legitimate interest. Since the data Facebook is controlling is special category data they need an additional basis to process the data, explicit consent is likely the basis Facebook has.
+
+(Purpose Limitation) Cambridge Analytica, as a processor, are required to follow the terms of their contract with Kogan through which the terms of the Kogan-Facebook contract terms would have flowed, however Cambridge were using data for profiling in order to influence elections which likely would not have been part of the contract.
+
+(Data Minimisation) GSR (who were a processor) was providing a personality test app but was actually collecting data on Facebook users and their friends which was not necessary for the app, this is in breach of GDPR article ????????????????.
+
+(Accountability) Facebook did not keep sufficient logs or monitor them frequently enough, evident by the amount of time it took them to realise GSR was collecting massive amounts of data.
+
+(Personal data breach notification) Facebook should have notified the relevant authority within 72 hours of learning of the data breach.
+
+(DPIA) Facebook should have performed a data protection impact assessment on the entire chain of data processing, with the help of GSR and Cambridge Analytica.
+
+b.
+Report the data breach to a relevant information authority within 72 hours, for
+example the ICO in the UK.
+
+c.
