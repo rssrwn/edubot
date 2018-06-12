@@ -5,6 +5,12 @@ const njsUtil = require('util');
 
 const readFile = njsUtil.promisify(fs.readFile);
 
+exports.getConceptData = async function(conceptName, extension) {
+  var loc = __dirname;
+  var concept_path = path.join(__dirname, './../public/shared/concepts/' + conceptName + '/' + conceptName + '.' + extension);
+  return await readFile(concept_path, 'utf8');
+}
+
 exports.getLevelData = async function(levelName, extension) {
   var loc = __dirname;
   var level_path = path.join(__dirname, './../public/shared/levels/' + levelName + '/' + levelName + '.' + extension);
