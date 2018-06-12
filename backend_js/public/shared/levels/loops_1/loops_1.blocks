@@ -1,0 +1,6 @@
+<block type="move_forward"></block>
+<block type="rotate_right"></block>
+<block type="rotate_left"></block>
+
+<block type="math_number"></block>
+<block type="controls_repeat_ext"></block>
