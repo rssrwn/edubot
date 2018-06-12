@@ -9,12 +9,14 @@
       <a class="linkPlain hoverLink" href="{{link}}">Level {{number}} - {{name}}</a>
     {{/if}}
   </span>
+  {{#if stars}}
   <span class="starsDiv">
     {{#for 0 stars 1}}
-      <img class="starImage", alt="star", src="../images/star_filled.png">
+      <img class="starImage", alt="star", src="../../images/star_filled.png">
     {{/for}}
     {{#for stars 3 1}}
-      <img class="starImage", alt="star", src="../images/star_empty.png">
+      <img class="starImage", alt="star", src="../../images/star_empty.png">
     {{/for}}
   </span>
+  {{/if}}
 </div>
