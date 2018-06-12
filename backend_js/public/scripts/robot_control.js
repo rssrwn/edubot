@@ -85,15 +85,21 @@ Robot.prototype.update = function() {
 
 Robot.prototype.draw = function(x, y) {
   let size = level.squareSize * 1.2;
-  let xTrans = x + level.squareSize / 2;
-  let yTrans = y + level.squareSize / 2;
+  let progress = this.actionProgress();
+  
+  let prevX = this.prevLoc.x;
+  let prevY = this.prevLoc.y;
+  let curX = (x - prevX) * progress + prevX;
+  let curY = (y - prevY) * progress + prevY;
+  
+  let xTrans = curX + level.squareSize / 2;
+  let yTrans = curY + level.squareSize / 2;
   ctx.translate(xTrans, yTrans);
   
   let rot = this.dir * 90 * Math.PI / 180;
   let prevRot = this.preDir * 90 * Math.PI / 180;
   
-  console.log(this.actionProgress());
-  let curRot = (rot - prevRot) * this.actionProgress() + prevRot;
+  let curRot = (rot - prevRot) * progress + prevRot;
   
   ctx.rotate(curRot);
   //drawImage("robot_image", -size / 2, -size / 2, size, size);
@@ -121,7 +127,8 @@ Robot.prototype.removed = function () {
 
 Robot.prototype.loaded = function () {
   this.anims = new RobotAnims();
-  this.prevLoc = this.loc;
+  this.prevLoc = new Point(this.loc.x, this.loc.y);
+  this.preDir = this.dir;
 }
 
 // Robot actions
@@ -129,6 +136,9 @@ Robot.prototype.loaded = function () {
 var counter = 0;
 
 Robot.prototype.actionProgress = function() {
+  if (this.actionStart === undefined) {
+    return 0;
+  }
   let progress = (new Date().getTime() - this.actionStart) / robotStepTime;
   if (progress > 1) {
     progress = 1;
