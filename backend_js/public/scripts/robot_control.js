@@ -95,7 +95,7 @@ Robot.prototype.draw = function(x, y) {
   console.log(this.actionProgress());
   let curRot = (rot - prevRot) * this.actionProgress() + prevRot;
   
-  ctx.rotate(rot);
+  ctx.rotate(curRot);
   //drawImage("robot_image", -size / 2, -size / 2, size, size);
   this.anims.draw(0, 0);
 }
