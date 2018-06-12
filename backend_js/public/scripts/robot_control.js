@@ -92,6 +92,8 @@ Robot.prototype.draw = function(x, y) {
   let curX = (x - prevX) * progress + prevX;
   let curY = (y - prevY) * progress + prevY;
   
+  console.log(prevX + " " + prevY);
+  
   let xTrans = curX + level.squareSize / 2;
   let yTrans = curY + level.squareSize / 2;
   ctx.translate(xTrans, yTrans);
