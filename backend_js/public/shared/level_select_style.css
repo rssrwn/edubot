@@ -5,12 +5,32 @@
 }
 
 #selectionWrapperDiv {
+  margin-top: 80px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.playLink {
+  color: white;
+  border-radius: 10px;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-top: 20px;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #e68119;
+}
+
+.introLink {
+  font-size: 1.5em;
+  margin: .75em 0;
 }
 
 .categoryDiv {
+  margin-top: 30px;
   padding-top: 30px;
 }
 
@@ -50,7 +70,7 @@
   margin-right: 10px;
 }
 
-.lockSpan {
+.inlineDiv {
   vertical-align: middle;
   display: inline;
 }
