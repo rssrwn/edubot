@@ -30,7 +30,7 @@ var runCode = function(e) {
           
     let code = Blockly.JavaScript.workspaceToCode(workspace);
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
-    console.log(code);
+    
     eval(code);
   }
 };
