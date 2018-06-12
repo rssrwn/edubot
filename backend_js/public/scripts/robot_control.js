@@ -134,6 +134,11 @@ Robot.prototype.loaded = function () {
 
 var counter = 0;
 
+function progressConvert(x) {
+  //(1 / (1 + e^-(10(x - 0.5))) 
+  return 1 / (1 + Math.exp(-10 * (x - 0.5)));
+}
+
 Robot.prototype.actionProgress = function() {
   if (this.actionStart === undefined) {
     return 0;
@@ -148,6 +153,7 @@ Robot.prototype.actionProgress = function() {
     progress = 0;
   } else {
     progress = (progress - pause) * 2;
+    progress = progressConvert(progress);
   }
   return progress;
 }
