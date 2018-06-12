@@ -21,8 +21,9 @@ router.get('/level_selection', async function(req, res, next) {
     {
       categoryName: "Looping",
       levels: [
-        {stars: results[3], number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
-        {stars: results[4], number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
+        {stars: results[3], number: 4, name: "Basic looping", link: '/shared/play?levelId=loops_1'},
+        {stars: results[4], number: 5, name: "Looping with rotation", link: '/shared/play?levelId=loops_2'}
+        {stars: results[5], number: 6, name: "Looping with obstacles", link: '/shared/play?levelId=loops_3'}
       ]
     }
   ];
