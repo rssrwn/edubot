@@ -65,8 +65,6 @@ function Robot() {
   this.dir = Dir.RIGHT;
   this.actionsTaken = 0;
   this.anims = new RobotAnims();
-  this.prevLoc = new Point(this.loc.x, this.loc.y);
-  this.preDir = this.dir;
 }
 
 Robot.prototype = Object.create(Entity.prototype);
@@ -133,7 +131,8 @@ Robot.prototype.removed = function () {
 
 Robot.prototype.loaded = function () {
   this.anims = new RobotAnims();
-  this.prevLoc = this.loc;
+  this.prevLoc = new Point(this.loc.x, this.loc.y);
+  this.preDir = this.dir;
 }
 
 // Robot actions
