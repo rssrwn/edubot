@@ -1,3 +1,14 @@
+<script src="../scripts/utils.js"></script>
+<script>
+var getCurrLevel = function() {
+  httpGet("https://edubot-backend.herokuapp.com/curr_level", getCurrLevelCallback);
+}
+
+var getCurrLevelCallback = function(currLevel) {
+  window.location = '/shared/level_intro?levelId=' + currLevel;
+}
+</script>
+
 <span id="bannerDiv" class="clearFix">
   <span id="titleDiv">
     <img class="logoImage", src="../images/edubot.png",
@@ -13,14 +24,3 @@
     <a class="logoutLink" href="/logout">Log Out</a>
   </span>
 </span>
-
-<script src="../scripts/utils.js"></script>
-<script>
-var getCurrLevel = function() {
-  httpGet("https://edubot-backend.herokuapp.com/curr_level", getCurrLevelCallback);
-}
-
-var getCurrLevelCallback = function(currLevel) {
-  window.location = '/shared/level_intro?levelId=' + currLevel;
-}
-</script>
