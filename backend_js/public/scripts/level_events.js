@@ -17,6 +17,9 @@ let runButton = document.getElementById("runButton");
 let simpleRunButton = document.getElementById("simpleRunButton");
 
 var runCode = function(e) {
+  if (workspace.getAllBlocks().length == 0) {
+    return;
+  }
   if (!runningCommands) {
     runningCommands = true;
     simpleRunButton.style.visibility = "hidden";
