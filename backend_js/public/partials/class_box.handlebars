@@ -20,6 +20,6 @@
     {{/each}}
   </table>
 
-  <button class="classButton" type="button" onclick="removeClass({{{class_id, class_name}}})">Remove Class</button>
+  <button class="classButton" type="button" onclick="removeClass({{class_id}}, '{{class_name}}')">Remove Class</button>
   <button class="classButton" type="button" onclick="addMemberEvent({{{class_id}}}, this)">Add Member</button>
 </div>
