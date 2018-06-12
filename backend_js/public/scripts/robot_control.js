@@ -99,7 +99,7 @@ Robot.prototype.draw = function(x, y) {
   let rot = this.dir * 90 * Math.PI / 180;
   let prevRot = this.prevDir * 90 * Math.PI / 180;
   
-  let curRot = (rot - prevRot) * progress + prevRot;
+  let curRot = rot + progress * prevRot;
   
   ctx.rotate(curRot);
   //drawImage("robot_image", -size / 2, -size / 2, size, size);
@@ -140,12 +140,15 @@ Robot.prototype.actionProgress = function() {
     return 0;
   }
   let progress = (new Date().getTime() - this.actionStart) / robotStepTime;
-  if (progress > 0.75) {
+  
+  let pause = 0.25;
+  
+  if (progress > (1 - pause)) {
     progress = 1;
-  } else if (progress < 0.25) {
+  } else if (progress < pause) {
     progress = 0;
   } else {
-    progress = (progress - 0.25) * 2;
+    progress = (progress - pause) * 2;
   }
   return progress;
 }
@@ -167,12 +170,14 @@ Robot.prototype.moveForward = function() {
 Robot.prototype.rotateRight = function() {
   this.startAction();
   this.dir = DirProperties[this.dir].rotateRight;
+  this.prevDir = 1;
   this.actionsTaken++;
 }
 
 Robot.prototype.rotateLeft = function() {
   this.startAction();
   this.dir = DirProperties[this.dir].rotateLeft;
+  this.prevDir = -1;
   this.actionsTaken++;
 }
 
