@@ -108,7 +108,7 @@ router.get('/play', async function(req, res, next) {
   let levelName = req.query.levelId;
   let uname = req.cookies["edubot-cookie"];
   let isStudent = await util.isStudent(uname);
-  let context = {student: isStudent, tutorial: levelName === "intro_1" && isStudent};
+  let context = {student: isStudent, tutorial: levelName === "intro_1" && isStudent, levelName: levelName};
 
   let studentId = req.query.studentId;
 
