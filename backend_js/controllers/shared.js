@@ -156,7 +156,7 @@ router.post('/set_result', async function(req, res, next) {
 
 router.get('/logout', (req, res, next) => {
   res.clearCookie("edubot-cookie");
-  res.redirect('/', {});
+  res.redirect(200, '/');
 });
 
 module.exports = router;
