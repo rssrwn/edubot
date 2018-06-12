@@ -283,4 +283,32 @@ exports.getCurrLevel = async function(uname) {
   return db_res.rows[0].max + 1;
 }
 
+// Get an object containing a list of categories with levels within
+// TODO add locking to each level
+exports.getAllLevels = async function(uname) {
+  let db_res1 = await pool.query("select cat, cat_id from category;", []);
+  let cats = db_res1.rows;
+
+  for (var i=0; i<cats.length; i++) {
+    let cat = cats[i];
+    cat.categoryName = cat.cat;
+    delete cat.cat;
+
+    let db_res2 = await pool.query("select score as stars, level_id as number, name, link from level natural join level_cat natural join student_level where uname=$1 and cat_id=$2;", [uname, cat.cat_id]);
+    let levels = db_res2.rows;
+    for (var j=0; j<levels.length; j++) {
+      let level = levels[j];
+      let link = '/shared/level_intro?levelId=' + level.link;
+      level.link = link;
+    }
+
+    delete cat.cat_id;
+    cat.levels = levels;
+
+    console.log(cat);
+  }
+
+  return cats;
+}
+
 exports.userTypeEnum = userTypeEnum;

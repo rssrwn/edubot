@@ -66,11 +66,7 @@
         alert("Please enter a password at least 6 characters long.");
       } else if (uname && pass && fname && lname && age && sch_id) {
         httpPost('https://edubot-learn.herokuapp.com/signup',
-        {uname: uname, pass: pass, fname: fname, lname: lname, type: 1, age: age, sch_id: sch_id},
-        buildForm);
-        //httpPost('https://edubot-backend.herokuapp.com/signup', {uname: uname, pass: pass, fname: fname, lname: lname, type: 1, age: age, sch_id: sch_id}, buildForm);
-        //httpPost('http://localhost:3000/signup', {uname: uname, pass: pass, fname: fname, lname: lname, type: 1, age: age, sch_id: sch_id}, buildForm);
-      }
+            {uname: uname, pass: pass, fname: fname, lname: lname, type: 1, age: age, sch_id: sch_id}, buildForm);
     }
 
     function buildForm(status) {
