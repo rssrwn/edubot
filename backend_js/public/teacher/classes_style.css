@@ -40,3 +40,8 @@ td, th {
 #addClass {
   text-align: center;
 }
+
+#classesDiv {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}

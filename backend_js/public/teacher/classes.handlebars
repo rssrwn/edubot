@@ -16,22 +16,24 @@
   <div id="page">
     {{> banners/teacher}}
     <div id="contentDiv">
-      <div id="classList">
-        {{#each class_list}}
-          <div>{{> class_box this}}</div>
-        {{/each}}
-      </div>
+      <div id='classesDiv'>
+        <div id="classList">
+          {{#each class_list}}
+            <div>{{> class_box this}}</div>
+          {{/each}}
+        </div>
 
-      <div id="addClass">
-        <button type="button" onclick="addClassEvent(this)">Add Class</button>
+        <div id="addClass">
+          <button type="button" onclick="addClassEvent(this)">Add Class</button>
+        </div>
       </div>
     </div>
-    
+
     <script>
       $(".classMembersTable").on("click", ".studentLinkButton", function() {
         window.location = "https://edubot-learn.herokuapp.com/teacher/student?userId=" + $(this).closest("tr").children("td:first").text();
       });
-        
+
       var activeButton = null;
 
       var addMemberEvent = function(class_id, button) {
@@ -77,13 +79,13 @@
           default: alert("Unknown error occurred adding member: " + status); break;
         }
       };
-      
+
       var removeMember = function(class_id, class_name, uname) {
         if (confirm("Are you sure you want to delete " + uname + " from " + class_name + "?")) {
           httpPost('https://edubot-learn.herokuapp.com/teacher/remove_member', {uname: uname, class_id: class_id}, removeMemberCallback);
         }
       };
-      
+
       var removeMemberCallback = function(status) {
         switch (status) {
           case 200: location.reload(); break;
@@ -133,13 +135,13 @@
           default: alert("Unknown error occurred adding class: " + status); break;
         }
       };
-      
+
       var removeClass = function(class_id, class_name) {
         if (confirm("Are you sure you want to delete " + class_name + "?")) {
           httpPost('https://edubot-learn.herokuapp.com/teacher/remove_class', {class_id: class_id}, removeClassCallback);
         }
       };
-      
+
       var removeClassCallback = function(status) {
         switch (status) {
           case 200: location.reload(); break;
