@@ -36,7 +36,7 @@ router.get('/student', async function(req, res, next) {
   let studentInfo = await db.getUserInfo(studentId);
   let results = await db.getLevelResults(studentId);
   let currLevel = await db.getCurrLevel(studentId);
-  
+
   var categories = [
     {
       categoryName: "Introduction",
@@ -60,7 +60,7 @@ router.get('/student', async function(req, res, next) {
     studentInfo: studentInfo,
     categories: categories
   };
-  
+
   for (var i=0; i<categories.length; i++) {
     let levels = categories[i].levels;
     for (var j=0; j<levels.length; j++) {
@@ -72,7 +72,7 @@ router.get('/student', async function(req, res, next) {
       //console.log(level);
     }
   }
-  
+
   res.render('teacher/level_select', context);
 });
 
@@ -184,11 +184,5 @@ router.post('/remove_class', async function(req, res, next) {
     res.status(500).send("Unknown error");
   }
 });
-
-/*
-router.post('/classroom', (req, res, next) => {
-
-});
-*/
 
 module.exports = router;
