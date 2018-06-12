@@ -21,8 +21,10 @@ var runCode = function(e) {
     runningCommands = true;
     simpleRunButton.style.visibility = "hidden";
     simpleRunButton.style.pointerEvents = "none";
-    Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
-    Blockly.JavaScript.addReservedWords('highlightBlock');
+    
+    // Block highlighting
+    //Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
+    //Blockly.JavaScript.addReservedWords('highlightBlock');
     
     let our_code = "runningCommands = false";
           
