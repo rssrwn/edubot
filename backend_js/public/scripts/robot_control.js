@@ -140,11 +140,12 @@ Robot.prototype.actionProgress = function() {
     return 0;
   }
   let progress = (new Date().getTime() - this.actionStart) / robotStepTime;
-  if (progress > 1) {
+  if (progress > 0.75) {
     progress = 1;
-  }
-  if (progress < 0) {
+  } else if (progress < 0.25) {
     progress = 0;
+  } else {
+    progress = (progress - 0.25) * 2;
   }
   return progress;
 }
