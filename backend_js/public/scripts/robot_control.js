@@ -149,7 +149,7 @@ Robot.prototype.actionProgress = function() {
   return progress;
 }
 
-Robot.prototype.startAction = fnction() {
+Robot.prototype.startAction = function() {
   this.actionStart = new Date().getTime();
   this.prevDir = this.dir;
   this.prevLoc = new Point(this.loc.x, this.loc.y);
