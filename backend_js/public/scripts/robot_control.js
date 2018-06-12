@@ -149,25 +149,28 @@ Robot.prototype.actionProgress = function() {
   return progress;
 }
 
+Robot.prototype.startAction = function() {
+  this.actionStart = new Date().getTime();
+  this.prevDir = this.dir;
+  this.prevLoc = new Point(this.loc.x, this.loc.y);
+}
+
 Robot.prototype.moveForward = function() {
   let x = counter;
   counter++;
-  this.actionStart = new Date().getTime();
-  this.prevLoc = new Point(this.loc.x, this.loc.y);
+  this.startAction();
   this.setLocation(DirProperties[this.dir].moveForward(this.loc));
   this.actionsTaken++;
 }
 
 Robot.prototype.rotateRight = function() {
-  this.actionStart = new Date().getTime();
-  this.prevDir = this.dir;
+  this.startAction();
   this.dir = DirProperties[this.dir].rotateRight;
   this.actionsTaken++;
 }
 
 Robot.prototype.rotateLeft = function() {
-  this.actionStart = new Date().getTime();
-  this.prevDir = this.dir;
+  this.startAction();
   this.dir = DirProperties[this.dir].rotateLeft;
   this.actionsTaken++;
 }
