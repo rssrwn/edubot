@@ -1,11 +1,14 @@
 <script src="../scripts/utils.js"></script>
 <script>
-async function getCurrLevel() {
-  httpGet("https://edubot-backend.herokuapp.com/curr_level", getCurrLevelCallback);
+function getCurrLevel() {
+  console.log('get curr level');
+  httpGet("https://edubot-learn.herokuapp.com/shared/curr_level", getCurrLevelCallback);
 }
 
-async function getCurrLevelCallback(currLevel) {
-  window.location = '/shared/level_intro?levelId=' + currLevel;
+function getCurrLevelCallback(currLevel) {
+  console.log('curr level cb: ', currLevel);
+  //window.location = '/shared/level_intro?levelId=' + currLevel;
+  location.href = '/shared/level_intro?levelId=' + currLevel;
 }
 
 function redirectToCurrLevel() {

@@ -289,6 +289,16 @@ exports.getCurrLevel = async function(uname) {
   return db_res.rows[0].max + 1;
 }
 
+exports.getCurrLevelName = async function(uname) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return -1;
+  }
+
+  let db_res = await pool.query('select link from level where level_id=(select max(level_id) from student_level where uname=$1);', [uname]);
+  return db_res.rows[0].link;
+}
+
 // Get an object containing a list of categories with levels within
 exports.getAllLevels = async function(uname) {
   let db_res1 = await pool.query("select cat, cat_id from category;", []);

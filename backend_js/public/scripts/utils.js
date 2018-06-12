@@ -57,8 +57,10 @@ function httpGet(url, callback) {
   var xmlHttp = new XMLHttpRequest();
 
   xmlHttp.onreadystatechange = function() {
-    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+      console.log('response text: ', xmlHttp.responseText);
       callback(xmlHttp.responseText);
+    }
   }
   xmlHttp.open("GET", url, true); // true for asynchronous
   xmlHttp.send();

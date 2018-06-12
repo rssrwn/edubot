@@ -70,13 +70,6 @@ router.get('/level_results', (req, res, next) => {
   res.render('student/level_results', context);
 });
 
-router.get('/curr_level', async function(req, res, next) {
-  let uname = req.cookies["edubot-cookie"];
-  let curr_level = await db.getCurrLevel(uname);
-  console.log("get /curr_level: ", curr_level);
-  res.send(curr_level);
-});
-
 router.get('/account', (req, res, next) => {
 
 });

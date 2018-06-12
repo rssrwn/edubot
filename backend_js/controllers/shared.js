@@ -140,4 +140,11 @@ router.post('/set_result', async function(req, res, next) {
   }
 });
 
+router.get('/curr_level', async function(req, res, next) {
+  let uname = req.cookies["edubot-cookie"];
+  let curr_level = await db.getCurrLevelName(uname);
+  console.log("get /curr_level: ", curr_level);
+  res.send(curr_level);
+});
+
 module.exports = router;
