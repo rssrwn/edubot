@@ -10,8 +10,7 @@
   margin-right: 25%;
 }
 
-.playLink {
-  color: white;
+.buttonLink {
   border-radius: 10px;
   height: 40px;
   padding-left: 10px;
@@ -21,11 +20,20 @@
   margin-right: 10px;
   text-align: center;
   vertical-align: middle;
+}
+
+.buttonLink:hover {
+  cursor: pointer;
+}
+
+.playLink {
+  color: white;
   background-color: #e68119;
 }
 
-.playLink:hover {
-  cursor: pointer;
+.learnMoreLink {
+  color: white;
+  background-color: #2962bc;
 }
 
 .introLink {
@@ -36,6 +44,10 @@
 .categoryDiv {
   margin-top: 30px;
   padding-top: 30px;
+}
+
+.conceptTitle {
+  font-weight: bold;
 }
 
 .levelDiv {

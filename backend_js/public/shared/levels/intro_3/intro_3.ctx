@@ -6,7 +6,7 @@
         "You see, EduBot is a hungry critter, constantly on the search for more nuts and bolts to consume.",
         "We'll show you how to get EduBot moving and get it started on its search for food!"
     ],
-    "level_name": "Level 3 - Rotation",
+    "level_name": "Level 3 - Blocks",
     "blocks_available": "../images/movement_blocks.png",
     "objective": "Guide EduBot around the wall and eat the bolt",
     "hints": [
