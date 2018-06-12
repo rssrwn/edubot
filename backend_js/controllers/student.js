@@ -42,7 +42,7 @@ router.get('/level_selection', async function(req, res, next) {
     }
   }*/
 
-  let categories = db.getAllLevels(uname);
+  let categories = await db.getAllLevels(uname);
 
   var context = {
     student: true,
