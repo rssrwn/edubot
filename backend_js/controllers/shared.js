@@ -89,24 +89,10 @@ router.get('/concept', async function(req, res, next) {
 router.get('/level_intro', async function(req, res, next) {
   let levelName = req.query.levelId;
 
-  let context = null;
+  let contextJSON = await util.getLevelData(levelName, 'ctx');
+  let context = JSON.parse(contextJSON);
 
-  switch (levelName) {
-    case "intro_1":
-      context = intro1Context;
-      break;
-    case "intro_2":
-      context = intro2Context;
-      break;
-    case "intro_3":
-      context = intro3Context;
-      break;
-    case "loops_1":
-      context = loops1Context;
-      break;
-  }
-
-  if (context !== null) {
+  if (context !== null && context !== undefined) {
     let uname = req.cookies["edubot-cookie"];
     context.student = await util.isStudent(uname);
     context.level_id = levelName;
