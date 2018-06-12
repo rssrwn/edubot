@@ -113,12 +113,8 @@ router.get('/play', async function(req, res, next) {
   let studentId = req.query.studentId;
 
   if (studentId != null) {
-    let currLevel = req.query.currLevel;
-    
-    if (levelName < currLevel) {
-      let sol = await db.getSolution(studentId, levelName);
-      context.json_solution = sol;
-    }
+    let sol = await db.getSolution(studentId, levelName);
+    context.json_solution = sol;
   }
 
   util.getLevelData(levelName, 'lev').then(jsonLevel => {

@@ -35,7 +35,6 @@ router.get('/student', async function(req, res, next) {
   let studentId = req.query.userId;
   let studentInfo = await db.getUserInfo(studentId);
   let results = await db.getLevelResults(studentId);
-  let currLevel = await db.getCurrLevel(studentId);
   
   var categories = [
     {
