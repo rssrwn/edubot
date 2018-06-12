@@ -29,8 +29,7 @@ td, th {
 
 .removeStudentButton {
   height: 1em;
-  vertical-align: middle;
-  margin-bottom: 3px;
+  margin-top: 11px;
 }
 
 #addClass {
