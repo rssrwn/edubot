@@ -66,6 +66,7 @@ function Robot() {
   this.actionsTaken = 0;
   this.anims = new RobotAnims();
   this.prevLoc = new Point(this.loc.x, this.loc.y);
+  this.preDir = this.dir;
 }
 
 Robot.prototype = Object.create(Entity.prototype);
@@ -99,6 +100,8 @@ Robot.prototype.draw = function(x, y) {
   
   let rot = this.dir * 90 * Math.PI / 180;
   let prevRot = this.preDir * 90 * Math.PI / 180;
+  
+  console.log(this.preDir);
   
   let curRot = (rot - prevRot) * progress + prevRot;
   
