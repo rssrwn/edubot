@@ -10,12 +10,25 @@
   margin-right: 20%;
 }
 
+.playLink {
+  border-radius: 10px;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #e68119;
+}
+
 .categoryDiv {
   padding-top: 30px;
 }
 
 .levelDiv {
   display: flex;
+  height: 40px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
