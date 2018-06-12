@@ -94,8 +94,8 @@ Robot.prototype.draw = function(x, y) {
   
   console.log(prevX + " " + prevY);
   
-  let xTrans = curX + level.squareSize / 2;
-  let yTrans = curY + level.squareSize / 2;
+  let xTrans = curX * size + level.squareSize / 2;
+  let yTrans = curY * size + level.squareSize / 2;
   ctx.translate(xTrans, yTrans);
   
   let rot = this.dir * 90 * Math.PI / 180;
