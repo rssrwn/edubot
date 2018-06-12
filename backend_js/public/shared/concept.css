@@ -8,11 +8,14 @@
   height: auto;
 }
 
-#levelButton {
-  margin-bottom: 30px;
-}
-
 #conceptPoints {
   list-style-type: none;
 }
 
+.levelButton {
+  margin-bottom: 30px;
+}
+
+.descriptionDiv {
+  width: 70%;
+}
