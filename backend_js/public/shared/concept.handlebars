@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="base_style.css">
   <link rel="stylesheet" type="text/css" href="banner.css">
   <link rel="stylesheet" type="text/css" href="level_intro.css">
+  <link rel="stylesheet" type="text/css" href="concept.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
@@ -24,11 +25,9 @@
       <div class="descriptionDiv">
         <ul>
         {{#each concept_points}}
-          <li>{{this}}</li>
+          <li>{{{this}}}</li>
         {{/each}}
         </ul>
-      </div>
-        
       </div>
 
       <div id="levelButtonsDiv">
