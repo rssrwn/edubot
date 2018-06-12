@@ -63,7 +63,7 @@ router.get('/student', async function(req, res, next) {
     categories: categories
   };
 
-  for (var i=0; i<categories.length; i++) {
+  /*for (var i=0; i<categories.length; i++) {
     let levels = categories[i].levels;
     for (var j=0; j<levels.length; j++) {
       let level = levels[j];
@@ -73,7 +73,7 @@ router.get('/student', async function(req, res, next) {
       }
       //console.log(level);
     }
-  }
+  }*/
 
   res.render('teacher/level_select', context);
 });
@@ -96,7 +96,7 @@ router.get('/solution', async function(req, res, next) {
   }).catch((error) => next(error));
 });
 
-router.get('/level_selection', (req, res, next) => {
+router.get('/level_selection', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
 
   /*let context = {
