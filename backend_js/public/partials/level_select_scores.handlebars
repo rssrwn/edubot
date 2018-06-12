@@ -7,7 +7,7 @@
     </span>
     {{else}}
     <span class="inlineDiv">
-      <a class="linkPlain hoverLink playLink" href="{{link}}">Play</a>
+      <a class="linkPlain hoverLink playLink" onclick="window.location = '{{link}}'.replace(/level_intro/, 'play')">Play</a>
       <a class="linkPlain hoverLink" href="{{link}}">Level {{number}} - {{name}}</a>
     {{/if}}
     </span>
