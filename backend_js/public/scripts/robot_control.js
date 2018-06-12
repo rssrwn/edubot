@@ -85,11 +85,12 @@ Robot.prototype.update = function() {
 
 Robot.prototype.draw = function(x, y) {
   let size = level.squareSize * 1.2;
+  let progress = this.actionProgress();
   
-  let oldX = this.prevLoc.x;
-  let oldY = this.prevLoc.y;
-  let curX = (x - oldX) * this.actionProgress() + oldX;
-  let curY = (y - oldY) * this.actionProgress() + oldY;
+  let prevX = this.prevLoc.x;
+  let prevY = this.prevLoc.y;
+  let curX = (x - prevX) * progress + prevX;
+  let curY = (y - prevY) * progress + prevY;
   
   let xTrans = curX + level.squareSize / 2;
   let yTrans = curY + level.squareSize / 2;
@@ -98,8 +99,9 @@ Robot.prototype.draw = function(x, y) {
   let rot = this.dir * 90 * Math.PI / 180;
   let prevRot = this.preDir * 90 * Math.PI / 180;
   
-  console.log(this.actionProgress());
-  let curRot = (rot - prevRot) * this.actionProgress() + prevRot;
+  let curRot = (rot - prevRot) * progress + prevRot;
+  
+  console.log(progress + " " + rot + " " + curRot);
   
   ctx.rotate(curRot);
   //drawImage("robot_image", -size / 2, -size / 2, size, size);
