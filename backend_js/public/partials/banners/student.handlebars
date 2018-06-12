@@ -5,7 +5,7 @@
     <h1>EduBot</h1>
   </span>
   <span id="levelLinksDiv">
-    <a class="levelLink hoverLink linkPlain" onclick="getCurrLevel(); var currLevel = 'intro_1'; window.location = '/shared/level_intro?levelId=' + currLevel">Play</a>
+    <a class="levelLink hoverLink linkPlain" onclick="getCurrLevel()">Play</a>
     <a class="levelLink hoverLink linkPlain" href="/student/level_selection">Levels</a>
     <a class="levelLink hoverLink linkPlain">Account</a>
   </span>
@@ -19,7 +19,7 @@ var getCurrLevel = function() {
   httpGet("https://edubot-backend.herokuapp.com/curr_level", getCurrLevelCallback);
 }
 
-var getCurrLevelCallback = function(result) {
-  currLevel = result;
+var getCurrLevelCallback = function(currLevel) {
+  window.location = '/shared/level_intro?levelId=' + currLevel;
 }
 </script>
