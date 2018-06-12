@@ -35,28 +35,43 @@ router.get('/student', async function(req, res, next) {
   let studentId = req.query.userId;
   let studentInfo = await db.getUserInfo(studentId);
   let results = await db.getLevelResults(studentId);
+  
+  var categories = [
+    {
+      categoryName: "Introduction",
+      levels: [
+        {stars: results[0], number: 1, name: "Moving EduBot", link: '/shared/play?levelId=intro_1&studentId=' + studentId},
+        {stars: results[1], number: 2, name: "Movement and Rotation", link: '/shared/play?levelId=intro_2&studentId=' + studentId},
+        {stars: results[2], number: 3, name: "Obstacles", link: '/shared/play?levelId=intro_3&studentId=' + studentId}
+      ]
+    },
+    {
+      categoryName: "Looping",
+      levels: [
+        {stars: results[3], number: 4, name: "Basic looping", link: '/shared/play?levelId=loops_1&studentId=' + studentId},
+        {stars: results[4], number: 5, name: "Advanced looping", link: '/shared/play?levelId=loops_1&studentId=' + studentId}
+      ]
+    }
+  ];
 
   let context = {
     student: false,
     studentInfo: studentInfo,
-    categories: [
-      {
-        categoryName: "Introduction",
-        levels: [
-          {student: true, stars: results[0], number: 1, name: "Moving EduBot", link: '/shared/play?levelId=intro_1&studentId=' + studentId},
-          {student: true, stars: results[1], number: 2, name: "Movement and Rotation", link: '/shared/play?levelId=intro_2&studentId=' + studentId},
-          {student: true, stars: results[2], number: 3, name: "Obstacles", link: '/shared/play?levelId=intro_3&studentId=' + studentId}
-        ]
-      },
-      {
-        categoryName: "Looping",
-        levels: [
-          {student: true, stars: results[3], number: 4, name: "Basic looping", link: '/shared/play?levelId=loops_1&studentId=' + studentId},
-          {student: true, stars: results[4], number: 5, name: "Advanced looping", link: '/shared/play?levelId=loops_1&studentId=' + studentId}
-        ]
-      }
-    ]
+    categories: categories
   };
+  
+  for (var i=0; i<categories.length; i++) {
+    let levels = categories[i].levels;
+    for (var j=0; j<levels.length; j++) {
+      let level = levels[j];
+      level.locked = true;
+      if (level.number <= currLevel) {
+        level.locked = false;
+      }
+      //console.log(level);
+    }
+  }
+  
   res.render('teacher/level_select', context);
 });
 
