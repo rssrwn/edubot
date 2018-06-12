@@ -97,6 +97,7 @@ Robot.prototype.draw = function(x, y) {
   ctx.translate(xTrans, yTrans);
   
   let rot = this.dir * 90 * Math.PI / 180;
+  
   let prevRot = this.curDir * 90 * Math.PI / 180;
   
   let curRot = rot - (1 - progress) * prevRot;
@@ -128,6 +129,7 @@ Robot.prototype.removed = function () {
 Robot.prototype.loaded = function () {
   this.anims = new RobotAnims();
   this.prevLoc = new Point(this.loc.x, this.loc.y);
+  this.curDir = 0;
 }
 
 // Robot actions
