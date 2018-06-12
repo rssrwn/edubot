@@ -74,6 +74,18 @@ var intro3Context = {
   level_image: "../images/intro_3.png"
 };
 
+router.get('/concept', async function(req, res, next) {
+  let conceptName = req.query.conceptId;
+  let contextJSON = await util.getConceptData(conceptName, 'ctx');
+  let context = JSON.parse(contextJSON);
+  
+  if (context !== null && context !== undefined) {
+    let uname = req.cookies["edubot-cookie"];
+    context.student = await util.isStudent(uname);
+    res.render('shared/concept', context);
+  }
+});
+
 router.get('/level_intro', async function(req, res, next) {
   let levelName = req.query.levelId;
 
