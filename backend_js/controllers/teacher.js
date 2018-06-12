@@ -37,7 +37,7 @@ router.get('/student', async function(req, res, next) {
   let results = await db.getLevelResults(studentId);
   let currLevel = await db.getCurrLevel(studentId);
 
-  var categories = [
+  /*var categories = [
     {
       categoryName: "Introduction",
       levels: [
@@ -53,7 +53,9 @@ router.get('/student', async function(req, res, next) {
         {stars: results[4], number: 5, name: "Advanced looping", link: '/shared/play?levelId=loops_1&studentId=' + studentId}
       ]
     }
-  ];
+  ];*/
+
+  let categories = await db.getAllLevels(studentId);
 
   let context = {
     student: false,
@@ -95,7 +97,9 @@ router.get('/solution', async function(req, res, next) {
 });
 
 router.get('/level_selection', (req, res, next) => {
-  let context = {
+  let uname = req.cookies["edubot-cookie"];
+
+  /*let context = {
     student: false,
     categories: [
       {
@@ -114,6 +118,13 @@ router.get('/level_selection', (req, res, next) => {
         ]
       }
     ]
+  };*/
+
+  let categories = await db.getAllLevels(uname);
+
+  let context = {
+    student: false,
+    categories: categories
   };
 
   res.render('teacher/level_select', context);
