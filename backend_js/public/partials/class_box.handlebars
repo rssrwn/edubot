@@ -11,11 +11,11 @@
     </tr>
     {{#each class_members}}
       <tr class="studentRow">
-        <td>{{this.uname}}</td>
-        <td>{{this.fname}}</td>
-        <td>{{this.lname}}</td>
-        <td>{{this.age}}</td>
-        <img src="../images/remove_member.png" onmouseover="this.src='../images/remove_member_hover.png'" onmouseout="this.src='../images/remove_member.png'" class="removeStudentButton" onclick="removeMember('{{../class_name}}', '{{this.uname}}')"/>
+        <td class="studentLinkButton">{{this.uname}}</td>
+        <td class="studentLinkButton">{{this.fname}}</td>
+        <td class="studentLinkButton">{{this.lname}}</td>
+        <td class="studentLinkButton">{{this.age}}</td>
+        <td><img src="../images/remove_member.png" onmouseover="this.src='../images/remove_member_hover.png'" onmouseout="this.src='../images/remove_member.png'" class="removeStudentButton" onclick="removeMember('{{../class_name}}', '{{this.uname}}')"/></td>
       </tr>
     {{/each}}
   </table>

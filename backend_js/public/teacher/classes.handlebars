@@ -28,7 +28,7 @@
     </div>
     
     <script>
-      $(".classMembersTable").on("click", "tr td", function() {
+      $(".classMembersTable").on("click", ".studentLinkButton", function() {
         window.location = "https://edubot-learn.herokuapp.com/teacher/student?userId=" + $(this).children("td:first").text();
       });
         
