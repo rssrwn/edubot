@@ -26,7 +26,7 @@ var runCode = function(e) {
     
     let our_code = "runningCommands = false";
           
-    let code = document.getElementById("code").value;
+    let code = Blockly.JavaScript.workspaceToCode(workspace);
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
     console.log(code);
     eval(code);
