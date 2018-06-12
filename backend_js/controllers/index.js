@@ -14,6 +14,7 @@ router.get('/test', async function(req, res, next) {
   //var info = await db.addMember('ryan06', 1);
   //var info = await db.getClassName(1);
   let info = await db.getAllLevels('user2');
+  //let info = await db.getCurrLevel('teacher2');
   console.log(info);
   res.sendStatus(200);
 });
