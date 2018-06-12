@@ -45,7 +45,7 @@ router.get('/level_selection', async function(req, res, next) {
     categories: categories
   };
 
-  res.render('student/level_select', context);
+  res.render('/level_select', context);
 });
 
 router.get('/level_results', (req, res, next) => {
