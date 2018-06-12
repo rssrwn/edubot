@@ -32,7 +32,6 @@ var updateTutorial = function(e) {
   }
   if (tutorialPhase == 5) {
     workspace.options.maxBlocks = 1000;
-    blocklyResize();
   }
 
   if (text[tutorialPhase] !== undefined) {
