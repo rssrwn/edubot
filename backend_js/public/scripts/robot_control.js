@@ -85,8 +85,14 @@ Robot.prototype.update = function() {
 
 Robot.prototype.draw = function(x, y) {
   let size = level.squareSize * 1.2;
-  let xTrans = x + level.squareSize / 2;
-  let yTrans = y + level.squareSize / 2;
+  
+  let oldX = this.prevLoc.x;
+  let oldY = this.prevLoc.y;
+  let curX = (curX - oldX) * this.actionProgress() + oldX;
+  let curY = (curY - oldY) * this.actionProgress() + oldY;
+  
+  let xTrans = curX + level.squareSize / 2;
+  let yTrans = curY + level.squareSize / 2;
   ctx.translate(xTrans, yTrans);
   
   let rot = this.dir * 90 * Math.PI / 180;
