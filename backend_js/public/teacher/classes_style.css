@@ -32,7 +32,8 @@ td, th {
 }
 
 .classButton {
-  margin-left: 
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 #addClass {
