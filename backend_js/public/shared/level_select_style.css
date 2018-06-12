@@ -24,6 +24,10 @@
   background-color: #e68119;
 }
 
+.playLink:hover {
+  cursor: pointer;
+}
+
 .introLink {
   font-size: 1.5em;
   margin: .75em 0;

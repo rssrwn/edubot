@@ -85,4 +85,10 @@
   text-align: center;
   vertical-align: middle;
   background-color: #e68119;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logoutLink:hover {
+  background-color: #e6ad73;
 }
