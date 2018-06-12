@@ -16,7 +16,10 @@
   <div id="page">
     {{> banners/teacher}}
     <div id="contentDiv">
-      <div id='classesDiv'>
+      <div id="classesDiv">
+        <div id="pageTitle">
+          <h2 style="font-size:30px;">Classes</h2>
+        </div>
         <div id="classList">
           {{#each class_list}}
             <div>{{> class_box this}}</div>

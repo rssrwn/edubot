@@ -1,7 +1,7 @@
 .classBox {
   margin: 20px auto;
   padding: 20px;
-  width: 500px;
+  width: 50%;
   border-radius: 25px;
   background-color: #d2d2d2d2;
   text-align: center;
@@ -9,6 +9,11 @@
 
 .className {
   font-size: 30px;
+}
+
+#pageTitle {
+  margin: auto;
+  width: 50%;
 }
 
 .classMembersTable {
