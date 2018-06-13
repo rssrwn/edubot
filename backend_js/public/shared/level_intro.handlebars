@@ -24,7 +24,12 @@
       <div id="levelDiv" class="descriptionDiv clearFix">
         <div id="levelDescriptionDiv" class="descriptionDiv clearFix">
           <p>
-            <b>Objective: </b> {{objective}}
+            <b>Objective: </b>
+            <ul class="infoList">
+              {{#each objectives}}
+                <li>{{this}}</li>
+              {{/each}}
+            </ul>
           </p>
           
           <p>
@@ -37,7 +42,7 @@
           
           <p>
             <b>Hints:</b>
-            <ul>
+            <ul class="infoList">
               {{#each hints}}
                 <li>{{this}}</li>
               {{/each}}
