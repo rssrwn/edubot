@@ -153,8 +153,10 @@ GridLevel.prototype.levelCompleted = async function() {
     let blockScore = Math.max(blockDiff - (blocksUsed - this.minBlocks), 0) / blockDiff;
     console.log("Block Score: " + blockScore);
     
-    let score = 0.5 * actionScore + 0.5 * blockScore;
+    let score = 0.3 * actionScore + 0.7 * blockScore;
+    console.log("Score " + score);
     starsAttained = Math.min(Math.floor(score * 3) + 1, 3);
+    console.log("Stars " + starsAttained);
 
     draw();
     await sleep(125);
