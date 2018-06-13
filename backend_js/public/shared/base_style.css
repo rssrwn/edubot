@@ -18,6 +18,16 @@ html, body {
   user-select: none;
 }
 
+input, button {
+  -webkit-touch-callout: text;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  -o-user-select: text;
+  user-select: text;
+}
+
 .linkPlain {
   text-decoration: none;
   color: inherit;
