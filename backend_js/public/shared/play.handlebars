@@ -34,9 +34,8 @@
         <div id='feedbackZone'>
           <textarea id='feedbackTextArea' rows='4' cols='65'></textarea>
           <br>
-          <button type='button' onclick='submitFeedback()'>{{#if student}}Hide{{else}}Give{{/if}} Feedback</button>
+          <button type='button' onclick='submitFeedback()' {{#if student}}readonly{{/if}}>{{#if student}}Hide{{else}}Give{{/if}} Feedback</button>
         </div>
-        
         
         <div id="simpleControlsDiv" class="noSelect">
           <img src="../images/run.png" id="simpleRunButton" class="simpleControl" alt="Run"/>

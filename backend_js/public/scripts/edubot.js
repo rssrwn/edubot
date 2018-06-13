@@ -157,7 +157,7 @@ GridLevel.prototype.levelCompleted = async function() {
     starsAttained = Math.min(Math.floor(score * 3) + 1, 3);
 
     draw();
-    await sleep(250);
+    await sleep(robotStepTime);
     alert("You won!");
 
     var thisLevel = this.levelId;
