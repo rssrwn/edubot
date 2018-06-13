@@ -75,7 +75,7 @@ router.get('/student', async function(req, res, next) {
     }
   }*/
 
-  res.render('/shared/level_select', context);
+  res.render('/shared/level_selection', context);
 });
 
 router.get('/solution', async function(req, res, next) {
@@ -127,7 +127,7 @@ router.get('/level_selection', async function(req, res, next) {
     categories: categories
   };
 
-  res.render('teacher/level_select', context);
+  res.render('teacher/level_selection', context);
 });
 
 router.get('/account', (req, res, next) => {
