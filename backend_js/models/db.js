@@ -336,8 +336,8 @@ exports.getCurrLevelName = async function(uname) {
   return db_res.rows[0].link;
 }
 
-// Get an object containing a list of categories with levels within, feedback is true if should display feedback indicator
-exports.getAllLevels = async function(uname, feedback) {
+// Get an object containing a list of categories with levels within
+exports.getAllLevels = async function(uname) {
   let db_res1 = await pool.query("select cat, cat_id, identifier from category;", []);
   let cats = db_res1.rows;
   let currLevel = await exports.getCurrLevel(uname);
@@ -355,10 +355,6 @@ exports.getAllLevels = async function(uname, feedback) {
       let level = levels[j];
       let link = '/shared/level_intro?levelId=' + level.link + '&studentId=' + uname;
       level.link = link;
-
-    //  feedback
-    //  student = true if uname is student
-    //  student =
 
       level.locked = true;
       if (level.number <= currLevel) {

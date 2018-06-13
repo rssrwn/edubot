@@ -41,18 +41,11 @@ router.get('/level_selection', async function(req, res, next) {
       //console.log(level);
     }
   }*/
-
-  // let categories = await db.getAllLevels(uname, null, true);
-  let categories = await db.getAllLevels(uname, true);
-
-  /*categories.foreach(cat => {
-    cat.student = true;
-    cat.levels.foreach(level => {
-      level.student = true;
-    });
-  });*/
+  
+  let categories = await db.getAllLevels(uname);
 
   var context = {
+    feedback: true,
     student: true,
     categories: categories,
     currLevel: currLevel

@@ -33,7 +33,6 @@ router.get('/classes', async function(req, res, next) {
 
 router.get('/student', async function(req, res, next) {
   let studentId = req.query.userId;
-  let teacher = req.cookies["edubot-cookie"];
   let studentInfo = await db.getUserInfo(studentId);
   let results = await db.getLevelResults(studentId);
   let currLevel = await db.getCurrLevel(studentId);
@@ -56,26 +55,14 @@ router.get('/student', async function(req, res, next) {
     }
   ];*/
 
-  //let categories = await db.getAllLevels(studentId, teacher, true);
-  let categories = await db.getAllLevels(studentId, true);
+  let categories = await db.getAllLevels(studentId);
 
   let context = {
+    feedback: true,
     student: false,
     studentInfo: studentInfo,
     categories: categories
   };
-
-  /*for (var i=0; i<categories.length; i++) {
-    let levels = categories[i].levels;
-    for (var j=0; j<levels.length; j++) {
-      let level = levels[j];
-      level.locked = true;
-      if (level.number <= currLevel) {
-        level.locked = false;
-      }
-      //console.log(level);
-    }
-  }*/
 
   res.render('shared/level_selection', context);
 });
@@ -122,10 +109,10 @@ router.get('/level_selection', async function(req, res, next) {
     ]
   };*/
 
-  //let categories = await db.getAllLevels(null, teacher, false);
-  let categories = await db.getAllLevels(teacher, false);
+  let categories = await db.getAllLevels(uname);
 
   let context = {
+    feedback: false,
     student: false,
     categories: categories
   };
