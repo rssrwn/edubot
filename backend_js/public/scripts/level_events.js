@@ -28,7 +28,7 @@ var highlightBlock = function(id) {
 var generateCode = function(e) {
   console.log("Change !");
   console.log(e);
-  console.log(typeof e);
+  console.log(e.type);
   let code = Blockly.JavaScript.workspaceToCode(workspace);
   document.getElementById("code").value = code;
 };
