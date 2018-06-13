@@ -76,8 +76,8 @@ function giveFeedback() {
   var submitButton = $("<button type='button' id='submitFeedbackButton' onclick='submitFeedback()'>Give Feedback</button>");
   var textInput = $("<input type='text' class='submitFeedbackInput'></input>");
 
-  $(feedbackButton).parent().append(textInput);
-  $(feedbackButton).parent().append(submitButton);
+  $("#simpleFeedbackButton").parent().append(textInput);
+  $("#simpleFeedbackButton").parent().append(submitButton);
 }
 
 function submitFeedback() {
