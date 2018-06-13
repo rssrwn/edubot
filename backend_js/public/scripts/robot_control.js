@@ -167,25 +167,25 @@ Robot.prototype.startAction = function() {
 }
 
 Robot.prototype.moveForward = function() {
+  this.actionsTaken++;
   let x = counter;
   counter++;
   this.startAction();
   this.setLocation(DirProperties[this.dir].moveForward(this.loc));
-  this.actionsTaken++;
 }
 
 Robot.prototype.rotateRight = function() {
+  this.actionsTaken++;
   this.startAction();
   this.dir = DirProperties[this.dir].rotateRight;
   this.curDir = 1;
-  this.actionsTaken++;
 }
 
 Robot.prototype.rotateLeft = function() {
+  this.actionsTaken++;
   this.startAction();
   this.dir = DirProperties[this.dir].rotateLeft;
   this.curDir = -1;
-  this.actionsTaken++;
 }
 
 // Conditionals
