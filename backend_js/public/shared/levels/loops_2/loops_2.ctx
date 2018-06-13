@@ -1,0 +1,6 @@
+{
+    "level_name": "Level 5 - Looping with Rotation",
+    "blocks_available": "../images/movement_blocks.png",
+    "objective": "Guide EduBot around the wall and eat the bolt",
+    "level_image": "../images/intro_3.png"
+}

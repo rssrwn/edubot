@@ -1,0 +1,6 @@
+{
+    "level_name": "Level 8 - Loop Conditions",
+    "blocks_available": "../images/movement_blocks.png",
+    "objective": "Guide EduBot around the wall and eat the bolt",
+    "level_image": "../images/intro_3.png"
+}
