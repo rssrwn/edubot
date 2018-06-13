@@ -127,7 +127,6 @@ Robot.prototype.removed = function () {
 }
 
 Robot.prototype.loaded = function () {
-  console.log("Robot loaded " + this.loc);
   this.anims = new RobotAnims();
   this.prevLoc = new Point(this.loc.x, this.loc.y);
   this.curDir = 0;
