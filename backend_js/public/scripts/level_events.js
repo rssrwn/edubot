@@ -76,11 +76,11 @@ function giveFeedback(button) {
   if (feedbackActiveButton) {
     $(feedbackActiveButton.addButton).remove();
     $(feedbackActiveButton.textInput).remove();
-    feedbackActiveButton.style.display = "inline-block";
+    feedbackActiveButton.css("display") = "inline-block";
   }
   feedbackActiveButton = button;
 
-  button.style.display = "none";
+  button.css("display") = "none";
 
   var submitButton = $("<button type='button' onclick='addClassSubmitEvent()'>Give Feedback</button>");
   var textInput = $("<input type='text'></input>");
