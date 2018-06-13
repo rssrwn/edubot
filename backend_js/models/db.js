@@ -16,6 +16,14 @@ userTypeEnum = {
   TEACHER: 2,
 };
 
+
+
+
+// <------------------------- Login and Singup ---------------------------->
+
+
+
+
 function hashPass(pass) {
   let hash = bcrypt.hashSync(pass, 10);
   return hash;
@@ -78,6 +86,14 @@ exports.attemptLogin = async function(uname, pass) {
     return false;
   }
 }
+
+
+
+
+// <----------------------- Class and school info -------------------------->
+
+
+
 
 // Insert class into db with given name, school_id and teacher username and returns the class_id of the new class
 exports.insertClass = async function(name, school_id, teacher) {
@@ -200,6 +216,14 @@ exports.getSchId = async function(uname) {
   return db_res.rows[0].sch_id;
 }
 
+
+
+
+// <------------------------ Solutions ans results --------------------------->
+
+
+
+
 // Get a list of uname's results from all levels
 exports.getLevelResults = async function(uname) {
   let free = await exports.unameFree(uname);
@@ -257,6 +281,23 @@ exports.getSolution = async function(uname, level) {
   }
 }
 
+// Insert a score
+insertSolution = async function(uname, level_id, score, solution) {
+  try {
+    await pool.query("insert into student_level values($1, $2, $3, $4);", [uname, level_id, score, solution]);
+  } catch(e) {
+    Promise.reject(e);
+  }
+}
+
+
+
+
+// <-------------------------- Level Info ----------------------------------->
+
+
+
+
 // Get an id for a level
 getLevelId = async function(level) {
   let res = await pool.query("select level_id from level where link=$1;", [level]);
@@ -265,15 +306,6 @@ getLevelId = async function(level) {
     return res.rows[0].level_id;
   } else {
     return null;
-  }
-}
-
-// Insert a score
-insertSolution = async function(uname, level_id, score, solution) {
-  try {
-    await pool.query("insert into student_level values($1, $2, $3, $4);", [uname, level_id, score, solution]);
-  } catch(e) {
-    Promise.reject(e);
   }
 }
 
@@ -338,6 +370,14 @@ exports.getAllLevels = async function(uname) {
 
   return cats;
 }
+
+
+
+
+// <---------------------------- Feedback ---------------------------------->
+
+
+
 
 // Get feedback for a student and level, null if none
 exports.getFeedback = async function(uname, level) {

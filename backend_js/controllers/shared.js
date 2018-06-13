@@ -91,13 +91,13 @@ router.get('/level_intro', async function(req, res, next) {
 
   let contextJSON = await util.getLevelData(levelName, 'ctx');
   let context = JSON.parse(contextJSON);
-  
+
   let uname = req.cookies["edubot-cookie"];
   let isStudent = await util.isStudent(uname);
-  
+
   let studentId = req.query.studentId;
   let viewingStudent = await util.isStudent(studentId);
-  
+
   if (!isStudent && viewingStudent) {
     context.show_solution = true;
     context.student_id = studentId;
@@ -123,7 +123,7 @@ router.get('/play', async function(req, res, next) {
 
   if (studentId != null) {
     let sol = await db.getSolution(studentId, levelName);
-    
+
     if (sol != null) {
       context.json_solution = sol;
       context.student_id = studentId;
@@ -159,8 +159,22 @@ router.post('/set_result', async function(req, res, next) {
 router.get('/curr_level', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   let curr_level = await db.getCurrLevelName(uname);
-  console.log("get /curr_level: ", curr_level);
   res.send(curr_level);
+});
+
+router.get('/feedback', async function(req, res, next) {
+  let uname = req.query.uname;
+  let level = req.query.levelId;
+
+  let feedback = await db.getFeedback(uname, level);
+  res.send(feedback);
+});
+
+router.get('/all_feedback', async function(req, res, next) {
+  let uname = req.query.uname;
+
+  let feedback = await db.getAllFeedback(uname);
+  res.send(feedback);
 });
 
 module.exports = router;
