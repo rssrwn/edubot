@@ -3,7 +3,10 @@ var blocklyWorkspaceDiv = document.getElementById("blocklyWorkspaceDiv");
 var workspace = Blockly.inject("blocklyWorkspaceDiv",
     {toolbox: document.getElementById("toolbox")});
 
+var highlightedId = null;
+
 var highlightBlock = function(id) {
+  highlightedId = id;
   workspace.highlightBlock(id);
 }
 
@@ -17,6 +20,10 @@ let runButton = document.getElementById("runButton");
 let simpleRunButton = document.getElementById("simpleRunButton");
 
 var runCode = function(e) {
+  if (highlightedId != null) {
+    workspace.highlightBlock(id, false);
+    return;
+  }
   if (workspace.getAllBlocks().length == 0) {
     return;
   }
