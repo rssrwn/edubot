@@ -128,3 +128,9 @@ canvas {
   align-items: center;
   justify-content: center;
 }
+
+#alertDiv {
+  display: inline-block;
+  position: fixed;
+  margin: 0 auto;
+}
