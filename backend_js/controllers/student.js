@@ -50,7 +50,7 @@ router.get('/level_selection', async function(req, res, next) {
     currLevel: currLevel
   };
 
-  res.render('/shared/level_selection', context);
+  res.render('shared/level_selection', context);
 });
 
 router.get('/level_results', (req, res, next) => {
