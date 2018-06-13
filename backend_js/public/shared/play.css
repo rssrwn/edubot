@@ -43,9 +43,11 @@
   display: table-row;
   position: fixed;
   bottom: 10px;
-  width: 50%;
   z-index: 100;
   text-align: center;
+  width: calc(50% - 171px);
+  margin-left: 171px;
+  margin-right: 50%;
 }
 
 .simpleControl {

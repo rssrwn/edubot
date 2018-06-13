@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="../shared/banner.css">
   <link rel="stylesheet" type="text/css" href="../shared/play.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script src="../lib/blockly/blockly_compressed.js"></script>
@@ -36,7 +36,7 @@
           <br>
           <button type='button' onclick='submitFeedback()'>{{#if student}}Hide{{else}}Give{{/if}} Feedback</button>
         </div>
-        
+
         <div id="simpleControlsDiv" class="noSelect">
           <img src="../images/run.png" id="simpleRunButton" class="simpleControl" alt="Run"/>
           <img src="../images/restart.png" id="simpleRestartButton" class="simpleControl" alt="Restart"/>
@@ -46,10 +46,10 @@
           <img src="../images/feedback.png" id="simpleFeedbackButton" class="simpleControl" alt="Feedback" onclick="giveFeedback()"/>
           {{/if}}
         </div>
-        
+
         <div id="blocklyWorkspaceDiv"></div>
       </div>
-      
+
       {{#if tutorial}}
         <div id="alertDiv">Test alert</div>
       {{/if}}
@@ -84,7 +84,7 @@
           </div>
         </div>
       </div>
-      
+
       {{#if tutorial}}
         <div id="tutorialWrapperDiv">
           <div id="tutorialDiv"><h3 id="tutorialText"></h3></div>
@@ -100,20 +100,20 @@
   {{#if tutorial}}
     <script src="../scripts/tutorial.js"></script>
   {{/if}}
-  
+
   <script>
   function giveFeedback() {
     httpGet("https://edubot-learn.herokuapp.com/shared/feedback?uname={{{student_id}}}&level={{{levelName}}}", function(feedback) {
       feedback = $("#feedbackTextArea").val(feedback);
     });
-    
+
     $("#simpleFeedbackButton").css("display", "none");
     $("#feedbackZone").css("display", "table");
   }
-  
+
   function submitFeedback() {
     let feedback = $("#feedbackTextArea").val();
-    
+
     if (!{{student}}) {
       httpPost("https://edubot-learn.herokuapp.com/teacher/add_feedback", {uname: "{{{student_id}}}", level: "{{{levelName}}}", feedback: feedback}, function(status) {
         console.log('result callback status: ', status);
