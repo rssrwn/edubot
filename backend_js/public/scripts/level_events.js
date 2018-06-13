@@ -70,6 +70,30 @@ function restart(e) {
 document.getElementById("restartButton").addEventListener("click", restart);
 document.getElementById("simpleRestartButton").addEventListener("click", restart);
 
+var feedbackActiveButton = null;
+
+function giveFeedback(button) {
+  if (feedbackActiveButton) {
+    $(feedbackActiveButton.addButton).remove();
+    $(feedbackActiveButton.textInput).remove();
+    feedbackActiveButton.style.display = "inline-block";
+  }
+  feedbackActiveButton = button;
+
+  button.style.display = "none";
+
+  var submitButton = $("<button type='button' onclick='addClassSubmitEvent()'>Give Feedback</button>");
+  var textInput = $("<input type='text'></input>");
+
+  feedbackActiveButton.addButton = submitButton.get(0);
+  feedbackActiveButton.textInput = textInput.get(0);
+
+  $(button).parent().append(textInput);
+  $(button).parent().append(submitButton);
+}
+
+document.getElementById("simpleFeedbackButton").addEventListener("click", giveFeedback);
+
 var blocklyResize = function(e) {
   let element = blocklyDiv;
   let x = 0;
