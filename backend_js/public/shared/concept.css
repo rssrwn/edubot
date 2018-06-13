@@ -9,8 +9,7 @@
 }
 
 #newBlocksImage {
-  width: 600px;
-  height: 400px;
+  width: 90%;
 }
 
 .titles {
@@ -19,7 +18,7 @@
 }
 
 .levelButton {
-  margin: 20px 30px;
+  margin-bottom: 20px;
 }
 
 .descriptionDiv {
