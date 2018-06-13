@@ -97,10 +97,11 @@ router.get('/level_intro', async function(req, res, next) {
 
   let studentId = req.query.studentId;
   let viewingStudent = await util.isStudent(studentId);
+  
+  context.student_id = studentId;
 
   if (!isStudent && viewingStudent) {
     context.show_solution = true;
-    context.student_id = studentId;
   }
 
   if (context !== null && context !== undefined) {

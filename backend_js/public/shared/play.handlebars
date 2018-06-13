@@ -116,8 +116,6 @@
     
     if (!{{student}}) {
       httpPost("https://edubot-learn.herokuapp.com/teacher/add_feedback", {uname: "{{{student_id}}}", level: "{{{levelName}}}", feedback: feedback}, function(status) {
-        console.log("{{{student_id}}}");
-        console.log("{{{levelName}}}");
         console.log('result callback status: ', status);
 
         // If teacher is logged in
@@ -129,9 +127,9 @@
           alert("Unknown error, status: ", status);
         }
       });
-      $("#simpleFeedbackButton").css("display", "");
-      $("#feedbackZone").css("display", "none");
     }
+    $("#simpleFeedbackButton").css("display", "");
+    $("#feedbackZone").css("display", "none");
   }
   </script>
 </body>
