@@ -127,7 +127,7 @@ router.get('/level_selection', async function(req, res, next) {
     categories: categories
   };
 
-  res.render('teacher/level_selection', context);
+  res.render('/shared/level_selection', context);
 });
 
 router.get('/account', (req, res, next) => {
