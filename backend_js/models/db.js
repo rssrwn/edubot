@@ -247,7 +247,7 @@ exports.setResult = async function(uname, level, score, solution) {
     return -1;
   }
 
-  let level_id = await getLevelId(level);
+  let level_id = await exports.getLevelId(level);
 
   db_res = await pool.query("select score from student_level where uname=$1 and level_id=$2;", [uname, level_id]);
   if (db_res.rows.length > 0) {
@@ -271,7 +271,7 @@ exports.getSolution = async function(uname, level) {
     return null;
   }
 
-  let levelId = await getLevelId(level);
+  let levelId = await exports.getLevelId(level);
   let db_res = await pool.query("select solution from student_level where uname=$1 and level_id=$2;", [uname, levelId]);
 
   if (db_res.rows[0]) {
@@ -299,7 +299,7 @@ insertSolution = async function(uname, level_id, score, solution) {
 
 
 // Get an id for a level
-getLevelId = async function(level) {
+exports.getLevelId = async function(level) {
   let res = await pool.query("select level_id from level where link=$1;", [level]);
 
   if (res.rows[0]) {
@@ -386,7 +386,7 @@ exports.getFeedback = async function(uname, level) {
     return null;
   }
 
-  let level_id = await getLevelId(level);
+  let level_id = await exports.getLevelId(level);
   let db_res = await pool.query("select feedback from feedback where uname=$1 and level_id=$2;", [uname, level_id]);
 
   if (db_res.rows[0]) {
@@ -409,7 +409,7 @@ exports.addFeedback = async function(uname, level, teacher, feedback) {
     return -2;
   }
 
-  let level_id = await getLevelId(level);
+  let level_id = await exports.getLevelId(level);
 
   await pool.query("delete from feedback where uname=$1 and level_id=$2;", [uname, level_id]);
   await pool.query("insert into feedback values($1, $2, $3);", [uname, level_id, feedback]);
@@ -430,6 +430,24 @@ exports.getAllFeedback = async function(uname) {
   }
 
   return db_res.rows;
+}
+
+
+
+
+// <----------------------- Temporary solutions -------------------------->
+
+
+
+
+exports.getTempSol = async function(uname, level) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return null;
+  }
+
+  //let
+  return null;
 }
 
 exports.userTypeEnum = userTypeEnum;
