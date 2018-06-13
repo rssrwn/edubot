@@ -21,35 +21,31 @@
     <div id="contentDiv">
       <h1 class="titles">{{level_name}}</h1>
       
-      <div id="levelDiv" class="descriptionDiv clearFix">
-        <div id="levelDescriptionDiv" class="descriptionDiv clearFix">
+      <div id="levelDescriptionDiv" class="descriptionDiv clearFix">
+        <p>
+          <b>Objective: </b>
+          <ul class="infoList">
+            {{#each objectives}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </p>
+        
+        <div id="blocksDiv" class="clearFix imageDivs">
           <p>
-            <b>Objective: </b>
-            <ul class="infoList">
-              {{#each objectives}}
-                <li>{{this}}</li>
-              {{/each}}
-            </ul>
+            <b>Blocks Available</b>
+            <br>
           </p>
-          
-          <div id="blocksDiv" class="clearFix imageDivs">
-            <p>
-              <b>Blocks Available</b>
-              <br>
-            </p>
-              <img id="blocksImage" src={{blocks_available}} alt="Available blocks"></img>
-          </div>
-          
-          <div id="levelDiv" class="clearFix imageDivs">
-            <p>
-              <b>Level Preview</b>
-              <br>
-            </p>
-            <img id="levelImage" src="{{level_image}}"/>
-          </div>
+            <img id="blocksImage" src={{blocks_available}} alt="Available blocks"></img>
         </div>
         
-        <!--<img id="levelImage" src="../images/loops_and_iteration_1.png" alt="loops_and_iteration_1"></img>-->
+        <div id="levelImageDiv" class="clearFix imageDivs">
+          <p>
+            <b>Level Preview</b>
+            <br>
+          </p>
+          <img id="levelImage" src="{{level_image}}"/>
+        </div>
       </div>
 
       <div id="levelButtonsDiv">
