@@ -1,0 +1,21 @@
+#selectionDiv {
+  display: inline-block;
+  width: 100%;
+  max-width: 500px;
+}
+
+#wrapperDiv {
+  margin: auto;
+  margin-top: 80px;
+  margin-bottom: 100px;
+  width: 40%;
+}
+
+#title {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.item {
+  
+}

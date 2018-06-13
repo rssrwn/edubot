@@ -158,6 +158,11 @@ router.get('/play', async function(req, res, next) {
   }).catch((error) => next(error));
 });
 
+router.get('/account', async function(req, res, next) {
+  let context = {student: true};
+  res.render('shared/account', context);
+});
+
 router.post('/set_result', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   const body = req.body;

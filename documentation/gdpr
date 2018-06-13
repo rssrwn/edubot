@@ -4,11 +4,11 @@ Facebook - Controller
 Kogan - Processor
 Cambridge - Processor
 
-Facebook as a controller need a legal basis for processing the data. This requirement likely hasn't been infringed as they have probably obtained basis on the grounds of unambiguous consent or legitimate interest. Since the data Facebook is controlling is special category data they need an additional basis to process the data, explicit consent is likely the basis Facebook has.
+// Facebook as a controller need a legal basis for processing the data. This requirement likely hasn't been infringed as they have probably obtained basis on the grounds of unambiguous consent or legitimate interest. Since the data Facebook is controlling is special category data they need an additional basis to process the data, explicit consent is likely the basis Facebook has.
 
-(Purpose Limitation) Cambridge Analytica, as a processor, are required to follow the terms of their contract with Kogan through which the terms of the Kogan-Facebook contract terms would have flowed, however Cambridge were using data for profiling in order to influence elections which likely would not have been part of the contract.
+(Purpose Limitation) Cambridge Analytica, as a processor, are required to follow the terms of their contract with Kogan through which the terms of the Kogan-Facebook contract terms would have flowed, however Cambridge were using data for profiling in order to influence elections which likely would not have been part of the contract, this would have been in breach of article 5(1)(b).
 
-(Data Minimisation) GSR (who were a processor) was providing a personality test app but was actually collecting data on Facebook users and their friends which was not necessary for the app, this is in breach of GDPR article ????????????????.
+(Data Minimisation) GSR (who were a processor) was providing a personality test app but was actually collecting data on Facebook users and their friends which was not necessary for the app, this is in breach of GDPR article 5(1)(c).
 
 (Accountability) Facebook did not keep sufficient logs or monitor them frequently enough, evident by the amount of time it took them to realise GSR was collecting massive amounts of data.
 
@@ -17,7 +17,17 @@ Facebook as a controller need a legal basis for processing the data. This requir
 (DPIA) Facebook should have performed a data protection impact assessment on the entire chain of data processing, with the help of GSR and Cambridge Analytica.
 
 b.
-Report the data breach to a relevant information authority within 72 hours, for
-example the ICO in the UK.
+Report the data breach to a relevant information authority within 72 hours, for example the ICO in the UK.
 
 c.
+Facebook could create a more restrictive API that limits the amount of data third parties can access, for example by not allowing access to friends' personal data, this will reduce the amount of personal data vulnerable to a data breach. Perhaps Facebook could only provide third-parties access to anonymous data, thereby limiting their legal requirements under the GDPR article ????????????.
+
+Perform an impact assessment or risk assessment on the entire chain of data processing with the help of third parties, this will Facebook comply with the DPIA section of the GDPR requirements and may also help them weed out third parties who are hoarding personal data for potentially malicious purposes.
+
+Facebook could keep logs of their API usage and monitor them frequently in order to help them track how third parties use the Facebook data, in the event of a data breach this would help Facebook comply with their legal requirement to notify the relevant authorities within 72 hours.
+
+Facebook could enforce the use of stricter contracts for third parties and ensure that the terms of the contract flow down to subprocessors (as required by the GDPR article ???????????). As the part of the contract Facebook could ensure that third parties only use the data for necessary purposes. Facebook could also ensure that third-parties monitor data regular in order to check whether it is still relevant and if not delete it.
+
+Facebook could ensure that policy is in place for notifying the relevant authorities in the event of a personal data breach.
+
+Implement organisational policy that ensures that Facebook monitors the personal it holds regularly and deletes it if it is no longer relevant.
