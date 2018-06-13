@@ -4,7 +4,7 @@ Blockly.Blocks['move_forward'] = {
         .appendField("move forward");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(160);
+    this.setColour(15);
  this.setTooltip("Move robot forward");
  this.setHelpUrl("");
   }
@@ -16,7 +16,7 @@ Blockly.Blocks['rotate_right'] = {
         .appendField("rotate right");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(160);
+    this.setColour(15);
  this.setTooltip("Rotate right");
  this.setHelpUrl("");
   }
@@ -28,7 +28,7 @@ Blockly.Blocks['rotate_left'] = {
         .appendField("rotate left");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(160);
+    this.setColour(15);
  this.setTooltip("Rotate left");
  this.setHelpUrl("");
   }
