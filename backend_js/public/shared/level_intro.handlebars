@@ -32,16 +32,23 @@
             </ul>
           </p>
           
-          <p>
-            <b>Blocks available:</b>
-            
-            <br>
-            
-            <img id="blocksImage" src={{blocks_available}} alt="Available blocks"></img>
-          </p>
+          <div id="blocksDiv" class="clearFix imageDivs">
+            <p>
+              <b>Blocks Available</b>
+              <br>
+            </p>
+              <img id="blocksImage" src={{blocks_available}} alt="Available blocks"></img>
+          </div>
+          
+          <div id="levelDiv" class="clearFix imageDivs">
+            <p>
+              <b>Level Preview</b>
+              <br>
+            </p>
+            <img id="levelImage" src="{{level_image}}"/>
+          </div>
         </div>
         
-        <img id="levelImage" src="{{level_image}}"/>
         <!--<img id="levelImage" src="../images/loops_and_iteration_1.png" alt="loops_and_iteration_1"></img>-->
       </div>
 
