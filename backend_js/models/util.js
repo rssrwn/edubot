@@ -35,10 +35,10 @@ exports.isStudent = async function(uname) {
 }
 
 exports.hasFeedback = async function(uname, level) {
-  let level_id = db.getLevelId(level);
-  let feedback = db.getAllFeedback(uname);
-  let res = false;
+  let level_id = await db.getLevelId(level);
+  let feedback = await db.getAllFeedback(uname);
 
+  let res = false;
   for (var i=0; i<feedback.length; i++) {
     let level = feedback[i];
     if (level.level_id === level_id) {
