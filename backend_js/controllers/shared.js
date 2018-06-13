@@ -193,7 +193,7 @@ router.post('/temp_sol', async function(req, res, next) {
   if (status !== 0) {
     res.status(500).send("Unknown error");
   } else {
-    res.send(200);
+    res.sendStatus(200);
   }
 });
 
