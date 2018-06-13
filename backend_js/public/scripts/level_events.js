@@ -70,29 +70,24 @@ function restart(e) {
 document.getElementById("restartButton").addEventListener("click", restart);
 document.getElementById("simpleRestartButton").addEventListener("click", restart);
 
-var feedbackActiveButton = null;
+function giveFeedback() {
+  $("#simpleFeedbackButton").css("display", "none");
 
-function giveFeedback(button) {
-  if (feedbackActiveButton) {
-    $(feedbackActiveButton.addButton).remove();
-    $(feedbackActiveButton.textInput).remove();
-    feedbackActiveButton.css("display") = "inline-block";
-  }
-  feedbackActiveButton = button;
+  var submitButton = $("<button type='button' id='submitFeedbackButton' onclick='submitFeedback()'>Give Feedback</button>");
+  var textInput = $("<input type='text' class='submitFeedbackInput'></input>");
 
-  button.css("display") = "none";
-
-  var submitButton = $("<button type='button' onclick='addClassSubmitEvent()'>Give Feedback</button>");
-  var textInput = $("<input type='text'></input>");
-
-  feedbackActiveButton.addButton = submitButton.get(0);
-  feedbackActiveButton.textInput = textInput.get(0);
-
-  $(button).parent().append(textInput);
-  $(button).parent().append(submitButton);
+  $("#simpleFeedbackButton").parent().append(textInput);
+  $("#simpleFeedbackButton").parent().append(submitButton);
 }
 
-document.getElementById("simpleFeedbackButton").addEventListener("click", giveFeedback);
+function submitFeedback() {
+  $("#simpleFeedbackButton").css("display", "");
+  
+  console.log($("#submitFeedbackInput").text());
+  
+  $("#submitFeedbackButton").remove();
+  $("#submitFeedbackInput").remove();
+}
 
 var blocklyResize = function(e) {
   let element = blocklyDiv;
