@@ -29,6 +29,7 @@
 
 #feedbackTextArea {
   margin-bottom: 10px;
+  resize: none;
 }
 
 #controlsDiv {

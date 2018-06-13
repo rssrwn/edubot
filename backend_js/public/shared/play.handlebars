@@ -34,7 +34,7 @@
         <div id='feedbackZone'>
           <textarea id='feedbackTextArea' rows='4' cols='65'></textarea>
           <br>
-          <button type='button' onclick='submitFeedback()'>Give Feedback</button>
+          <button type='button' onclick='submitFeedback()'>{{#if student}}Hide{{else}}Give{{/if}} Feedback</button>
         </div>
         
         
@@ -100,7 +100,6 @@
   
   <script>
   function giveFeedback() {
-    console.log("https://edubot-learn.herokuapp.com/shared/feedback?uname={{{student_id}}}&level={{{levelName}}}");
     httpGet("https://edubot-learn.herokuapp.com/shared/feedback?uname={{{student_id}}}&level={{{levelName}}}", function(feedback) {
       feedback = $("#feedbackTextArea").val(feedback);
     });
@@ -112,22 +111,24 @@
   function submitFeedback() {
     let feedback = $("#feedbackTextArea").val();
     
-    httpPost("https://edubot-learn.herokuapp.com/teacher/add_feedback", {uname: "{{{student_id}}}", level: "{{{levelName}}}", feedback: feedback}, function(status) {
-      console.log("{{{student_id}}}");
-      console.log("{{{levelName}}}");
-      console.log('result callback status: ', status);
+    if (!{{student}}) {
+      httpPost("https://edubot-learn.herokuapp.com/teacher/add_feedback", {uname: "{{{student_id}}}", level: "{{{levelName}}}", feedback: feedback}, function(status) {
+        console.log("{{{student_id}}}");
+        console.log("{{{levelName}}}");
+        console.log('result callback status: ', status);
 
-      // If teacher is logged in
-      if (status === 200) {
-        return;
-      }
+        // If teacher is logged in
+        if (status === 200) {
+          return;
+        }
 
-      if (!(status === 480 || status === 481)) {
-        alert("Unknown error, status: ", status);
-      }
-    });
-    $("#simpleFeedbackButton").css("display", "");
-    $("#feedbackZone").css("display", "none");
+        if (!(status === 480 || status === 481)) {
+          alert("Unknown error, status: ", status);
+        }
+      });
+      $("#simpleFeedbackButton").css("display", "");
+      $("#feedbackZone").css("display", "none");
+    }
   }
   </script>
 </body>
