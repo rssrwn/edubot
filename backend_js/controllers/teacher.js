@@ -196,4 +196,20 @@ router.post('/remove_class', async function(req, res, next) {
   }
 });
 
+router.post('/add_feedback', async function(req, res, next) {
+  const body =req.body;
+  let teacher = req.cookies["edubot-cookie"];
+
+  let status = await db.addFeedback(body.uname, body.level, teacher, body.feedback);
+  if (status === -1) {
+    res.status(480).send("That username does not exist");
+  } else if (status === -2) {
+    res.status(481).send("You do not have permission");
+  } else if (status === 0) {
+    res.sendStatus(200);
+  } else {
+    res.status(500).send("Unknown error");
+  }
+});
+
 module.exports = router;

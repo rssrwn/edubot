@@ -3,7 +3,21 @@ var blocklyWorkspaceDiv = document.getElementById("blocklyWorkspaceDiv");
 var workspace = Blockly.inject("blocklyWorkspaceDiv",
     {toolbox: document.getElementById("toolbox")});
 
+var highlightedId = null;
+
+Blockly.BlockSvg.prototype.setHighlighted = function(highlighted) {
+  if (!this.rendered) {
+    return;
+  }
+  if (highlighted) {
+    this.addSelect();
+  } else {
+    this.removeSelect();
+  }
+};
+
 var highlightBlock = function(id) {
+  highlightedId = id;
   workspace.highlightBlock(id);
 }
 
@@ -29,7 +43,10 @@ var runCode = function(e) {
     Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
     Blockly.JavaScript.addReservedWords('highlightBlock');
     
-    let our_code = "runningCommands = false;";
+    let our_code = "runningCommands = false;\n \
+      if (highlightedId != null) {\n \
+        workspace.highlightBlock(highlightedId, false);\n \
+      }";
           
     let code = Blockly.JavaScript.workspaceToCode(workspace);
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
@@ -69,20 +86,6 @@ function restart(e) {
 
 document.getElementById("restartButton").addEventListener("click", restart);
 document.getElementById("simpleRestartButton").addEventListener("click", restart);
-
-let feedbackZone = $("<div id='feedbackZone'><textarea id='feedbackTextArea' rows='4' cols='65'></textarea><br><button type='button' onclick='submitFeedback()'>Give Feedback</button></div>")
-
-function giveFeedback() {
-  $("#simpleFeedbackButton").css("display", "none");
-  $("#blocklyDiv").prepend(feedbackZone);
-}
-
-function submitFeedback() {
-  $("#simpleFeedbackButton").css("display", "");
-  $("#feedbackZone").remove();
-  
-  console.log($("#feedbackTextArea").text());
-}
 
 var blocklyResize = function(e) {
   let element = blocklyDiv;
