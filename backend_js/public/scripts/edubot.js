@@ -142,6 +142,7 @@ GridLevel.prototype.levelCompleted = async function() {
   let rob = getRobot();
 
   if (rob !== null) {
+    console.log("Actions Taken: " + rob.actionsTaken);
     let actionDiff = this.maxActions - this.minActions;
     let actionScore = Math.max(actionDiff - (rob.actionsTaken - this.minActions), 0) / actionDiff;
     console.log("Action Score: " + actionScore);
