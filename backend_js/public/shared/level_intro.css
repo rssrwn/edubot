@@ -6,6 +6,10 @@ li {
   margin-bottom: 20px;
 }
 
+#levelDescriptionDiv {
+  margin-top: 80px;
+}
+
 .titles {
   display: block;
   margin: auto;
@@ -60,7 +64,7 @@ li {
 #levelButtonsDiv {
   display: table;
   margin: 0 auto;
-  margin-bottom: 25px;
+  margin-bottom: 100px;
 }
 
 .levelButton {
