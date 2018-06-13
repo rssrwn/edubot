@@ -70,20 +70,18 @@ function restart(e) {
 document.getElementById("restartButton").addEventListener("click", restart);
 document.getElementById("simpleRestartButton").addEventListener("click", restart);
 
-function giveFeedback(feedbackButton) {
-  feedbackButton.style.display = "none";
+function giveFeedback() {
+  $("#simpleFeedbackButton").css("display", "none");
 
-  var submitButton = $("<button type='button' id='submitFeedbackButton' onclick='submitFeedback(feedbackButton)'>Give Feedback</button>");
+  var submitButton = $("<button type='button' id='submitFeedbackButton' onclick='submitFeedback()'>Give Feedback</button>");
   var textInput = $("<input type='text' class='submitFeedbackInput'></input>");
 
   $(feedbackButton).parent().append(textInput);
   $(feedbackButton).parent().append(submitButton);
 }
 
-document.getElementById("simpleFeedbackButton").addEventListener("click", giveFeedback);
-
-function submitFeedback(feedbackButton) {
-  feedbackButton.style.display = "";
+function submitFeedback() {
+  $("#simpleFeedbackButton").css("display", "");
   
   console.log($("#submitFeedbackInput").text());
   
