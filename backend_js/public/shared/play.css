@@ -18,6 +18,19 @@
   background-color: #e4dfda;
 }
 
+#feedbackZone {
+  position: fixed;
+  z-index: 100;
+  bottom: 100px;
+  display: table;
+  width: 50%;
+  text-align: center;
+}
+
+#feedbackTextArea {
+  margin-bottom: 10px;
+}
+
 #controlsDiv {
   display: table-row;
   width: 100%;

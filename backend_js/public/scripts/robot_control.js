@@ -65,8 +65,6 @@ function Robot() {
   this.dir = Dir.RIGHT;
   this.actionsTaken = 0;
   this.anims = new RobotAnims();
-  this.prevLoc = new Point(this.loc.x, this.loc.y);
-  this.curDir = 0;
 }
 
 Robot.prototype = Object.create(Entity.prototype);
@@ -129,6 +127,7 @@ Robot.prototype.removed = function () {
 }
 
 Robot.prototype.loaded = function () {
+  console.log("Robot loaded " + this.loc);
   this.anims = new RobotAnims();
   this.prevLoc = new Point(this.loc.x, this.loc.y);
   this.curDir = 0;
@@ -149,7 +148,7 @@ Robot.prototype.actionProgress = function() {
   }
   let progress = (new Date().getTime() - this.actionStart) / robotStepTime;
   
-  let pause = 0.25;
+  let pause = 0.15;
   
   if (progress > (1 - pause)) {
     progress = 1;

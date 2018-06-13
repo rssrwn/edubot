@@ -90,5 +90,35 @@
   {{#if tutorial}}
     <script src="../scripts/tutorial.js"></script>
   {{/if}}
+  
+  <script>
+  let feedbackZone = $("<div id='feedbackZone'><textarea id='feedbackTextArea' rows='4' cols='65'></textarea><br><button type='button' onclick='submitFeedback()'>Give Feedback</button></div>")
+
+  function giveFeedback() {
+    $("#simpleFeedbackButton").css("display", "none");
+    $("#blocklyDiv").prepend(feedbackZone);
+  }
+
+  function submitFeedback() {
+    let feedback = $("#feedbackTextArea").val();
+    
+    httpPost("https://edubot-learn.herokuapp.com/teacher/add_feedback", {uname: "{{{student_id}}}", level: "{{{levelName}}}", feedback: feedback}, function(status) {
+      console.log("{{{student_id}}}");
+      console.log("{{{levelName}}}");
+      console.log('result callback status: ', status);
+
+      // If teacher is logged in
+      if (status === 200) {
+        return;
+      }
+
+      if (!(status === 480 || status === 481)) {
+        alert("Unknown error, status: ", status);
+      }
+    });
+    $("#simpleFeedbackButton").css("display", "");
+    $("#feedbackZone").remove();
+  }
+  </script>
 </body>
 </html>
