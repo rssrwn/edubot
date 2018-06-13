@@ -22,7 +22,7 @@
     <form name="loginForm">
       <div id="formDiv">
         <label class="formItem"><b>Username</b></label>
-        <input class="formItem" onkeypress="passwordFieldEnter();" type="text" placeholder="Enter Username" name="uname" required>
+        <input class="formItem" onkeypress="passwordFieldEnter(event);" type="text" placeholder="Enter Username" name="uname" required>
         <br><br>
 
         <label class="formItem"><b>Password</b></label>
@@ -36,7 +36,7 @@
           }
         </script>
         
-        <input class="formItem" onkeypress="passwordFieldEnter();" type="password" placeholder="Enter Password" name="pass" required>
+        <input class="formItem" onkeypress="passwordFieldEnter(event);" type="password" placeholder="Enter Password" name="pass" required>
         <br><br>
 
         <div id="formButtons">
