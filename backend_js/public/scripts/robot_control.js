@@ -65,8 +65,6 @@ function Robot() {
   this.dir = Dir.RIGHT;
   this.actionsTaken = 0;
   this.anims = new RobotAnims();
-  this.prevLoc = new Point(this.loc.x, this.loc.y);
-  this.curDir = 0;
 }
 
 Robot.prototype = Object.create(Entity.prototype);
