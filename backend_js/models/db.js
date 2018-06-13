@@ -466,7 +466,8 @@ exports.setTempSol = async function(uname, level, solution) {
 
   await pool.query("delete from temp_sol where uname=$1 and level_id=$2;", [uname, level_id]);
 
-  let db_res = await pool.query("insert into temp_sol")
+  let db_res = await pool.query("insert into temp_sol values ($1, $2, $3);", [uname, level_id, solution]);
+  return 0;
 }
 
 exports.userTypeEnum = userTypeEnum;

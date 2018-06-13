@@ -184,11 +184,22 @@ router.get('/all_feedback', async function(req, res, next) {
 });
 
 router.post('/temp_sol', async function(req, res, next) {
-  res.sendStatus(200);
+  let uname = req.cookies["edubot-cookie"];
+  const body = req.body;
+  let status = await db.setTempSol(uname, body.level, body.solution);
+  if (status !== 0) {
+    res.status(500).send("Unknown error");
+  } else {
+    res.send(200);
+  }
 });
 
 router.get('/temp_sol', async function(req, res, next) {
-  res.sendStatus(200);
+  let uname = req.cookies["edubot-cookie"];
+  let level = req.query.level;
+
+  let sol = await db.getTempSol(uname, level);
+  res.send(sol);
 });
 
 module.exports = router;

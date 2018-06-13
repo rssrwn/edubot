@@ -28,8 +28,7 @@ var highlightBlock = function(id) {
 var saveBlocks = function(e) {
   if (e.type !== "ui") {
     let xml = getBlockXML();
-    
-    //TODO httpPost("https://edubot-learn.herokuapp.com/shared/temp_sol", {level: this.levelId, solution: xml}, function(status) {});
+    httpPost("https://edubot-learn.herokuapp.com/shared/temp_sol", {level: this.levelId, solution: xml}, function(status){});
   }
 }
 workspace.addChangeListener(saveBlocks);
@@ -51,19 +50,19 @@ var runCode = function(e) {
     runningCommands = true;
     simpleRunButton.style.visibility = "hidden";
     simpleRunButton.style.pointerEvents = "none";
-    
+
     // Block highlighting
     Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
     Blockly.JavaScript.addReservedWords('highlightBlock');
-    
+
     let our_code = "runningCommands = false;\n \
       if (highlightedId != null) {\n \
         workspace.highlightBlock(highlightedId, false);\n \
       }";
-          
+
     let code = Blockly.JavaScript.workspaceToCode(workspace);
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
-    
+
     eval(code);
   }
 };
