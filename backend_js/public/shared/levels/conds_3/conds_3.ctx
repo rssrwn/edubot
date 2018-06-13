@@ -1,6 +1,6 @@
 {
     "level_name": "Level 9 - Advanced Conditional Looping",
+    "objective": ["Combine different types of loops to move around the board", "Guide EduBot to eat the nuts and bolts"],
     "blocks_available": "../images/loops_blocks.png",
-    "objective": "Eat all bolts in the level in as few moves as possible",
     "level_image": "../images/loops_and_iteration_1.png"
 }
