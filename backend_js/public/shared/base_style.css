@@ -38,6 +38,10 @@ input, button {
   cursor: pointer;
 }
 
+.titles {
+  font-family: 'Roboto Slab', serif;
+}
+
 #page {
   display: table;
   width: 100%;

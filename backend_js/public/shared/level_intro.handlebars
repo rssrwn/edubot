@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="banner.css">
   <link rel="stylesheet" type="text/css" href="level_intro.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 </head>
 
 <body>
@@ -17,10 +18,10 @@
     {{else}}
     {{> banners/teacher}}
     {{/if}}
-    
+
     <div id="contentDiv">
       <h1 class="titles">{{level_name}}</h1>
-      
+
       <div id="levelDescriptionDiv" class="descriptionDiv clearFix">
         <p>
           <b>Objectives: </b>
@@ -37,7 +38,7 @@
                 <figcaption class="previewCaptions">Blocks Available</figcaption>
               </figure>
           </div>
-          
+
           <div id="levelImageDiv" class="imageDivs">
             <figure>
               <img id="levelImage" src="{{level_image}}"/>
@@ -52,7 +53,7 @@
         <button class="levelButton" type="button" onclick="location.href='/shared/play?levelId={{level_id}}&studentId={{student_id}}'">Student Solution</button>
         {{else}}
         <button class="levelButton" type="button" onclick="location.href='/shared/play?levelId={{level_id}}&studentId={{student_id}}'">Try Level</button>
-        {{/if}}        
+        {{/if}}
         {{#unless student}}
         <button class="levelButton" type="button" onclick="location.href='/teacher/solution?levelId={{level_id}}'">Sample Solution</button>
         {{/unless}}

@@ -6,9 +6,10 @@
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="base_style.css">
   <link rel="stylesheet" type="text/css" href="banner.css">
-  <link rel="stylesheet" type="text/css" href="level_intro.css">
+  <!--link rel="stylesheet" type="text/css" href="level_intro.css"-->
   <link rel="stylesheet" type="text/css" href="concept.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 </head>
 
 <body>
@@ -18,28 +19,35 @@
     {{else}}
     {{> banners/teacher}}
     {{/if}}
-    
+
     <div id="contentDiv" class="clearFix">
-      <h1 class="titles">{{title}}</h1>
-      
-      <div class="descriptionDiv">
-        <ul class="infoList">
+      <div id="wrapperDiv">
+        <h1 class="titles">{{title}}</h1>
+
+          <div class="descriptionDiv">
+            {{#each concept_points}}
+              <p class="conceptBullets">{{{this}}}</p>
+            {{/each}}
+
+        <!--ul class="infoList">
         {{#each concept_points}}
           <li class="conceptBullets">{{{this}}}</li>
         {{/each}}
-        </ul>
-      </div>
+      </ul-->
 
-      <div id="newBlocksDiv" class="descriptionDiv">
-        <img id="newBlocksImage" src="{{new_blocks_image}}" alt="New blocks">
-      </div>
+         </div>
 
-      <div id="levelButtonsDiv">
-        {{#if student}}
-          <button class="levelButton" type="button" onclick="location.href='/student/level_selection'">Back To Levels</button>
-        {{else}}
-          <button class="levelButton" type="button" onclick="location.href='/teacher/level_selection'">Back To Levels</button>
-        {{/if}}
+        <div id="newBlocksDiv" class="descriptionDiv">
+          <img id="newBlocksImage" src="{{new_blocks_image}}" alt="New blocks">
+        </div>
+
+        <div id="levelButtonsDiv">
+          {{#if student}}
+            <button class="levelButton" type="button" onclick="location.href='/student/level_selection'">Back To Levels</button>
+          {{else}}
+            <button class="levelButton" type="button" onclick="location.href='/teacher/level_selection'">Back To Levels</button>
+          {{/if}}
+        </div>
       </div>
     </div>
   </div>

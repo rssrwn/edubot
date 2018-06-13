@@ -9,6 +9,11 @@
   border-bottom: 1px solid #e68119;
 }
 
+#title {
+  font-family: 'Roboto Slab', serif;
+  display: grid;
+}
+
 .logoImage {
   float: left;
   height: 80px;
