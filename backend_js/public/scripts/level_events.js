@@ -70,20 +70,6 @@ function restart(e) {
 document.getElementById("restartButton").addEventListener("click", restart);
 document.getElementById("simpleRestartButton").addEventListener("click", restart);
 
-let feedbackZone = $("<div id='feedbackZone'><textarea id='feedbackTextArea' rows='4' cols='65'></textarea><br><button type='button' onclick='submitFeedback()'>Give Feedback</button></div>")
-
-function giveFeedback() {
-  $("#simpleFeedbackButton").css("display", "none");
-  $("#blocklyDiv").prepend(feedbackZone);
-}
-
-function submitFeedback() {
-  $("#simpleFeedbackButton").css("display", "");
-  $("#feedbackZone").remove();
-  
-  console.log($("#feedbackTextArea").text());
-}
-
 var blocklyResize = function(e) {
   let element = blocklyDiv;
   let x = 0;

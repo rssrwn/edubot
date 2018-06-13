@@ -120,14 +120,13 @@ router.get('/play', async function(req, res, next) {
   let context = {student: isStudent, tutorial: levelName === "intro_1" && isStudent, levelName: levelName};
 
   let studentId = req.query.studentId;
-  
-  
 
   if (studentId != null) {
     let sol = await db.getSolution(studentId, levelName);
     
     if (sol != null) {
       context.json_solution = sol;
+      context.student_id = studentId;
       context.display_feedback = true;
     }
   }
