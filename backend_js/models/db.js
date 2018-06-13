@@ -376,20 +376,20 @@ exports.addFeedback = async function(uname, level, teacher, feedback) {
   return 0;
 }
 
-// Get all feedback in an object
+// Get all feedback in a list
 exports.getAllFeedback = async function(uname) {
   let free = await exports.unameFree(uname);
   if (free) {
     return null;
   }
 
-  let db_res = await pool.query("select feedback from feedback where uname=$1;", [uname]);
+  let db_res = await pool.query("select level_id, feedback from feedback where uname=$1;", [uname]);
 
-  if (db_res.rows[0]) {
-    return db_res.rows;
-  } else {
+  if (!db_res.rows[0]) {
     return null;
   }
+
+  return db_res.rows;
 }
 
 exports.userTypeEnum = userTypeEnum;
