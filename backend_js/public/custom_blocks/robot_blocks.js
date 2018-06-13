@@ -39,7 +39,7 @@ Blockly.Blocks['wall_in_front'] = {
     this.appendDummyInput()
         .appendField("wall in front");
     this.setOutput(true, "Boolean");
-    this.setColour(230);
+    this.setColour("%{BKY_LOGIC_HUE}");
  this.setTooltip("True if a wall is in front of EduBot");
  this.setHelpUrl("");
   }
