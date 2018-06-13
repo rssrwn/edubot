@@ -120,12 +120,40 @@ GridLevel.prototype.getBottomRight = function() {
     canvas.height - (canvas.height - level.height * level.squareSize) / 2);
 }
 
+function isMoveBlock(type) {
+  if (type === "move_forward") return true;
+  if (type === "rotate_right") return true;
+  if (type === "rotate_left") return true;
+  return false;
+}
+
+function countMoveBlocks() {
+  let blocksUsed = 0;
+  let blocks = workspace.getAllBlocks();
+  for (let i = 0; i < blocks.length; i++) {
+    if (isMoveBlock(blocks[i].type)) {
+      blocksUsed++;
+    }
+  }
+  return blocksUsed;
+}
+
 GridLevel.prototype.levelCompleted = async function() {
   let rob = getRobot();
 
   if (rob !== null) {
-    let diff = this.maxActions - this.minActions;
-    let score = Math.max(diff - (rob.actionsTaken - this.minActions), 0) / diff;
+    console.log("Actions Taken: " + rob.actionsTaken);
+    let actionDiff = this.maxActions - this.minActions;
+    let actionScore = Math.max(actionDiff - (rob.actionsTaken - this.minActions), 0) / actionDiff;
+    console.log("Action Score: " + actionScore);
+    
+    let blocksUsed = countMoveBlocks();
+    console.log("Move Blocks Used: " + blocksUsed);
+    let blockDiff = this.maxBlocks - this.minBlocks;
+    let blockScore = Math.max(blockDiff - (blocksUsed - this.minBlocks), 0) / blockDiff;
+    console.log("Block Score: " + blockScore);
+    
+    let score = 0.5 * actionScore + 0.5 * blockScore;
     starsAttained = Math.min(Math.floor(score * 3) + 1, 3);
 
     draw();

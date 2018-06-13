@@ -85,6 +85,9 @@ document.getElementById("simpleHintButton").addEventListener("click", showHint);
 function restart(e) {
   simpleRunButton.style.visibility = "visible";
   simpleRunButton.style.pointerEvents = "auto";
+  if (highlightedId != null) {
+    workspace.highlightBlock(highlightedId, false);
+  }
   restartLevel();
 }
 
