@@ -3,7 +3,10 @@ var blocklyWorkspaceDiv = document.getElementById("blocklyWorkspaceDiv");
 var workspace = Blockly.inject("blocklyWorkspaceDiv",
     {toolbox: document.getElementById("toolbox")});
 
+var highlightedId = null;
+
 var highlightBlock = function(id) {
+  highlightedId = id;
   workspace.highlightBlock(id);
 }
 
@@ -29,7 +32,10 @@ var runCode = function(e) {
     Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
     Blockly.JavaScript.addReservedWords('highlightBlock');
     
-    let our_code = "runningCommands = false;";
+    let our_code = "runningCommands = false;\n \
+      if (highlightedId != null) {\n \
+        workspace.highlightBlock(highlightedId, false);\n \
+      }";
           
     let code = Blockly.JavaScript.workspaceToCode(workspace);
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";

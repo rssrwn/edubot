@@ -12,6 +12,11 @@
   list-style-type: none;
 }
 
+#newBlocksImage {
+  width: 600px;
+  height: 400px;
+}
+
 .titles {
   margin-top: 50px;
   margin-bottom: 40px;
