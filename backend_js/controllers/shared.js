@@ -186,7 +186,10 @@ router.get('/all_feedback', async function(req, res, next) {
 router.post('/temp_sol', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   const body = req.body;
+
+  console.log('post temp sol');
   let status = await db.setTempSol(uname, body.level, body.solution);
+  console.log('status: ', status);
   if (status !== 0) {
     res.status(500).send("Unknown error");
   } else {
@@ -197,6 +200,8 @@ router.post('/temp_sol', async function(req, res, next) {
 router.get('/temp_sol', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   let level = req.query.level;
+
+  console.log('get temp sol');
 
   let sol = await db.getTempSol(uname, level);
   res.send(sol);

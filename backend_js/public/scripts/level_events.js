@@ -28,7 +28,10 @@ var highlightBlock = function(id) {
 var saveBlocks = function(e) {
   if (e.type !== "ui") {
     let xml = getBlockXML();
-    httpPost("https://edubot-learn.herokuapp.com/shared/temp_sol", {level: this.levelId, solution: xml}, function(status){});
+    console.log('xml: ', xml);
+    httpPost("https://edubot-learn.herokuapp.com/shared/temp_sol", {level: this.levelId, solution: xml}, function(status) {
+      console.log('callback: ', status);
+    });
   }
 }
 workspace.addChangeListener(saveBlocks);
