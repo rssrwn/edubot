@@ -100,7 +100,8 @@
   
   <script>
   function giveFeedback() {
-    httpGet("https://edubot-learn.herokuapp.com/shared/feedback", {uname: "{{{student_id}}}", level: "{{{levelName}}}"}, function(feedback) {
+    console.log("https://edubot-learn.herokuapp.com/shared/feedback?uname={{{student_id}}}&level={{{levelName}}}");
+    httpGet("https://edubot-learn.herokuapp.com/shared/feedback?uname={{{student_id}}}&level={{{levelName}}}", function(feedback) {
       feedback = $("#feedbackTextArea").val(feedback);
     });
     
