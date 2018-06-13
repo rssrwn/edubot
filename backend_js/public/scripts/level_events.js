@@ -20,10 +20,6 @@ let runButton = document.getElementById("runButton");
 let simpleRunButton = document.getElementById("simpleRunButton");
 
 var runCode = function(e) {
-  if (highlightedId != null) {
-    workspace.highlightBlock(id, false);
-    return;
-  }
   if (workspace.getAllBlocks().length == 0) {
     return;
   }
@@ -36,7 +32,10 @@ var runCode = function(e) {
     Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
     Blockly.JavaScript.addReservedWords('highlightBlock');
     
-    let our_code = "runningCommands = false;";
+    let our_code = "runningCommands = false;\n \
+      if (highlightedId != null) {\n \
+        workspace.highlightBlock(highlightedId, false);\n \
+      }";
           
     let code = Blockly.JavaScript.workspaceToCode(workspace);
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
