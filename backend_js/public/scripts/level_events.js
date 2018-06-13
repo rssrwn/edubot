@@ -26,10 +26,10 @@ var runCode = function(e) {
     simpleRunButton.style.pointerEvents = "none";
     
     // Block highlighting
-    //Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
-    //Blockly.JavaScript.addReservedWords('highlightBlock');
+    Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
+    Blockly.JavaScript.addReservedWords('highlightBlock');
     
-    let our_code = "runningCommands = false";
+    let our_code = "runningCommands = false;";
           
     let code = Blockly.JavaScript.workspaceToCode(workspace);
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
@@ -70,29 +70,19 @@ function restart(e) {
 document.getElementById("restartButton").addEventListener("click", restart);
 document.getElementById("simpleRestartButton").addEventListener("click", restart);
 
-var feedbackActiveButton = null;
+let feedbackZone = $("<div id='feedbackZone'><textarea id='feedbackTextArea' rows='4' cols='65'></textarea><br><button type='button' onclick='submitFeedback()'>Give Feedback</button></div>")
 
-function giveFeedback(button) {
-  if (feedbackActiveButton) {
-    $(feedbackActiveButton.addButton).remove();
-    $(feedbackActiveButton.textInput).remove();
-    feedbackActiveButton.css("display") = "inline-block";
-  }
-  feedbackActiveButton = button;
-
-  button.css("display") = "none";
-
-  var submitButton = $("<button type='button' onclick='addClassSubmitEvent()'>Give Feedback</button>");
-  var textInput = $("<input type='text'></input>");
-
-  feedbackActiveButton.addButton = submitButton.get(0);
-  feedbackActiveButton.textInput = textInput.get(0);
-
-  $(button).parent().append(textInput);
-  $(button).parent().append(submitButton);
+function giveFeedback() {
+  $("#simpleFeedbackButton").css("display", "none");
+  $("#blocklyDiv").prepend(feedbackZone);
 }
 
-document.getElementById("simpleFeedbackButton").addEventListener("click", giveFeedback);
+function submitFeedback() {
+  $("#simpleFeedbackButton").css("display", "");
+  $("#feedbackZone").remove();
+  
+  console.log($("#feedbackTextArea").text());
+}
 
 var blocklyResize = function(e) {
   let element = blocklyDiv;

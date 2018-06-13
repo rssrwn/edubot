@@ -50,7 +50,11 @@
       </div>
 
       <div id="levelButtonsDiv">
+        {{#if show_solution}}
+        <button class="levelButton" type="button" onclick="location.href='/shared/play?levelId={{level_id}}&studentId={{student_id}}'">Student Solution</button>
+        {{else}}
         <button class="levelButton" type="button" onclick="location.href='/shared/play?levelId={{level_id}}'">Try Level</button>
+        {{/if}}        
         {{#unless student}}
         <button class="levelButton" type="button" onclick="location.href='/teacher/solution?levelId={{level_id}}'">Sample Solution</button>
         {{/unless}}

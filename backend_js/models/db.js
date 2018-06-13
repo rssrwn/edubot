@@ -260,7 +260,12 @@ exports.getSolution = async function(uname, level) {
 // Get an id for a level
 getLevelId = async function(level) {
   let res = await pool.query("select level_id from level where link=$1;", [level]);
-  return res.rows[0].level_id;
+
+  if (res.rows[0]) {
+    return res.rows[0].level_id;
+  } else {
+    return null;
+  }
 }
 
 // Insert a score
@@ -301,16 +306,18 @@ exports.getCurrLevelName = async function(uname) {
 
 // Get an object containing a list of categories with levels within
 exports.getAllLevels = async function(uname) {
-  let db_res1 = await pool.query("select cat, cat_id from category;", []);
+  let db_res1 = await pool.query("select cat, cat_id, identifier from category;", []);
   let cats = db_res1.rows;
   let currLevel = await exports.getCurrLevel(uname);
 
   for (var i=0; i<cats.length; i++) {
     let cat = cats[i];
     cat.categoryName = cat.cat;
+    cat.conceptId = cat.identifier;
+    delete cat.identifier;
     delete cat.cat;
 
-    let db_res2 = await pool.query("select level_id as number , score as stars, name, link from (select level_id, score from student_level where uname=$1) as completed right outer join level using(level_id) left outer join level_cat using(level_id) where cat_id=$2;", [uname, cat.cat_id]);
+    let db_res2 = await pool.query("select level_id as number, score as stars, name, link from (select level_id, score from student_level where uname=$1) as completed right outer join level using(level_id) left outer join level_cat using(level_id) where cat_id=$2;", [uname, cat.cat_id]);
     let levels = db_res2.rows;
     for (var j=0; j<levels.length; j++) {
       let level = levels[j];
@@ -330,6 +337,59 @@ exports.getAllLevels = async function(uname) {
   }
 
   return cats;
+}
+
+// Get feedback for a student and level, null if none
+exports.getFeedback = async function(uname, level) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return null;
+  }
+
+  let level_id = await getLevelId(level);
+  let db_res = await pool.query("select feedback from feedback where uname=$1 and level_id=$2;", [uname, level_id]);
+
+  if (db_res.rows[0]) {
+    return db_res.rows[0].feedback;
+  } else {
+    return null;
+  }
+}
+
+// Add feedback to db for uname and level
+exports.addFeedback = async function(uname, level, teacher, feedback) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return -1;
+  }
+
+  // Check if teacher has permission
+  let db_res1 = await pool.query("select * from class natural join student_class where uname=$1 and teacher=$2;", [uname, teacher]);
+  if (!db_res1.rows[0]) {
+    return -2;
+  }
+
+  let level_id = await getLevelId(level);
+
+  await pool.query("delete from feedback where uname=$1 and level_id=$2;", [uname, level_id]);
+  await pool.query("insert into feedback values($1, $2, $3);", [uname, level_id, feedback]);
+  return 0;
+}
+
+// Get all feedback in a list
+exports.getAllFeedback = async function(uname) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return null;
+  }
+
+  let db_res = await pool.query("select level_id, feedback from feedback where uname=$1;", [uname]);
+
+  if (!db_res.rows[0]) {
+    return null;
+  }
+
+  return db_res.rows;
 }
 
 exports.userTypeEnum = userTypeEnum;

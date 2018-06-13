@@ -91,6 +91,17 @@ router.get('/level_intro', async function(req, res, next) {
 
   let contextJSON = await util.getLevelData(levelName, 'ctx');
   let context = JSON.parse(contextJSON);
+  
+  let uname = req.cookies["edubot-cookie"];
+  let isStudent = await util.isStudent(uname);
+  
+  let studentId = req.query.studentId;
+  let viewingStudent = await util.isStudent(studentId);
+  
+  if (!isStudent && viewingStudent) {
+    context.show_solution = true;
+    context.student_id = studentId;
+  }
 
   if (context !== null && context !== undefined) {
     let uname = req.cookies["edubot-cookie"];
