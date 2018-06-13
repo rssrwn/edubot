@@ -1,7 +1,7 @@
 {
     "level_name": "Level 1 - Moving EduBot",
     "blocks_available": "../images/move_forward_block.png",
-    "objective": "Eat the single nuts and bolts",
+    "objectives": ["Learn how to program EduBot", "Eat the nuts and bolts!"],
     "hints": [
         "You program EduBot by dragging and dropping blocks into the space on the left of the screen. You can get EduBot to carry out your program by clicking run.",
         "Blocks are like puzzle pieces, you can connect them together to create more useful programs!",

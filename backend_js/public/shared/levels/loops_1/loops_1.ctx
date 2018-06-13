@@ -1,6 +1,6 @@
 {
     "level_name": "Level 4 - Basic Looping",
+    "objectives": ["Learn how to use a repeat loop", "Eat the four nuts and bolts using a loop"],
     "blocks_available": "../images/movement_blocks.png",
-    "objective": "Guide EduBot around the wall and eat the bolt",
     "level_image": "levels/loops_1/loops_1.png"
 }
