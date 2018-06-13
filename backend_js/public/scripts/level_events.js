@@ -26,10 +26,10 @@ var runCode = function(e) {
     simpleRunButton.style.pointerEvents = "none";
     
     // Block highlighting
-    //Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
-    //Blockly.JavaScript.addReservedWords('highlightBlock');
+    Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
+    Blockly.JavaScript.addReservedWords('highlightBlock');
     
-    let our_code = "runningCommands = false";
+    let our_code = "runningCommands = false;";
           
     let code = Blockly.JavaScript.workspaceToCode(workspace);
     code = "async function evalCode() {" + code + our_code + "}; evalCode();";
