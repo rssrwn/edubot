@@ -141,12 +141,10 @@ router.get('/play', async function(req, res, next) {
   console.log('levelANem: ', levelName);
 
   let sol = await db.getTempSol(uname, levelName);
-  if (sol) {
-    context.json_level = sol;
-  }
+  context.json_solution = sol;
 
   console.log('sol: ', sol);
-  console.log('json_level: ', context.json_level);
+  console.log('json_level: ', context.json_solution);
 
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
     context.json_level = jsonLevel;
@@ -154,7 +152,7 @@ router.get('/play', async function(req, res, next) {
     util.getLevelData(levelName, 'blocks').then(xmlBlocks => {
       context.xml_blocks = xmlBlocks;
 
-      console.log('json_level: ', context.json_level);
+      console.log('json_level: ', context.json_solution);
       res.render('shared/play', context);
     }).catch((error) => next(error));
   }).catch((error) => next(error));
