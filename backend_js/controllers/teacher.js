@@ -75,7 +75,7 @@ router.get('/student', async function(req, res, next) {
     }
   }*/
 
-  res.render('teacher/level_select', context);
+  res.render('shared/level_select', context);
 });
 
 router.get('/solution', async function(req, res, next) {
