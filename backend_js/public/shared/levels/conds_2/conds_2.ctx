@@ -1,6 +1,6 @@
 {
     "level_name": "Level 8 - Loop Conditions",
+    "objectives": ["Use looping to move around the obstacles", "Guide EduBot to eat the nuts and bolts"],
     "blocks_available": "../images/movement_blocks.png",
-    "objective": "Guide EduBot around the wall and eat the bolt",
     "level_image": "../images/intro_3.png"
 }

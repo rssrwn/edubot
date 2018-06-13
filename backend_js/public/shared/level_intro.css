@@ -9,10 +9,14 @@ li {
 .titles {
   display: block;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 80px;
   margin-bottom: 20px;
   width: 50%;
   text-align: center;
+}
+
+#levelDescriptionDiv {
+  margin-top: 40px;
 }
 
 #levelTitle {
@@ -22,38 +26,55 @@ li {
 
 .descriptionDiv {
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   width: 50%;
 }
 
-#levelDescriptionDiv {
-  float: left;
+.infoList {
+  margin-left: 16px;
 }
 
-.infoList {
-  list-style-type: none;
+#imagesDiv {
+  display: inline-flex;
+  align-items: center;
+}
+
+.imageDivs {
+  width: 48%;
+  text-align: center;
+}
+
+#blocksDiv {
+  float: left;
 }
 
 #blocksImage {
   margin-top: 30px;
-  margin-left: 0px;
   width: 100%;
 }
 
-#levelImage {
-  margin-top: 30px;
+#levelImageDiv {
   float: right;
-  width: 40%;
+}
+
+#levelImage {
+  width: 100%;
 }
 
 #levelButtonsDiv {
   display: table;
   margin: 0 auto;
-  margin-bottom: 25px;
+  margin-bottom: 100px;
+  margin-top: 70px;
 }
 
 .levelButton {
   margin: 0 15px;
   width: 150px;
   height: 50px;
+}
+
+.previewCaptions {
+  margin-top: 10px;
+  font-weight: bold;
 }

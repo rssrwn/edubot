@@ -1,6 +1,6 @@
 {
     "level_name": "Level 5 - Looping with Rotation",
+    "objectives": ["Use a repeat loop with rotation", "Eat the four nuts and bolts"],
     "blocks_available": "../images/movement_blocks.png",
-    "objective": "Guide EduBot around the wall and eat the bolt",
     "level_image": "levels/loops_2/loops_2.png"
 }
