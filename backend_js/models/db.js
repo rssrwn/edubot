@@ -446,8 +446,27 @@ exports.getTempSol = async function(uname, level) {
     return null;
   }
 
-  //let
-  return null;
+  let level_id = await exports.getLevelId(level);
+
+  let db_res = await pool.query("select solution from temp_sol where uname=$1 and level_id=$2;", [uname, level_id]);
+  if (db_res.rows[0]) {
+    return db_res.rows[0].solution;
+  } else {
+    return null;
+  }
+}
+
+exports.setTempSol = async function(uname, level, solution) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return -1;
+  }
+
+  let level_id = await exports.getLevelId(level);
+
+  await pool.query("delete from temp_sol where uname=$1 and level_id=$2;", [uname, level_id]);
+
+  let db_res = await pool.query("insert into temp_sol")
 }
 
 exports.userTypeEnum = userTypeEnum;

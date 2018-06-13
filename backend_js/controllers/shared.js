@@ -124,10 +124,10 @@ router.get('/play', async function(req, res, next) {
 
   if (context.student_id != null) {
     let sol = await db.getSolution(studentId, levelName);
-    
+
     if (isStudent && !tutorial) {
       let hasFeedback = await util.hasFeedback(uname, levelName);
-      
+
       if (hasFeedback) {
         context.display_feedback = true;
       }
@@ -182,6 +182,14 @@ router.get('/all_feedback', async function(req, res, next) {
 
   let feedback = await db.getAllFeedback(uname);
   res.send(feedback);
+});
+
+router.post('/temp_sol', async function(req, res, next) {
+  res.sendStatus(200);
+});
+
+router.get('/temp_sol', async function(req, res, next) {
+  res.sendStatus(200);
 });
 
 module.exports = router;
