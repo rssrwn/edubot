@@ -6,17 +6,17 @@ li {
   margin-bottom: 20px;
 }
 
-#levelDescriptionDiv {
-  margin-top: 80px;
-}
-
 .titles {
   display: block;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 80px;
   margin-bottom: 20px;
   width: 50%;
   text-align: center;
+}
+
+#levelDescriptionDiv {
+  margin-top: 40px;
 }
 
 #levelTitle {
