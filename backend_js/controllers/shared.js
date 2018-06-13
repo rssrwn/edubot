@@ -137,6 +137,11 @@ router.get('/play', async function(req, res, next) {
     }
   }
 
+  let sol = await db.getTempSol(uname, levelName);
+  if (sol) {
+    context.json_level = sol;
+  }
+
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
     context.json_level = jsonLevel;
 
@@ -187,24 +192,12 @@ router.post('/temp_sol', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   const body = req.body;
 
-  console.log('post temp sol');
   let status = await db.setTempSol(uname, body.level, body.solution);
-  console.log('status: ', status);
   if (status !== 0) {
     res.status(500).send("Unknown error");
   } else {
     res.sendStatus(200);
   }
-});
-
-router.get('/temp_sol', async function(req, res, next) {
-  let uname = req.cookies["edubot-cookie"];
-  let level = req.query.level;
-
-  console.log('get temp sol');
-
-  let sol = await db.getTempSol(uname, level);
-  res.send(sol);
 });
 
 module.exports = router;
