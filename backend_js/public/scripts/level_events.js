@@ -5,6 +5,17 @@ var workspace = Blockly.inject("blocklyWorkspaceDiv",
 
 var highlightedId = null;
 
+Blockly.BlockSvg.prototype.setHighlighted = function(highlighted) {
+  if (!this.rendered) {
+    return;
+  }
+  if (highlighted) {
+    this.addSelect();
+  } else {
+    this.removeSelect();
+  }
+};
+
 var highlightBlock = function(id) {
   highlightedId = id;
   workspace.highlightBlock(id);
