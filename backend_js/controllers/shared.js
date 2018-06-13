@@ -117,7 +117,7 @@ router.get('/play', async function(req, res, next) {
     
     if (sol != null) {
       context.json_solution = sol;
-      content.display_feedback = true;
+      context.display_feedback = true;
     }
   }
 
