@@ -115,18 +115,19 @@ router.get('/level_intro', async function(req, res, next) {
 
 router.get('/play', async function(req, res, next) {
   let levelName = req.query.levelId;
+  let studentId = req.query.studentId;
   let uname = req.cookies["edubot-cookie"];
   let isStudent = await util.isStudent(uname);
   let tutorial = levelName === "intro_1" && isStudent;
-  let context = {student: isStudent, tutorial: tutorial, levelName: levelName};
+  let context = {student: isStudent, tutorial: tutorial, levelName: levelName, student_id: studentId};
 
-  context.student_id = req.query.studentId;
-
-  if (context.student_id != null) {
+  if (studentId != null) {
     let sol = await db.getSolution(studentId, levelName);
     
+    console.log("sol: " + sol);
     if (isStudent && !tutorial) {
       let hasFeedback = await util.hasFeedback(uname, levelName);
+      console.log("hasFeedback: " + hasFeedback);
       
       if (hasFeedback) {
         context.display_feedback = true;
@@ -137,6 +138,13 @@ router.get('/play', async function(req, res, next) {
       context.json_solution = sol;
     }
   }
+  
+  console.log("studentId: " + studentId);
+  console.log("levelName: " + levelName);
+  console.log("tutorial: " + tutorial);
+  console.log("uname: " + uname);
+  console.log("isStudent: " + isStudent);
+  console.log("context.display_feedback: " + context.display_feedback);
 
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
     context.json_level = jsonLevel;
