@@ -1,5 +1,4 @@
 {
-    "student": false,
     "level_name": "Level 3 - Obstacles",
     "blocks_available": "../images/movement_blocks.png",
     "objective": "Guide EduBot around the wall and eat the bolt",

@@ -80,7 +80,7 @@ function getDimension(value) {
 }
 
 function saveLevel() {
-	saverField.value = JSON.stringify(level);
+	saverField.value = JSON.stringify(level, null, 2);
 }
 
 var canvasResize = function(e) {
