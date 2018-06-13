@@ -26,16 +26,12 @@ li {
   width: 50%;
 }
 
-#levelDescriptionDiv {
-  /* float: left; */
-}
-
 .infoList {
-  list-style-type: none;
+  margin-left: 16px;
 }
 
 .imageDivs {
-  width: 45%;
+  width: 48%;
   text-align: center;
 }
 
@@ -49,9 +45,7 @@ li {
 }
 
 #levelImageDiv {
-  margin-top: 30px;
   float: right;
-  width: 40%;
 }
 
 #levelImage {
