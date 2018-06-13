@@ -22,12 +22,17 @@ li {
 
 .descriptionDiv {
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   width: 50%;
 }
 
 .infoList {
   margin-left: 16px;
+}
+
+#imagesDiv {
+  display: inline-flex;
+  align-items: center;
 }
 
 .imageDivs {

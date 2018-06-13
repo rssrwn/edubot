@@ -30,19 +30,20 @@
             {{/each}}
           </ul>
         </p>
-        
-        <div id="blocksDiv" class="imageDivs">
+        <div id="imagesDiv">
+          <div id="blocksDiv" class="imageDivs">
+              <figure>
+                <img id="blocksImage" src={{blocks_available}} alt="Available blocks"></img>
+                <figcaption class="previewCaptions">Blocks Available</figcaption>
+              </figure>
+          </div>
+          
+          <div id="levelImageDiv" class="imageDivs">
             <figure>
-              <img id="blocksImage" src={{blocks_available}} alt="Available blocks"></img>
-              <figcaption class="previewCaptions">Blocks Available</figcaption>
+              <img id="levelImage" src="{{level_image}}"/>
+              <figcaption class="previewCaptions">Level Preview</figcaption>
             </figure>
-        </div>
-        
-        <div id="levelImageDiv" class="imageDivs">
-          <figure>
-            <img id="levelImage" src="{{level_image}}"/>
-            <figcaption class="previewCaptions">Level Preview</figcaption>
-          </figure>
+          </div>
         </div>
       </div>
 
