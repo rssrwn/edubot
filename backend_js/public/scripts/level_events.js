@@ -29,9 +29,7 @@ var saveBlocks = function(e) {
   if (e.type !== "ui") {
     let xml = getBlockXML();
     
-    httpPost("https://edubot-learn.herokuapp.com/shared/temp_sol", {level: this.levelId, solution: xml}, function(status) {
-      
-    });
+    //TODO httpPost("https://edubot-learn.herokuapp.com/shared/temp_sol", {level: this.levelId, solution: xml}, function(status) {});
   }
 }
 workspace.addChangeListener(saveBlocks);
