@@ -1,12 +1,6 @@
 {
     "student": false,
-    "concept": "Introduction",
-    "concept_description": [
-        "Hey there! Welcome to the land of EduBot! In this first set of levels, we're going to introduce you to the basics of how to guide EduBot.",
-        "You see, EduBot is a hungry critter, constantly on the search for more nuts and bolts to consume.",
-        "We'll show you how to get EduBot moving and get it started on its search for food!"
-    ],
-    "level_name": "Level 1 - Basic Movement",
+    "level_name": "Level 1 - Moving EduBot",
     "blocks_available": "../images/move_forward_block.png",
     "objective": "Eat the single bolt",
     "hints": [

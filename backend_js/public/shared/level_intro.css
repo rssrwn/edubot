@@ -1,9 +1,9 @@
 p {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 li {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .titles {
@@ -28,6 +28,10 @@ li {
 
 #levelDescriptionDiv {
   float: left;
+}
+
+.infoList {
+  list-style-type: none;
 }
 
 #blocksImage {
