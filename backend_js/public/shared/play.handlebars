@@ -8,6 +8,8 @@
   <link rel="stylesheet" type="text/css" href="../shared/banner.css">
   <link rel="stylesheet" type="text/css" href="../shared/play.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script src="../lib/blockly/blockly_compressed.js"></script>
   <script src="../lib/blockly/blocks_compressed.js"></script>
@@ -34,6 +36,9 @@
           <img src="../images/restart.png" id="simpleRestartButton" class="simpleControl" alt="Restart"/>
           <img src="../images/hint.png" id="simpleHintButton" class="simpleControl" alt="Show Hint"/>
           <img src="../images/intro.png" id="simpleIntroButton" class="simpleControl" alt="Intro" onclick="window.location = 'https://edubot-learn.herokuapp.com/shared/level_intro?levelId=' + '{{levelName}}'"/>
+          {{#if display_feedback}}
+          <img src="../images/feedback.png" id="simpleFeedbackButton" class="simpleControl" alt="Feedback" onclick="giveFeedback()"/>
+          {{/if}}
         </div>
         
         <div id="blocklyWorkspaceDiv"></div>

@@ -70,6 +70,25 @@ function restart(e) {
 document.getElementById("restartButton").addEventListener("click", restart);
 document.getElementById("simpleRestartButton").addEventListener("click", restart);
 
+function giveFeedback() {
+  $("#simpleFeedbackButton").css("display", "none");
+
+  var submitButton = $("<button type='button' id='submitFeedbackButton' onclick='submitFeedback()'>Give Feedback</button>");
+  var textInput = $("<input type='text' class='submitFeedbackInput'></input>");
+
+  $("#simpleFeedbackButton").parent().append(textInput);
+  $("#simpleFeedbackButton").parent().append(submitButton);
+}
+
+function submitFeedback() {
+  $("#simpleFeedbackButton").css("display", "");
+  
+  console.log($("#submitFeedbackInput").text());
+  
+  $("#submitFeedbackButton").remove();
+  $("#submitFeedbackInput").remove();
+}
+
 var blocklyResize = function(e) {
   let element = blocklyDiv;
   let x = 0;
