@@ -5,6 +5,21 @@ var workspace = Blockly.inject("blocklyWorkspaceDiv",
 
 var highlightedId = null;
 
+Blockly.BlockSvg.prototype.setHighlighted = function(highlighted) {
+  if (!this.rendered) {
+    return;
+  }
+  if (highlighted) {
+    this.addSelect();
+    this.svgPath_.setAttribute('filter', 'url(#' + this.workspace.options.embossFilterId + ')');
+    this.svgPathLight_.style.display = 'none';
+  } else {
+    this.removeSelect();
+    Blockly.utils.removeAttribute(this.svgPath_, 'filter');
+    delete this.svgPathLight_.style.display;
+  }
+};
+
 var highlightBlock = function(id) {
   highlightedId = id;
   workspace.highlightBlock(id);

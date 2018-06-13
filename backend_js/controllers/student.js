@@ -43,6 +43,13 @@ router.get('/level_selection', async function(req, res, next) {
   }*/
 
   let categories = await db.getAllLevels(uname);
+  
+  categories.foreach(cat => {
+    cat.student = true;
+    cat.levels.foreach(level => {
+      level.student = true;
+    });
+  });
 
   var context = {
     student: true,
