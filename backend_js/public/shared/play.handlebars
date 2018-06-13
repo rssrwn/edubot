@@ -31,6 +31,13 @@
     {{/if}}
     <div id="contentDiv">
       <div id="blocklyDiv">
+        <div id='feedbackZone'>
+          <textarea id='feedbackTextArea' rows='4' cols='65'></textarea>
+          <br>
+          <button type='button' onclick='submitFeedback()'>Give Feedback</button>
+        </div>
+        
+        
         <div id="simpleControlsDiv" class="noSelect">
           <img src="../images/run.png" id="simpleRunButton" class="simpleControl" alt="Run"/>
           <img src="../images/restart.png" id="simpleRestartButton" class="simpleControl" alt="Restart"/>
@@ -92,13 +99,20 @@
   {{/if}}
   
   <script>
-  let feedbackZone = $("<div id='feedbackZone'><textarea id='feedbackTextArea' rows='4' cols='65'></textarea><br><button type='button' onclick='submitFeedback()'>Give Feedback</button></div>")
-
-  function giveFeedback() {
-    $("#simpleFeedbackButton").css("display", "none");
-    $("#blocklyDiv").prepend(feedbackZone);
+  function getFeedback() {
+    httpGet("https://edubot-learn.herokuapp.com/shared/feedback", {uname: "{{{student_id}}}", level: "{{{levelName}}}"}, getFeedbackCallback);
   }
 
+  function getFeedbackCallback(feedback) {
+    feedback = $("#feedbackTextArea").val(feedback)
+  }
+  
+  function giveFeedback() {
+    getFeedback();
+    $("#simpleFeedbackButton").css("display", "none");
+    $("#feedbackZone").css("display", "table");
+  }
+  
   function submitFeedback() {
     let feedback = $("#feedbackTextArea").val();
     
@@ -117,7 +131,7 @@
       }
     });
     $("#simpleFeedbackButton").css("display", "");
-    $("#feedbackZone").remove();
+    $("#feedbackZone").css("display", "none");
   }
   </script>
 </body>

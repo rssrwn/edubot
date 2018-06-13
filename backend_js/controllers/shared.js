@@ -164,7 +164,7 @@ router.get('/curr_level', async function(req, res, next) {
 
 router.get('/feedback', async function(req, res, next) {
   let uname = req.query.uname;
-  let level = req.query.levelId;
+  let level = req.query.level;
 
   let feedback = await db.getFeedback(uname, level);
   res.send(feedback);
