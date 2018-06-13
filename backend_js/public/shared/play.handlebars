@@ -34,6 +34,9 @@
           <img src="../images/restart.png" id="simpleRestartButton" class="simpleControl" alt="Restart"/>
           <img src="../images/hint.png" id="simpleHintButton" class="simpleControl" alt="Show Hint"/>
           <img src="../images/intro.png" id="simpleIntroButton" class="simpleControl" alt="Intro" onclick="window.location = 'https://edubot-learn.herokuapp.com/shared/level_intro?levelId=' + '{{levelName}}'"/>
+          {{#if display_feedback}}
+          <img src="../images/feedback.png" id="simpleFeedbackButton" class="simpleControl" alt="Feedback"/>
+          {{/if}}
         </div>
         
         <div id="blocklyWorkspaceDiv"></div>
