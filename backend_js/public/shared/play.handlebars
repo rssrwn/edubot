@@ -32,9 +32,9 @@
     <div id="contentDiv">
       <div id="blocklyDiv">
         <div id='feedbackZone'>
-          <textarea id='feedbackTextArea' rows='4' cols='65'></textarea>
+          <textarea id='feedbackTextArea' rows='4' cols='65' {{#if student}}readonly{{/if}}></textarea>
           <br>
-          <button type='button' onclick='submitFeedback()' {{#if student}}readonly{{/if}}>{{#if student}}Hide{{else}}Give{{/if}} Feedback</button>
+          <button type='button' onclick='submitFeedback()'>{{#if student}}Hide{{else}}Give{{/if}} Feedback</button>
         </div>
         
         <div id="simpleControlsDiv" class="noSelect">
