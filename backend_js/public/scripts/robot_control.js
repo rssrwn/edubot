@@ -116,6 +116,8 @@ Robot.prototype.added = function () {
   }
   
   level.robot = this;
+  this.prevLoc = new Point(this.loc.x, this.loc.y);
+  this.curDir = 0;
 }
 
 Robot.prototype.removed = function () {
@@ -133,8 +135,6 @@ Robot.prototype.loaded = function () {
 }
 
 // Robot actions
-
-var counter = 0;
 
 function progressConvert(x) {
   //(1 / (1 + e^-(10(x - 0.5))) 
@@ -167,25 +167,23 @@ Robot.prototype.startAction = function() {
 }
 
 Robot.prototype.moveForward = function() {
-  let x = counter;
-  counter++;
+  this.actionsTaken++;
   this.startAction();
   this.setLocation(DirProperties[this.dir].moveForward(this.loc));
-  this.actionsTaken++;
 }
 
 Robot.prototype.rotateRight = function() {
+  this.actionsTaken++;
   this.startAction();
   this.dir = DirProperties[this.dir].rotateRight;
   this.curDir = 1;
-  this.actionsTaken++;
 }
 
 Robot.prototype.rotateLeft = function() {
+  this.actionsTaken++;
   this.startAction();
   this.dir = DirProperties[this.dir].rotateLeft;
   this.curDir = -1;
-  this.actionsTaken++;
 }
 
 // Conditionals
