@@ -25,10 +25,16 @@ var highlightBlock = function(id) {
   workspace.highlightBlock(id);
 }
 
+var saveBlocks = function(e) {
+  if (e.type !== "ui") {
+    let xml = getBlockXML();
+    
+    //TODO httpPost("https://edubot-learn.herokuapp.com/shared/temp_sol", {level: this.levelId, solution: xml}, function(status) {});
+  }
+}
+workspace.addChangeListener(saveBlocks);
+
 var generateCode = function(e) {
-  console.log("Change !");
-  console.log(e);
-  console.log(e.type);
   let code = Blockly.JavaScript.workspaceToCode(workspace);
   document.getElementById("code").value = code;
 };

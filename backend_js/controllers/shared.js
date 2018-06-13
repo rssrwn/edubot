@@ -115,14 +115,13 @@ router.get('/level_intro', async function(req, res, next) {
 
 router.get('/play', async function(req, res, next) {
   let levelName = req.query.levelId;
+  let studentId = req.query.studentId;
   let uname = req.cookies["edubot-cookie"];
   let isStudent = await util.isStudent(uname);
   let tutorial = levelName === "intro_1" && isStudent;
-  let context = {student: isStudent, tutorial: tutorial, levelName: levelName};
+  let context = {student: isStudent, tutorial: tutorial, levelName: levelName, student_id: studentId};
 
-  context.student_id = req.query.studentId;
-
-  if (context.student_id != null) {
+  if (studentId != null) {
     let sol = await db.getSolution(studentId, levelName);
 
     if (isStudent && !tutorial) {
