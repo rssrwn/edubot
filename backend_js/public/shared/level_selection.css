@@ -105,7 +105,8 @@
 
 .feedbackImage {
   height: 20px;
-  margin-left: 10px;
+  margin-left: 20px;
+  vertical-align: middle;
 }
 
 .feedbackText {
