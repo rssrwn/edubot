@@ -51,6 +51,12 @@
 
 #blocksFigure {
   float: left;
+  margin: auto;
+}
+
+#previewFigure {
+  float: right;
+  margin: auto;
 }
 
 #blocksList {
@@ -65,7 +71,8 @@
 }
 
 #previewDiv {
-  
+  display: inline-flex;
+  align-items: center;
 }
 
 .blocksImage {
