@@ -70,7 +70,7 @@ exports.getUserInfo = async function(uname) {
   }
 
   var db_res = await pool.query("select uname, fname, lname, age, sch_id, type, name as sch_name from users natural join school where uname=$1;", [uname]);
-  console.log(db_res.rows);
+  //console.log(db_res.rows);
   if (db_res.rows[0].type === 1) {
     db_res.rows[0].type = 'Student';
   } else if (db_res.rows[0].type === 2) {
@@ -284,8 +284,6 @@ exports.getSolution = async function(uname, level) {
 
   let levelId = await exports.getLevelId(level);
   let db_res = await pool.query("select solution from student_level where uname=$1 and level_id=$2;", [uname, levelId]);
-
-  console.log('student solution: ', db_res.rows[0].solution);
 
   if (db_res.rows[0]) {
     return db_res.rows[0].solution;
@@ -501,15 +499,7 @@ exports.setTempSol = async function(uname, level, solution) {
 
   let level_id = await exports.getLevelId(level);
 
-  //console.log("set temp sol");
-
-  //await pool.query("delete from temp_sol where uname=$1 and level_id=$2;", [uname, level_id]);
-
-  //console.log("deleted old feedback");
-
   let db_res = await pool.query("insert into temp_sol values ($1, $2, $3) on conflict(uname, level_id) do update set solution=$3;", [uname, level_id, solution]);
-
-  //let db_res = await pool.query("update temp_sol set solution=$3 where uname=$1 and level_id=$2;", [uname, level_id, solution]);
 
   return 0;
 }
