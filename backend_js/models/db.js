@@ -505,9 +505,9 @@ exports.setTempSol = async function(uname, level, solution) {
 
   //console.log("deleted old feedback");
 
-  //let db_res = await pool.query("insert into temp_sol values ($1, $2, $3);", [uname, level_id, solution]);
+  let db_res = await pool.query("insert into temp_sol values ($1, $2, $3) on conflict(uname, level_id) do update set solution=$3;", [uname, level_id, solution]);
 
-  let db_res = await pool.query("update temp_sol set solution=$3 where uname=$1 and level_id=$2;", [uname, level_id, solution]);
+  //let db_res = await pool.query("update temp_sol set solution=$3 where uname=$1 and level_id=$2;", [uname, level_id, solution]);
 
   return 0;
 }
