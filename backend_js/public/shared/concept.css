@@ -75,7 +75,13 @@
   align-items: center;
 }
 
-.blocksImage {
+#blocksImage {
+  display: block;
+  width: 75%;
+  margin: auto;
+}
+
+#programImage {
   display: block;
   height: 250px;
   margin: auto;
