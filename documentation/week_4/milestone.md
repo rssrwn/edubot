@@ -1,6 +1,6 @@
 ## Objective Evaluation
 
-* Number of successful student interactions with EduBot
+* She told 5 randomly selected students to complete levels 1-3
 
 ## Cover Story Mock-up
 
