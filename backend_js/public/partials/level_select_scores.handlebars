@@ -1,4 +1,4 @@
-<div class="levelDiv" id="levelDiv{{number}}" {{#unless locked}}class="unlockedLevelDiv" onclick="window.location = '{{link}}'" onmouseover="showFeedbackText('#levelDiv{{number}}')" onmouseout="hideFeedbackText('#levelDiv{{number}}')"{{/unless}}>
+<div id="levelDiv{{number}}" {{#if locked}}class="levelDiv"{{else}}class="levelDiv unlockedLevelDiv" onclick="window.location = '{{link}}'" onmouseover="showFeedbackText('#levelDiv{{number}}')" onmouseout="hideFeedbackText('#levelDiv{{number}}')"{{/if}}>
   <span class="nameDiv">
     {{#if locked}}
     <span class="inlineDiv">
