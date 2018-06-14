@@ -158,6 +158,7 @@ GridLevel.prototype.levelCompleted = async function() {
 
     draw();
     await sleep(robotStepTime);
+    clearTimeout(executionTimeoutId);
     displayAlert("You Won!", "", function() {
       var thisLevel = level.levelId;
       var nextLevel = level.nextLevelId;
