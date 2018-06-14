@@ -24,11 +24,11 @@
 
 #whatsNewTitle {
   margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .titles {
   margin: auto;
-  margin-bottom: 40px;
   border-bottom: 1px solid black;
 }
 
@@ -73,11 +73,12 @@
 #previewDiv {
   display: inline-flex;
   align-items: center;
+  width: 100%;
 }
 
 #blocksImage {
   display: block;
-  width: 75%;
+  width: 90%;
   margin: auto;
 }
 
