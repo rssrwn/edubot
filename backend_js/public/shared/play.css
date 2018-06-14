@@ -23,8 +23,9 @@
   position: fixed;
   z-index: 100;
   bottom: 100px;
-  width: 50%;
+  width: calc(50% - 171px);
   text-align: center;
+  margin-left: 171px;
 }
 
 #feedbackTextArea {
