@@ -384,7 +384,7 @@ exports.getAllLevels = async function(uname) {
     delete cat.cat_id;
     cat.levels = levels;
 
-    console.log(cat);
+    //console.log(cat);
   }
 
   return cats;
