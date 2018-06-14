@@ -39,10 +39,13 @@ exports.hasFeedback = async function(uname, level) {
   let feedback = await db.getAllFeedback(uname);
 
   let res = false;
-  for (var i=0; i<feedback.length; i++) {
-    let level = feedback[i];
-    if (level.level_id === level_id) {
-      res = true;
+  
+  if (feedback) {
+    for (var i=0; i<feedback.length; i++) {
+      let level = feedback[i];
+      if (level.level_id === level_id) {
+        res = true;
+      }
     }
   }
   return res;
