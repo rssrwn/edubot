@@ -16,7 +16,7 @@ var displayAlert = function(title, text) {
   alertTitle.innerHtml = title;
   alertText.innerHtml = text;
   alertWrapper.style.display = "flex";
-  dimmer.style.display = "auto";
+  dimmer.style.display = "block";
 }
 
 var closeAlert = function(e) {
@@ -65,6 +65,9 @@ let simpleRunButton = document.getElementById("simpleRunButton");
 var runCode = function(e) {
   if (workspace.getAllBlocks().length == 0) {
     return;
+  }
+  if (Blockly.selected) {
+    Blockly.selected.unselect();
   }
   if (true || !runningCommands) {
     runningCommands = true;
