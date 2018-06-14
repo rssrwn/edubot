@@ -40,17 +40,24 @@
 
       var activeButton = null;
       
+      var hideActiveButton = function() {
+        $(activeButton.addButton).remove();
+        $(activeButton.textInput).remove();
+        activeButton.style.display = "inline-block";
+        activeButton = null;
+      };
+      
       var addMemberKeypress = function(event) {
         if (event.keyCode == 13) { // Press enter
           addMemberSubmitEvent();
+        } else if (event.keyCode == 27) { // Press escape
+          hideActiveButton();
         }
-      }
+      };
 
       var addMemberEvent = function(class_id, button) {
         if (activeButton) {
-          $(activeButton.addButton).remove();
-          $(activeButton.textInput).remove();
-          activeButton.style.display = "inline-block";
+          hideActiveButton();
         }
         activeButton = button;
         activeButton.class_id = class_id;
@@ -75,10 +82,7 @@
         //httpPost('https://edubot-backend.herokuapp.com/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
         //httpPost('http://localhost:3000/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
 
-        $(activeButton.addButton).remove();
-        $(activeButton.textInput).remove();
-        activeButton.style.display = "inline-block";
-        activeButton = null;
+        hideActiveButton();
       };
 
       var addMemberCallback = function(status) {
@@ -107,14 +111,14 @@
       var addClassKeypress = function(event) {
         if (event.keyCode == 13) { // Press enter
           addClassSubmitEvent();
+        } else if (event.keyCode == 27) { // Press escape
+          hideActiveButton();
         }
-      }
+      };
 
       var addClassEvent = function(button) {
         if (activeButton) {
-          $(activeButton.addButton).remove();
-          $(activeButton.textInput).remove();
-          activeButton.style.display = "inline-block";
+          hideActiveButton();
         }
         activeButton = button;
 
@@ -128,7 +132,7 @@
 
         $(button).parent().append(textInput);
         $(button).parent().append(submitButton);
-      }
+      };
 
       var addClassSubmitEvent = function() {
         let class_name = activeButton.textInput.value;
@@ -138,10 +142,7 @@
         //httpPost('https://edubot-backend.herokuapp.com/teacher/add_class', {name: class_name}, addClassCallback);
         //httpPost('http://localhost:3000/teacher/add_member', {uname: uname, class_id: class_id}, addMemberCallback);
 
-        $(activeButton.addButton).remove();
-        $(activeButton.textInput).remove();
-        activeButton.style.display = "inline-block";
-        activeButton = null;
+        hideActiveButton();
       };
 
       var addClassCallback = function(status) {
