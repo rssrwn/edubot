@@ -15,11 +15,14 @@
   height: auto;
 }
 
+#descriptionDiv {
+  padding-top: 20px;
+}
 
 #wrapperDiv {
   margin: auto;
   margin-top: 50px;
-  width: 40%;
+  width: 50%;
 }
 
 #whatsNewTitle {
@@ -47,6 +50,7 @@
 
 #blocksDiv {
   display: inline-flex;
+  margin-bottom: 20px;
 }
 
 #blocksFigure {
@@ -78,7 +82,7 @@
 
 #blocksImage {
   display: block;
-  width: 90%;
+  width: 100%;
   margin: auto;
 }
 
