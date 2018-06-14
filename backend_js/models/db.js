@@ -499,13 +499,16 @@ exports.setTempSol = async function(uname, level, solution) {
 
   let level_id = await exports.getLevelId(level);
 
-  console.log("set temp sol");
+  //console.log("set temp sol");
 
-  await pool.query("delete from temp_sol where uname=$1 and level_id=$2;", [uname, level_id]);
+  //await pool.query("delete from temp_sol where uname=$1 and level_id=$2;", [uname, level_id]);
 
-  console.log("deleted old feedback");
+  //console.log("deleted old feedback");
 
-  let db_res = await pool.query("insert into temp_sol values ($1, $2, $3);", [uname, level_id, solution]);
+  //let db_res = await pool.query("insert into temp_sol values ($1, $2, $3);", [uname, level_id, solution]);
+
+  let db_res = await pool.query("update temp_sol set solution=$3 where uname=$1 and level_id=$2;", [uname, level_id, solution]);
+
   return 0;
 }
 
