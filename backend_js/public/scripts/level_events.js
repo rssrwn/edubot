@@ -53,6 +53,7 @@ var highlightBlock = function(id) {
 var saveBlocks = function(e) {
   if (e.type !== "ui") {
     let xml = getBlockXML();
+    console.log("Save Level ID: " + level.levelId);
     httpPost("https://edubot-learn.herokuapp.com/shared/temp_sol", {level: level.levelId, solution: xml}, function(status) {});
   }
 }
