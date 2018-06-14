@@ -16,7 +16,6 @@
   display: table;
   height: 150px;
   margin: auto;
-  margin-bottom: 20px;
   padding: 0;
 }
 
@@ -55,6 +54,10 @@
 
 .formItem {
   margin: 7px auto;
+}
+
+input.formItem {
+  width: 100%;
 }
 
 #formDiv > label {

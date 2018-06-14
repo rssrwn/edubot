@@ -37,12 +37,6 @@ router.get('/student', async function(req, res, next) {
   let results = await db.getLevelResults(studentId);
   let currLevel = await db.getCurrLevel(studentId);
   let categories = await db.getAllLevels(studentId);
-  
-  // for (var i = 0; i < categories.length; i++) {
-  //   for (var j = 0; j < categories[i].length; j++) {
-  //     categories[i].levels[j].feedback = await util.hasFeedback(studentId, categories[i].levels[j].number);
-  //   }
-  // }
 
   let context = {
     feedback: true,
