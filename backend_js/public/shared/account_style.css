@@ -4,18 +4,24 @@
   max-width: 500px;
 }
 
-#wrapperDiv {
-  margin: auto;
-  margin-top: 100px;
-  margin-bottom: 150px;
-  width: 40%;
-}
-
 #pageTitle {
   margin: auto;
   margin-top: 80px;
   margin-bottom: 40px;
   width: 40%;
+}
+
+.accountDetailsDiv {
+  margin: 20px auto;
+  padding: 20px;
+  width: 40%;
+  border-radius: 25px;
+  background-color: #d2d2d2d2;
+  text-align: center;
+}
+
+.accountDetailsTitle {
+  font-size: 30px;
 }
 
 .accountTable {
