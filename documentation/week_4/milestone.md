@@ -1,10 +1,10 @@
 ## Objective Evaluation
 
 At the end of each day, we selected 3 arbitrary people (never choosing the same person twice) in the labs and asked them to create an account and complete levels 1-3 on EduBot. We then computed the average for each group and ended up with the following data:
-* Monday
-* Tuesday
-* Wednesday
-* Thursday
+* Monday: 3 min 20s
+* Tuesday: 3 min 40s (added tutorial)
+* Wednesday: 3 min 20s
+* Thursday: 3 min
 
 ## Cover Story Mock-up
 
