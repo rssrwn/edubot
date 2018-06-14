@@ -9,6 +9,8 @@
   <link rel="stylesheet" type="text/css" href="../shared/level_selection.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
   <div id="page">
@@ -17,6 +19,18 @@
     {{else}}
     {{> banners/teacher}}
     {{/if}}
+    
+    <script>
+      var showFeedbackText = function(id) {
+        $(id).find('.feedbackText').css('display', 'inline');
+        $(id).find('.feedbackImage').css('display', 'none');
+      };
+      
+      var hideFeedbackText = function(id) {
+        $(id).find('.feedbackText').css('display', 'none');
+        $(id).find('.feedbackImage').css('display', 'inline');
+      };
+    <script>
 
     <div id="contentDiv">
       <div id="selectionWrapperDiv">
@@ -33,16 +47,5 @@
       </div>
     </div>
   </div>
-  <script>
-    var showFeedbackText = function(id) {
-      $(id).find('.feedbackText').css('display', 'inline');
-      $(id).find('.feedbackImage').css('display', 'none');
-    };
-    
-    var hideFeedbackText = function(id) {
-      $(id).find('.feedbackText').css('display', 'none');
-      $(id).find('.feedbackImage').css('display', 'inline');
-    };
-  <script>
 </body>
 </html>

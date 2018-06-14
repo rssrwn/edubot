@@ -97,7 +97,7 @@ router.get('/level_intro', async function(req, res, next) {
 
   let studentId = req.query.studentId;
   let viewingStudent = await util.isStudent(studentId);
-  
+
   context.student_id = studentId;
 
   if (!isStudent && viewingStudent) {
@@ -157,9 +157,9 @@ router.get('/account', async function(req, res, next) {
   let isStudent = await util.isStudent(uname);
   let userInfo = await db.getUserInfo(uname);
   let name = userInfo.fname + " " + userInfo.lname;
-  
-  let context = {student: isStudent, uname: uname, name: name, age: userInfo.age, sch_id: userInfo.sch_id, sch_name: userInfo.sch_name};
-  
+
+  let context = {student: isStudent, uname: uname, name: name, age: userInfo.age, sch_id: userInfo.sch_id, sch_name: userInfo.sch_name, type: userInfo.type};
+
   res.render('shared/account', context);
 });
 
