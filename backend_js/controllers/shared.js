@@ -134,27 +134,26 @@ router.get('/play', async function(req, res, next) {
     res.status(401).send("You do not have permission to access this level");
   }
 
-  if (studentId != null) {
+  if (isStudent) {
     let sol = await db.getSolution(studentId, levelName);
 
-    if (isStudent && !tutorial) {
+    if (!tutorial) {
       let hasFeedback = await util.hasFeedback(uname, levelName);
+
+      console.log('hasFeedback: ', hasFeedback);
 
       if (hasFeedback) {
         context.display_feedback = true;
       }
     }
     if (sol != null && !tutorial) {
-      context.display_feedback = true;
       context.json_solution = sol;
+    } else {
+      let tempSol = await db.getTempSol(uname, levelName);
+      context.json_solution = tempSol;
     }
-  }
-
-  console.log('solution: ', context.json_solution);
-
-  if (isStudent) {
-    let sol = await db.getTempSol(uname, levelName);
-    context.json_solution = sol;
+  } else {
+    context.display_feedback = true;
   }
 
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
