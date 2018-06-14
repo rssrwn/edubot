@@ -1,6 +1,6 @@
 ## Objective Evaluation
 
-* She told 5 randomly selected students to complete levels 1-3
+We asked randomly selected students to complete levels 1-3 and measured how long it took them.
 
 ## Cover Story Mock-up
 
