@@ -36,9 +36,24 @@
       </ul-->
 
          </div>
+        
+        <div id="imagesDiv">
+          <div id="blocksDiv" class="imageDivs">
+              <figure>
+                <img id="newBlocksImage" src="{{new_blocks_image}}" alt="New blocks">
+                <figcaption class="previewCaptions">New Blocks!</figcaption>
+              </figure>
+          </div>
 
-        <div id="newBlocksDiv" class="descriptionDiv">
-          <img id="newBlocksImage" src="{{new_blocks_image}}" alt="New blocks">
+          <div id="levelImageDiv" class="imageDivs">
+            <figure>
+              <video width="400" height="400" autoplay loop>
+                <source src="{{preview_video}}" type="video/mp4">
+              Your browser does not support the video tag.
+              </video>
+              <figcaption class="previewCaptions">What's coming up</figcaption>
+            </figure>
+          </div>
         </div>
 
         <div id="levelButtonsDiv">

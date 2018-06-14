@@ -81,6 +81,7 @@ router.get('/concept', async function(req, res, next) {
 
   if (context !== null && context !== undefined) {
     let uname = req.cookies["edubot-cookie"];
+    context.concept_id = conceptName;
     context.student = await util.isStudent(uname);
     res.render('shared/concept', context);
   }
