@@ -24,7 +24,11 @@
   width: 100%;
   margin: 10px auto;
   margin-top: 30px;
+<<<<<<< HEAD
   max-width: 400px;
+=======
+  max-width: 300px;
+>>>>>>> fea5a0c78821b12360e3e81d98e58ca15ffcdf47
 }
 
 td, th {
