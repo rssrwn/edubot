@@ -125,6 +125,9 @@ router.get('/play', async function(req, res, next) {
   let tutorial = levelName === "intro_1" && isStudent;
   let context = {student: isStudent, tutorial: tutorial, levelName: levelName, student_id: studentId};
 
+  console.log('currLevel: ', currLevel);
+  console.log("thisLeveL: ", thisLeveL);
+
   if (thisLevel > currLevel) {
     res.status(401).send("You do not have permission to access this level");
   }
