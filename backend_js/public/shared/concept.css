@@ -69,7 +69,7 @@
   
 }
 
-#newBlocksImage {
+.blocksImage {
   display: block;
   height: 250px;
   margin: auto;

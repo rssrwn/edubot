@@ -41,24 +41,29 @@
         <div id="imagesDiv">
           <div id="blocksDiv">
               <figure id="blocksFigure">
-                <img id="newBlocksImage" src="{{new_blocks_image}}" alt="New blocks">
                 <figcaption class="previewCaptions">New Blocks!</figcaption>
+                <img class="blocksImage" src="{{new_blocks_image}}" alt="New blocks">
               </figure>
               
               <ul id="blocksList">
                 {{#each new_blocks_points}}
-                  <li class="">{{this}}</li>
+                  <li class="blocksPoints">{{this}}</li>
                 {{/each}}
             </ul>
           </div>
 
           <div id="previewDiv">
+            <figure id="blocksFigure">
+              <figcaption class="previewCaptions">Example Program<figcaption>
+              <img class="blocksImage" src="{{preview_program}}" alt="Example program">
+            </figure>
+            
             <figure>
+              <figcaption class="previewCaptions">Program In Action</figcaption>
               <video width="250" height="250" autoplay loop>
                 <source src="{{preview_video}}" type="video/mp4">
               Your browser does not support the video tag.
               </video>
-              <figcaption class="previewCaptions">What's coming up</figcaption>
             </figure>
           </div>
         </div>
