@@ -57,7 +57,6 @@ var saveBlocks = function(e) {
     httpPost("https://edubot-learn.herokuapp.com/shared/temp_sol", {level: level.levelId, solution: xml}, function(status) {});
   }
 }
-workspace.addChangeListener(saveBlocks);
 
 var generateCode = function(e) {
   let code = Blockly.JavaScript.workspaceToCode(workspace);

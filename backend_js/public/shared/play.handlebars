@@ -112,6 +112,10 @@
   {{/if}}
 
   <script>
+  {{#if student}}
+  workspace.addChangeListener(saveBlocks);
+  {{/if}}
+  
   function giveFeedback() {
     httpGet("https://edubot-learn.herokuapp.com/shared/feedback?uname={{{student_id}}}&level={{{levelName}}}", function(feedback) {
       feedback = $("#feedbackTextArea").val(feedback);

@@ -6,7 +6,6 @@
   <title>EduBot</title>
   <link rel="stylesheet" type="text/css" href="base_style.css">
   <link rel="stylesheet" type="text/css" href="banner.css">
-  <!--link rel="stylesheet" type="text/css" href="level_intro.css"-->
   <link rel="stylesheet" type="text/css" href="concept.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
@@ -40,20 +39,31 @@
          <h2 id="whatsNewTitle" class="titles">What to expect</h2>
         
         <div id="imagesDiv">
-          <div id="blocksDiv" class="imageDivs">
-              <figure>
-                <img id="newBlocksImage" src="{{new_blocks_image}}" alt="New blocks">
+          <div id="blocksDiv">
+              <figure id="blocksFigure">
                 <figcaption class="previewCaptions">New Blocks!</figcaption>
+                <img class="blocksImage" src="{{new_blocks_image}}" alt="New blocks">
               </figure>
+              
+              <ul id="blocksList">
+                {{#each new_blocks_points}}
+                  <li class="blocksPoints">{{this}}</li>
+                {{/each}}
+            </ul>
           </div>
 
-          <div id="previewDiv" class="imageDivs">
+          <div id="previewDiv">
+            <figure id="blocksFigure">
+              <figcaption class="previewCaptions">Example Program<figcaption>
+              <img class="blocksImage" src="{{preview_program}}" alt="Example program">
+            </figure>
+            
             <figure>
+              <figcaption class="previewCaptions">Program In Action</figcaption>
               <video width="250" height="250" autoplay loop>
                 <source src="{{preview_video}}" type="video/mp4">
               Your browser does not support the video tag.
               </video>
-              <figcaption class="previewCaptions">What's coming up</figcaption>
             </figure>
           </div>
         </div>
