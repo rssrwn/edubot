@@ -142,6 +142,11 @@ canvas {
   z-index: 104;
 }
 
+.centerDiv {
+  width: 100%;
+  text-align: center;
+}
+
 #alertWrapperDiv {
   position: absolute;
   width: 100%;
@@ -157,4 +162,6 @@ canvas {
   max-width: 250px;
   z-index: 105;
   padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #e68119;
 }
