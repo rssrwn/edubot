@@ -154,7 +154,7 @@ GridLevel.prototype.levelCompleted = async function() {
     console.log("Block Score: " + blockScore);
     
     let score = 0.3 * actionScore + 0.7 * blockScore;
-    console.log("Score" + score);
+    console.log("Score " + score);
     starsAttained = Math.min(Math.floor(score * 3) + 1, 3);
     if (score >= 1/3 && score < 0.8) {
       starsAttained = 2;
