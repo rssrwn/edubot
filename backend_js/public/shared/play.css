@@ -120,8 +120,8 @@ canvas {
   display: flex;
   pointer-events: none;
   text-align: center;
-  margin: 0 auto;
-  width: 200px;
+  width: calc(50% - 171px);
+  margin-left: 171px;
   height: 80px;
   background-color: white;
   border-radius: 20px;
