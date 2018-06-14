@@ -61,7 +61,7 @@
   margin: auto;
 }
 
-#previewCaptions {
+.previewCaptions {
   text-align: center;
   font-weight: bold;
 }
