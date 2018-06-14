@@ -64,7 +64,7 @@ exports.unameFree = async function(uname) {
 
 // Returns an object with fields of user info (excluding pass and type)
 exports.getUserInfo = async function(uname) {
-  var db_res = await pool.query("select uname, fname, lname, age, sch_id from users where uname=$1;", [uname]);
+  var db_res = await pool.query("select uname, fname, lname, age, sch_id, name as sch_name from users natural join school where uname=$1;", [uname]);
   return db_res.rows[0];
 }
 
