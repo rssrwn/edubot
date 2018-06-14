@@ -10,11 +10,10 @@ var alertWrapper = document.getElementById("alertWrapperDiv");
 var alertTitle = document.getElementById("alertTitle");
 var alertText = document.getElementById("alertText");
 var alertButton = document.getElementById("alertButton");
-var alertOn = false;
 
 var displayAlert = function(title, text, callback) {
-  alertTitle.innerHtml = title;
-  alertText.innerHtml = text;
+  alertTitle.innerText = title;
+  alertText.innerText = text;
   alertWrapper.style.display = "flex";
   dimmer.style.display = "block";
   alertButton.callback = callback;
@@ -23,9 +22,11 @@ var displayAlert = function(title, text, callback) {
 var closeAlert = function(e) {
   alertWrapper.style.display = "none";
   dimmer.style.display = "none";
-  let callback = alertButton.callback;
-  alertButton.callback = null;
-  callback();
+  if (alertButton.callback) {
+    let callback = alertButton.callback;
+    alertButton.callback = null;
+    callback();
+  }
 }
 document.getElementById("alertButton").addEventListener("click", closeAlert);
 
@@ -55,7 +56,6 @@ var saveBlocks = function(e) {
     httpPost("https://edubot-learn.herokuapp.com/shared/temp_sol", {level: level.levelId, solution: xml}, function(status) {});
   }
 }
-workspace.addChangeListener(saveBlocks);
 
 var generateCode = function(e) {
   let code = Blockly.JavaScript.workspaceToCode(workspace);

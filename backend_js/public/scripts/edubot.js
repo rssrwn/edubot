@@ -142,30 +142,30 @@ GridLevel.prototype.levelCompleted = async function() {
   let rob = getRobot();
 
   if (rob !== null) {
-    //console.log("Actions Taken: " + rob.actionsTaken);
+    console.log("Actions Taken: " + rob.actionsTaken);
     let actionDiff = this.maxActions - this.minActions;
     let actionScore = Math.max(actionDiff - (rob.actionsTaken - this.minActions), 0) / actionDiff;
-    //console.log("Action Score: " + actionScore);
+    console.log("Action Score: " + actionScore);
     
     let blocksUsed = countMoveBlocks();
-    //console.log("Move Blocks Used: " + blocksUsed);
+    console.log("Move Blocks Used: " + blocksUsed);
     let blockDiff = this.maxBlocks - this.minBlocks;
     let blockScore = Math.max(blockDiff - (blocksUsed - this.minBlocks), 0) / blockDiff;
-    //console.log("Block Score: " + blockScore);
+    console.log("Block Score: " + blockScore);
     
     let score = 0.3 * actionScore + 0.7 * blockScore;
     starsAttained = Math.min(Math.floor(score * 3) + 1, 3);
 
     draw();
     await sleep(robotStepTime);
-    displayAlert("You Won", "", function() {
-      var thisLevel = this.levelId;
-      var nextLevel = this.nextLevelId;
+    displayAlert("You Won!", "", function() {
+      var thisLevel = level.levelId;
+      var nextLevel = level.nextLevelId;
 
       var xml = Blockly.Xml.workspaceToDom(workspace);
       var xml_text = Blockly.Xml.domToText(xml);
 
-      httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: this.levelId, solution: xml_text, score: starsAttained}, function(status) {
+      httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: level.levelId, solution: xml_text, score: starsAttained}, function(status) {
         
         // If teacher is logged in
         if (status === 251) {
