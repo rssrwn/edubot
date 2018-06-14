@@ -401,12 +401,15 @@ exports.getFeedback = async function(uname, level) {
   let db_res = await pool.query("select feedback from feedback where uname=$1 and level_id=$2;", [uname, level_id]);
 
   if (db_res.rows[0]) {
-    return db_res.rows[0].feedback;
-  } else {
-    return null;
+    if (db_res.rows[0].feedback !== '') {
+      return db_res.rows[0].feedback;
+    }
   }
+  
+  return null;
 }
 
+// TODO Only add if not null
 // Add feedback to db for uname and level
 exports.addFeedback = async function(uname, level, teacher, feedback) {
   let free = await exports.unameFree(uname);
