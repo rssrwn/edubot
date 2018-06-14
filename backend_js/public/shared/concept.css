@@ -33,7 +33,6 @@
 }
 
 #imagesDiv {
-  display: inline-flex;
   align-items: center;
   width: 100%;
   padding-bottom: 60px;
@@ -48,11 +47,26 @@
 }
 
 #blocksDiv {
+  display: inline-flex;
+}
+
+#blocksFigure {
   float: left;
 }
 
-#previewDiv {
+#blocksList {
   float: right;
+  width: 100%;
+  margin-top: 40px;
+  list-style-type: none;
+}
+
+#blocksPoints {
+  margin-bottom: 25px;
+}
+
+#previewDiv {
+  
 }
 
 #newBlocksImage {
