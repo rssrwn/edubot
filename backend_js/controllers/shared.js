@@ -138,14 +138,8 @@ router.get('/play', async function(req, res, next) {
     }
   }
 
-  console.log('uname: ', uname);
-  console.log('levelANem: ', levelName);
-
   let sol = await db.getTempSol(uname, levelName);
   context.json_solution = sol;
-
-  console.log('sol: ', sol);
-  console.log('json_level: ', context.json_solution);
 
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
     context.json_level = jsonLevel;
@@ -153,7 +147,6 @@ router.get('/play', async function(req, res, next) {
     util.getLevelData(levelName, 'blocks').then(xmlBlocks => {
       context.xml_blocks = xmlBlocks;
 
-      console.log('json_level: ', context.json_solution);
       res.render('shared/play', context);
     }).catch((error) => next(error));
   }).catch((error) => next(error));
@@ -162,7 +155,11 @@ router.get('/play', async function(req, res, next) {
 router.get('/account', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   let isStudent = await util.isStudent(uname);
-  let context = {student: isStudent};
+  let userInfo = await db.getUserInfo(uname);
+  let name = userInfo.fname + " " + userInfo.lname;
+  
+  let context = {student: isStudent, uname: uname, name: name, age: userInfo.age, sch_id: userInfo.sch_id};
+  
   res.render('shared/account', context);
 });
 
