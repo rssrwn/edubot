@@ -8,6 +8,7 @@
   margin-top: 100px;
   margin-bottom: 150px;
   width: 40%;
+  min-width: 650px;
 }
 
 .buttonLink {
@@ -105,7 +106,8 @@
 
 .feedbackImage {
   height: 20px;
-  margin-left: 10px;
+  margin-left: 20px;
+  vertical-align: middle;
 }
 
 .feedbackText {
@@ -114,7 +116,6 @@
   font-size: 15px;
   font-style: italic;
   display: none;
-  /* display: inline; */
 }
 
 .linkLocked {
