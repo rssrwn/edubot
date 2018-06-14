@@ -405,16 +405,19 @@ exports.getFeedback = async function(uname, level) {
       return db_res.rows[0].feedback;
     }
   }
-  
+
   return null;
 }
 
-// TODO Only add if not null
 // Add feedback to db for uname and level
 exports.addFeedback = async function(uname, level, teacher, feedback) {
   let free = await exports.unameFree(uname);
   if (free) {
     return -1;
+  }
+
+  if (feedback === '') {
+    return -3;
   }
 
   // Check if teacher has permission
