@@ -187,7 +187,7 @@ GridLevel.prototype.levelCompleted = async function() {
 
 GridLevel.prototype.showHint = function() {
   if (this.hints.length > 0) {
-    alert(this.hints[this.hintCounter]);
+    displayAlert("Hint", this.hints[this.hintCounter]);
     this.hintCounter = (this.hintCounter + 1) % this.hints.length;
   }
 }

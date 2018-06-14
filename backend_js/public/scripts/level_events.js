@@ -5,6 +5,26 @@ var workspace = Blockly.inject("blocklyWorkspaceDiv",
 
 var highlightedId = null;
 
+var dimmer = document.getElementById("dimmer");
+var alertWrapper = document.getElementById("alertWrapperDiv");
+var alertTitle = document.getElementById("alertTitle");
+var alertText = document.getElementById("alertText");
+var alertButton = document.getElementById("alertButton");
+var alertOn = false;
+
+var displayAlert = function(title, text) {
+  alertTitle.innerHtml = title;
+  alertText.innerHtml = text;
+  alertWrapper.style.display = flex;
+  dimmer.style.display = auto;
+}
+
+var closeAlert = function(e) {
+  alertWrapper.style.display = none;
+  dimmer.style.display = none;
+}
+document.getElementById("alertButton").addEventListener("click", closeAlert);
+
 Blockly.BlockSvg.prototype.setHighlighted = function(highlighted) {
   if (!this.rendered) {
     return;
