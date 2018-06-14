@@ -18,12 +18,8 @@
 
 #wrapperDiv {
   margin: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   width: 40%;
-}
-
-#conceptTitle {
-  margin-top: 80px;
 }
 
 #whatsNewTitle {
@@ -65,7 +61,7 @@
   margin: auto;
 }
 
-#whatsNewCaptions {
+#previewCaptions {
   text-align: center;
   font-weight: bold;
 }
@@ -74,6 +70,7 @@
   margin: 0 15px;
   width: 150px;
   height: 50px;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
