@@ -51,20 +51,18 @@
         <div id="blocklyWorkspaceDiv"></div>
       </div>
 
-      {{#if tutorial}}
-        <div id="dimmer"></div>
-        <div id="alertWrapperDiv">
-          <div id="alertDiv">
-            <div class="centerDiv">
-              <h2>Hint</h2>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut lectus tempor, pharetra odio eu, ornare sapien. Sed vel sem ac ante laoreet facilisis eget vel diam. Nam efficitur quam.</p>
-            <div class="centerDiv">
-              <button type='button'>Ok</button>
-            </div>
+      <div id="dimmer"></div>
+      <div id="alertWrapperDiv">
+        <div id="alertDiv">
+          <div class="centerDiv">
+            <h2 id="alertTitle">Hint</h2>
+          </div>
+          <p id="alertText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut lectus tempor, pharetra odio eu, ornare sapien. Sed vel sem ac ante laoreet facilisis eget vel diam. Nam efficitur quam.</p>
+          <div class="centerDiv">
+            <button type='button' id="alertButton">Ok</button>
           </div>
         </div>
-      {{/if}}
+      </div>
 
       <div id="visualDiv">
 

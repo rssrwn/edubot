@@ -136,12 +136,11 @@ canvas {
 #dimmer {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 81px);
   background: #000000;
   opacity: 0.5;
   z-index: 104;
-  top: 0px;
-  bottom: 0px;
+  display: none;
 }
 
 .centerDiv {
@@ -152,12 +151,10 @@ canvas {
 #alertWrapperDiv {
   position: absolute;
   width: 100%;
-  height: 100%;
-  display: flex;
+  height: calc(100% - 81px);
+  display: none;
   justify-content: center;
   align-items: center;
-  top: 0px;
-  bottom: 0px;
 }
 
 #alertDiv {
@@ -168,4 +165,13 @@ canvas {
   padding: 20px;
   border-radius: 15px;
   border: 1px solid #e68119;
+}
+
+#alertText {
+  margin: 10px;
+}
+
+#alertButton {
+  padding: 10px;
+  margin-top: 10px;
 }

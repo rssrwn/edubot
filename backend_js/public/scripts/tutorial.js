@@ -30,6 +30,9 @@ var updateTutorial = function(e) {
       tutorialPhase = 2;
     }
   }
+  if (n > 2) {
+    tutorialPhase = 6;
+  }
   if (tutorialPhase == 5) {
     workspace.options.maxBlocks = 1000;
     

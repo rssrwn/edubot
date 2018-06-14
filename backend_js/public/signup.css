@@ -56,6 +56,10 @@
   margin: 2px auto;
 }
 
+input.formItem {
+  width: 100%;
+}
+
 #formDiv > label {
   display: block;
   text-align: center;
