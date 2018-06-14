@@ -23,7 +23,7 @@
   position: fixed;
   z-index: 100;
   bottom: 100px;
-  width: calc(50% - 171px);
+  width: calc(50% - 144px);
   text-align: center;
   margin-left: 171px;
 }
@@ -46,7 +46,7 @@
   bottom: 10px;
   z-index: 100;
   text-align: center;
-  width: calc(50% - 171px);
+  width: calc(50% - 144px);
   margin-left: 171px;
   margin-right: 50%;
 }
@@ -113,15 +113,16 @@ canvas {
   display: table-row;
   position: fixed;
   bottom: 94px;
-  width: 50%;
+  width: calc(50% - 144px);
+  margin-left: 171px;
 }
 
 #tutorialDiv {
   display: flex;
   pointer-events: none;
   text-align: center;
-  width: calc(50% - 171px);
-  margin-left: 171px;
+  margin: 0 auto;
+  width: 200px;
   height: 80px;
   background-color: white;
   border-radius: 20px;
