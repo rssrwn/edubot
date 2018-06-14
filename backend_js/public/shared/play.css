@@ -23,7 +23,7 @@
   position: fixed;
   z-index: 100;
   bottom: 100px;
-  width: calc(50% - 171px);
+  width: calc(50% - 144px);
   text-align: center;
   margin-left: 171px;
 }
