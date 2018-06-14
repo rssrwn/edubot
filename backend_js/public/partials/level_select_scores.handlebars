@@ -1,4 +1,4 @@
-<div class="levelDiv" onclick="window.location = '{{link}}'">
+<div class="levelDiv" id="levelDiv{{number}}" onclick="window.location = '{{link}}'" onmouseover="showFeedbackText('levelDiv{{number}}')" onmouseout="hideFeedbackText('levelDiv{{number}}')">
   <span class="nameDiv">
     {{#if locked}}
     <span class="inlineDiv">
@@ -12,7 +12,7 @@
       <a class="linkPlain hoverLink playLink buttonLink">Feedback</a>
       {{/if}}
       <a class="linkPlain hoverLink" href="{{link}}">Level {{number}} - {{name}}</a>
-      <img class="feedbackImage" src="../images/feedback_levels.png">
+      <img class="feedbackImage" src="../../images/feedback_levels.png">
       <span class="feedbackText">Feedback Available</span>
     {{/if}}
     </span>
