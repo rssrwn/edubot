@@ -25,7 +25,7 @@
   bottom: 100px;
   width: calc(50% - 144px);
   text-align: center;
-  margin-left: 171px;
+  margin-left: 144px;
 }
 
 #feedbackTextArea {
@@ -47,7 +47,7 @@
   z-index: 100;
   text-align: center;
   width: calc(50% - 144px);
-  margin-left: 171px;
+  margin-left: 144px;
   margin-right: 50%;
 }
 
@@ -114,7 +114,7 @@ canvas {
   position: fixed;
   bottom: 94px;
   width: calc(50% - 144px);
-  margin-left: 171px;
+  margin-left: 144px;
 }
 
 #tutorialDiv {
@@ -133,8 +133,15 @@ canvas {
   justify-content: center;
 }
 
+#alertWrapperDiv {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}
+
 #alertDiv {
   display: inline-block;
   position: fixed;
   margin: 0 auto;
+  width: 200px;
 }
