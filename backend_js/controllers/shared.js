@@ -160,7 +160,9 @@ router.get('/play', async function(req, res, next) {
 });
 
 router.get('/account', async function(req, res, next) {
-  let context = {student: true};
+  let uname = req.cookies["edubot-cookie"];
+  let isStudent = await util.isStudent(uname);
+  let context = {student: isStudent};
   res.render('shared/account', context);
 });
 
