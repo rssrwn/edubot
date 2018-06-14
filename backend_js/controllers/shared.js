@@ -155,6 +155,11 @@ router.get('/play', async function(req, res, next) {
       let tempSol = await db.getTempSol(uname, levelName);
       context.json_solution = tempSol;
     }
+  } else {
+    let studentLevel = await db.getCurrLevel(studentId);
+    if (thisLevel >= studentLevel) {
+      context.display_feedback = false;
+    }
   }
 
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
