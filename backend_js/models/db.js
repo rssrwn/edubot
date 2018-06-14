@@ -364,6 +364,14 @@ exports.getAllLevels = async function(uname) {
     let levels = db_res2.rows;
     for (var j=0; j<levels.length; j++) {
       let level = levels[j];
+
+      let feedback = await exports.getFeedback(uname, level.link);
+      if (feedback !== null) {
+        level.feedback = true;
+      } else {
+        level.feedback = false;
+      }
+
       let link = '/shared/level_intro?levelId=' + level.link + '&studentId=' + uname;
       level.link = link;
 
@@ -376,7 +384,7 @@ exports.getAllLevels = async function(uname) {
     delete cat.cat_id;
     cat.levels = levels;
 
-    //console.log(cat);
+    console.log(cat);
   }
 
   return cats;

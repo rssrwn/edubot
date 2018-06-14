@@ -42,7 +42,7 @@
 #formDiv {
   display: block;
   margin: auto;
-  width: 50%;
+  width: 60%;
   padding: 10px;
 }
 
@@ -54,6 +54,7 @@
 
 .formItem {
   margin: 7px auto;
+  width: 140px;
 }
 
 input.formItem {
