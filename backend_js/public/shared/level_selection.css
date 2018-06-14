@@ -103,6 +103,20 @@
   display: inline;
 }
 
+.feedbackImage {
+  height: 20px;
+  margin-left: 10px;
+}
+
+.feedbackText {
+  color: #e68119;
+  margin-left: 20px;
+  font-size: 15px;
+  font-style: italic;
+  display: none;
+  /* display: inline; */
+}
+
 .linkLocked {
   color: #6C6C6C;
 }
