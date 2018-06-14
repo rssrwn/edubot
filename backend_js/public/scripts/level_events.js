@@ -10,9 +10,10 @@ var alertWrapper = document.getElementById("alertWrapperDiv");
 var alertTitle = document.getElementById("alertTitle");
 var alertText = document.getElementById("alertText");
 var alertButton = document.getElementById("alertButton");
-var alertOn = false;
 
 var displayAlert = function(title, text, callback) {
+  console.log("Title " + title);
+  console.log("Text " + text);
   alertTitle.innerHtml = title;
   alertText.innerHtml = text;
   alertWrapper.style.display = "flex";
@@ -23,9 +24,11 @@ var displayAlert = function(title, text, callback) {
 var closeAlert = function(e) {
   alertWrapper.style.display = "none";
   dimmer.style.display = "none";
-  let callback = alertButton.callback;
-  alertButton.callback = null;
-  callback();
+  if (alertButton.callback) {
+    let callback = alertButton.callback;
+    alertButton.callback = null;
+    callback();
+  }
 }
 document.getElementById("alertButton").addEventListener("click", closeAlert);
 
