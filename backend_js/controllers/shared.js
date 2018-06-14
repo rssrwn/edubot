@@ -95,9 +95,14 @@ router.get('/level_intro', async function(req, res, next) {
 
   let uname = req.cookies["edubot-cookie"];
   let isStudent = await util.isStudent(uname);
-
   let studentId = req.query.studentId;
   let viewingStudent = await util.isStudent(studentId);
+  let currLevel = await db.getCurrLevel(uname);
+  let thisLevel = await db.getLevelId(levelName);
+
+  if (thisLevel > currLevel) {
+    res.status(401).send("You do not have permission to access this level");
+  }
 
   context.student_id = studentId;
 
@@ -124,9 +129,6 @@ router.get('/play', async function(req, res, next) {
   let thisLevel = await db.getLevelId(levelName);
   let tutorial = levelName === "intro_1" && isStudent;
   let context = {student: isStudent, tutorial: tutorial, levelName: levelName, student_id: studentId};
-
-  console.log('currLevel: ', currLevel);
-  console.log("thisLeveL: ", thisLeveL);
 
   if (thisLevel > currLevel) {
     res.status(401).send("You do not have permission to access this level");
