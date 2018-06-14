@@ -1,6 +1,8 @@
 {
 	"title": "Selection and Conditionals",
   "concept_points": ["Often in programming, there may be multiple actions or decisions your program could take at a given time.", "For example, EduBot may want to move forwards if the way is clear or move to the side if the way is blocked.", "This is where <b>selecting</b> the right action is important, and this involves checking the <b>conditions</b> of the program and doing different things based on those conditions.", "The simplest case is the if-statement: if a condition is true then take one action, else if it is false then take another (or do nothing). You'll get used to using these in this section's first exercise!", "Later you will see how to use conditions in your loops, ending the loops when a condition is satisfied (or stops being satisfied)."],
+	"new_blocks_image": "../images/category_blocks/conds_blocks.jpeg",
 	"new_blocks_image": "concepts/conds/new_blocks.png",
+	"preview_program": "concepts/conds/preview_program.png",
 	"preview_video": "concepts/conds/preview_video.mp4"
 }
