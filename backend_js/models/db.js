@@ -440,7 +440,17 @@ exports.getAllFeedback = async function(uname) {
     return null;
   }
 
-  return db_res.rows;
+  let feedbacks = db_res.rows;
+
+  ret = [];
+  for (var i=0; i<feedbacks.length; i++) {
+    let feedback = feedbacks[i];
+    if (feedback.feedback !== '') {
+      ret.push(feedback);
+    }
+  }
+
+  return ret;
 }
 
 
