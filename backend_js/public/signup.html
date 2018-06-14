@@ -76,6 +76,7 @@
       } else if (uname && pass && fname && lname && age && sch_id) {
         httpPost('https://edubot-learn.herokuapp.com/signup',
             {uname: uname, pass: pass, fname: fname, lname: lname, type: 1, age: age, sch_id: sch_id}, buildForm);
+      }
     }
 
     function buildForm(status) {

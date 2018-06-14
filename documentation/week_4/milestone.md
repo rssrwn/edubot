@@ -1,6 +1,10 @@
 ## Objective Evaluation
 
-We asked randomly selected students to complete levels 1-3 and measured how long it took them.
+At the end of each day, we selected 3 arbitrary people (never choosing the same person twice) in the labs and asked them to create an account and complete levels 1-3 on EduBot. We then computed the average for each group and ended up with the following data:
+* Monday
+* Tuesday
+* Wednesday
+* Thursday
 
 ## Cover Story Mock-up
 
