@@ -18,8 +18,8 @@ router.get('/test', async function(req, res, next) {
   //let info = await db.getCurrLevelName('user2');
   //let info = await db.getAllFeedback('user2');
   //let info = await db.addFeedback('user2', 'intro_2', 'teacher2', 'Rotating is a very advanced topic, well done. 11/10');
-  //let info = await db.getUserInfo('user2');
-  //console.log(info);
+  let info = await db.getUserInfo('user2');
+  console.log(info);
   res.sendStatus(200);
 });
 
