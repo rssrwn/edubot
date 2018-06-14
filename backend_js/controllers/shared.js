@@ -158,7 +158,7 @@ router.get('/account', async function(req, res, next) {
   let userInfo = await db.getUserInfo(uname);
   let name = userInfo.fname + " " + userInfo.lname;
   
-  let context = {student: isStudent, uname: uname, name: name, age: userInfo.age, sch_id: userInfo.sch_id};
+  let context = {student: isStudent, uname: uname, name: name, age: userInfo.age, sch_id: userInfo.sch_id, sch_name: userInfo.sch_name};
   
   res.render('shared/account', context);
 });
