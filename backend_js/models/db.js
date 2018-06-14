@@ -64,7 +64,13 @@ exports.unameFree = async function(uname) {
 
 // Returns an object with fields of user info (excluding pass and type)
 exports.getUserInfo = async function(uname) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return null;
+  }
+
   var db_res = await pool.query("select uname, fname, lname, age, sch_id, type, name as sch_name from users natural join school where uname=$1;", [uname]);
+  console.log(db_res.rows);
   if (db_res.rows[0].type === 1) {
     db_res.rows[0].type = 'Student';
   } else if (db_res.rows[0].type === 2) {
@@ -395,10 +401,12 @@ exports.getFeedback = async function(uname, level) {
   let db_res = await pool.query("select feedback from feedback where uname=$1 and level_id=$2;", [uname, level_id]);
 
   if (db_res.rows[0]) {
-    return db_res.rows[0].feedback;
-  } else {
-    return null;
+    if (db_res.rows[0].feedback !== '') {
+      return db_res.rows[0].feedback;
+    }
   }
+
+  return null;
 }
 
 // Add feedback to db for uname and level
@@ -406,6 +414,10 @@ exports.addFeedback = async function(uname, level, teacher, feedback) {
   let free = await exports.unameFree(uname);
   if (free) {
     return -1;
+  }
+
+  if (feedback === '') {
+    return -3;
   }
 
   // Check if teacher has permission
@@ -434,7 +446,17 @@ exports.getAllFeedback = async function(uname) {
     return null;
   }
 
-  return db_res.rows;
+  let feedbacks = db_res.rows;
+
+  ret = [];
+  for (var i=0; i<feedbacks.length; i++) {
+    let feedback = feedbacks[i];
+    if (feedback.feedback !== '') {
+      ret.push(feedback);
+    }
+  }
+
+  return ret;
 }
 
 
