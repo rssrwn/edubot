@@ -22,32 +22,41 @@
     <form name="signupForm">
       <div id="formDiv">
         <label class="formItem"><b>Username</b></label>
-        <input class="formItem" type="text" placeholder="Enter Username" name="uname" required>
+        <input class="formItem" onkeypress="signupFieldEnter(event);" type="text" placeholder="Enter Username" name="uname" required>
         <br>
 
         <label class="formItem"><b>Password</b></label>
-        <input class="formItem" type="password" placeholder="Enter Password" name="pass" required>
+        <input class="formItem" onkeypress="signupFieldEnter(event);" type="password" placeholder="Enter Password" name="pass" required>
         <br>
 
         <label class="formItem"><b>First Name</b></label>
-        <input class="formItem" type="text" placeholder="Enter First Name" name="fname" required>
+        <input class="formItem" onkeypress="signupFieldEnter(event);" type="text" placeholder="Enter First Name" name="fname" required>
         <br>
 
         <label class="formItem"><b>Last Name</b></label>
-        <input class="formItem" type="text" placeholder="Enter Last Name" name="lname" required>
+        <input class="formItem" onkeypress="signupFieldEnter(event);" type="text" placeholder="Enter Last Name" name="lname" required>
         <br>
 
         <label class="formItem"><b>Age</b></label>
-        <input class="formItem" type="text" placeholder="Enter Age" name="age" required>
+        <input class="formItem" onkeypress="signupFieldEnter(event);" type="text" placeholder="Enter Age" name="age" required>
         <br>
 
         <label class="formItem"><b>School ID</b></label>
-        <input class="formItem" type="text" placeholder="Enter School ID" name="sch_id" required>
+        <input class="formItem" onkeypress="signupFieldEnter(event);" type="text" placeholder="Enter School ID" name="sch_id" required>
         <br>
 
         <div id="formButtons">
           <button class="formItem" type="button" onclick="validateForm();">Create New Account</button>
         </div>
+        
+        <script>
+          function signupFieldEnter(event) {
+            // Enter key press.
+            if (event.keyCode == 13) {
+              validateForm();
+            }
+          }
+        </script>
       </div>
     </form>
 

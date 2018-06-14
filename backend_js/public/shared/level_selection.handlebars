@@ -21,6 +21,10 @@
     {{/if}}
     
     <script>
+      {{#if student}}
+      $(".feedbackText").text("Feedback Available");
+      {{/if}}
+    
       var showFeedbackText = function(id) {
         $(id).find(".feedbackText").css("display", "inline");
         $(id).find(".feedbackImage").css("display", "none");
