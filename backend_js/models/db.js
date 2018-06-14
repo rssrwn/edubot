@@ -64,7 +64,13 @@ exports.unameFree = async function(uname) {
 
 // Returns an object with fields of user info (excluding pass and type)
 exports.getUserInfo = async function(uname) {
+  let free = await exports.unameFree(uname);
+  if (free) {
+    return null;
+  }
+
   var db_res = await pool.query("select uname, fname, lname, age, sch_id, type, name as sch_name from users natural join school where uname=$1;", [uname]);
+  console.log(db_res.rows);
   if (db_res.rows[0].type === 1) {
     db_res.rows[0].type = 'Student';
   } else if (db_res.rows[0].type === 2) {
