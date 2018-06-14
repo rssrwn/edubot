@@ -33,7 +33,6 @@
 }
 
 #imagesDiv {
-  align-items: center;
   width: 100%;
   padding-bottom: 60px;
   border-bottom: 1px solid black;
@@ -61,7 +60,7 @@
   list-style-type: none;
 }
 
-#blocksPoints {
+.blocksPoints {
   margin-bottom: 25px;
 }
 
