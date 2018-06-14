@@ -150,8 +150,12 @@ router.get('/play', async function(req, res, next) {
     }
   }
 
-  let sol = await db.getTempSol(uname, levelName);
-  context.json_solution = sol;
+  console.log('solution: ', context.json_solution);
+
+  if (isStudent) {
+    let sol = await db.getTempSol(uname, levelName);
+    context.json_solution = sol;
+  }
 
   util.getLevelData(levelName, 'lev').then(jsonLevel => {
     context.json_level = jsonLevel;

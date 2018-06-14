@@ -285,6 +285,8 @@ exports.getSolution = async function(uname, level) {
   let levelId = await exports.getLevelId(level);
   let db_res = await pool.query("select solution from student_level where uname=$1 and level_id=$2;", [uname, levelId]);
 
+  console.log('student solution: ', db_res.rows[0].solution);
+
   if (db_res.rows[0]) {
     return db_res.rows[0].solution;
   } else {
