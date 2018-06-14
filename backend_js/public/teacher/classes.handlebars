@@ -39,6 +39,12 @@
       });
 
       var activeButton = null;
+      
+      var addMemberKeypress = function(event) {
+        if (event.keyCode == 13) { // Press enter
+          addMemberSubmitEvent();
+        }
+      }
 
       var addMemberEvent = function(class_id, button) {
         if (activeButton) {
@@ -51,7 +57,7 @@
 
         button.style.display = "none";
 
-        var submitButton = $("<button type='button' onclick='addMemberSubmitEvent()'>Add</button>");
+        var submitButton = $("<button type='button' onclick='addMemberSubmitEvent()' onkeypress='addMemberKeypress(event)'>Add</button>");
         var textInput = $("<input type='text'></input>");
 
         activeButton.addButton = submitButton.get(0);
@@ -97,6 +103,12 @@
           default: alert("Unknown error occurred removing member: " + status); break;
         }
       };
+      
+      var addClassKeypress = function(event) {
+        if (event.keyCode == 13) { // Press enter
+          addClassSubmitEvent();
+        }
+      }
 
       var addClassEvent = function(button) {
         if (activeButton) {
@@ -108,7 +120,7 @@
 
         button.style.display = "none";
 
-        var submitButton = $("<button type='button' onclick='addClassSubmitEvent()'>Add</button>");
+        var submitButton = $("<button type='button' onclick='addClassSubmitEvent()' onkeypress='addClassKeypress(event)'>Add</button>");
         var textInput = $("<input type='text'></input>");
 
         activeButton.addButton = submitButton.get(0);
