@@ -1,27 +1,17 @@
 #contentDiv {
   border-radius: 25px;
   margin: auto;
-  display: block;
   height: auto;
 }
 
-#contentDiv2 {
-  border-radius: 25px;
-  background-color: #d2d2d2d2;
-  margin: auto;
-  margin-top: 120px;
-  display: block;
-  width: 60%;
-  height: auto;
-}
-
-#descriptionDiv {
-  padding-top: 20px;
+.descriptionDiv {
+  margin-bottom: 80px;
 }
 
 #wrapperDiv {
   margin: auto;
-  margin-top: 50px;
+  margin-top: 100px;
+  margin-bottom: 150px;
   width: 50%;
 }
 
@@ -30,15 +20,20 @@
   margin-bottom: 40px;
 }
 
+.subTitle {
+  margin-bottom: 20px;
+  font-family: 'Roboto Slab', serif;
+}
+
 .titles {
   margin: auto;
+  margin-bottom: 60px;
   border-bottom: 1px solid black;
 }
 
 #imagesDiv {
   width: 100%;
   padding-bottom: 60px;
-  border-bottom: 1px solid black;
 }
 
 #levelButtonsDiv {
@@ -50,7 +45,7 @@
 
 #blocksDiv {
   display: inline-flex;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 #blocksFigure {
@@ -103,10 +98,6 @@
   height: 50px;
   margin-top: 30px;
   margin-bottom: 20px;
-}
-
-.descriptionDiv2 {
-  width: 70%;
 }
 
 .conceptBullets {
