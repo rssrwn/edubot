@@ -17,39 +17,41 @@ var text = {
 var updateTutorial = function(e) {
   let n = workspace.getAllBlocks().length;
   
-  if (n == 0) {
-    workspace.options.maxBlocks = 2;
-    tutorialPhase = 0;
-  }
-  if (n == 1) {
-    tutorialPhase = 1;
-  }
-  if (n == 2 && tutorialPhase == 1) {
-    let blocks = workspace.getTopBlocks();
-    if (blocks.length == 1) {
-      tutorialPhase = 2;
+  
+  if (tutorialPhase != 6) {
+    if (n == 2 && tutorialPhase == 0 || n > 2) {
+      tutorialPhase = 6;
     }
-  }
-  if (n > 2) {
-    tutorialPhase = 6;
-  }
-  if (tutorialPhase == 5) {
-    workspace.options.maxBlocks = 1000;
-    
-    // hack to reload workspace
-    let xml = Blockly.Xml.workspaceToDom(workspace);
-    workspace.clear();
-    Blockly.Xml.domToWorkspace(xml, workspace);
-    
-    tutorialPhase = 6;
-  }
-
-  if (text[tutorialPhase] !== undefined) {
-    tutorialDiv.style.display = "flex";
-    tutorialText.innerText = text[tutorialPhase];
-  } else {
-    tutorialDiv.style.display = "none";
-    tutorialText.innerText = "";
+    if (n == 0) {
+      workspace.options.maxBlocks = 2;
+      tutorialPhase = 0;
+    }
+    if (n == 1) {
+      tutorialPhase = 1;
+    }
+    if (n == 2 && tutorialPhase == 1) {
+      let blocks = workspace.getTopBlocks();
+      if (blocks.length == 1) {
+        tutorialPhase = 2;
+      }
+    }
+    if (tutorialPhase == 5) {
+      workspace.options.maxBlocks = 1000;
+      
+      // hack to reload workspace
+      let xml = Blockly.Xml.workspaceToDom(workspace);
+      workspace.clear();
+      Blockly.Xml.domToWorkspace(xml, workspace);
+      
+      tutorialPhase = 6;
+    }
+    if (text[tutorialPhase] !== undefined) {
+      tutorialDiv.style.display = "flex";
+      tutorialText.innerText = text[tutorialPhase];
+    } else {
+      tutorialDiv.style.display = "none";
+      tutorialText.innerText = "";
+    }
   }
 };
 workspace.addChangeListener(updateTutorial);

@@ -12,10 +12,8 @@ var alertText = document.getElementById("alertText");
 var alertButton = document.getElementById("alertButton");
 
 var displayAlert = function(title, text, callback) {
-  console.log("Title " + title);
-  console.log("Text " + text);
-  alertTitle.innerHtml = title;
-  alertText.innerHtml = text;
+  alertTitle.innerText = title;
+  alertText.innerText = text;
   alertWrapper.style.display = "flex";
   dimmer.style.display = "block";
   alertButton.callback = callback;
