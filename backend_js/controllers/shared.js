@@ -213,7 +213,12 @@ router.get('/all_feedback', async function(req, res, next) {
 
 router.post('/temp_sol', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
+  let isStudent = await util.isStudent(uname);
   const body = req.body;
+
+  if (!isStudent) {
+    res.status(401).send("You must be a student to set a temp sol");
+  }
 
   let status = await db.setTempSol(uname, body.level, body.solution);
   if (status !== 0) {
