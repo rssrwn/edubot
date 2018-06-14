@@ -15,11 +15,6 @@
   height: auto;
 }
 
-#newBlocksImage {
-  display: block;
-  width: 80%;
-  margin: auto;
-}
 
 #wrapperDiv {
   margin: auto;
@@ -27,16 +22,26 @@
   width: 40%;
 }
 
+#conceptTitle {
+  margin-top: 80px;
+}
+
+#whatsNewTitle {
+  margin-top: 40px;
+}
+
 .titles {
   margin: auto;
-  margin-top: 100px;
   margin-bottom: 40px;
   border-bottom: 1px solid black;
 }
 
-.titles2 {
-  margin-top: 50px;
-  margin-bottom: 40px;
+#imagesDiv {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 60px;
+  border-bottom: 1px solid black;
 }
 
 #levelButtonsDiv {
@@ -44,6 +49,25 @@
   margin: 0 auto;
   margin-bottom: 150px;
   margin-top: 10px;
+}
+
+#blocksDiv {
+  float: left;
+}
+
+#previewDiv {
+  float: right;
+}
+
+#newBlocksImage {
+  display: block;
+  height: 250px;
+  margin: auto;
+}
+
+#whatsNewCaptions {
+  text-align: center;
+  font-weight: bold;
 }
 
 .levelButton {
