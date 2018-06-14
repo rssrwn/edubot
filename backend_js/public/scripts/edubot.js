@@ -159,13 +159,13 @@ GridLevel.prototype.levelCompleted = async function() {
     draw();
     await sleep(robotStepTime);
     displayAlert("You Won!", "", function() {
-      var thisLevel = this.levelId;
-      var nextLevel = this.nextLevelId;
+      var thisLevel = level.levelId;
+      var nextLevel = level.nextLevelId;
 
       var xml = Blockly.Xml.workspaceToDom(workspace);
       var xml_text = Blockly.Xml.domToText(xml);
 
-      httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: this.levelId, solution: xml_text, score: starsAttained}, function(status) {
+      httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: level.levelId, solution: xml_text, score: starsAttained}, function(status) {
         
         // If teacher is logged in
         if (status === 251) {
