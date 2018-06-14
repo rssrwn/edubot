@@ -57,8 +57,8 @@
 
         button.style.display = "none";
 
-        var submitButton = $("<button type='button' onclick='addMemberSubmitEvent()' onkeypress='addMemberKeypress(event)'>Add</button>");
-        var textInput = $("<input type='text'></input>");
+        var submitButton = $("<button type='button' onclick='addMemberSubmitEvent()'>Add</button>");
+        var textInput = $("<input type='text' onkeypress='addMemberKeypress(event)'></input>");
 
         activeButton.addButton = submitButton.get(0);
         activeButton.textInput = textInput.get(0);
@@ -120,8 +120,8 @@
 
         button.style.display = "none";
 
-        var submitButton = $("<button type='button' onclick='addClassSubmitEvent()' onkeypress='addClassKeypress(event)'>Add</button>");
-        var textInput = $("<input type='text'></input>");
+        var submitButton = $("<button type='button' onclick='addClassSubmitEvent()'>Add</button>");
+        var textInput = $("<input type='text' onkeypress='addClassKeypress(event)'></input>");
 
         activeButton.addButton = submitButton.get(0);
         activeButton.textInput = textInput.get(0);
