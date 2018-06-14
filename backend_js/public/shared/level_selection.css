@@ -26,6 +26,7 @@
 .subTitle {
   font-family: 'Roboto Slab', serif;
   vertical-align: middle;
+  font-weight: bold;
 }
 
 .buttonLink:hover {
