@@ -68,28 +68,6 @@ router.get('/solution', async function(req, res, next) {
 
 router.get('/level_selection', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
-
-  /*let context = {
-    student: false,
-    categories: [
-      {
-        categoryName: "Introduction",
-        levels: [
-          {number: 1, name: "Moving EduBot", link: '/shared/level_intro?levelId=intro_1'},
-          {number: 2, name: "Movement and Rotation", link: '/shared/level_intro?levelId=intro_2'},
-          {number: 3, name: "Obstacles", link: '/shared/level_intro?levelId=intro_3'}
-        ]
-      },
-      {
-        categoryName: "Looping",
-        levels: [
-          {number: 4, name: "Basic looping", link: '/shared/level_intro?levelId=loops_1'},
-          {number: 5, name: "Advanced looping", link: '/shared/level_intro?levelId=loops_1'}
-        ]
-      }
-    ]
-  };*/
-
   let categories = await db.getAllLevels(uname);
 
   let context = {
