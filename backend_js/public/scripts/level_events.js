@@ -15,13 +15,13 @@ var alertOn = false;
 var displayAlert = function(title, text) {
   alertTitle.innerHtml = title;
   alertText.innerHtml = text;
-  alertWrapper.style.display = flex;
-  dimmer.style.display = auto;
+  alertWrapper.style.display = "flex";
+  dimmer.style.display = "auto";
 }
 
 var closeAlert = function(e) {
-  alertWrapper.style.display = none;
-  dimmer.style.display = none;
+  alertWrapper.style.display = "none";
+  dimmer.style.display = "none";
 }
 document.getElementById("alertButton").addEventListener("click", closeAlert);
 
