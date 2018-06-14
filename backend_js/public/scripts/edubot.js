@@ -158,30 +158,26 @@ GridLevel.prototype.levelCompleted = async function() {
 
     draw();
     await sleep(robotStepTime);
-    displayAlert("You Won", "");
+    displayAlert("You Won", "", function() {
+      var thisLevel = this.levelId;
+      var nextLevel = this.nextLevelId;
 
-    var thisLevel = this.levelId;
-    var nextLevel = this.nextLevelId;
+      var xml = Blockly.Xml.workspaceToDom(workspace);
+      var xml_text = Blockly.Xml.domToText(xml);
 
-    var xml = Blockly.Xml.workspaceToDom(workspace);
-    var xml_text = Blockly.Xml.domToText(xml);
+      httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: this.levelId, solution: xml_text, score: starsAttained}, function(status) {
+        
+        // If teacher is logged in
+        if (status === 251) {
+          return;
+        }
 
-    //httpPost("http://localhost:3000/shared/set_result", {level: this.levelId, solution: xml_text, score: starsAttained}, function(status) {
-
-    httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: this.levelId, solution: xml_text, score: starsAttained}, function(status) {
-      //console.log('result callback status: ', status);
-
-      // If teacher is logged in
-      if (status === 251) {
-        return;
-      }
-
-      if (!(status === 200 || status === 250 || status === 251)) {
-        alert("Unknown error, status: ", status);
-      }
-      location.href = '/student/level_results?levelId=' + thisLevel + '&nextId=' + nextLevel + '&sts=' + starsAttained;
+        if (!(status === 200 || status === 250 || status === 251)) {
+          alert("Unknown error, status: ", status);
+        }
+        location.href = '/student/level_results?levelId=' + thisLevel + '&nextId=' + nextLevel + '&sts=' + starsAttained;
+      });
     });
-
   }
 }
 

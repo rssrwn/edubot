@@ -12,16 +12,20 @@ var alertText = document.getElementById("alertText");
 var alertButton = document.getElementById("alertButton");
 var alertOn = false;
 
-var displayAlert = function(title, text) {
+var displayAlert = function(title, text, callback) {
   alertTitle.innerHtml = title;
   alertText.innerHtml = text;
   alertWrapper.style.display = "flex";
   dimmer.style.display = "block";
+  alertButton.callback = callback;
 }
 
 var closeAlert = function(e) {
   alertWrapper.style.display = "none";
   dimmer.style.display = "none";
+  let callback = alertButton.callback;
+  alertButton.callback = null;
+  callback();
 }
 document.getElementById("alertButton").addEventListener("click", closeAlert);
 
