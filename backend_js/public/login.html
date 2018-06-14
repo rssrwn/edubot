@@ -26,7 +26,7 @@
         <br><br>
 
         <label class="formItem"><b>Password</b></label>
-        
+
         <script>
           function passwordFieldEnter(event) {
             // Enter key press.
@@ -35,15 +35,15 @@
             }
           }
         </script>
-        
+
         <input class="formItem" onkeypress="passwordFieldEnter(event);" type="password" placeholder="Enter Password" name="pass" required>
         <br><br>
 
-        <div id="formButtons">
-          <button class="formItem" type="button" onclick="validateForm()">Login</button>
-          <button class="formItem" type="button" onclick="forgotPassword()">Forgot Password</button>
+        <div id="formButtonDiv">
+          <button class="formButton" type="button" onclick="validateForm()">Login</button>
+          <button class="formButton" type="button" onclick="forgotPassword()">Forgot Password</button>
           <br>
-          <button class="formItem" type="button" onclick="location.href='/signup.html'">Signup</button>
+          <button class="formItem formButton" type="button" onclick="location.href='/signup.html'">Signup</button>
         </div>
       </div>
     </form>

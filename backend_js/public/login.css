@@ -16,6 +16,7 @@
   display: table;
   height: 150px;
   margin: auto;
+  margin-top: 40px;
   padding: 0;
 }
 
@@ -46,10 +47,15 @@
   padding: 10px;
 }
 
-#formButtons {
+#formButtonDiv {
   display: table;
   margin: 0 auto;
   text-align: center;
+}
+
+.formButton {
+  height: 20px;
+  width: 100px;
 }
 
 .formItem {
