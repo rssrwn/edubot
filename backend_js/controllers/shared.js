@@ -127,8 +127,8 @@ router.get('/play', async function(req, res, next) {
   let isStudent = await util.isStudent(uname);
   let currLevel = await db.getCurrLevel(uname);
   let thisLevel = await db.getLevelId(levelName);
-  let tutorial = levelName === "intro_1" && isStudent;
-  let context = {student: isStudent, tutorial: tutorial, levelName: levelName, student_id: studentId};
+  let tutorial = levelName === "intro_1";
+  let context = {student: isStudent, tutorial: tutorial && isStudent, levelName: levelName, student_id: studentId};
 
   if (isStudent && thisLevel > currLevel) {
     res.status(401).send("You do not have permission to access this level");
