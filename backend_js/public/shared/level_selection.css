@@ -23,6 +23,11 @@
   vertical-align: middle;
 }
 
+.subTitle {
+  font-family: 'Roboto Slab', serif;
+  vertical-align: middle;
+}
+
 .buttonLink:hover {
   cursor: pointer;
 }
@@ -35,8 +40,8 @@
 .learnMoreLink {
   color: white;
   background-color: #2962bc;
-  margin-left: 30px;
-  vertical-align: baseline;
+  margin-left: 20px;
+  vertical-align: middle;
 }
 
 .learnMoreLink:hover {
