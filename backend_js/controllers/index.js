@@ -30,7 +30,7 @@ router.get('/', async function(req, res, next) {
     let isStudent = await util.isStudent(uname);
     
     if (isStudent) {
-      res.redirect('/shared/level_selection');
+      res.redirect('/student/level_selection');
     } else {
       res.redirect('/teacher/classes');
     }
