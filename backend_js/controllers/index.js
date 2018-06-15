@@ -21,8 +21,20 @@ router.get('/test', async function(req, res, next) {
   res.sendStatus(200);
 });
 
-router.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname + './../public/login.html'));
+router.get('/', async function(req, res, next) {
+  let uname = req.cookies["edubot-cookie"];
+  
+  if (uname == null) {
+    res.sendFile(path.join(__dirname + './../public/login.html'));
+  } else {
+    let isStudent = await util.isStudent(uname);
+    
+    if (isStudent) {
+      res.redirect('/student/level_selection');
+    } else {
+      res.redirect('/teacher/classes');
+    }
+  }
 });
 
 router.get('/logout', (req, res, next) => {
