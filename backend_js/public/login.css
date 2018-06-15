@@ -14,7 +14,7 @@
 
 #bannerDiv {
   display: table;
-  height: 150px;
+  height: 100px;
   margin: auto;
   margin-top: 40px;
   padding: 0;
@@ -54,8 +54,8 @@
 }
 
 .formButton {
-  height: 20px;
-  width: 100px;
+  height: 30px;
+  width: 140px;
 }
 
 .formItem {
