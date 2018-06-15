@@ -24,6 +24,14 @@ EduBot seems a little too mechanical:
 Students still felt that it can be hard to initially see the connection between some of the blocks, like loops and ifs, and their effect on EduBot.
 - We added example programs and videos of their operation to the concept introduction pages to show how blocks might be used.
 
+### Ease of interaction improvements
+
+- Student solutions and partial solutions are now saved when they leave the page, preventing them from losing work.
+- Teachers can view student solutions or sample solutions equally easily.
+- Replaced slightly annoying browser alerts with more sleek dialog boxes.
+- Numerous text boxes now respond to the enter keypress and not just a button press.
+- Improved flagposting of interactive elements of the screen: levels now have a play button and highlight when hovered over, concepts have a learn more button, the student boxes that teachers can click on now highlight.
+
 ## Objective Evaluation
 
 Three times this week, we asked Jordan's mum to ask five students in her class to play levels 1-3 for the first time. We measured the number of times people asked for help per student. We measured it at the start of the week before we had added any new features.
