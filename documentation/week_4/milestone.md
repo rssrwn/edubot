@@ -21,7 +21,8 @@ EduBot seems a little too mechanical:
 
 ### Third Iteration (end of week feedback)
 
-
+Students still felt that it can be hard to initially see the connection between some of the blocks, like loops and ifs, and their effect on EduBot.
+- We added example programs and videos of their operation to the concept introduction pages to show how blocks might be used.
 
 ## Objective Evaluation
 
