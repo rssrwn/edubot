@@ -105,6 +105,9 @@ router.get('/level_intro', async function(req, res, next) {
   }
 
   context.student_id = studentId;
+  if (isStudent) {
+    context.student_id = uname;
+  }
 
   if (!isStudent && viewingStudent) {
     context.show_solution = true;
