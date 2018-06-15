@@ -22,7 +22,19 @@ router.get('/test', async function(req, res, next) {
 });
 
 router.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname + './../public/login.html'));
+  let uname = req.cookies["edubot-cookie"];
+  
+  if (uname == null) {
+    res.sendFile(path.join(__dirname + './../public/login.html'));
+  } else {
+    let isStudent = await util.isStudent(uname);
+    
+    if (isStudent) {
+      res.redirect('/shared/level_selection');
+    } else {
+      res.redirect('/teacher/classes');
+    }
+  }
 });
 
 router.get('/logout', (req, res, next) => {
