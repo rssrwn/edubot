@@ -21,7 +21,7 @@ router.get('/test', async function(req, res, next) {
   res.sendStatus(200);
 });
 
-router.get('/', (req, res, next) => {
+router.get('/', async function(req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   
   if (uname == null) {
