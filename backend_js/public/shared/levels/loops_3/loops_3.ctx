@@ -1,6 +1,6 @@
 {
     "level_name": "Level 6 - Advanced Looping",
     "objectives": ["Apply looping in a more complicated level", "Guide EduBot around each wall and eat the four nuts and bolts"],
-    "blocks_available": "../images/movement_blocks.png",
+    "blocks_available": "../images/level_blocks/level4_blocks.jpeg",
     "level_image": "levels/loops_3/loops_3.png"
 }

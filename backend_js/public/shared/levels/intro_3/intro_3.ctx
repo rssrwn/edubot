@@ -1,6 +1,6 @@
 {
     "level_name": "Level 3 - Obstacles",
-    "blocks_available": "../images/movement_blocks.png",
+    "blocks_available": "../images/level_blocks/level2_blocks.jpeg",
     "objectives": ["Guide EduBot around the wall and eat the bolt"],
     "hints": [
         "You program EduBot by dragging and dropping blocks into the space on the left of the screen. You can get EduBot to carry out your program by clicking run.",

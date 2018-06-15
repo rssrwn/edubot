@@ -1,6 +1,6 @@
 {
     "level_name": "Level 7 - If and Else Statements",
     "objectives": ["Combine looping with an if block to move around the obstacles", "Guide EduBot to eat the nuts and bolts"],
-    "blocks_available": "../images/movement_blocks.png",
+    "blocks_available": "../images/level_blocks/level7_blocks.jpeg",
     "level_image": "levels/conds_1/conds_1.png"
 }
