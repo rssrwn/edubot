@@ -25,11 +25,13 @@ EduBot seems a little too mechanical:
 
 ## Objective Evaluation
 
-At the end of each day, we selected 3 arbitrary people (never choosing the same person twice) in the labs and asked them to create an account and complete levels 1-3 on EduBot. We then computed the average for each group and ended up with the following data:
-* Monday: 3 min 20s
-* Tuesday: 3 min 40s (added tutorial)
-* Wednesday: 3 min 20s
-* Thursday: 3 min
+Three times this week, we asked Jordan's mum to ask five students in her class to play levels 1-3 for the first time. We measured the number of times people asked for help per student. We measured it at the start of the week before we had added any new features.
+
+After the firt iteration, we added a tutorial, which reduced this metric. Then, after the second iteration, we added highlighting of blocks and temporary solutions, allowing users to have their partial solution restored after looking at the level introduction.
+
+Experiment 1: 1
+Experiment 2: 0.4
+Experiment 3: 0.2
 
 ## Cover Story Mock-up
 
