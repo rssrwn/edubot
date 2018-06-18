@@ -38,10 +38,12 @@
             <table id="blocksTable">
               <tr>
                 <th class="blocksTableHeader">Block</th>
+                <th class="blocksTableHeader">Preview</th>
                 <th class="blocksTableHeader">What it does</th>
               </tr>
               {{#each new_blocks_points}}
                 <tr class="blocksRow">
+                  <tr class="blocksRow">{{this.name}}</tr>
                   <td class="blocksRowData"><img class="blocksRowImage" src="{{this.image}}" alt="{{this.name}}"></td>
                   <td class="blocksRowData">{{this.description}}</td>
                 </tr>
