@@ -38,12 +38,6 @@
             <figure id="blocksFigure">
               <img id="blocksImage" src="{{new_blocks_image}}" alt="New blocks">
             </figure>
-
-            <ul id="blocksList">
-              {{#each new_blocks_points}}
-                <li class="blocksPoints">{{this}}</li>
-              {{/each}}
-            </ul>
             
             <table id="blocksTable">
               <tr>
@@ -53,7 +47,7 @@
               {{#each new_blocks_points}}
                 <tr class="blocksRow">
                   <td class="blocksRowData">{{this.name}}</td>
-                  <td>{{this.description}}</td>
+                  <td class="blocksRowData">{{this.description}}</td>
                 </tr>
               {{/each}}
             </table>

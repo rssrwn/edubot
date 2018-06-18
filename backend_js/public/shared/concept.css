@@ -59,19 +59,17 @@
 }
 
 #blocksTable {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
 }
 
 .blocksRowData, .blocksTableHeader {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
 
 .blocksRow:nth-child(even) {
-    background-color: #dddddd;
+  background-color: #dddddd;
 }
 
 .blocksPoints {
