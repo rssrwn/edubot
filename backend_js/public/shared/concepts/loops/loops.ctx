@@ -2,8 +2,7 @@
 	"title": "Looping and Iteration",
   "concept_points": ["So far, we have only been able to move EduBot by telling it the exact actions it must take (even when many of these actions are the same).", "Wouldn't it be wonderful if we could add the action once, and repeat it multiple times?", "Well, we can!", "A loop is essentially a code block that you can place actions into, allowing you to repeat the actions several times.", "As you will see, sometimes you will specify the number of repeats you want and other times the loop should continue until a condition is met (for example, until EduBot hits a wall)."],
 	"new_blocks_image": "../images/category_blocks/loops_blocks.png",
-	"new_blocks_points": [{"name": "Move forward", "description": "Moves EduBot in the direction it is facing by one square"},
-		{"name": "Number block", "description": "Can have a number typed into it"},
+	"new_blocks_points": [{"name": "Number block", "description": "Can have a number typed into it"},
 		{"name": "Repeat block", "description": "Placing a number block into a repeat block allows EduBot to repeat the actions inside the block multiple times"}],
 	"preview_program": "concepts/loops/preview_program.png",
 	"preview_video": "concepts/loops/preview_video.mp4"
