@@ -34,11 +34,7 @@
          <h2 id="whatsNewTitle" class="subTitle">New Blocks</h2>
 
         <div id="imagesDiv">
-          <div id="blocksDiv">
-            <figure id="blocksFigure">
-              <img id="blocksImage" src="{{new_blocks_image}}" alt="New blocks">
-            </figure>
-            
+          <div id="blocksDiv">            
             <table id="blocksTable">
               <tr>
                 <th class="blocksTableHeader">Block</th>
@@ -46,7 +42,7 @@
               </tr>
               {{#each new_blocks_points}}
                 <tr class="blocksRow">
-                  <td class="blocksRowData">{{this.name}}</td>
+                  <td class="blocksRowData"><img class="blocksRowImage" src="{{this.image}}" alt="{{this.name}}"></td>
                   <td class="blocksRowData">{{this.description}}</td>
                 </tr>
               {{/each}}
