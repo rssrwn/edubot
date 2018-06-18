@@ -343,7 +343,10 @@ exports.getCurrLevelName = async function(uname) {
     return -1;
   }
 
-  let db_res = await pool.query('select link from level where level_id=(select max(level_id) from student_level where uname=$1)+1;', [uname]);
+  let currLevel = await exports.getCurrLevel(uname);
+
+  let db_res = await pool.query('select link from level where level_id=$1;', [currLevel]);
+
   return db_res.rows[0].link;
 }
 
