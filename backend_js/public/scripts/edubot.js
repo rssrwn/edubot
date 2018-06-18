@@ -146,13 +146,13 @@ GridLevel.prototype.levelCompleted = async function() {
     let actionDiff = this.maxActions - this.minActions;
     let actionScore = Math.max(actionDiff - (rob.actionsTaken - this.minActions), 0) / actionDiff;
     console.log("Action Score: " + actionScore);
-    
+
     let blocksUsed = countMoveBlocks();
     console.log("Move Blocks Used: " + blocksUsed);
     let blockDiff = this.maxBlocks - this.minBlocks;
     let blockScore = Math.max(blockDiff - (blocksUsed - this.minBlocks), 0) / blockDiff;
     console.log("Block Score: " + blockScore);
-    
+
     let score = 0.3 * actionScore + 0.7 * blockScore;
     console.log("Score " + score);
     starsAttained = Math.min(Math.floor(score * 3) + 1, 3);
@@ -163,6 +163,7 @@ GridLevel.prototype.levelCompleted = async function() {
     draw();
     await sleep(robotStepTime);
     clearTimeout(executionTimeoutId);
+    let text = "Action Score: " + Math.round(actionScore*100) + "%<br>Block Score: " + Math.round(blockScore * 100) + "%";
     displayAlert("You Won!", "", function() {
       var thisLevel = level.levelId;
       var nextLevel = level.nextLevelId;
@@ -171,7 +172,7 @@ GridLevel.prototype.levelCompleted = async function() {
       var xml_text = Blockly.Xml.domToText(xml);
 
       httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: level.levelId, solution: xml_text, score: starsAttained}, function(status) {
-        
+
         // If teacher is logged in
         if (status === 251) {
           return;
