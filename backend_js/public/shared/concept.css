@@ -34,7 +34,7 @@
 .defBox {
   background-color: #f0f0f0;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 #imagesDiv {
@@ -65,17 +65,49 @@
 }
 
 #blocksTable {
-  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .blocksRowData, .blocksTableHeader {
-  border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
 .blocksTableHeader {
   background-color: #f0f0f0;
+}
+
+.blocksTableHeader:first-child {
+  border-radius: 10px 0 0 0;
+}
+
+.blocksTableHeader:last-child {
+  border-radius: 0 10px 0 0;
+}
+
+#blocksTable tr:first-child th {
+  border-top: 1px solid #dddddddd;
+}
+
+.blocksTableHeader:last-child {
+  border-right: 1px solid #dddddddd;
+}
+
+.blocksRowData, .blocksTableHeader {
+  border-left: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+
+.blocksRowData:last-child {
+  border-right: 1px solid #dddddd;
+}
+
+.blocksRow:last-child td:last-child {
+  border-radius: 0 0 10px 0;
+}
+
+.blocksRow:last-child td:first-child {
+  border-radius: 0 0 0 10px;
 }
 
 .blocksPoints {
