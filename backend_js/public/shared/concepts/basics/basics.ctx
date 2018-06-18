@@ -5,6 +5,6 @@
 	"new_blocks_points": [{"name": "Move forward", "image": "../images/individual_blocks/move_forward.png", "description": "Moves EduBot in the direction it is facing by one square."},
 		{"name": "Rotate right", "image": "../images/individual_blocks/rotate_right.png", "description": "Turns EduBot right (moving forward will take it in the new direction)."},
 		{"name": "Rotate left", "image": "../images/individual_blocks/rotate_left.png", "description": "Turns EduBot left."}],
-	"preview_program": "concepts/intro/preview_program.png",
-	"preview_video": "concepts/intro/preview_video.mp4"
+	"preview_program": "concepts/basics/preview_program.png",
+	"preview_video": "concepts/basics/preview_video.mp4"
 }
