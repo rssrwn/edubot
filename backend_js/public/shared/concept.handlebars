@@ -35,16 +35,28 @@
 
         <div id="imagesDiv">
           <div id="blocksDiv">
-              <figure id="blocksFigure">
-                <img id="blocksImage" src="{{new_blocks_image}}" alt="New blocks">
-                <figcaption class="previewCaptions">New Blocks</figcaption>
-              </figure>
+            <figure id="blocksFigure">
+              <img id="blocksImage" src="{{new_blocks_image}}" alt="New blocks">
+            </figure>
 
-              <ul id="blocksList">
-                {{#each new_blocks_points}}
-                  <li class="blocksPoints">{{this}}</li>
-                {{/each}}
+            <ul id="blocksList">
+              {{#each new_blocks_points}}
+                <li class="blocksPoints">{{this}}</li>
+              {{/each}}
             </ul>
+            
+            <table id="blocksTable">
+              <tr>
+                <th class="blocksTableHeader">Block</th>
+                <th class="blocksTableHeader">What it does</th>
+              </tr>
+              {{#each new_blocks_points}}
+                <tr class="blocksRow">
+                  <td class="blocksRowData">{{this.name}}</td>
+                  <td>{{this.description}}</td>
+                </tr>
+              {{/each}}
+            </table>
           </div>
 
           <h2 id="whatsNewTitle" class="subTitle">Example</h2>
