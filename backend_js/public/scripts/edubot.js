@@ -163,8 +163,8 @@ GridLevel.prototype.levelCompleted = async function() {
     draw();
     await sleep(robotStepTime);
     clearTimeout(executionTimeoutId);
-    let text = "Action Score: " + Math.round(actionScore*100) + "%<br>Block Score: " + Math.round(blockScore * 100) + "%";
-    displayAlert("You Won!", "", function() {
+    let text = "Action Score: " + Math.round(actionScore*100) + "%\nBlock Score: " + Math.round(blockScore * 100) + "%";
+    displayAlert("You Won!", text, function() {
       var thisLevel = level.levelId;
       var nextLevel = level.nextLevelId;
 
