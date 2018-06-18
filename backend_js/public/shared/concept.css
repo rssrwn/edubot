@@ -58,11 +58,18 @@
   margin: auto;
 }
 
-#blocksList {
-  float: right;
-  width: 100%;
-  margin-top: 40px;
-  list-style-type: none;
+#blocksTable {
+  border-collapse: collapse;
+}
+
+.blocksRowData, .blocksTableHeader {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.blocksTableHeader {
+  background-color: #f0f0f0;
 }
 
 .blocksPoints {

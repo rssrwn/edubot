@@ -2,9 +2,9 @@
 	"title": "The Basics",
   "concept_points": ["Hey there! Welcome to the land of EduBot. In this first set of levels, we're going to introduce you to the basics of how to guide EduBot.", "EduBot is a hungry robot; constantly on the search for more nuts and bolts to consume.", "We'll show you how to get EduBot moving and get it started on its search for food!"],
 	"new_blocks_image": "../images/category_blocks/intro_blocks.jpeg",
-	"new_blocks_points": ["Move forward - moves EduBot in the direction it is facing by one square",
-		"Rotate right - turns EduBot right (moving forward will take it in the new direction)",
-		"Rotate left - turns EduBot left"],
+	"new_blocks_points": [{"name": "Move forward", "image": "../images/individual_blocks/move_forward.png", "description": "Moves EduBot in the direction it is facing by one square."},
+		{"name": "Rotate right", "image": "../images/individual_blocks/rotate_right.png", "description": "Turns EduBot right (moving forward will take it in the new direction)."},
+		{"name": "Rotate left", "image": "../images/individual_blocks/rotate_left.png", "description": "Turns EduBot left."}],
 	"preview_program": "concepts/intro/preview_program.png",
 	"preview_video": "concepts/intro/preview_video.mp4"
 }
