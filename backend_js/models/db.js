@@ -343,7 +343,10 @@ exports.getCurrLevelName = async function(uname) {
     return -1;
   }
 
-  let db_res = await pool.query('select link from level where level_id=(select max(level_id) from student_level where uname=$1)+1;', [uname]);
+  let currLevel = await exports.getCurrLevel(uname);
+
+  let db_res = await pool.query('select link from level where level_id=$1;', [currLevel]);
+
   return db_res.rows[0].link;
 }
 
@@ -351,6 +354,9 @@ exports.getCurrLevelName = async function(uname) {
 exports.getAllLevels = async function(uname) {
   let db_res1 = await pool.query("select cat, cat_id, identifier from category;", []);
   let cats = db_res1.rows;
+  cats.sort(function(a, b) {
+    return a.cat_id > b.cat_id;
+  });
   let currLevel = await exports.getCurrLevel(uname);
 
   for (var i=0; i<cats.length; i++) {
