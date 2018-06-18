@@ -34,7 +34,7 @@ html, body {
 #titleDiv {
   float: left;
   width: 280px;
-  color: #e68119;
+  color: #E69719;
 }
 
 #linksDiv {
@@ -77,7 +77,7 @@ html, body {
   margin-bottom: 10px;
   text-align: center;
   vertical-align: middle;
-  background-color: #e68119;
+  background-color: #E69719;
 }
 
 #logoutLinksDiv {
@@ -99,7 +99,7 @@ html, body {
   margin-bottom: 28px;
   text-align: center;
   vertical-align: middle;
-  background-color: #e68119;
+  background-color: #E69719;
 }
 
 #contentDiv {

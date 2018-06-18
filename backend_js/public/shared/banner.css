@@ -6,7 +6,7 @@
   text-align: left;
   line-height: 80px;
   font-size: 25px;
-  border-bottom: 1px solid #e68119;
+  border-bottom: 1px solid #E69719; /*#E69719;*/
 }
 
 #title {
@@ -29,7 +29,7 @@
 #titleDiv {
   float: left;
   width: 280px;
-  color: #e68119;
+  color: #E69719; /*#E69719;*/
 }
 
 #linksDiv {
@@ -73,7 +73,7 @@
   margin-bottom: 10px;
   text-align: center;
   vertical-align: middle;
-  background-color: #e68119;
+  background-color: #E69719; /*#E69719;*/
 }
 
 #logoutLinksDiv {
@@ -95,7 +95,7 @@
   margin-bottom: 20px;
   text-align: center;
   vertical-align: middle;
-  background-color: #e68119;
+  background-color: #E69719; /*#E69719;*/
   text-decoration: none;
   color: inherit;
 }

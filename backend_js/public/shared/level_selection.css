@@ -35,12 +35,12 @@
 
 .playLink {
   color: white;
-  background-color: #e68119;
+  background-color: #E69719;
 }
 
 .learnMoreLink {
   color: white;
-  background-color: #2962bc;
+  background-color: #0a7ea0;
   margin-left: 20px;
   vertical-align: middle;
 }
@@ -117,7 +117,7 @@
 }
 
 .feedbackText {
-  color: #e68119;
+  color: #E69719;
   margin-left: 20px;
   font-size: 15px;
   font-style: italic;
