@@ -190,3 +190,7 @@ canvas {
   padding: 10px;
   margin-top: 10px;
 }
+
+.positiveText {
+  color: #2cd32f;
+}
