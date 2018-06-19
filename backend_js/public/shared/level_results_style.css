@@ -4,7 +4,7 @@
 }
 
 #buttonsDiv {
-  margin-top: 45px;
+  margin-top: 35px;
 }
 
 #starSpan {
@@ -31,15 +31,17 @@
   margin-left: 20px;
 }
 
+.completionText {
+  color: #5959f5;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
 .positiveText {
   color: #24af27;
-  font-weight: bold;
 }
 
 #topCompletionText {
   margin-top: 30px;
 }
 
-.completionText {
-   margin-bottom: 20px;
-}
