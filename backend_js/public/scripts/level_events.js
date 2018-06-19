@@ -10,15 +10,22 @@ var alertWrapper = document.getElementById("alertWrapperDiv");
 var alertDiv = document.getElementById("alertDiv");
 var alertTitle = document.getElementById("alertTitle");
 var alertText = document.getElementById("alertText");
+var alertButtonDiv = document.getElementById("alertButtonDiv");
 var alertButton = document.getElementById("alertButton");
 
-var displayAlert = function(title, text, maxWidth, callback) {
+var displayAlert = function(title, text, maxWidth, useButton, callback) {
   alertDiv.style.maxWidth = maxWidth;
   alertTitle.innerText = title;
   alertText.innerHTML = text;
   alertWrapper.style.display = "flex";
   dimmer.style.display = "block";
-  alertButton.callback = callback;
+  
+  if (useButton) {
+    alertButton.callback = callback;
+    alertButtonDiv.style.display = block;
+  } else {
+    alertButtonDiv.style.display = none;
+  }
 }
 
 var closeAlert = function(e) {

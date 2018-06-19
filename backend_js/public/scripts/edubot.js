@@ -181,7 +181,7 @@ GridLevel.prototype.levelCompleted = async function() {
     text += generateLevelCompletionHTML(starsAttained);
     
     //let text = "Action Score: " + Math.round(actionScore*100) + "%\nBlock Score: " + Math.round(blockScore * 100) + "%";
-    displayAlert("You Won!", text, 400 function() {
+    displayAlert("You Won!", text, 400, false, function() {
       var thisLevel = level.levelId;
       var nextLevel = level.nextLevelId;
 
@@ -206,7 +206,7 @@ GridLevel.prototype.levelCompleted = async function() {
 
 GridLevel.prototype.showHint = function() {
   if (this.hints.length > 0) {
-    displayAlert("Hint", this.hints[this.hintCounter], 300);
+    displayAlert("Hint", this.hints[this.hintCounter], 300, true);
     this.hintCounter = (this.hintCounter + 1) % this.hints.length;
   }
 }
