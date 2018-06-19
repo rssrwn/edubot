@@ -127,3 +127,12 @@
 .linkLocked {
   color: #6C6C6C;
 }
+
+.titles {
+  margin-bottom: 60px;
+}
+
+#introDiv {
+  display: inline;
+  margin-top: 60px;
+}
