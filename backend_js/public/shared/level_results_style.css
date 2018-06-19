@@ -1,0 +1,40 @@
+.centered {
+  margin: auto;
+  text-align: center;
+}
+
+#buttonsDiv {
+  margin-top: 70px;
+}
+
+#starSpan {
+  width: 180px;
+  margin-top: 25px;
+}
+
+.starImage {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+}
+
+.buttons {
+  width: 100px;
+  height: 50px;
+}
+
+#retryButton {
+  margin-right: 20px;
+}
+
+#nextLevelButton {
+  margin-left: 20px;
+}
+
+.positiveText {
+  color: #2cd32f;
+}
+
+.completionText {
+   margin-bottom: 15px;
+}

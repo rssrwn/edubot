@@ -163,8 +163,25 @@ GridLevel.prototype.levelCompleted = async function() {
     draw();
     await sleep(robotStepTime);
     clearTimeout(executionTimeoutId);
-    let text = "Action Score: " + Math.round(actionScore*100) + "%\nBlock Score: " + Math.round(blockScore * 100) + "%";
-    displayAlert("You Won!", text, function() {
+    
+    let text = "";
+    
+    if (rob.actionsTaken <= this.minActions) {
+      text += "<p class=\"positiveText completionText\">Completed level in minimum number of movement actions &#10004;</p>";
+    } else {
+      text += "<p class=\"completionText\">Could have used " + (rob.actionsTaken - this.minActions) + " fewer movement actions<p>";
+    }
+    
+    if (blocksUsed <= this.minBlocks) {
+      text += "<p class=\"positiveText completionText\">Completed level with minimum number of movement blocks &#10004;</p>";
+    } else {
+      text += "<p class=\"completionText\">Could have used " + (blocksUsed - this.minBlocks) + " fewer movement blocks</p>";
+    }
+    
+    text += generateLevelCompletionHTML(starsAttained);
+    
+    //let text = "Action Score: " + Math.round(actionScore*100) + "%\nBlock Score: " + Math.round(blockScore * 100) + "%";
+    displayAlert("You Won!", text, 400, false, function() {
       var thisLevel = level.levelId;
       var nextLevel = level.nextLevelId;
 
@@ -189,7 +206,7 @@ GridLevel.prototype.levelCompleted = async function() {
 
 GridLevel.prototype.showHint = function() {
   if (this.hints.length > 0) {
-    displayAlert("Hint", this.hints[this.hintCounter]);
+    displayAlert("Hint", this.hints[this.hintCounter], 300, true);
     this.hintCounter = (this.hintCounter + 1) % this.hints.length;
   }
 }

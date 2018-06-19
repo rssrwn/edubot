@@ -7,10 +7,12 @@
   <link rel="stylesheet" type="text/css" href="../shared/base_style.css">
   <link rel="stylesheet" type="text/css" href="../shared/banner.css">
   <link rel="stylesheet" type="text/css" href="../shared/play.css">
+  <link rel="stylesheet" type="text/css" href="../shared/level_results_style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../lib/jquery.ns-autogrow/dist/jquery.ns-autogrow.min.js"></script>
 
   <script src="../lib/blockly/blockly_compressed.js"></script>
   <script src="../lib/blockly/blocks_compressed.js"></script>
@@ -33,7 +35,7 @@
     <div id="contentDiv">
       <div id="blocklyDiv">
         <div id='feedbackZone'>
-          <textarea id='feedbackTextArea' rows='4' cols='65' {{#if student}}readonly{{/if}}></textarea>
+          <textarea id='feedbackTextArea' {{#if student}}readonly{{/if}}></textarea>
           <br>
           <button type='button' onclick='submitFeedback()'>{{#if student}}Hide{{else}}Give{{/if}} Feedback</button>
         </div>
@@ -57,8 +59,8 @@
           <div class="centerDiv">
             <h2 id="alertTitle"></h2>
           </div>
-          <p id="alertText"></p>
-          <div class="centerDiv">
+          <div id="alertText"></div>
+          <div id="alertButtonDiv" class="centerDiv">
             <button type='button' id="alertButton">Ok</button>
           </div>
         </div>
@@ -119,10 +121,10 @@
   function giveFeedback() {
     httpGet("https://edubot-learn.herokuapp.com/shared/feedback?uname={{{student_id}}}&level={{{levelName}}}", function(feedback) {
       feedback = $("#feedbackTextArea").val(feedback);
+      $("#simpleFeedbackButton").css("display", "none");
+      $("#feedbackZone").css("display", "table");
+      $('#feedbackTextArea').autogrow({vertical: true, horizontal: false});
     });
-
-    $("#simpleFeedbackButton").css("display", "none");
-    $("#feedbackZone").css("display", "table");
   }
 
   function submitFeedback() {
