@@ -15,7 +15,7 @@ var alertButton = document.getElementById("alertButton");
 
 var displayAlert = function(title, text, maxWidth, useButton, callback) {
   console.log("Alert div: " + alertDiv);
-  alertDiv.style.maxWidth = "" + maxWidth + "px";
+  alertDiv.style.maxWidth = maxWidth + "px";
   alertTitle.innerText = title;
   alertText.innerHTML = text;
   alertWrapper.style.display = "flex";
@@ -23,9 +23,9 @@ var displayAlert = function(title, text, maxWidth, useButton, callback) {
   
   if (useButton) {
     alertButton.callback = callback;
-    alertButtonDiv.style.display = block;
+    alertButtonDiv.style.display = "block";
   } else {
-    alertButtonDiv.style.display = none;
+    alertButtonDiv.style.display = "none";
   }
 }
 
