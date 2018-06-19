@@ -42,7 +42,6 @@
   -o-transition: height 2s ease;
   transition: height 2s ease;
   padding: 20px;
-  height: 100px;
   margin-bottom: 20px;
   resize: none;
   overflow: hidden;
