@@ -169,16 +169,18 @@ GridLevel.prototype.levelCompleted = async function() {
     if (rob.actionsTaken <= this.minActions) {
       text += "<p class=\"positiveText\">Completed level in minimum number of movement actions &#10004;</p>";
     } else {
-      text += "Could have used " + (rob.actionsTaken - this.minActions) + " fewer movement actions";
+      text += "<p>Could have used " + (rob.actionsTaken - this.minActions) + " fewer movement actions<p>";
     }
     
-    text += "\n";
+    text += "<br>";
     
     if (blocksUsed <= this.minBlocks) {
       text += "<p class=\"positiveText\">Completed level with minimum number of movement blocks &#10004;</p>";
     } else {
-      text += "Could have used " + (blocksUsed - this.minBlocks) + " fewer movement blocks";
+      text += "<p>Could have used " + (blocksUsed - this.minBlocks) + " fewer movement blocks</p>";
     }
+    
+    text += generateLevelCompletionHTML(starsAttained);
     
     //let text = "Action Score: " + Math.round(actionScore*100) + "%\nBlock Score: " + Math.round(blockScore * 100) + "%";
     displayAlert("You Won!", text, function() {

@@ -30,6 +30,26 @@ var closeAlert = function(e) {
 }
 document.getElementById("alertButton").addEventListener("click", closeAlert);
 
+function generateLevelCompletionHTML(stars) {
+  let compHtml = '<span id="starSpan" class="centered">';
+  
+  for (let i = 0; i < stars; i++) {
+    compHtml += '<img class="starImage" alt="star"  src="../images/star_filled.png">';
+  }
+  
+  for (let i = stars; i < 3; i++) {
+    compHtml += '<img class="starImage" alt="star"  src="../images/star_empty.png">';
+  }
+  
+  compHtml += '</span>';
+  compHtml +=   '<div id="buttonsDiv" class="centered">';
+  compHtml +=     '<button id="retryButton" class="buttons" type="button"; onclick="location.href=\'/shared/play?levelId=' + level.levelId + '\'">Retry</button>';
+  compHtml +=     '<button id="nextLevelButton" class="buttons" type="button" onclick="location.href=\'/shared/level_intro?levelId=' + level.nextLevelId + '\'">Next Level</button>';
+  compHtml +=   '</div>';
+  
+  return compHtml;
+}
+
 Blockly.BlockSvg.prototype.setHighlighted = function(highlighted) {
   if (!this.rendered) {
     return;
