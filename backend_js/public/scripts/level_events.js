@@ -53,7 +53,7 @@ function generateLevelCompletionHTML(stars) {
   
   compHtml += '</span>';
   compHtml +=   '<div id="buttonsDiv" class="centered">';
-  compHtml +=     '<button id="retryButton" class="buttons" type="button"; onclick="location.href=\'/shared/play?levelId=' + level.levelId + '&studentId=' + studentId + '\'">Retry</button>';
+  compHtml +=     '<button id="retryButton" class="buttons" type="button" onclick="location.href=\'/shared/play?levelId=' + level.levelId + '&studentId=' + studentId + '\'">Retry</button>';
   compHtml +=     '<button id="nextLevelButton" class="buttons" type="button" onclick="location.href=\'/shared/level_intro?levelId=' + level.nextLevelId + '&studentId=' + studentId + '\'">Next Level</button>';
   compHtml +=   '</div>';
   
