@@ -121,11 +121,10 @@
   function giveFeedback() {
     httpGet("https://edubot-learn.herokuapp.com/shared/feedback?uname={{{student_id}}}&level={{{levelName}}}", function(feedback) {
       feedback = $("#feedbackTextArea").val(feedback);
+      $("#simpleFeedbackButton").css("display", "none");
+      $("#feedbackZone").css("display", "table");
+      $('#feedbackTextArea').autogrow({vertical: true, horizontal: false});
     });
-
-    $("#simpleFeedbackButton").css("display", "none");
-    $("#feedbackZone").css("display", "table");
-    $('#feedbackTextArea').autogrow({vertical: true, horizontal: false});
   }
 
   function submitFeedback() {
