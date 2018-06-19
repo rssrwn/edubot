@@ -3,14 +3,13 @@
   text-align: center;
 }
 
-#starSpan {
-  margin-left: 15px;
-  margin-right: 15px;
-}
-
 #buttonsDiv {
   margin-top: 70px;
-  padding-bottom: 70px;
+}
+
+#starSpan {
+  width: 180px;
+  margin-top: 25px;
 }
 
 .starImage {
@@ -30,4 +29,12 @@
 
 #nextLevelButton {
   margin-left: 20px;
+}
+
+.positiveText {
+  color: #2cd32f;
+}
+
+.completionText {
+   margin-bottom: 15px;
 }

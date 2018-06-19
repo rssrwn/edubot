@@ -7,11 +7,13 @@ var highlightedId = null;
 
 var dimmer = document.getElementById("dimmer");
 var alertWrapper = document.getElementById("alertWrapperDiv");
+var alertDiv = document.getElementById("alertDiv");
 var alertTitle = document.getElementById("alertTitle");
 var alertText = document.getElementById("alertText");
 var alertButton = document.getElementById("alertButton");
 
-var displayAlert = function(title, text, callback) {
+var displayAlert = function(title, text, maxWidth, callback) {
+  alertDiv.style.maxWidth = maxWidth;
   alertTitle.innerText = title;
   alertText.innerHTML = text;
   alertWrapper.style.display = "flex";
