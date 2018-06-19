@@ -29,18 +29,12 @@
 }
 
 #feedbackTextArea {
-  max-width: 60%;
-  width: 100%;
+  width: 60%;
   color: black;
   border-radius: 3px;
   border: solid 1px black;
   font-size: 20px;
   font-family: inherit;
-  -webkit-transition: height 0.5s ease-in-out;
-  -moz-transition: height 0.5s ease-in-out;
-  -ms-transition: height 0.5s ease-in-out;
-  -o-transition: height 0.5s ease-in-out;
-  transition: height 0.5s ease-in-out;
   padding: 20px;
   margin-bottom: 20px;
   resize: none;
