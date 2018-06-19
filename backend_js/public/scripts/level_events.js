@@ -13,7 +13,7 @@ var alertButton = document.getElementById("alertButton");
 
 var displayAlert = function(title, text, callback) {
   alertTitle.innerText = title;
-  alertText.innerText = text;
+  alertText.innerHTML = text;
   alertWrapper.style.display = "flex";
   dimmer.style.display = "block";
   alertButton.callback = callback;

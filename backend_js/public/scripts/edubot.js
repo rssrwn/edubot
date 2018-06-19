@@ -163,7 +163,24 @@ GridLevel.prototype.levelCompleted = async function() {
     draw();
     await sleep(robotStepTime);
     clearTimeout(executionTimeoutId);
-    let text = "Action Score: " + Math.round(actionScore*100) + "%\nBlock Score: " + Math.round(blockScore * 100) + "%";
+    
+    let text = "";
+    
+    if (rob.actionsTaken <= this.minActions) {
+      text += "<p class=\"positiveText\">Completed level in minimum number of movement actions &#10004;</p>";
+    } else {
+      text += "Could have used " + (rob.actionsTaken - this.minActions) + " fewer movement actions";
+    }
+    
+    text += "\n";
+    
+    if (blocksUsed <= this.minBlocks) {
+      text += "<p class=\"positiveText\">Completed level with minimum number of movement blocks &#10004;</p>";
+    } else {
+      text += "Could have used " + (blocksUsed - this.minBlocks) + " fewer movement blocks";
+    }
+    
+    //let text = "Action Score: " + Math.round(actionScore*100) + "%\nBlock Score: " + Math.round(blockScore * 100) + "%";
     displayAlert("You Won!", text, function() {
       var thisLevel = level.levelId;
       var nextLevel = level.nextLevelId;
