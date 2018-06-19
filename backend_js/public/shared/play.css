@@ -29,22 +29,22 @@
 }
 
 #feedbackTextArea {
-  /* max-width: 60%;
+  max-width: 60%;
   width: 100%;
   color: black;
   border-radius: 3px;
   border: solid 1px black;
   font-size: 20px;
   font-family: inherit;
-  -webkit-transition: height 2s ease;
-  -moz-transition: height 2s ease;
-  -ms-transition: height 2s ease;
-  -o-transition: height 2s ease;
-  transition: height 2s ease;
+  -webkit-transition: height 0.5s ease-in-out;
+  -moz-transition: height 0.5s ease-in-out;
+  -ms-transition: height 0.5s ease-in-out;
+  -o-transition: height 0.5s ease-in-out;
+  transition: height 0.5s ease-in-out;
   padding: 20px;
   margin-bottom: 20px;
   resize: none;
-  overflow: hidden; */
+  overflow: hidden;
 }
 
 #controlsDiv {

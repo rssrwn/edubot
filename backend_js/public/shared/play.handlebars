@@ -114,8 +114,6 @@
   {{/if}}
 
   <script>
-  $('#feedbackTextArea').autogrow({vertical: true, horizontal: false});
-  
   {{#if student}}
   workspace.addChangeListener(saveBlocks);
   {{/if}}
@@ -127,6 +125,7 @@
 
     $("#simpleFeedbackButton").css("display", "none");
     $("#feedbackZone").css("display", "table");
+    $('#feedbackTextArea').autogrow({vertical: true, horizontal: false});
   }
 
   function submitFeedback() {
