@@ -46,6 +46,8 @@ function generateLevelCompletionHTML(stars) {
   compHtml +=     '<button id="retryButton" class="buttons" type="button"; onclick="location.href=\'/shared/play?levelId=' + level.levelId + '\'">Retry</button>';
   compHtml +=     '<button id="nextLevelButton" class="buttons" type="button" onclick="location.href=\'/shared/level_intro?levelId=' + level.nextLevelId + '\'">Next Level</button>';
   compHtml +=   '</div>';
+  
+  return compHtml;
 }
 
 Blockly.BlockSvg.prototype.setHighlighted = function(highlighted) {
