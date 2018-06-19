@@ -180,7 +180,7 @@ GridLevel.prototype.levelCompleted = async function() {
       text += "<p>Could have used " + (blocksUsed - this.minBlocks) + " fewer movement blocks</p>";
     }
     
-    text += generateLevelCompletionHTML();
+    text += generateLevelCompletionHTML(starsAttained);
     
     //let text = "Action Score: " + Math.round(actionScore*100) + "%\nBlock Score: " + Math.round(blockScore * 100) + "%";
     displayAlert("You Won!", text, function() {

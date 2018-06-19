@@ -30,7 +30,7 @@ var closeAlert = function(e) {
 }
 document.getElementById("alertButton").addEventListener("click", closeAlert);
 
-function generateLevelCompletionHTML() {
+function generateLevelCompletionHTML(stars) {
   let compHtml = '<span id="starSpan" class="centered">';
   
   for (let i = 0; i < stars; i++) {
