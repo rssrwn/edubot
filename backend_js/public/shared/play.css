@@ -168,7 +168,6 @@ canvas {
 #alertDiv {
   display: inline-block;
   background-color: #efefef;
-  max-width: 250px;
   z-index: 105;
   padding: 20px;
   border-radius: 15px;

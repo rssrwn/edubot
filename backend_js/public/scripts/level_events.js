@@ -14,7 +14,8 @@ var alertButtonDiv = document.getElementById("alertButtonDiv");
 var alertButton = document.getElementById("alertButton");
 
 var displayAlert = function(title, text, maxWidth, useButton, callback) {
-  alertDiv.style.maxWidth = maxWidth;
+  console.log("Alert div: " + alertDiv);
+  alertDiv.style.maxWidth = "" + maxWidth + "px";
   alertTitle.innerText = title;
   alertText.innerHTML = text;
   alertWrapper.style.display = "flex";
@@ -40,7 +41,7 @@ var closeAlert = function(e) {
 document.getElementById("alertButton").addEventListener("click", closeAlert);
 
 function generateLevelCompletionHTML(stars) {
-  let compHtml = '<span id="starSpan" class="centered">';
+  let compHtml = '<span id="starSpan" class="centered clearFix">';
   
   for (let i = 0; i < stars; i++) {
     compHtml += '<img class="starImage" alt="star"  src="../images/star_filled.png">';
