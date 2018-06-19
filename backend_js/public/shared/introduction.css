@@ -1,0 +1,55 @@
+#wrapperDiv {
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 150px;
+  width: 40%;
+  min-width: 650px;
+}
+
+.subTitle {
+  font-family: 'Roboto Slab', serif;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+.titles {
+  margin-bottom: 60px;
+}
+
+.defBox {
+  background-color: #f0f0f0;
+  color: #0a7ea0; /*#2962bc; #E69719;*/
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.inlineBold {
+  color: #0a7ea0;
+  font-weight: bold;
+}
+
+.para {
+  margin-bottom: 25px;
+}
+
+.minorTitle {
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+#levelButtonsDiv {
+  display: table;
+  margin: 0 auto;
+  margin-bottom: 150px;
+  margin-top: 10px;
+}
+
+.levelButton {
+  margin: 0 15px;
+  width: 150px;
+  height: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
