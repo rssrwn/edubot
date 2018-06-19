@@ -118,6 +118,8 @@
   workspace.addChangeListener(saveBlocks);
   {{/if}}
   
+  var studentId = "{{student_id}}";
+  
   function giveFeedback() {
     httpGet("https://edubot-learn.herokuapp.com/shared/feedback?uname={{{student_id}}}&level={{{levelName}}}", function(feedback) {
       feedback = $("#feedbackTextArea").val(feedback);
