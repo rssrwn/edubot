@@ -176,7 +176,7 @@ router.get('/play', async function(req, res, next) {
   }).catch((error) => next(error));
 });
 
-router.get('/intro', (req, res, next) => {
+router.get('/intro', async function (req, res, next) {
   let uname = req.cookies["edubot-cookie"];
   let isStudent = await util.isStudent(uname);
   let context = {student: isStudent};
