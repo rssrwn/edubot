@@ -167,9 +167,9 @@ GridLevel.prototype.levelCompleted = async function() {
     let text = "";
     
     if (rob.actionsTaken <= this.minActions) {
-      text += "<p class=\"positiveText completionText\">Completed level in minimum number of movement actions &#10004;</p>";
+      text += "<p id=\"topCompletionText\" class=\"positiveText completionText\">Completed level in minimum number of movement actions &#10004;</p>";
     } else {
-      text += "<p class=\"completionText\">Could have used " + (rob.actionsTaken - this.minActions) + " fewer movement actions<p>";
+      text += "<p id=\"topCompletionText\" class=\"completionText\">Could have used " + (rob.actionsTaken - this.minActions) + " fewer movement actions<p>";
     }
     
     if (blocksUsed <= this.minBlocks) {

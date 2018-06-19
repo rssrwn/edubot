@@ -36,6 +36,10 @@
   font-weight: bold;
 }
 
+#topCompletionText {
+  margin-top: 30px;
+}
+
 .completionText {
-   margin-bottom: 15px;
+   margin-bottom: 20px;
 }
