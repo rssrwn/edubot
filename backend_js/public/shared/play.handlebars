@@ -34,7 +34,7 @@
     <div id="contentDiv">
       <div id="blocklyDiv">
         <div id='feedbackZone'>
-          <textarea id='feedbackTextArea' rows='4' cols='65' {{#if student}}readonly{{/if}}></textarea>
+          <textarea id='feedbackTextArea' {{#if student}}readonly{{/if}}></textarea>
           <br>
           <button type='button' onclick='submitFeedback()'>{{#if student}}Hide{{else}}Give{{/if}} Feedback</button>
         </div>
@@ -113,9 +113,7 @@
   {{/if}}
 
   <script>
-  $(document).ready(function(){
-    $('#feedbackTextArea').autogrow({vertical: true, horizontal: false});
-  });
+  $('#feedbackTextArea').autogrow({vertical: true, horizontal: false});
   
   {{#if student}}
   workspace.addChangeListener(saveBlocks);
