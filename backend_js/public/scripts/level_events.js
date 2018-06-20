@@ -54,38 +54,14 @@ function generateLevelCompletionHTML(stars) {
   compHtml += '</span>';
   compHtml +=   '<div id="buttonsDiv" class="centered">';
   compHtml +=     '<button id="retryButton" class="buttons" type="button" onclick="location.href=\'/shared/play?levelId=' + level.levelId + '&studentId=' + studentId + '\'">Retry</button>';
-  compHtml +=     '<button id="nextLevelButton" class="buttons" type="button" onclick="location.href=\'/shared/level_intro?levelId=' + level.nextLevelId + '&studentId=' + studentId + '\'">Next Level</button>';
+  
+  if (level.nextLevelId) {
+    compHtml +=     '<button id="nextLevelButton" class="buttons" type="button" onclick="location.href=\'/shared/level_intro?levelId=' + level.nextLevelId + '&studentId=' + studentId + '\'">Next Level</button>';
+  }
   compHtml +=   '</div>';
   
   return compHtml;
 }
-
-
-
-
-
-
-var xml = Blockly.Xml.workspaceToDom(workspace);
-var xml_text = Blockly.Xml.domToText(xml);
-
-httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: level.levelId, solution: xml_text, score: starsAttained}, function(status) {
-  
-  // If teacher is logged in
-  if (status === 251) {
-    return;
-  }
-
-  if (!(status === 200 || status === 250 || status === 251)) {
-    alert("Unknown error, status: ", status);
-  }
-  location.href = '/student/level_results?levelId=' + thisLevel + '&nextId=' + nextLevel + '&sts=' + starsAttained;
-});
-
-
-
-
-
-
 
 Blockly.BlockSvg.prototype.setHighlighted = function(highlighted) {
   if (!this.rendered) {
