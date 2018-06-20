@@ -2,11 +2,11 @@ So let's imagine Mark has just started his Key Stage 3 computing course. His sch
 
 (Reveal prefilled signup page. Press enter to sign mark up. Taken to login screen.)
 
-In his first computing lesson, not knowing what to expect and also not expecting much, he'll sign in, and be taken straight to our levels page.
+In his first computing lesson, he will sign in and be taken to the levels page.
 
 (Login, taken to levels page).
 
-Here Mark is presented with a variety of programming concepts, starting with the basics and steadily increasing in difficulty. Before getting started with the game, he would be guided by Nancy to follow the learn more link here.
+Here Mark is presented with a variety of programming concepts. Under each concept, there are several incrementally more difficult levels to test his understanding. His new teacher, Nancy, would guide him to learn more about the first concept.
 
 (Click learn more link, taken to concepts page)
 
