@@ -60,6 +60,33 @@ function generateLevelCompletionHTML(stars) {
   return compHtml;
 }
 
+
+
+
+
+
+var xml = Blockly.Xml.workspaceToDom(workspace);
+var xml_text = Blockly.Xml.domToText(xml);
+
+httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: level.levelId, solution: xml_text, score: starsAttained}, function(status) {
+  
+  // If teacher is logged in
+  if (status === 251) {
+    return;
+  }
+
+  if (!(status === 200 || status === 250 || status === 251)) {
+    alert("Unknown error, status: ", status);
+  }
+  location.href = '/student/level_results?levelId=' + thisLevel + '&nextId=' + nextLevel + '&sts=' + starsAttained;
+});
+
+
+
+
+
+
+
 Blockly.BlockSvg.prototype.setHighlighted = function(highlighted) {
   if (!this.rendered) {
     return;
