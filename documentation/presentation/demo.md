@@ -36,6 +36,19 @@ We added a facility for hints to help him in those moments of frustration when h
 
 So, we've had a look at Mark's experience with EduBot, but what about Mark's new teacher Nancy.
 
-(Login as teacher) 
+(Login as teacher)
+
+So when Nancy logs in to her portal she'll be taken to the class management screen. This is where EduBot diverges from the likes of codecademy on the teacher side. She can start setting up her year 7 class
+
+(Press Add Class, type Year 7)
+
+And she can add Mark to the new class
+
+(Add Member, type Mark's username) 
+
+Nancy can then view Mark's progress and where he's gotten to with the exercises.
+
+I'll now hand over to Julien to demonstrate a later level and some of the interaction between students and teachers.
+
 
 
