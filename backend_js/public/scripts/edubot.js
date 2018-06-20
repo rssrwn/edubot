@@ -167,9 +167,9 @@ GridLevel.prototype.levelCompleted = async function() {
     let text = "";
     
     if (rob.actionsTaken <= this.minActions) {
-      text += "<p class=\"positiveText completionText\">Completed level in minimum number of movement actions &#10004;</p>";
+      text += "<p id=\"topCompletionText\" class=\"positiveText completionText\">Completed level in minimum number of movement actions &#10004;</p>";
     } else {
-      text += "<p class=\"completionText\">Could have used " + (rob.actionsTaken - this.minActions) + " fewer movement actions<p>";
+      text += "<p id=\"topCompletionText\" class=\"completionText\">Could have used " + (rob.actionsTaken - this.minActions) + " fewer movement actions<p>";
     }
     
     if (blocksUsed <= this.minBlocks) {
@@ -180,33 +180,31 @@ GridLevel.prototype.levelCompleted = async function() {
     
     text += generateLevelCompletionHTML(starsAttained);
     
-    //let text = "Action Score: " + Math.round(actionScore*100) + "%\nBlock Score: " + Math.round(blockScore * 100) + "%";
-    displayAlert("You Won!", text, 400 function() {
-      var thisLevel = level.levelId;
-      var nextLevel = level.nextLevelId;
+    var thisLevel = level.levelId;
+    var nextLevel = level.nextLevelId;
 
-      var xml = Blockly.Xml.workspaceToDom(workspace);
-      var xml_text = Blockly.Xml.domToText(xml);
+    var xml = Blockly.Xml.workspaceToDom(workspace);
+    var xml_text = Blockly.Xml.domToText(xml);
 
-      httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: level.levelId, solution: xml_text, score: starsAttained}, function(status) {
+    httpPost("https://edubot-learn.herokuapp.com/shared/set_result", {level: level.levelId, solution: xml_text, score: starsAttained}, function(status) {
 
-        // If teacher is logged in
-        if (status === 251) {
-          return;
-        }
+      // If teacher is logged in
+      if (status === 251) {
+        return;
+      }
 
-        if (!(status === 200 || status === 250 || status === 251)) {
-          alert("Unknown error, status: ", status);
-        }
-        location.href = '/student/level_results?levelId=' + thisLevel + '&nextId=' + nextLevel + '&sts=' + starsAttained;
-      });
+      if (!(status === 200 || status === 250 || status === 251)) {
+        alert("Unknown error, status: ", status);
+      }
     });
+    
+    displayAlert("You Won!", text, 400, false, function() {});
   }
 }
 
 GridLevel.prototype.showHint = function() {
   if (this.hints.length > 0) {
-    displayAlert("Hint", this.hints[this.hintCounter], 300);
+    displayAlert("Hint", this.hints[this.hintCounter], 300, true);
     this.hintCounter = (this.hintCounter + 1) % this.hints.length;
   }
 }

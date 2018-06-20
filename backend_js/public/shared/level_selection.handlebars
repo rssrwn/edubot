@@ -40,6 +40,10 @@
         <h1 class="titles">Level Selection</h1>
         {{/if}}
         <div id="selectionDiv">
+          <span id="introDiv">
+            <a class="linkPlain hoverLink introLink subTitle" onclick="window.location = '/shared/intro';">Introduction to EduBot</a>
+            <a class="linkPlain hoverLink buttonLink learnMoreLink" onclick="window.location = '/shared/intro';">Learn More</a>
+          </span>
           {{#each categories}}
             {{> category_block this}}
           {{/each}}

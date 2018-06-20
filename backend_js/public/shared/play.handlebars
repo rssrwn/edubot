@@ -59,8 +59,8 @@
           <div class="centerDiv">
             <h2 id="alertTitle"></h2>
           </div>
-          <p id="alertText"></p>
-          <div class="centerDiv">
+          <div id="alertText"></div>
+          <div id="alertButtonDiv" class="centerDiv">
             <button type='button' id="alertButton">Ok</button>
           </div>
         </div>
@@ -118,11 +118,13 @@
   workspace.addChangeListener(saveBlocks);
   {{/if}}
   
+  var studentId = "{{student_id}}";
+  
   function giveFeedback() {
     httpGet("https://edubot-learn.herokuapp.com/shared/feedback?uname={{{student_id}}}&level={{{levelName}}}", function(feedback) {
+      feedback = $("#feedbackTextArea").val(feedback);
       $("#simpleFeedbackButton").css("display", "none");
       $("#feedbackZone").css("display", "table");
-      feedback = $("#feedbackTextArea").val(feedback);
       $('#feedbackTextArea').autogrow({vertical: true, horizontal: false});
     });
   }

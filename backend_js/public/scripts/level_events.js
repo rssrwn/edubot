@@ -10,15 +10,23 @@ var alertWrapper = document.getElementById("alertWrapperDiv");
 var alertDiv = document.getElementById("alertDiv");
 var alertTitle = document.getElementById("alertTitle");
 var alertText = document.getElementById("alertText");
+var alertButtonDiv = document.getElementById("alertButtonDiv");
 var alertButton = document.getElementById("alertButton");
 
-var displayAlert = function(title, text, maxWidth, callback) {
-  alertDiv.style.maxWidth = maxWidth;
+var displayAlert = function(title, text, maxWidth, useButton, callback) {
+  console.log("Alert div: " + alertDiv);
+  alertDiv.style.maxWidth = maxWidth + "px";
   alertTitle.innerText = title;
   alertText.innerHTML = text;
   alertWrapper.style.display = "flex";
   dimmer.style.display = "block";
-  alertButton.callback = callback;
+  
+  if (useButton) {
+    alertButton.callback = callback;
+    alertButtonDiv.style.display = "block";
+  } else {
+    alertButtonDiv.style.display = "none";
+  }
 }
 
 var closeAlert = function(e) {
@@ -33,7 +41,7 @@ var closeAlert = function(e) {
 document.getElementById("alertButton").addEventListener("click", closeAlert);
 
 function generateLevelCompletionHTML(stars) {
-  let compHtml = '<span id="starSpan" class="centered">';
+  let compHtml = '<span id="starSpan" class="centered clearFix">';
   
   for (let i = 0; i < stars; i++) {
     compHtml += '<img class="starImage" alt="star"  src="../images/star_filled.png">';
@@ -45,8 +53,11 @@ function generateLevelCompletionHTML(stars) {
   
   compHtml += '</span>';
   compHtml +=   '<div id="buttonsDiv" class="centered">';
-  compHtml +=     '<button id="retryButton" class="buttons" type="button"; onclick="location.href=\'/shared/play?levelId=' + level.levelId + '\'">Retry</button>';
-  compHtml +=     '<button id="nextLevelButton" class="buttons" type="button" onclick="location.href=\'/shared/level_intro?levelId=' + level.nextLevelId + '\'">Next Level</button>';
+  compHtml +=     '<button id="retryButton" class="buttons" type="button" onclick="location.href=\'/shared/play?levelId=' + level.levelId + '&studentId=' + studentId + '\'">Retry</button>';
+  
+  if (level.nextLevelId) {
+    compHtml +=     '<button id="nextLevelButton" class="buttons" type="button" onclick="location.href=\'/shared/level_intro?levelId=' + level.nextLevelId + '&studentId=' + studentId + '\'">Next Level</button>';
+  }
   compHtml +=   '</div>';
   
   return compHtml;
