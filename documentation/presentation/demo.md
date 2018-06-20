@@ -50,5 +50,74 @@ Nancy can then view Mark's progress and where he's gotten to with the exercises.
 
 I'll now hand over to Julien to demonstrate a later level and some of the interaction between students and teachers.
 
+--
 
+Let's now log in using Emily's profile.
 
+(Click log out, login as Emily)
+
+She's gotten further through the game, so we'll play level 6.
+
+(Click level 6, click try level)
+
+Here's the current state of her progress, we'll push play and see her score.
+
+She realises that solution isn't optimal, so she takes a look at the level introduction by clicking on the intro button.
+
+(Click intro)
+
+It seems like we need take better advantage of loops in order to use fewer blocks, so let's go back to playing the level and improve Emily's solution.
+
+(Click try level, take all but first 2 blocks in first loop out, separate into 3)
+
+If we now take these blocks out, we can separate them and see that there is some duplication. In this case, we should use a loop to repeat these actions twice.
+
+(Combine common code into loop)
+
+Let's see how efficient our solution is.
+
+(Click play)
+
+Great, we got 3 stars.
+
+--
+
+Now, we're going to switch back to the teacher side and give Emily some feedback.
+
+(Click log out, login as teacher)
+
+Emily is in Year 9, let's go to her student page and view her progress.
+
+(Click Emily)
+
+Wonderful, Emily completed level 6 with 3 stars.
+
+(Click level 6)
+
+Let's first take a look at the sample solution.
+
+(Click sample solution)
+
+Wow, it uses nested loops. We'll see how Emily's solution compares.
+
+(Click intro, click student solution)
+
+Let's give her some feedback for her excellent work.
+
+(Click feedback, type "Excellent solution! Keep up the good work, Emily.")
+
+(Click submit feedback)
+
+--
+
+On Emily's side, we can now see this feedback by going to the level.
+
+(Click log out, login as Emily)
+
+It seems like she received some feedback, let's see what it says.
+
+(Click level 6, click try level, click feedback)
+
+Emily is very proud of herself, she done some good work.
+
+I'll now pass it over to Harry, who's going to talk you through the more technical aspects of our project.
